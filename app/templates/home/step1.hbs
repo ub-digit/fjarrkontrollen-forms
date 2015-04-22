@@ -1,12 +1,23 @@
 
 <h3>Step 1</h3>
+<div class="row vertical-space-bottom-20">
+	<div class="col-xs-12 col-sm-6">
+		{{view "select" class="form-control"
+		   content=controllers.application.orderTypes
+		   optionValuePath="content.id"
+		   optionLabelPath="content.title"
+		   selection=controllers.application.selectedOrdertype
+		   prompt="Välj typ:"
+		}}
+	</div>
+	<div class="col-sm-6">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<button {{bind-attr class=":btn :btn-primary isDisabled:disabled"}}>Nästa</button>
+	</div>
+</div>
 
-{{view "select" class="form-control"
-   content=controllers.application.orderTypes
-   optionValuePath="content.id"
-   optionLabelPath="content.title"
-   selection=controllers.application.selectedOrdertype
-   prompt="Välj typ:"
-}}
 
 
