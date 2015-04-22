@@ -1,6 +1,12 @@
-Step1
+
+<h3>Step 1</h3>
+
+{{view "select" class="form-control"
+   content=controllers.application.orderTypes
+   optionValuePath="content.id"
+   optionLabelPath="content.title"
+   selection=controllers.application.selectedOrdertype
+   prompt="Välj typ:"
+}}
 
 
-{{#each item in controllers.application.orderTypes}}
-	{{item.id}}
-{{/each}}

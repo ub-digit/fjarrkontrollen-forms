@@ -10,5 +10,6 @@ export default Ember.Route.extend({
 		orderTypes.pushObject({id:4, identifier: 'scores', title: 'Musiktryck', validFor: ['forskare_anstalld','student', 'distansstudent']});
 		orderTypes.pushObject({id:5, identifier: 'micro-film', title: 'Lån mikrofilm', validFor: ['forskare_anstalld','student','sahlgrenska', 'privatperson', 'foretag', 'ovriga', 'distansstudent']});*/
 		controller.set("orderTypes", orderTypes);
+		controller.set("selectedOrdertype", null);
 	}
 });
