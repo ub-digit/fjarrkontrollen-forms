@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'fjarrkontrollen-forms',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
