@@ -1,0 +1,90 @@
+<h3>Artikel 1</h3>
+
+    <h4><b>Ange PubMed-ID</b></h4>
+	<div id="external-links" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.links:has-error"}}>
+				{{input type='text' classBinding=":form-control" value=model.links}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+    <h4><b>... eller fyll i uppgifterna:</b></h4>
+
+	<div id="fulltext-link" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.url:has-error"}}>
+				<label class="control-label">Artikeltitel*</label>
+				{{input type='text' classBinding=":form-control" value=model.url}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+
+
+	<div id="external-id" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.extid:has-error"}}>
+				<label class="control-label">Tidskriftstitel*</label>
+				{{input type='text' classBinding=":form-control" value=model.extid}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+	<div id="external-links" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.links:has-error"}}>
+				<label class="control-label">Författare</label>
+				{{input type='text' classBinding=":form-control" value=model.links}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+	<div id="fulltext-link" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.url:has-error"}}>
+				<label class="control-label">ISSN:</label>
+				{{input type='text' classBinding=":form-control" value=model.url}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+
+
+	<div id="external-id" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.extid:has-error"}}>
+				<label class="control-label">Publiceringsår:</label>
+				{{input type='text' classBinding=":form-control" value=model.extid}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+	<div id="external-links" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.links:has-error"}}>
+				<label class="control-label">Nummer:</label>
+				{{input type='text' classBinding=":form-control" value=model.links}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+
+	<div id="keywords" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+		<div class="col-xs-12">
+			<span {{bind-attr class=":form-group errors.keywords:has-error"}}>
+				<label class="control-label">Volym:</label>
+				{{input type='text' classBinding=":form-control" value=model.links}}
+			</span>
+		</div>
+	</div> <!-- end row -->
+
+  <div id="project" {{bind-attr class=":row :bottom-spacing-20 getClassNameForSelectedPublicationTypeAndContentType"}}>
+    <div class="col-xs-12">
+      <span {{bind-attr class=":form-group errors.project:has-error"}}>
+        <label class="control-label">Sidor:</label>
+        {{input type='text' classBinding=":form-control" value=model.project}}
+      </span>
+    </div>
+  </div> <!-- end row -->
+

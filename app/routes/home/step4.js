@@ -1,10 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
   actions: {
     nextstep: function() {
-      this.transitionTo('home.step2');
+      this.transitionTo('home.step5');
     }
   }
 });
