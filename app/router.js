@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('home', function() {
+  this.resource('home', {path: '/'}, function() {
     this.route('step1');
     this.route('step2');
     this.route('step3');
