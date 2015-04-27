@@ -1,7 +1,213 @@
-<h3>Step 3</h3>
+<h3>Beställaruppgifter</h3>
 <div class="row">
+	<div class="col-xs-12 col-md-6">
+
+		<h4>Jag är...</h4>
+		<div class="row">
+			<div class="col-xs-12">
+				{{view "select" class="form-control"
+				   content=controllers.application.orderTypes
+				   optionValuePath="content.id"
+				   optionLabelPath="content.title"
+				   selection=controllers.application.selectedOrdertype
+				   prompt="Välj typ:"
+				}}
+			</div>
+		</div>
+
+		<h4>Ange dina uppgifter</h4>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="name">Namn</label>
+					<input type="text" class="form-control" id="name" placeholder="Ange ditt namn">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="email">E-mail</label>
+					<input type="email" class="form-control" id="email" placeholder="Ange organisation">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="phone">Telefon</label>
+					<input type="text" class="form-control" id="phone" placeholder="Ange telefonnummer">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="organization">Organisation</label>
+					<input type="text" class="form-control" id="organization" placeholder="Ange organisation">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="institution">Institution</label>
+					<input type="text" class="form-control" id="institution" placeholder="Ange institution">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Avdeling</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="cardnumber">Lånekortsnummer</label>
+					<input type="text" class="form-control" id="cardnumber" placeholder="Lånekortsnummer">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="xaccount">xkonto</label>
+					<input type="text" class="form-control" id="xaccount" placeholder="xkonto">
+				</div>
+			</div>
+		</div>
+
+		<h4>Välj leveranssätt</h4>
+		<div class="row">
+			<div class="col-xs-12">
+				{{view "select" class="form-control"
+				   content=controllers.application.orderTypes
+				   optionValuePath="content.id"
+				   optionLabelPath="content.title"
+				   selection=controllers.application.selectedOrdertype
+				   prompt="Välj typ:"
+				}}
+			</div>
+		</div>
+
+		<h4>Ange leveransadress</h4>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Företag</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Namn</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Gatuadress/Box</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Postnummer</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Ort</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<h4>Ange fakturringsuppgifter</h4>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="department">Namn</label>
+					<input type="text" class="form-control" id="department" placeholder="Ange namn">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="company">Företag</label>
+					<input type="text" class="form-control" id="company" placeholder="Ange företag">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="street-adress">Gatuadress/Box</label>
+					<input type="text" class="form-control" id="street-adress" placeholder="Ange gatuadress/box">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="postalcode">Postnummer</label>
+					<input type="text" class="form-control" id="postalcode" placeholder="Ange postnummer">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="city">Ort</label>
+					<input type="text" class="form-control" id="city" placeholder="Ange avdelning">
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="order-id">Beställar-ID</label>
+					<input type="text" class="form-control" id="order-id" placeholder="Ange Beställar-ID">
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 	<div class="col-xs-12">
-        <button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>Nästa</button>
-        <button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-primary                    "}}>Avbryt</button>
+		<button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-link"}}>Avbryt</button>
+		<button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>Nästa</button>
 	</div>
 </div>
