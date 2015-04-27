@@ -13,7 +13,6 @@ export default Ember.Route.extend({
 	},
 	actions: {
 		resetForm: function() {
-		// reset forms here... 
 			this.controllerFor("application").resetAllData();
 		}
 	}
