@@ -15,7 +15,8 @@
 </div>
 <div class="row">
 	<div class="col-xs-12">
-		<button {{bind-attr class=":btn :btn-primary isDisabled:disabled"}}>{{t 'home.step1.nextBtn'}}</button>
+		<button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>{{t 'home.step1.nextBtn'}}</button>
+        <button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-primary                    "}}>Avbryt</button>
 	</div>
 </div>
 

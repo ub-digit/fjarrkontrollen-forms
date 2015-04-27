@@ -1,0 +1,14 @@
+<div class="row vertical-space-bottom-20">
+    {{controllers.application.selectedOrdertype.title}}
+	<div class="col-xs-12 col-sm-6">
+        {{partial 'ordertypes/-loans'}}
+	</div>
+	<div class="col-sm-6">
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+        <button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>Nästa</button>
+        <button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-primary                    "}}>Avbryt</button>
+	</div>
+</div>
