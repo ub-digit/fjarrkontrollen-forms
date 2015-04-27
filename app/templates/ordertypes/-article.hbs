@@ -85,3 +85,21 @@
     </span>
   </div>
 </div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+      <label class="control-label">Order inaktuell efter:</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.notValidAfter}}
+    </span>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+      <label class="control-label">Kommentar:</label>
+      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.comment}}
+    </span>
+  </div>
+</div> <!-- end row -->
