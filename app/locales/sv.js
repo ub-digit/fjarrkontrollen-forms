@@ -4,6 +4,9 @@ export default {
    		step1: {
    			header: 'Välj typ:',
    			nextBtn: 'Nästa',
+   		},
+   		step2: {
+   			nextBtn: 'Nästa',
    		}
   	}
 
