@@ -1,7 +1,46 @@
-<h3>Step 4</h3>
+<h3>Förhandsgranska</h3>
 <div class="row">
 	<div class="col-xs-12">
-        <button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>Nästa</button>
-        <button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-primary                    "}}>Avbryt</button>
+		<h4>Beställningsuppgifter</h4>
+		<div class="row">
+			<div class="col-xs-12 col-md-6">
+				<table class="table table-striped">
+					<tbody>
+						<tr>
+							<td>Titel</td>
+							<td>{{controllers.application.orderDetails.articleTitle}}</td>
+						</tr>
+						<tr>
+							<td>Författare</td>
+							<td>{{controllers.application.orderDetails.authors}}</td>
+						</tr>
+						<tr>
+							<td>Tidskriftstitel</td>
+							<td>{{controllers.application.orderDetails.journalTitle}}</td>
+						</tr>
+						<tr>
+							<td>ISSN</td>
+							<td>{{controllers.application.orderDetails.issn}}</td>
+						</tr>
+						<tr>
+							<td>Volym</td>
+							<td>{{controllers.application.orderDetails.volume}}</td>
+						</tr>
+						<tr>
+							<td>Sidor</td>
+							<td>{{controllers.application.orderDetails.pages}}</td>
+						</tr>
+						<tr>
+							<td>Ej aktuell efter</td>
+							<td>{{controllers.application.orderDetails.notValidAfter}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+
+		<button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-link"}}>Avbryt</button>
+		<button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-success isDisabled:disabled"}}>Skicka</button>
 	</div>
 </div>
