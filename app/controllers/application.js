@@ -14,6 +14,35 @@ export default Ember.Controller.extend({
 		comment: null
 	},
 
+	customerDetails: {
+		name: null,
+		emailAddress: null,
+		phoneNumber: null,
+		organisation: null,
+		department: null,
+		institution: null,
+		libraryCardNumber: null, 
+		xAccount: null
+	},
+
+	deliveryDetails: {
+		company: null,
+		name: null,
+		address: null,
+		postalCode: null,
+		city: null
+	},
+
+	invoicingDetails: {
+		name: null,
+		company: null,
+		address: null,
+		postalCode: null,
+		city: null,
+		customerId: null,
+	},
+
+
 	resetAllData: function() {
 		this.set("selectedOrdertype", null);
 		this.transitionToRoute('home.step1');

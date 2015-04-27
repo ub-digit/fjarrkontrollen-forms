@@ -1,5 +1,5 @@
 
-<h3>{{t 'home.step1.header'}}</h3>
+<h3>{{t 'home.step1.typeHeader'}}</h3>
 <div class="row vertical-space-bottom-20">
 	<div class="col-xs-12">
 		{{view "select" class="form-control"
@@ -7,7 +7,20 @@
 		   optionValuePath="content.id"
 		   optionLabelPath="content.title"
 		   selection=controllers.application.selectedOrdertype
-		   prompt=(t 'home.step1.header')
+		   prompt=(t 'home.step1.typeHeader')
+		}}
+	</div>
+</div>
+
+<h3>{{t 'home.step1.locationHeader'}}</h3>
+<div class="row vertical-space-bottom-20">
+	<div class="col-xs-12">
+		{{view "select" class="form-control"
+		   content=controllers.application.locations
+		   optionValuePath="content.id"
+		   optionLabelPath="content.title"
+		   selection=controllers.application.selectedLocation
+		   prompt=(t 'home.step1.locationHeader')
 		}}
 	</div>
 </div>

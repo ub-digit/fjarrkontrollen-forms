@@ -6,10 +6,10 @@
 		<div class="row">
 			<div class="col-xs-12">
 				{{view "select" class="form-control"
-				   content=controllers.application.orderTypes
+				   content=controllers.application.customerTypes
 				   optionValuePath="content.id"
 				   optionLabelPath="content.title"
-				   selection=controllers.application.selectedOrdertype
+				   selection=controllers.application.selectedCustomerType
 				   prompt="Välj typ:"
 				}}
 			</div>
@@ -21,7 +21,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="name">Namn</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.name}}
 				</div>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="email">E-mail</label>
-					{{input type='email' classBinding=":form-control" value=''}}
+					{{input type='email' classBinding=":form-control" value=controllers.application.customerDetails.emailAddress}}
 				</div>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="phone">Telefon</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.phoneNumber}}
 				</div>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="organization">Organisation</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.organisation}}
 				</div>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="institution">Institution</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.department}}
 				</div>
 			</div>
 		</div>
@@ -66,7 +66,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Avdeling</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.institution}}
 				</div>
 			</div>
 		</div>
@@ -75,7 +75,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="cardnumber">Lånekortsnummer</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.libraryCardNumber}}
 				</div>
 			</div>
 		</div>
@@ -84,7 +84,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="xaccount">xkonto</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.customerDetails.xAccount}}
 				</div>
 			</div>
 		</div>
@@ -93,10 +93,10 @@
 		<div class="row">
 			<div class="col-xs-12">
 				{{view "select" class="form-control"
-				   content=controllers.application.orderTypes
+				   content=controllers.application.deliveryMethods
 				   optionValuePath="content.id"
 				   optionLabelPath="content.title"
-				   selection=controllers.application.selectedOrdertype
+				   selection=controllers.application.selectedDeliveryMethod
 				   prompt="Välj typ:"
 				}}
 			</div>
@@ -108,7 +108,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Företag</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.company}}
 				</div>
 			</div>
 		</div>
@@ -117,7 +117,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Namn</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.name}}
 				</div>
 			</div>
 		</div>
@@ -126,7 +126,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Gatuadress/Box</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.address}}
 				</div>
 			</div>
 		</div>
@@ -135,7 +135,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Postnummer</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.postalCode}}
 				</div>
 			</div>
 		</div>
@@ -144,7 +144,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Ort</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.city}}
 				</div>
 			</div>
 		</div>
@@ -154,7 +154,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="department">Namn</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.name}}
 				</div>
 			</div>
 		</div>
@@ -163,7 +163,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="company">Företag</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.company}}
 				</div>
 			</div>
 		</div>
@@ -172,7 +172,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="street-adress">Gatuadress/Box</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.address}}
 				</div>
 			</div>
 		</div>
@@ -181,7 +181,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="postalcode">Postnummer</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.postalCode}}
 				</div>
 			</div>
 		</div>
@@ -190,7 +190,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="city">Ort</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.city}}
 				</div>
 			</div>
 		</div>
@@ -199,7 +199,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="order-id">Beställar-ID</label>
-					{{input type='text' classBinding=":form-control" value=''}}
+					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.customerId}}
 				</div>
 			</div>
 		</div>
