@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
 	setupController: function(controller, model) {
 		var orderTypes = [];
 		orderTypes.pushObject({id:1, identifier: 'loan', title: 'Lån', title_en: 'Loan'});
@@ -11,5 +10,13 @@ export default Ember.Route.extend({
 		orderTypes.pushObject({id:5, identifier: 'micro-film', title: 'Lån mikrofilm', title_en: 'Loan micro-film'});
 		controller.set("orderTypes", orderTypes);
 		controller.set("selectedOrdertype", null);
+	},
+	actions: {
+		resetForm: function() {
+		// reset forms here... 
+			this.controllerFor("application").resetAllData();
+		}
 	}
+
+
 });
