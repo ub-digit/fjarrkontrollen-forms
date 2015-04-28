@@ -4,7 +4,11 @@ import ENV from 'fjarrkontrollen-forms/config/environment';
 export default Ember.Controller.extend({
   needs: ['application'],
 
-  actions: { 
+  orderPreviewPartialName: Ember.computed('controllers.application.selectedOrderType.identifier', function() {
+    return 'home/step4/' + this.get('controllers.application.selectedOrderType.identifier');
+  }),
+
+  actions: {
     save: function() {
       alert("skicka...");
 
@@ -39,7 +43,7 @@ export default Ember.Controller.extend({
 		  company2: 				this.get('controllers.application.customerDetails.department'),
 		  company3: 				this.get('controllers.application.customerDetails.institution'),
 		  library_card_number: 		this.get('controllers.application.customerDetails.libraryCardNumber'),
-//TBD		  x_account: 				this.get('controllers.application.customerDetails.xAccount'), 
+//TBD		  x_account: 				this.get('controllers.application.customerDetails.xAccount'),
 
 
 //TBD		  delivery_company: 		this.get('controllers.application.deliveryDetails.company'),
@@ -63,7 +67,7 @@ export default Ember.Controller.extend({
       }).then(function(response) {
         if (response.success === true) {
           console.log(response);
-        } 
+        }
       },
       function(error) {
         console.log(error);
@@ -71,4 +75,3 @@ export default Ember.Controller.extend({
     }
   }
 });
-
