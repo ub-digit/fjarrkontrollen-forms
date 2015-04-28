@@ -4,7 +4,7 @@
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.url:has-error"}}>
       <label class="control-label">Boktitel*</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.articleTitle}}
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.bookTitle}}
     </span>
   </div>
 </div> <!-- end row -->
@@ -13,7 +13,7 @@
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.links:has-error"}}>
       <label class="control-label">Författare*</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.authors}}
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.authors}}
     </span>
   </div>
 </div> <!-- end row -->
@@ -22,7 +22,7 @@
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.url:has-error"}}>
       <label class="control-label">ISBN:</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.issn}}
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.isbn}}
     </span>
   </div>
 </div> <!-- end row -->
@@ -31,7 +31,7 @@
   <div class="col-xs-12">
     <div class="checkbox">
       <label>
-        {{input type='checkbox'}} Jag godkänner lån utanför norden
+        {{input type='checkbox' checked=controllers.application.orderDetails.book.outsideNordics}} Jag godkänner lån utanför norden
       </label>
     </div>
   </div>
@@ -40,7 +40,7 @@
   <div class="col-xs-12">
     <div class="checkbox">
       <label>
-        {{input type='checkbox'}} Jag vill ha kopia om boken inte kan lånas
+        {{input type='checkbox' checked=controllers.application.orderDetails.book.allowCopy}} Jag vill ha kopia om boken inte kan lånas
       </label>
     </div>
   </div>
@@ -50,7 +50,7 @@
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.project:has-error"}}>
       <label class="control-label">Order inaktuell efter:</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.notValidAfter}}
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.notValidAfter}}
     </span>
   </div>
 </div> <!-- end row -->
@@ -59,7 +59,7 @@
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.project:has-error"}}>
       <label class="control-label">Kommentar:</label>
-      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.comment}}
+      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.book.comment}}
     </span>
   </div>
 </div> <!-- end row -->

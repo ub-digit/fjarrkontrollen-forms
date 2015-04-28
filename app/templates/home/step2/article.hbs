@@ -10,7 +10,14 @@
   <div class="col-xs-3">
     <button {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-primary"}}>Hämta</button>
   </div>
+</div>
+{{#if error}}
+<div class="row">
+  <div class="col-xs-12">
+    ERROR!!!!
+  </div>
 </div> <!-- end row -->
+{{/if}}
 
 <h4><b>... eller fyll i uppgifterna:</b></h4>
 
