@@ -2,16 +2,27 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 	orderDetails: {
-		articleTitle: null,
-		journalTitle: null,
-		authors: null,
-		issn: null,
-		publicationYear: null,
-		issue: null,
-		volume: null,
-		pages: null,
-		notValidAfter: null,
-		comment: null
+		article: {
+			articleTitle: null,
+			journalTitle: null,
+			authors: null,
+			issn: null,
+			publicationYear: null,
+			issue: null,
+			volume: null,
+			pages: null,
+			notValidAfter: null,
+			comment: null
+		},
+		book: {
+			bookTitle: null,
+			authors: null,
+			isbn: null,
+			outsideNordics: false,
+			allowCopy: false,
+			notValidAfter: null,
+			comment: null
+		}
 	},
 
 	customerDetails: {
@@ -21,7 +32,7 @@ export default Ember.Controller.extend({
 		organisation: null,
 		department: null,
 		institution: null,
-		libraryCardNumber: null, 
+		libraryCardNumber: null,
 		xAccount: null
 	},
 
@@ -45,7 +56,6 @@ export default Ember.Controller.extend({
 
 	resetAllData: function() {
 		this.set("selectedOrdertype", null);
-		this.set("selectedLocation", null);
 		this.transitionToRoute('home.step1');
 	},
 
