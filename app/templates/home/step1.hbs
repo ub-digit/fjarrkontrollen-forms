@@ -4,7 +4,7 @@
 	<div class="col-xs-12">
 		{{view "select" class="form-control"
 		   content=controllers.application.orderTypes
-		   optionValuePath="content.id"
+		   optionValuePath="content.identifier"
 		   optionLabelPath="content.title"
 		   selection=controllers.application.selectedOrdertype
 		   prompt=(t 'home.step1.typeHeader')
@@ -25,10 +25,8 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-xs-12">
-		{{isDisabled}}
-				
-		{{#link-to 'home.step2' classNames="btn btn-primary pull-right"}}{{t 'home.step1.nextBtn'}}{{/link-to}}
+	<div class="col-xs-12">				
+		<button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isEnabled:enabled:disabled"}}>{{t 'home.step1.nextBtn'}}</button>
 
 	</div>
 </div>
