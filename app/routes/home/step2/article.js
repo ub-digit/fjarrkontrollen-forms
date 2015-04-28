@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
       console.log('getPubMedId', id);
 
-      request('http://eutils.ncbi.nlm.nih.gov/_entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
+      request('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
 
         if (data.error) {
 
