@@ -88,7 +88,12 @@
 				</div>
 			</div>
 		</div>
-
+        <!-- if is_shippable ==true && BESTÄLLARTYP != PRIVPERS || STUDENT            -->
+        <!--    SHOW tobeshippedchoicemenu                                            -->
+        <!-- else                                                                     -->
+        <!--    SHOW deliverychoiceinfo                                               -->
+        <!-- fi                                                                       -->
+        <!-- div tobeshippedchoicemenu : start                                        -->
 		<h4>Välj leveranssätt</h4>
 		<div class="row">
 			<div class="col-xs-12">
@@ -101,7 +106,12 @@
 				}}
 			</div>
 		</div>
+        <!-- /div tobeshippedchoicemenu : end                                         -->
 
+        <!-- div  deliverychoiceinfo          : start                                 -->
+        <!-- /div deliverychoiceinfo          : end                                   -->
+
+        <!-- div deliveryaddressform: start                                           -->
 		<h4>Ange leveransadress</h4>
 
 		<div class="row">
@@ -148,7 +158,14 @@
 				</div>
 			</div>
 		</div>
-
+        <!-- /div deliveryaddressform: end                                            -->
+        
+        <!-- if is_billable  ==true && Sahlgrenska || Företag                         -->
+        <!--    SHOW billingaddressform                                               -->
+        <!-- else                                                                     -->
+        <!--    SHOW billingchoiceinfo                                                -->
+        <!-- fi                                                                       -->
+        <!-- div billingaddressform  : start                                          -->
 		<h4>Ange fakturringsuppgifter</h4>
 		<div class="row">
 			<div class="col-xs-12">
@@ -203,6 +220,7 @@
 				</div>
 			</div>
 		</div>
+        <!-- /div billingaddressform  : end                                           -->
 
 
 	</div>
