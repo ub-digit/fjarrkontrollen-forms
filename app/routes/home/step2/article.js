@@ -17,9 +17,6 @@ export default Ember.Route.extend({
 
           that.controllerFor('home.step2.article').set('error', true);
 
-          // Här behövs felhantering
-          console.log('Error');
-
         } else {
 
           that.controllerFor('application').set('orderDetails.article.articleTitle', data.result[id].title);
@@ -41,6 +38,10 @@ export default Ember.Route.extend({
 
           that.controllerFor('application').set('orderDetails.article.authors', authors);
         }
+
+      }, function() {
+
+        that.controllerFor('home.step2.article').set('error', true);
 
       });
     }
