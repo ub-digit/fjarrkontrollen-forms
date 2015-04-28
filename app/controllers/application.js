@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
 
 
 	resetAllData: function() {
-		this.set("selectedOrdertype", null);
+		this.set("selectedOrderType", null);
 		this.transitionToRoute('home.step1');
 	},
 
