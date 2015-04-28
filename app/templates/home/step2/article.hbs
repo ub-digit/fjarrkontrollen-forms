@@ -113,3 +113,12 @@
     </span>
   </div>
 </div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <button {{action 'back'}} {{ bind-attr class=":btn :btn-primary"}}>{{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isEnabled:enabled:disabled"}}>{{t 'home.step2.nextBtn'}}</button>
+
+
+  </div>
+</div>

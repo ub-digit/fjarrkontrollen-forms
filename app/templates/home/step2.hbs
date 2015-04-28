@@ -6,16 +6,11 @@
 
 
 <div class="row">
-  <div class="col-xs-12 col-sm-6">
-    {{outlet}}
-  </div>
-</div>
-
-
-<div class="row">
   <div class="col-xs-12">
-    <button {{action 'resetForm'}} {{ bind-attr class=":btn :btn-primary"}}>Avbryt</button>
-    {{#link-to 'home.step3' classNames="btn btn-primary"}} {{t 'home.step2.nextBtn'}}{{/link-to}}
+    {{outlet}}
+
 
   </div>
 </div>
+
+
