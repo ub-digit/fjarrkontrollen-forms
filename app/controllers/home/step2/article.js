@@ -15,6 +15,9 @@ export default Ember.Controller.extend({
 	actions: {
 		back: function() {
 			this.transitionToRoute("home.step1");
+		},
+		nextStep: function() {
+			this.transitionToRoute("home.step3");
 		}
 	}
 

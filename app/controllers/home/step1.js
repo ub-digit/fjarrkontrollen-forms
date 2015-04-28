@@ -3,12 +3,12 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	needs: ['application'],
 
-	isEnabled: Ember.computed.and('controllers.application.selectedOrdertype', 'controllers.application.selectedLocation'),
+	isEnabled: Ember.computed.and('controllers.application.selectedOrderType', 'controllers.application.selectedLocation'),
 
 	actions: {
 		nextStep: function() {
-			// based on values in selectedOrdertype
-			var orderType = this.get("controllers.application.selectedOrdertype");
+			// based on values in selectedOrderType
+			var orderType = this.get("controllers.application.selectedOrderType");
 			switch(orderType.identifier) {
 			    case 'article':
 			        this.transitionToRoute('home.step2.article');

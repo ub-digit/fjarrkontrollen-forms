@@ -26,6 +26,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.serviceURL = 'http://<Local API>';
   }
 
   if (environment === 'test') {
@@ -41,7 +42,13 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.APP.serviceURL = 'https://<Production API>';
+  }
+  if (environment === 'production-demo') {
+    ENV.APP.serviceURL = 'https://<Production Demo API>';
+  }
+  if (environment === 'production-test') {
+   ENV.APP.serviceURL = 'https://<Production Test API>';
   }
 
   return ENV;
