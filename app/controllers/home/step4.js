@@ -16,16 +16,20 @@ export default Ember.Controller.extend({
           customer_type: 			this.get('controllers.application.selectedCustomerType.identifier'),
           form_library: 			this.get('controllers.application.selectedLocation.identifier'), // Change?
 
-          title: 					this.get('controllers.application.orderDetails.articleTitle'),
-          publication_year: 		this.get('controllers.application.orderDetails.publicationYear'),
-          volume: 					this.get('controllers.application.orderDetails.volume'),
-          issue: 					this.get('controllers.application.orderDetails.issue'),
-          pages: 					this.get('controllers.application.orderDetails.pages'),
-          journal_title: 			this.get('controllers.application.orderDetails.journalTitle'),
-          isbn_issn: 				this.get('controllers.application.orderDetails.issn'),
+          // article
+          title: 					this.get('controllers.application.orderDetails.article.articleTitle'),
+          journal_title: 			this.get('controllers.application.orderDetails.article.journalTitle'),
+          authors: 					this.get('controllers.application.orderDetails.article.authors'),
+          isbn_issn: 				this.get('controllers.application.orderDetails.article.issn'),
+          publication_year: 		this.get('controllers.application.orderDetails.article.publicationYear'),
+          volume: 					this.get('controllers.application.orderDetails.article.volume'),
+          issue: 					this.get('controllers.application.orderDetails.article.issue'),
+          pages: 					this.get('controllers.application.orderDetails.article.pages'),
 
-          not_valid_after: 			this.get('controllers.application.orderDetails.notValidAfter'),
-          comment: 					this.get('controllers.application.orderDetails.comment'),
+          not_valid_after: 			this.get('controllers.application.orderDetails.article.notValidAfter'),
+          comment: 					this.get('controllers.application.orderDetails.article.comment'),
+
+          // book TBD
 
 
 		  name: 					this.get('controllers.application.customerDetails.name'),

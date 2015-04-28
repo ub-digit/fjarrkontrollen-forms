@@ -11,31 +11,35 @@ export default Ember.Route.extend({
 
       console.log('getPubMedId', id);
 
-      var r = request('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data){
+      request('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
 
         if (data.error) {
 
+          that.controllerFor('home.step2.article').set('error', true);
+
           // Här behövs felhantering
-          console.log('ERROR');
+          console.log('Error');
 
         } else {
 
-          that.controllerFor('application').set('orderDetails.articleTitle', data.result[id].title);
-          that.controllerFor('application').set('orderDetails.journalTitle', data.result[id].fulljournalname);
-          that.controllerFor('application').set('orderDetails.issn', data.result[id].issn);
-          that.controllerFor('application').set('orderDetails.publicationYear', data.result[id].pubdate);
-          that.controllerFor('application').set('orderDetails.volume', data.result[id].volume);
-          that.controllerFor('application').set('orderDetails.pages', data.result[id].pages);
-          that.controllerFor('application').set('orderDetails.issue', data.result[id].issue);
+          that.controllerFor('application').set('orderDetails.article.articleTitle', data.result[id].title);
+          that.controllerFor('application').set('orderDetails.article.journalTitle', data.result[id].fulljournalname);
+          that.controllerFor('application').set('orderDetails.article.issn', data.result[id].issn);
+          that.controllerFor('application').set('orderDetails.article.publicationYear', data.result[id].pubdate);
+          that.controllerFor('application').set('orderDetails.article.volume', data.result[id].volume);
+          that.controllerFor('application').set('orderDetails.article.pages', data.result[id].pages);
+          that.controllerFor('application').set('orderDetails.article.issue', data.result[id].issue);
 
           var authors = '';
 
           data.result[id].authors.forEach(function(item, index, a) {
             authors += item.name;
-            if (index < a.length - 1) authors += ', ';
+            if (index < a.length - 1) {
+              authors += ', ';
+            }
           });
 
-          that.controllerFor('application').set('orderDetails.authors', authors);
+          that.controllerFor('application').set('orderDetails.article.authors', authors);
         }
 
       });
