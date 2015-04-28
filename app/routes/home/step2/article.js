@@ -11,12 +11,14 @@ export default Ember.Route.extend({
 
       console.log('getPubMedId', id);
 
-      var r = request('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data){
+      var r = request('http://eutils.ncbi.nlm.nih.gov/_entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
 
         if (data.error) {
 
+          that.controllerFor('home.step2.article').set('error', true);
+
           // Här behövs felhantering
-          console.log('ERROR');
+          console.log('Error');
 
         } else {
 
