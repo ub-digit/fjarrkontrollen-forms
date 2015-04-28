@@ -13,9 +13,9 @@ export default Ember.Controller.extend({
 
   	actions: {
   		back: function() {
-  			if (this.get("controllers.application.selectedOrdertype")) {
-  				var selectedOrdertype = this.get("controllers.application.selectedOrdertype");
-  				var routeStr = "home.step2." + selectedOrdertype.identifier;
+  			if (this.get("controllers.application.selectedOrderType")) {
+  				var selectedOrderType = this.get("controllers.application.selectedOrderType");
+  				var routeStr = "home.step2." + selectedOrderType.identifier;
   				this.transitionTo(routeStr);
   			}
   			
