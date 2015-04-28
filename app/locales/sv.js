@@ -8,6 +8,15 @@ export default {
    		},
    		step2: {
    			nextBtn: 'Nästa',
+   			prevBtn: 'Föregående',
+   		},
+   		step3: {
+   			nextBtn: 'Nästa',
+   			prevBtn: 'Föregående',
+   		},
+   		step4: {
+   			nextBtn: 'Nästa',
+   			prevBtn: 'Föregående',
    		}
   	}
 
