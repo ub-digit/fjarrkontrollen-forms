@@ -8,25 +8,25 @@
     </div>
   </div>
   <div class="col-xs-3">
-    <button {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-primary"}}>Hämta</button>
+    <button {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-default"}}>Hämta</button>
   </div>
 </div>
 {{#if error}}
-<div class="row">
-  <div class="col-xs-12">
-    ERROR!!!!
-  </div>
-</div> <!-- end row -->
+  <div class="row">
+    <div class="col-xs-12">
+      ERROR!!!!
+    </div>
+  </div> <!-- end row -->
 {{/if}}
 
 <h4><b>... eller fyll i uppgifterna:</b></h4>
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.url:has-error"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">Artikeltitel</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.articleTitle}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
@@ -34,90 +34,90 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.extid:has-error"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">Tidskriftstitel</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.journalTitle}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.links:has-error"}}>
+    <div {{bind-attr class=":form-group errors.links:has-error"}}>
       <label class="control-label">Författare</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.authors}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.url:has-error"}}>
+    <div {{bind-attr class=":form-group errors.url:has-error"}}>
       <label class="control-label">ISSN:</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.issn}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.extid:has-error"}}>
+    <div {{bind-attr class=":form-group errors.extid:has-error"}}>
       <label class="control-label">Publiceringsår:*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.publicationYear}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.links:has-error"}}>
+    <div {{bind-attr class=":form-group errors.links:has-error"}}>
       <label class="control-label">Nummer:</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.issue}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.keywords:has-error"}}>
+    <div {{bind-attr class=":form-group errors.keywords:has-error"}}>
       <label class="control-label">Volym:</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.volume}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+    <div {{bind-attr class=":form-group errors.project:has-error"}}>
       <label class="control-label">Sidor:*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.pages}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+    <div {{bind-attr class=":form-group errors.project:has-error"}}>
       <label class="control-label">Order inaktuell efter:</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.notValidAfter}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+    <div {{bind-attr class=":form-group errors.project:has-error"}}>
       <label class="control-label">Kommentar:</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.article.comment}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <button {{action 'back'}} {{ bind-attr class=":btn :btn-primary"}}>{{t 'home.step2.prevBtn'}}</button>
-    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isEnabled:enabled:disabled"}}>{{t 'home.step2.nextBtn'}}</button>
+    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step3.prevBtn'}}</button>
+    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isEnabled:enabled:disabled"}}>{{t 'home.step3.nextBtn'}}</button>
 
 
   </div>
