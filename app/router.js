@@ -11,6 +11,8 @@ Router.map(function() {
     this.route('step2', function() {
       this.route('article');
       this.route('book');
+      this.route('chapter');
+      this.route('score');
     });
     this.route('step3');
     this.route('step4');
