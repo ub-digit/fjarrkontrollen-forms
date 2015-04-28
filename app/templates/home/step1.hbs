@@ -26,11 +26,9 @@
 </div>
 <div class="row">
 	<div class="col-xs-12">
-		<button {{action 'resetForm'}} {{ bind-attr class=":btn :btn-default"}}>Avbryt</button>
+		{{isDisabled}}
+				
 		{{#link-to 'home.step2' classNames="btn btn-primary pull-right"}}{{t 'home.step1.nextBtn'}}{{/link-to}}
-        
+
 	</div>
 </div>
-
-
-
