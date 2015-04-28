@@ -4,13 +4,13 @@ export default Ember.Controller.extend({
   needs: ['application'],
   pubMedId: null,
   	isEnabled: function() {
-  		if (this.get('controllers.application.orderDetails.pages') && this.get('controllers.application.orderDetails.publicationYear')) {
+  		if (this.get('controllers.application.orderDetails.article.pages') && this.get('controllers.application.orderDetails.article.publicationYear')) {
   			return true;
   		}
   		else {
   			return false;
   		}
-  	}.property('controllers.application.orderDetails.pages','controllers.application.orderDetails.publicationYear'),
+  	}.property('controllers.application.orderDetails.article.pages','controllers.application.orderDetails.article.publicationYear'),
 
 	actions: {
 		back: function() {
