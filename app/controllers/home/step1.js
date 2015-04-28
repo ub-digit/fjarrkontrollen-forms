@@ -17,13 +17,13 @@ export default Ember.Controller.extend({
 			    	this.transitionToRoute('home.step2.book');
 			        break;
 			    case 'book-chapter-copy':
-			    	//this.transitionToRoute('home.step2.article');
+			    	this.transitionToRoute('home.step2.chapter');
 			        break;
 			    case 'scores':
-			    	this.transitionToRoute('home.step2.article');
+			    	this.transitionToRoute('home.step2.score');
 			        break;
 			    case 'micro-film':
-			    	this.transitionToRoute('home.step2.article');
+			    	//this.transitionToRoute('home.step2.article');
 			        break;
 			    default:
 			        break;
