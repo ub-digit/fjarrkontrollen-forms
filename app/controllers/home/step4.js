@@ -64,7 +64,7 @@ export default Ember.Controller.extend({
           break;
         default:
           break;
-      };  
+      };
 
       var that = this;
       Ember.$.ajax({
@@ -87,7 +87,7 @@ export default Ember.Controller.extend({
           issue:                              issue,
           pages:                              pages,
           not_valid_after:                    not_valid_after,
-          comment:                            comment,
+          comments:                           comments,
           photocopies_if_loan_not_possible:   photocopies_if_loan_not_possible,
           order_outside_scandinavia:          order_outside_scandinavia,
 
@@ -98,7 +98,7 @@ export default Ember.Controller.extend({
           company2:                           this.get('controllers.application.customerDetails.department'),
           company3:                           this.get('controllers.application.customerDetails.institution'),
           library_card_number:                this.get('controllers.application.customerDetails.libraryCardNumber'),
-          x_account:                          this.get('controllers.application.customerDetails.xAccount'), 
+          x_account:                          this.get('controllers.application.customerDetails.xAccount'),
 
 
           delivery_company:                   this.get('controllers.application.deliveryDetails.company'),
@@ -117,7 +117,7 @@ export default Ember.Controller.extend({
         }),
         contentType: 'application/json',
         dataType: 'json'
-      }).then(function(response) {          
+      }).then(function(response) {
         console.log(response);
         var orderNumber = response.order.order_number;
         console.log(orderNumber);
