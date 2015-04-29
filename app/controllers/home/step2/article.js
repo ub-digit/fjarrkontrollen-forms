@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
   pubMedId: null,
-  pubMedIdMinLength: 3, 
+  pubMedIdMinLength: 1,
 
   	isNextEnabled: function() {
   		if (this.get('controllers.application.orderDetails.article.pages') && this.get('controllers.application.orderDetails.article.publicationYear')) {
@@ -13,11 +13,11 @@ export default Ember.Controller.extend({
   			return false;
   		}
   	}.property('controllers.application.orderDetails.article.pages','controllers.application.orderDetails.article.publicationYear'),
-	
-	isPumedButtonEnabled: function() {
+
+	isPubMedButtonEnabled: function() {
 		if (this.get("pubMedId")) {
 			if (this.get("pubMedId").length >= this.get("pubMedIdMinLength")) {
-				return true; 
+				return true;
 			}
 			else {
 				return false;
@@ -41,7 +41,7 @@ export default Ember.Controller.extend({
 		if (isNaN(year)) {
 			// not a number
 			this.set("ErrorPublicationYear", "Endast siffror.");
-			return "has-error"; 
+			return "has-error";
 		}
 		if (year.length !== 4) {
 			if (year.length > 4) {
@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
 			}
 			else {
 				this.set("ErrorPublicationYear", "Minst 4 tecken (t ex 2004)");
-				return 'has-warning'; 
+				return 'has-warning';
 			}
 		}
 	//	this.set("ErrorPublicationYear", "");

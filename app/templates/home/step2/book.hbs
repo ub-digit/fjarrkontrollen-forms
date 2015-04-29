@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.url:has-error"}}>
+    <span {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.bookTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.bookTitle}}
     </span>
@@ -11,7 +11,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.links:has-error"}}>
+    <span {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.authors'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.authors}}
     </span>
@@ -20,7 +20,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.url:has-error"}}>
+    <span {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.isbn'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.isbn}}
     </span>
@@ -48,18 +48,24 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.notValidAfter'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.notValidAfter}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.book.comment}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isNextEnabled:enabled:disabled"}}>{{t 'home.step2.nextBtn'}}</button>
+  </div>
+</div>
