@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 		var customerTypes = [];
 		customerTypes.pushObject({id:1, identifier: 'univ', title: 'Forskare/anställd', title_en: 'Researcher/staff'});
 		customerTypes.pushObject({id:2, identifier: 'stud', title: 'Student', title_en: 'Student'});
-		customerTypes.pushObject({id:3, identifier: 'sahl', title: 'sahlgrenska', title_en: 'sahlgrenska'});
+		customerTypes.pushObject({id:3, identifier: 'sahl', title: 'Sahlgrenska', title_en: 'Sahlgrenska'});
 		customerTypes.pushObject({id:4, identifier: 'priv', title: 'Privatperson', title_en: 'Private person'});
 		customerTypes.pushObject({id:5, identifier: 'ftag', title: 'Företag', title_en: 'Company'});
 		customerTypes.pushObject({id:6, identifier: 'ovri', title: 'Övriga', title_en: 'Others'});

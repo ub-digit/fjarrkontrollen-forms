@@ -15,6 +15,8 @@
 			</div>
 		</div>
 
+        <!-- customerInfoForm start -->
+        {{#if isCustomerTypeSet}}
 		<h4>Ange dina uppgifter</h4>
 
 		<div class="row">
@@ -88,12 +90,17 @@
 				</div>
 			</div>
 		</div>
+        {{/if }}
+        <!-- customerInfoForm end -->
+
+        <!-- deliveryChoiceDropDown start -->
+        {{#if isShippableFlag}}
         <!-- if is_shippable ==true && BESTÄLLARTYP != PRIVPERS || STUDENT            -->
         <!--    SHOW tobeshippedchoicemenu                                            -->
         <!-- else                                                                     -->
         <!--    SHOW deliverychoiceinfo                                               -->
         <!-- fi                                                                       -->
-        <!-- div tobeshippedchoicemenu : start                                        -->
+
 		<h4>Välj leveranssätt</h4>
 		<div class="row">
 			<div class="col-xs-12">
@@ -106,12 +113,17 @@
 				}}
 			</div>
 		</div>
-        <!-- /div tobeshippedchoicemenu : end                                         -->
+        {{/if }}
+        <!-- deliveryChoiceDropDown end -->
 
-        <!-- div  deliverychoiceinfo          : start                                 -->
-        <!-- /div deliverychoiceinfo          : end                                   -->
+        <!-- div  deliveryInfoText            : start                                 -->
+        {{#if showDeliveryInfoText}}
+          Denna grej skall hämtas på blabla senast den yadayada
+        {{/if }}
+        <!-- /div deliveryInfoText            : end                                   -->
 
-        <!-- div deliveryaddressform: start                                           -->
+        <!-- div deliveryInfoForm             : start                                 -->
+        {{#if showDeliveryInfoForm}}
 		<h4>Ange leveransadress</h4>
 
 		<div class="row">
@@ -158,6 +170,9 @@
 				</div>
 			</div>
 		</div>
+        <!-- div deliveryInfoForm             : end                                   -->
+
+        {{/if }} <!-- isShippableFlag -->
         <!-- /div deliveryaddressform: end                                            -->
         
         <!-- if is_billable  ==true && Sahlgrenska || Företag                         -->
@@ -166,7 +181,10 @@
         <!--    SHOW billingchoiceinfo                                                -->
         <!-- fi                                                                       -->
         <!-- div billingaddressform  : start                                          -->
-		<h4>Ange fakturringsuppgifter</h4>
+
+        <!-- billingInfoForm start -->
+        {{#if isBillableFlag}}
+		<h4>Ange faktureringsuppgifter</h4>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
@@ -220,7 +238,8 @@
 				</div>
 			</div>
 		</div>
-        <!-- /div billingaddressform  : end                                           -->
+        {{/if }}  <!-- /div isBillableFlag  : end                                           -->
+        <!-- billingInfoForm end -->
 
 
 	</div>
