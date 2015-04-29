@@ -19,7 +19,9 @@ export default {
 					authors: 'Författare',
 					isbn: 'ISBN',
 					outsideNordics: 'Utanför norden',
-					allowCopy: 'Kopior är ok'
+					allowCopy: 'Kopior är ok',
+					notValidAfter: 'Ej aktuell efter',
+					comment: 'Kommentar'
 				}
 			},
    		step1: {
