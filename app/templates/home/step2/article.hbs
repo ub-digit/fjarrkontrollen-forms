@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="col-xs-3">
-    <button {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-default"}}>Hämta</button>
+    <button {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-default isPumedButtonEnabled:enabled:disabled"}}>Hämta</button>
   </div>
 </div>
 {{#if error}}
@@ -61,16 +61,19 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group errors.extid:has-error"}}>
+    <div {{bind-attr class=":form-group validatePublicationYear"}}>
       <label class="control-label">Publiceringsår:*</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.publicationYear}}
+      {{input id="publicationYear" type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.publicationYear placeholder='Ange publiceringsår (1994)'}}
+      <span {{bind-attr class=":form-control-feedback"}}><i class="fa fa-check" aria-hidden="true"></i></span>
+      <p class="help-block">{{ErrorPublicationYear}}</p>
     </div>
   </div>
 </div> <!-- end row -->
 
+
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group errors.links:has-error"}}>
+    <div {{bind-attr class=":form-group "}}>
       <label class="control-label">Nummer:</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.issue}}
     </div>
@@ -117,7 +120,7 @@
 <div class="row">
   <div class="col-xs-12">
     <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step3.prevBtn'}}</button>
-    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isEnabled:enabled:disabled"}}>{{t 'home.step3.nextBtn'}}</button>
+    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isNextEnabled:enabled:disabled"}}>{{t 'home.step3.nextBtn'}}</button>
 
 
   </div>

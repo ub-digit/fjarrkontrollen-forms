@@ -53,7 +53,6 @@ export default Ember.Controller.extend({
 		customerId: null,
 	},
 
-
 	resetAllData: function() {
 		this.set("selectedOrderType", null);
 		this.transitionToRoute('home.step1');
