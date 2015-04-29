@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 		var customerTypes = [];
 		customerTypes.pushObject({id:1, identifier: 'univ', title: 'Forskare/anställd', title_en: 'Researcher/staff'});
 		customerTypes.pushObject({id:2, identifier: 'stud', title: 'Student', title_en: 'Student'});
-		customerTypes.pushObject({id:3, identifier: 'sahl', title: 'sahlgrenska', title_en: 'sahlgrenska'});
+		customerTypes.pushObject({id:3, identifier: 'sahl', title: 'Sahlgrenska', title_en: 'Sahlgrenska'});
 		customerTypes.pushObject({id:4, identifier: 'priv', title: 'Privatperson', title_en: 'Private person'});
 		customerTypes.pushObject({id:5, identifier: 'ftag', title: 'Företag', title_en: 'Company'});
 		customerTypes.pushObject({id:6, identifier: 'ovri', title: 'Övriga', title_en: 'Others'});
@@ -35,8 +35,8 @@ export default Ember.Route.extend({
 		controller.set("selectedCustomerType", null);
 
 		var deliveryMethods = [];
-		deliveryMethods.pushObject({id:1, identifier: 'send', title: 'Skicka', title_en: 'Send'});
-		deliveryMethods.pushObject({id:2, identifier: 'pickup', title: 'Hämta', title_en: 'Pickup'});
+		deliveryMethods.pushObject({id:1, identifier: 'send', title_special: "Skickas", title: 'Skicka', title_en: 'Send'});
+		deliveryMethods.pushObject({id:2, identifier: 'pickup', title_special: "Hämtas", title: 'Hämta', title_en: 'Pickup'});
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
 	},
