@@ -53,6 +53,7 @@ export default Ember.Controller.extend({
 		customerId: null,
 	},
 
+
 	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', 'orderDetails.book.allowCopy', function() {
 		if (
 			//Kollar om typen är micro-film, som alltid är gratis
@@ -81,10 +82,11 @@ export default Ember.Controller.extend({
 				return true;
 			}
 		}),
-
 		resetAllData: function() {
 			this.set("selectedOrderType", null);
 			this.transitionToRoute('home.step1');
 		},
+		actions: {
 
-	});
+		}
+});

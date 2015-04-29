@@ -13,9 +13,21 @@
 				{{partial 'home/step4/customer-preview'}}
 			</div>
 		</div>
+		<h4>Leveransuppgifter</h4>
+		<div class="row">
+			<div class="col-xs-12">
+				{{partial 'home/step4/delivery-preview'}}
+			</div>
+		</div>
+		<h4>Faktureringsuppgifter</h4>
+		<div class="row">
+			<div class="col-xs-12">
+				{{partial 'home/step4/invoicing-preview'}}
+			</div>
+		</div>
 
 
-		<button {{action 'stepcancel'}} {{ bind-attr class=":btn :btn-link"}}>Avbryt</button>
-		<button {{action 'save'  }} {{ bind-attr class=":btn :btn-success isDisabled:disabled"}}>Skicka</button>
+		<button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>Avbryt</button>
+		<button {{action 'save'  }} {{ bind-attr class=":btn :btn-success :pull-right"}}>Skicka</button>
 	</div>
 </div>
