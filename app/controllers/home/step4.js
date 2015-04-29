@@ -9,8 +9,11 @@ export default Ember.Controller.extend({
   }),
   getLocale: function() {
         var application = this.container.lookup('application:main');
-        var locale = application.get("defaultLocale");
-        return locale;
+        var local = application.get("locale");
+        if (!local) {
+          local = application.get('defaultLocale');
+        }
+        return local;
   },
 
   actions: {
