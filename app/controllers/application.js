@@ -87,9 +87,6 @@ export default Ember.Controller.extend({
 		resetAllData: function() {
 			this.set('selectedOrderType', null);
 
-			this.set('isBillable', true);
-			this.set('isShippable', true);
-
 			this.set('orderDetails.article.articleTitle', null);
 			this.set('orderDetails.article.journalTitle', null);
 			this.set('orderDetails.article.authors', null);
@@ -130,6 +127,8 @@ export default Ember.Controller.extend({
 			this.set('invoicingDetails.postalCode', null);
 			this.set('invoicingDetails.city', null);
 			this.set('invoicingDetails.customerId', null);
+
+			this.controllerFor('home.step2.article').set('pubMedId', null);
 
 			this.transitionToRoute('home.step1');
 		}
