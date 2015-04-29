@@ -74,7 +74,10 @@ export default Ember.Controller.extend({
           order_type_id: 						orderType.id,
           customer_type: 						this.get('controllers.application.selectedCustomerType.identifier'),
           form_library: 						this.get('controllers.application.selectedLocation.identifier'), // Change?
-    		  email_confirmation:      			 	true,
+    		  email_confirmation:      			 	true, // Always set to true
+          form_lang:            that.getLocale(),
+          delivery_place:       this.get('controllers.application.selectedDeliveryMethod.title_special'),
+          order_path:            "Web",
           title: 								title,
           journal_title: 						journal_title,
           authors: 								authors,
@@ -95,18 +98,18 @@ export default Ember.Controller.extend({
 		  company2: 							this.get('controllers.application.customerDetails.department'),
 		  company3: 							this.get('controllers.application.customerDetails.institution'),
 		  library_card_number: 					this.get('controllers.application.customerDetails.libraryCardNumber'),
-//TBD		  x_account: 							this.get('controllers.application.customerDetails.xAccount'), 
+      x_account: 							this.get('controllers.application.customerDetails.xAccount'), 
 
 
-//TBD		  delivery_company: 					this.get('controllers.application.deliveryDetails.company'),
-//TBD		  delivery_name: 						this.get('controllers.application.deliveryDetails.name'),
-//TBD		  delivery_address: 					this.get('controllers.application.deliveryDetails.address'),
-//TBD		  delivery_postal_code: 				this.get('controllers.application.deliveryDetails.postalCode'),
-//TBD		  delivery_city: 						this.get('controllers.application.deliveryDetails.city'),
+      delivery_company: 					this.get('controllers.application.deliveryDetails.company'),
+      delivery_name: 						this.get('controllers.application.deliveryDetails.name'),
+      delivery_address: 					this.get('controllers.application.deliveryDetails.address'),
+      delivery_postal_code: 				this.get('controllers.application.deliveryDetails.postalCode'),
+      delivery_city: 						this.get('controllers.application.deliveryDetails.city'),
 
 
 		  invoicing_name: 							this.get('controllers.application.invoicingDetails.name'),
-//TBD		  invoicing_company: 						this.get('controllers.application.invoicingDetails.company'),
+      invoicing_company: 						this.get('controllers.application.invoicingDetails.company'),
 		  invoicing_address: 						this.get('controllers.application.invoicingDetails.address'),
 		  invoicing_postal_address1: 				this.get('controllers.application.invoicingDetails.postalCode'),
 		  invoicing_postal_address2:				this.get('controllers.application.invoicingDetails.city'),
