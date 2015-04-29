@@ -30,8 +30,18 @@ export default {
    			nextBtn: 'Nästa',
    		},
    		step2: {
-   			nextBtn: 'Nästa',
-   			prevBtn: 'Föregående',
+				article: {
+					header: 'Artikelbeställning',
+					subHeader1: 'Ange PubMed ID...',
+					subHeader2: '...eller fyll i uppgifterna:',
+					getPubMedBtn: 'Hämta',
+					pubMedError: 'Hittade ingen artikel med angivet id i PubMed.',
+				},
+				book: {
+					header: 'Bokbeställning'
+				},
+				nextBtn: 'Nästa',
+				prevBtn: 'Föregående',
    		},
    		step3: {
    			nextBtn: 'Nästa',
