@@ -7,11 +7,24 @@ export default Ember.Controller.extend({
   orderPreviewPartialName: Ember.computed('controllers.application.selectedOrderType.identifier', function() {
     return 'home/step4/' + this.get('controllers.application.selectedOrderType.identifier');
   }),
+  getLocale: function() {
+        var application = this.container.lookup('application:main');
+        var local = application.get("locale");
+        if (!local) {
+          local = application.get('defaultLocale');
+        }
+        return local;
+  },
 
   actions: {
+    back: function() {
+      this.transitionToRoute("home.step3");
+    },
+    nextStep: function() {
+      this.transitionToRoute("home.step4");
+    },
+
     save: function() {
-
-
       var title = 								null;
       var journal_title = 						null;
       var authors =  							null;
@@ -52,7 +65,7 @@ export default Ember.Controller.extend({
 		default:
 		  break;
 	  };	
-
+      var that = this;
 
       Ember.$.ajax({
         type: 'POST',
@@ -105,6 +118,9 @@ export default Ember.Controller.extend({
       	console.log(response);
       	var orderNumber = response.order.order_number;
       	console.log(orderNumber);
+        console.log(that.getLocale());
+        that.transitionToRoute('home.step5', orderNumber);
+
       },
       function(error) {
         console.log(error);

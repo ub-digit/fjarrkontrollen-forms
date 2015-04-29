@@ -82,10 +82,11 @@ export default Ember.Controller.extend({
 				return true;
 			}
 		}),
-
 		resetAllData: function() {
 			this.set("selectedOrderType", null);
 			this.transitionToRoute('home.step1');
 		},
+		actions: {
 
-	});
+		}
+});
