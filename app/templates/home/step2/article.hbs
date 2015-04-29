@@ -24,19 +24,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group"}}>
-      <label class="control-label">Artikeltitel</label>
+      <label class="control-label">{{t 'home.orderDetails.article.articleTitle'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.articleTitle}}
-    </div>
-  </div>
-</div> <!-- end row -->
-
-
-
-<div class="row">
-  <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
-      <label class="control-label">Tidskriftstitel</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.journalTitle}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -44,7 +33,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.links:has-error"}}>
-      <label class="control-label">Författare</label>
+      <label class="control-label">{{t 'home.orderDetails.article.authors'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.authors}}
     </div>
   </div>
@@ -52,8 +41,18 @@
 
 <div class="row">
   <div class="col-xs-12">
+    <div {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.article.journalTitle'}}</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.journalTitle}}
+    </div>
+  </div>
+</div> <!-- end row -->
+
+
+<div class="row">
+  <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.url:has-error"}}>
-      <label class="control-label">ISSN:</label>
+      <label class="control-label">{{t 'home.orderDetails.article.issn'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.issn}}
     </div>
   </div>
@@ -84,7 +83,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.keywords:has-error"}}>
-      <label class="control-label">Volym:</label>
+      <label class="control-label">{{t 'home.orderDetails.article.volume'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.volume}}
     </div>
   </div>
@@ -93,7 +92,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Sidor:*</label>
+      <label class="control-label">{{t 'home.orderDetails.article.pages'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.pages}}
     </div>
   </div>
@@ -102,7 +101,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Order inaktuell efter:</label>
+      <label class="control-label">{{t 'home.orderDetails.article.notValidAfter'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.notValidAfter}}
     </div>
   </div>
@@ -111,7 +110,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Kommentar:</label>
+      <label class="control-label">{{t 'home.orderDetails.article.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.article.comment}}
     </div>
   </div>

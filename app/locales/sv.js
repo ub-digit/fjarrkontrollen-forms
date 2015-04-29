@@ -1,6 +1,27 @@
 export default {
 	home: {
    		crumbtrail: 'crumbtrail',
+			orderDetails: {
+				article: {
+					articleTitle: 'Artikelns titel',
+					journalTitle: 'Tidskriftstitel',
+					authors: 'Författare',
+					issn: 'ISSN',
+					publicationYear: 'Publikationsår',
+					issue: 'Utgåva',
+					volume: 'Volym',
+					pages: 'Sidor',
+					notValidAfter: 'Ej aktuell efter',
+					comment: 'Kommentar'
+				},
+				book: {
+					bookTitle: 'Titel',
+					authors: 'Författare',
+					isbn: 'ISBN',
+					outsideNordics: 'Utanför norden',
+					allowCopy: 'Kopior är ok'
+				}
+			},
    		step1: {
    			typeHeader: 'Välj typ:',
         locationHeader: 'Välj varifrån du vill beställa:',

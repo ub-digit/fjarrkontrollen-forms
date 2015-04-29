@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.url:has-error"}}>
-      <label class="control-label">Boktitel*</label>
+      <label class="control-label">{{t 'home.orderDetails.book.bookTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.bookTitle}}
     </span>
   </div>
@@ -12,7 +12,7 @@
 <div class="row">
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.links:has-error"}}>
-      <label class="control-label">Författare*</label>
+      <label class="control-label">{{t 'home.orderDetails.book.authors'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.authors}}
     </span>
   </div>
@@ -21,7 +21,7 @@
 <div class="row">
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.url:has-error"}}>
-      <label class="control-label">ISBN:</label>
+      <label class="control-label">{{t 'home.orderDetails.book.isbn'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.isbn}}
     </span>
   </div>
@@ -31,7 +31,7 @@
   <div class="col-xs-12">
     <div class="checkbox">
       <label>
-        {{input type='checkbox' checked=controllers.application.orderDetails.book.outsideNordics}} Jag godkänner lån utanför norden
+        {{input type='checkbox' checked=controllers.application.orderDetails.book.outsideNordics}} {{t 'home.orderDetails.book.outsideNordics'}}
       </label>
     </div>
   </div>
@@ -40,7 +40,7 @@
   <div class="col-xs-12">
     <div class="checkbox">
       <label>
-        {{input type='checkbox' checked=controllers.application.orderDetails.book.allowCopy}} Jag vill ha kopia om boken inte kan lånas
+        {{input type='checkbox' checked=controllers.application.orderDetails.book.allowCopy}} {{t 'home.orderDetails.book.allowCopy'}}
       </label>
     </div>
   </div>
@@ -49,7 +49,7 @@
 <div class="row">
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Order inaktuell efter:</label>
+      <label class="control-label">{{t 'home.orderDetails.book.notValidAfter'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.notValidAfter}}
     </span>
   </div>
@@ -58,7 +58,7 @@
 <div class="row">
   <div class="col-xs-12">
     <span {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Kommentar:</label>
+      <label class="control-label">{{t 'home.orderDetails.book.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.book.comment}}
     </span>
   </div>
