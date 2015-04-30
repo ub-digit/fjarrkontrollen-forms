@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['application'],
-  pubMedId: null,
+  pubMedIdBinding: 'controllers.application.pubMedId',
 
   isNextEnabled: function() {
     if (this.get('controllers.application.orderDetails.article.pages') && this.get('controllers.application.orderDetails.article.publicationYear')) {

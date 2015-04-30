@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+	pubMedId: null,
+
 	orderDetails: {
 		article: {
 			articleTitle: null,
@@ -13,7 +15,7 @@ export default Ember.Controller.extend({
 			volume: null,
 			pages: null,
 			notValidAfter: null,
-			comment: null
+			comment: null,
 		},
 		book: {
 			bookTitle: null,
@@ -73,7 +75,14 @@ export default Ember.Controller.extend({
 			return true;
 		}
 	}),
-	
+
+
+	resetOrderDetailsWhenOrderTypeChanges: Ember.observer('selectedOrderType', function() {
+
+		this.resetOrderDetails();
+
+	}),
+
 
 	isShippable: Ember.computed('selectedOrderType', function() {
 
@@ -85,12 +94,7 @@ export default Ember.Controller.extend({
 		}
 	}),
 
-
-	resetAllData: function() {
-		this.set('selectedOrderType', null);
-		this.set('selectedDeliveryMethod', null);
-		this.set('selectedLocation', null);
-		this.set('selectedCustomerType', null);
+	resetOrderDetails: function() {
 
 		this.set('orderDetails.article.articleTitle', null);
 		this.set('orderDetails.article.journalTitle', null);
@@ -111,6 +115,12 @@ export default Ember.Controller.extend({
 		this.set('orderDetails.book.notValidAfter', null);
 		this.set('orderDetails.book.comment', null);
 
+		this.set('pubMedId', null);
+
+	},
+
+	resetCustomerDetails: function() {
+
 		this.set('customerDetails.name', null);
 		this.set('customerDetails.emailAddress', null);
 		this.set('customerDetails.phoneNumber', null);
@@ -120,11 +130,19 @@ export default Ember.Controller.extend({
 		this.set('customerDetails.libraryCardNumber', null);
 		this.set('customerDetails.xAccount', null);
 
+	},
+
+	resetDeliverDetails: function() {
+
 		this.set('deliveryDetails.company', null);
 		this.set('deliveryDetails.name', null);
 		this.set('deliveryDetails.address', null);
 		this.set('deliveryDetails.postalCode', null);
 		this.set('deliveryDetails.city', null);
+
+	},
+
+	resetInvoicingDetails: function() {
 
 		this.set('invoicingDetails.name', null);
 		this.set('invoicingDetails.company', null);
@@ -133,7 +151,19 @@ export default Ember.Controller.extend({
 		this.set('invoicingDetails.city', null);
 		this.set('invoicingDetails.customerId', null);
 
-		this.controllerFor('home.step2.article').set('pubMedId', null);
+	},
+
+
+	resetAllData: function() {
+		this.set('selectedOrderType', null);
+		this.set('selectedDeliveryMethod', null);
+		this.set('selectedLocation', null);
+		this.set('selectedCustomerType', null);
+
+		this.resetOrderDetails();
+		this.resetCustomerDetails();
+		this.resetDeliverDetails();
+		this.resetInvoicingDetails();
 
 		this.transitionToRoute('home.step1');
 	}
