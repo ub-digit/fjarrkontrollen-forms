@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
   }.property('controllers.application.orderDetails.article.pages','controllers.application.orderDetails.article.publicationYear'),
 
 
-  isPubMedButtonEnabled: Ember.computed.gte('pubMedId.length', 2),
+  isPubMedButtonEnabled: Ember.computed.gte('pubMedId.length', 1),
 
 
   validatePublicationYear: function() {
