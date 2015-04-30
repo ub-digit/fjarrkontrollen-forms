@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
       var title =                             null;
       var journal_title =                     null;
       var authors =                           null;
-      var isbn_issn =                         null;
+      var issn_isbn =                         null;
       var publication_year =                  null;
       var volume =                            null;
       var issue =                             null;
@@ -44,7 +44,7 @@ export default Ember.Controller.extend({
           title =                             this.get('controllers.application.orderDetails.article.articleTitle');
           journal_title =                     this.get('controllers.application.orderDetails.article.journalTitle');
           authors =                           this.get('controllers.application.orderDetails.article.authors');
-          isbn_issn =                         this.get('controllers.application.orderDetails.article.issn');
+          issn_isbn =                         this.get('controllers.application.orderDetails.article.issn');
           publication_year =                  this.get('controllers.application.orderDetails.article.publicationYear');
           volume =                            this.get('controllers.application.orderDetails.article.volume');
           issue =                             this.get('controllers.application.orderDetails.article.issue');
@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
         case 'book':
           title =                             this.get('controllers.application.orderDetails.book.bookTitle');
           authors =                           this.get('controllers.application.orderDetails.book.authors');
-          isbn_issn =                         this.get('controllers.application.orderDetails.book.isbn');
+          issn_isbn =                         this.get('controllers.application.orderDetails.book.isbn');
           publication_year =                  this.get('controllers.application.orderDetails.book.publicationYear');
           photocopies_if_loan_not_possible =  this.get('controllers.application.orderDetails.book.outsideNordics');
           order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.allowCopy');
@@ -81,7 +81,7 @@ export default Ember.Controller.extend({
           title:                              title,
           journal_title:                      journal_title,
           authors:                            authors,
-          isbn_issn:                          isbn_issn,
+          issn_isbn:                          issn_isbn,
           publication_year:                   publication_year,
           volume:                             volume,
           issue:                              issue,
