@@ -6,18 +6,18 @@
 		<div class="row">
 			<div class="col-xs-12">
 				{{view "select" class="form-control"
-				   content=controllers.application.customerTypes
-				   optionValuePath="content.id"
-				   optionLabelPath="content.title"
-				   selection=controllers.application.selectedCustomerType
-				   prompt="Välj typ:"
-				}}
-			</div>
+				content=controllers.application.customerTypes
+				optionValuePath="content.id"
+				optionLabelPath="content.title"
+				selection=controllers.application.selectedCustomerType
+				prompt="Välj typ:"
+			}}
 		</div>
+	</div>
 
-        <!-- customerInfoForm start -->
-        {{#if isCustomerTypeSet}}
-		<h4>Ange dina uppgifter</h4>
+	<!-- customerInfoForm start -->
+	{{#if isCustomerTypeSet}}
+	<h4>Ange dina uppgifter</h4>
 
 		<div class="row">
 			<div class="col-xs-12">
@@ -90,159 +90,165 @@
 				</div>
 			</div>
 		</div>
-        {{/if }}
-        <!-- customerInfoForm end -->
+	{{/if }}
+	<!-- customerInfoForm end -->
 
-        <!-- deliveryChoiceDropDown start -->
-        {{#if isShippableFlag}}
-        <!-- if is_shippable ==true && BESTÄLLARTYP != PRIVPERS || STUDENT            -->
-        <!--    SHOW tobeshippedchoicemenu                                            -->
-        <!-- else                                                                     -->
-        <!--    SHOW deliverychoiceinfo                                               -->
-        <!-- fi                                                                       -->
+	<!-- deliveryChoiceDropDown start -->
+	{{#if isShippingAvailable}}
+	<!-- if is_shippable ==true && BESTÄLLARTYP != PRIVPERS || STUDENT            -->
+	<!--    SHOW tobeshippedchoicemenu                                            -->
+	<!-- else                                                                     -->
+	<!--    SHOW deliverychoiceinfo                                               -->
+	<!-- fi                                                                       -->
 
-		<h4>Välj leveranssätt</h4>
-		<div class="row">
-			<div class="col-xs-12">
-				{{view "select" class="form-control"
-				   content=controllers.application.deliveryMethods
-				   optionValuePath="content.id"
-				   optionLabelPath="content.title"
-				   selection=controllers.application.selectedDeliveryMethod
-				   prompt="Välj typ:"
-				}}
-			</div>
-		</div>
-        {{/if }}
-        <!-- deliveryChoiceDropDown end -->
-
-        <!-- div  deliveryInfoText            : start                                 -->
-        {{#if showDeliveryInfoText}}
-          Denna grej skall hämtas på blabla senast den yadayada
-        {{/if }}
-        <!-- /div deliveryInfoText            : end                                   -->
-
-        <!-- div deliveryInfoForm             : start                                 -->
-        {{#if showDeliveryInfoForm}}
-		<h4>Ange leveransadress</h4>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">Företag</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.company}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">Namn</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.name}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">Gatuadress/Box</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.address}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">Postnummer</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.postalCode}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">Ort</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.city}}
-				</div>
-			</div>
-		</div>
-        <!-- div deliveryInfoForm             : end                                   -->
-
-        {{/if }} <!-- isShippableFlag -->
-        <!-- /div deliveryaddressform: end                                            -->
-        
-        <!-- if is_billable  ==true && Sahlgrenska || Företag                         -->
-        <!--    SHOW billingaddressform                                               -->
-        <!-- else                                                                     -->
-        <!--    SHOW billingchoiceinfo                                                -->
-        <!-- fi                                                                       -->
-        <!-- div billingaddressform  : start                                          -->
-
-        <!-- billingInfoForm start -->
-        {{#if isBillableFlag}}
-		<h4>Ange faktureringsuppgifter</h4>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">Namn</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.name}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="company">Företag</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.company}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="street-adress">Gatuadress/Box</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.address}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="postalcode">Postnummer</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.postalCode}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="city">Ort</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.city}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="order-id">Beställar-ID</label>
-					{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.customerId}}
-				</div>
-			</div>
-		</div>
-        {{/if }}  <!-- /div isBillableFlag  : end                                           -->
-        <!-- billingInfoForm end -->
-
-
+	<h4>Välj leveranssätt</h4>
+	<div class="row">
+		<div class="col-xs-12">
+			{{view "select" class="form-control"
+			content=controllers.application.deliveryMethods
+			optionValuePath="content.id"
+			optionLabelPath="content.title"
+			selection=controllers.application.selectedDeliveryMethod
+			prompt="Välj typ:"
+		}}
 	</div>
+</div>
+{{/if }}
+<!-- deliveryChoiceDropDown end -->
+
+<!-- div  deliveryInfoText            : start                                 -->
+{{#if showDeliveryInfoText}}
+<div class="row">
+	<div class="col-xs-12">
+		<p>Denna grej skall hämtas på blabla senast den yadayada</p>
+	</div>
+</div>
+{{/if }}
+<!-- /div deliveryInfoText            : end                                   -->
+
+<!-- div deliveryInfoForm             : start                                 -->
+{{#if showDeliveryInfoForm}}
+<h4>Ange leveransadress</h4>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="department">Företag</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.company}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="department">Namn</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.name}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="department">Gatuadress/Box</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.address}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="department">Postnummer</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.postalCode}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="department">Ort</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.deliveryDetails.city}}
+		</div>
+	</div>
+</div>
+<!-- div deliveryInfoForm             : end                                   -->
+
+{{/if }} <!-- isShippableFlag -->
+<!-- /div deliveryaddressform: end                                            -->
+
+<!-- if is_billable  ==true && Sahlgrenska || Företag                         -->
+<!--    SHOW billingaddressform                                               -->
+<!-- else                                                                     -->
+<!--    SHOW billingchoiceinfo                                                -->
+<!-- fi                                                                       -->
+<!-- div billingaddressform  : start                                          -->
+
+<!-- billingInfoForm start -->
+{{#if isInvoicingAvaliable}}
+<h4>Ange faktureringsuppgifter</h4>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="department">Namn</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.name}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="company">Företag</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.company}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="street-adress">Gatuadress/Box</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.address}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="postalcode">Postnummer</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.postalCode}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="city">Ort</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.city}}
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="form-group">
+			<label for="order-id">Beställar-ID</label>
+			{{input type='text' classBinding=":form-control" value=controllers.application.invoicingDetails.customerId}}
+		</div>
+	</div>
+</div>
+{{/if }}  <!-- /div isBillableFlag  : end                                           -->
+<!-- billingInfoForm end -->
+
+
+</div>
+</div>
+<div class="row">
 	<div class="col-xs-12">
 		<button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step3.prevBtn'}}</button>
 		<button {{action 'nextstep'  }} {{ bind-attr class=":btn :btn-primary :pull-right isEnabled:enabled:disabled"}}>{{t 'home.step3.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
