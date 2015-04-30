@@ -17,12 +17,12 @@ export default Ember.Route.extend({
       that.controllerFor('application').set('orderDetails.article.pages', null);
       that.controllerFor('application').set('orderDetails.article.issue', null);
       that.controllerFor('application').set('orderDetails.article.authors', null);
-
+      Ember.$("body").addClass("loading");
       request('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
 
         // Kolla om pubmed ID är ogiltigt
         if (data.error) {
-
+          Ember.$("body").removeClass("loading");
           that.controllerFor('home.step2.article').set('error', true);
 
         // Om pubmed ID inte är ogiltigt
@@ -40,6 +40,7 @@ export default Ember.Route.extend({
 
           // Om pbumed ID hittas
           } else {
+            Ember.$("body").removeClass("loading");
             that.controllerFor('application').set('orderDetails.article.articleTitle', data.result[resultId].title);
             that.controllerFor('application').set('orderDetails.article.journalTitle', data.result[resultId].fulljournalname);
             that.controllerFor('application').set('orderDetails.article.issn', data.result[resultId].issn);

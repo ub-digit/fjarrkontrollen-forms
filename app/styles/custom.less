@@ -2,6 +2,32 @@ html {
 	overflow-y: scroll;
 }
 
+#spinner {
+	display: none;
+}
+&.loading {
+	#spinner {
+		display: block;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-left: -15px;
+		padding-top: 8px;
+		z-index: 10;
+		width: 50px;
+		height: 50px;
+		background: @gray-dark;
+		border-radius: 4px;
+		text-align: center;
+		.fa {
+			font-size: 30px;
+			color: #fff;
+		}
+	}
+}
+
+
+
 
 .prefered-max-width-forms {
 	max-width: 700px;
@@ -19,6 +45,8 @@ html {
 .form-control-feedback {
 	display: none;
 }
+
+
 
 .has-feedback {
 	.form-control-feedback {
