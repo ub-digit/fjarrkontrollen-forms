@@ -13,9 +13,7 @@ html {
 .active {
     color: black;
 }
-a{
-    color: darkgray;
-}
+
 
 
 .form-control-feedback {
@@ -25,5 +23,33 @@ a{
 .has-feedback {
 	.form-control-feedback {
 		display: block;
+	}
+}
+
+.step-indicator {
+	a{
+
+		color: @gray-light;
+		&.active {
+			color:@gray-darker !important;
+		}
+	}
+
+	&.disabled {
+		a {	
+    
+			cursor: default;
+			&:hover {
+				text-decoration: none;
+				color: @gray-light;	
+			}
+
+			&:active {
+				text-decoration: none;
+			}
+			&:focus {
+				text-decoration: none;
+			}
+		}
 	}
 }
