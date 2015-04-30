@@ -25,6 +25,7 @@ export default Ember.Controller.extend({
       this.transitionToRoute("home.step4");
     },
     save: function() {
+      Ember.$("body").addClass("loading");
       var title =                             null;
       var journal_title =                     null;
       var authors =                           null;
@@ -118,6 +119,7 @@ export default Ember.Controller.extend({
         contentType: 'application/json',
         dataType: 'json'
       }).then(function(response) {
+        Ember.$("body").removeClass("loading");
         console.log(response);
         var orderNumber = response.order.order_number;
         console.log(orderNumber);
@@ -125,6 +127,7 @@ export default Ember.Controller.extend({
         that.transitionToRoute('home.step5', orderNumber);
       },
       function(error) {
+        Ember.$("body").removeClass("loading");
         console.log(error);
       });
     }
