@@ -81,7 +81,7 @@ export default Ember.Controller.extend({
 		address: null,
 		postalCode: null,
 		city: null,
-		customerId: null,
+		customerId: null
 	},
 
 
@@ -209,7 +209,7 @@ export default Ember.Controller.extend({
 		this.set('selectedOrderType', null);
 		this.set('selectedDeliveryMethod', null);
 		this.set('selectedLocation', null);
-		this.set('selectedCustomerType', null);		
+		this.set('selectedCustomerType', null);
 
 		this.resetOrderDetails();
 		this.resetCustomerDetails();

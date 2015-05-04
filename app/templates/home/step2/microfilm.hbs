@@ -2,46 +2,53 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.newspaper'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.newspaper}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.period'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.period}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.startyear'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.startyear}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.notValidAfter'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.notValidAfter}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.microfilm.comment}}
-    </span>
+    </div>
+  </div>
+</div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="pull-right">
+      <p>{{t 'home.step2.mandatoryText'}}</p>
+    </div>
   </div>
 </div> <!-- end row -->
 <div class="row">

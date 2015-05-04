@@ -2,73 +2,80 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.chapterTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.chapterTitle}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.bookTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.bookTitle}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.authors'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.authors}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.isbn'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.isbn}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.publicationYear'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.publicationYear}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.pages'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.pages}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.notValidAfter'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.notValidAfter}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.chapter.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.chapter.comment}}
-    </span>
+    </div>
+  </div>
+</div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="pull-right">
+      <p>{{t 'home.step2.mandatoryText'}}</p>
+    </div>
   </div>
 </div> <!-- end row -->
 <div class="row">

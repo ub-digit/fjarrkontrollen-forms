@@ -1,8 +1,8 @@
-<h3>Beställaruppgifter</h3>
+<h3>{{t 'home.step3.header'}}</h3>
 <div class="row">
 	<div class="col-xs-12">
 
-		<h4>Jag är...</h4>
+		<h4>{{t 'home.step3.customerTypeHeader'}}</h4>
 		<div class="row">
 			<div class="col-xs-12">
 				{{view "select" class="form-control"
@@ -17,13 +17,13 @@
 
 		<!-- customerInfoForm start -->
 		{{#if isCustomerTypeSet}}
-		<h4>Ange dina uppgifter</h4>
+		<h4>{{t 'home.step3.customerDetailsSubheader'}}</h4>
 
 		{{#if showOrganisation}}
 		<div class="row">
 			<div class="col-xs-12">
 				<div {{bind-attr class=":form-group"}}>
-					<label for="organization">Organisation{{#if isOrganisationMandatory}}*{{/if}}</label>
+					<label for="organization">{{t 'home.customerDetails.organisation'}}{{#if isOrganisationMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.organisation}}
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="name">Namn*</label>
+					<label for="name">{{t 'home.customerDetails.name'}}*</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.name}}
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="email">E-mail{{#if isEmailMandatory}}*{{/if}}</label>
+					<label for="email">{{t 'home.customerDetails.emailAddress'}}{{#if isEmailMandatory}}*{{/if}}</label>
 					{{input type='email' classBinding=":form-control" value=customerDetails.emailAddress}}
 				</div>
 			</div>
@@ -51,7 +51,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="phone">Telefon</label>
+					<label for="phone">{{t 'home.customerDetails.phoneNumber'}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.phoneNumber}}
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="institution">Institution{{#if isDepartmentMandatory}}*{{/if}}</label>
+					<label for="institution">{{t 'home.customerDetails.department'}}{{#if isDepartmentMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.department}}
 				</div>
 			</div>
@@ -72,7 +72,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Avdelning{{#if isUnitMandatory}}*{{/if}}</label>
+					<label for="department">{{t 'home.customerDetails.unit'}}{{#if isUnitMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.unit}}
 				</div>
 			</div>
@@ -83,8 +83,8 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Gatuadress</label>
-					{{input type='text' classBinding=":form-control" value=customerDetails.adress}}
+					<label for="department">{{t 'home.customerDetails.adress'}}</label>
+					{{input type='text' classBinding=":form-control" value=customerDetails.address}}
 				</div>
 			</div>
 		</div>
@@ -94,7 +94,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Postnummer</label>
+					<label for="department">{{t 'home.customerDetails.postalCode'}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.postalCode}}
 				</div>
 			</div>
@@ -105,7 +105,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Ort</label>
+					<label for="department">{{t 'home.customerDetails.city'}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.city}}
 				</div>
 			</div>
@@ -116,7 +116,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="cardnumber">Lånekortsnummer{{#if isLibraryCardNumberMandatory}}*{{/if}}</label>
+					<label for="cardnumber">{{t 'home.customerDetails.libraryCardNumber'}}{{#if isLibraryCardNumberMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.libraryCardNumber}}
 				</div>
 			</div>
@@ -127,7 +127,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="xaccount">xkonto{{#if isXAccountMandatory}}*{{/if}}</label>
+					<label for="xaccount">{{t 'home.customerDetails.xAccount'}}{{#if isXAccountMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.xAccount}}
 				</div>
 			</div>
@@ -137,7 +137,7 @@
 
 		<!-- deliveryChoiceDropDown start -->
 
-		<h4>Leveransalternativ</h4>
+		<h4>{{t 'home.step3.deliveryOptionsSubheader'}}</h4>
 
 		{{#if isShippingAvailable}}
 
@@ -161,7 +161,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<p class="deliveryInfoText">Beställningen skall avhämtas på {{selectedLocation.title}}</p>
+				<p class="deliveryInfoText">{{t 'home.step3.pickupInfoText'}} {{selectedLocation.title}}</p>
 			</div>
 		</div>
 		{{/if }}
@@ -169,12 +169,12 @@
 
 		<!-- div deliveryInfoForm             : start                                 -->
 		{{#if showDeliveryInfoForm}}
-		<h4>Ange leveransadress{{#if areDeliveryFieldsMandatory}}*{{/if}}</h4>
+		<h4>{{t 'home.step3.deliveryDetailsSubheader'}}{{#if areDeliveryFieldsMandatory}}*{{/if}}</h4>
 
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Företag</label>
+					<label for="department">{{t 'home.deliveryDetails.company'}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.company}}
 				</div>
 			</div>
@@ -183,7 +183,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Namn</label>
+					<label for="department">{{t 'home.deliveryDetails.company'}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.name}}
 				</div>
 			</div>
@@ -192,7 +192,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Gatuadress/Box</label>
+					<label for="department">{{t 'home.deliveryDetails.address'}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.address}}
 				</div>
 			</div>
@@ -201,7 +201,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Postnummer</label>
+					<label for="department">{{t 'home.deliveryDetails.postalCode'}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.postalCode}}
 				</div>
 			</div>
@@ -210,32 +210,24 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Ort</label>
+					<label for="department">{{t 'home.deliveryDetails.city'}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.city}}
 				</div>
 			</div>
 		</div>
 		<!-- div deliveryInfoForm             : end                                   -->
 
-		{{/if }} <!-- isShippableFlag -->
-		<!-- /div deliveryaddressform: end                                            -->
-
-		<!-- if is_billable  ==true && Sahlgrenska || Företag                         -->
-		<!--    SHOW billingaddressform                                               -->
-		<!-- else                                                                     -->
-		<!--    SHOW billingchoiceinfo                                                -->
-		<!-- fi                                                                       -->
-		<!-- div billingaddressform  : start                                          -->
+		{{/if }}
 
 		<!-- billingInfoForm start -->
 		{{#if isInvoicingAvaliable}}
-		<h4>Faktureringsuppgifter*</h4>
+		<h4>{{t 'home.step3.invoicingDetailsSubheader'}}*</h4>
 
 		{{#if showCustomerId}}
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="order-id">Beställar-ID</label>
+					<label for="order-id">{{t 'home.invoicingDetails.customerId'}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.customerId}}
 				</div>
 			</div>
@@ -245,7 +237,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">Namn</label>
+					<label for="department">{{t 'home.invoicingDetails.name'}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.name}}
 				</div>
 			</div>
@@ -254,7 +246,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="company">Företag</label>
+					<label for="company">{{t 'home.invoicingDetails.company'}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.company}}
 				</div>
 			</div>
@@ -262,8 +254,8 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group errors.project:has-error"}}>
-					<label for="street-adress">Gatuadress/Box</label>
+				<div class="form-group">
+					<label for="street-adress">{{t 'home.invoicingDetails.address'}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.address}}
 				</div>
 			</div>
@@ -272,7 +264,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="postalcode">Postnummer</label>
+					<label for="postalcode">{{t 'home.invoicingDetails.postalCode'}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.postalCode}}
 				</div>
 			</div>
@@ -281,13 +273,20 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="city">Ort</label>
+					<label for="city">{{t 'home.invoicingDetails.city'}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.city}}
 				</div>
 			</div>
 		</div>
 
-	{{/if }}
+		{{/if }}
+		<div class="row">
+		  <div class="col-xs-12">
+		    <div class="pull-right">
+		      <p>{{t 'home.step3.mandatoryText'}}</p>
+		    </div>
+		  </div>
+		</div> <!-- end row -->
 	{{/if }}
 	</div>
 </div>
