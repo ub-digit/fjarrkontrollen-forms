@@ -19,8 +19,8 @@ export default {
 					authors: 'Författare',
 					isbn: 'ISBN',
 					publicationYear: 'Publikationsår',
-					outsideNordics: 'Utanför norden',
-					allowCopy: 'Kopior är ok',
+					outsideNordics: 'Jag godkänner att boken lånas in från utanför norden mot en kostnad, om nödvändigt',
+					allowCopy: 'Jag vill kopior om boken ej går att låna',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
 				},
@@ -37,7 +37,7 @@ export default {
 				score: {
 					composers: 'Kompositör/Tonsättare',
 					opusTitle: 'Titel',
-					publicationType: 'Publikationstyp (Partitur, klaverutdrag, orkesterstämmor, etc)',
+					publicationType: 'Publikationstyp (partitur, klaverutdrag, orkesterstämmor, etc)',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
 				},
@@ -75,16 +75,21 @@ export default {
 					header: 'Mikrofilmad dagstidning'
 				},
 				nextBtn: 'Nästa',
-				prevBtn: 'Föregående',
+				prevBtn: 'Bakåt'
    		},
    		step3: {
    			nextBtn: 'Nästa',
-   			prevBtn: 'Föregående',
+   			prevBtn: 'Bakåt'
    		},
    		step4: {
-   			nextBtn: 'Nästa',
-   			prevBtn: 'Föregående',
-   		}
+   			nextBtn: 'Skicka beställning',
+   			prevBtn: 'Bakåt'
+   		},
+			step5: {
+				confirmationHeader: 'Tack för din beställning!',
+				confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
+				orderOneMore: 'Gör en till beställning'
+			}
   	}
 
 

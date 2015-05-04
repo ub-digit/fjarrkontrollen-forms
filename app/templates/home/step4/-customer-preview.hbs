@@ -1,36 +1,46 @@
 <table class="table table-striped">
   <tbody>
-    <tr>
-      <td>Namn</td>
-      <td>{{controllers.application.customerDetails.name}}</td>
-    </tr>
-    <tr>
-      <td>Email</td>
-      <td>{{controllers.application.customerDetails.emailAddress}}</td>
-    </tr>
-    <tr>
-      <td>Telefon</td>
-      <td>{{controllers.application.customerDetails.phoneNumber}}</td>
-    </tr>
+    {{#if controllers.application.customerDetails.organisation}}
     <tr>
       <td>Organisation</td>
       <td>{{controllers.application.customerDetails.organisation}}</td>
     </tr>
+    {{/if}}
+    <tr>
+      <td>Namn</td>
+      <td>{{controllers.application.customerDetails.name}}</td>
+    </tr>
+    {{#if controllers.application.customerDetails.emailAddress}}
+    <tr>
+      <td>Email</td>
+      <td>{{controllers.application.customerDetails.emailAddress}}</td>
+    </tr>
+    {{/if}}
+    <tr>
+      <td>Telefon</td>
+      <td>{{controllers.application.customerDetails.phoneNumber}}</td>
+    </tr>
+    {{#if controllers.application.customerDetails.department}}
     <tr>
       <td>Institution</td>
       <td>{{controllers.application.customerDetails.department}}</td>
     </tr>
+    {{/if}}
+    {{#if controllers.application.customerDetails.unit}}
     <tr>
       <td>Avdelning</td>
       <td>{{controllers.application.customerDetails.unit}}</td>
     </tr>
+    {{/if}}
     <tr>
       <td>Lånekortsnummer</td>
       <td>{{controllers.application.customerDetails.libraryCardNumber}}</td>
     </tr>
+    {{#if controllers.application.customerDetails.xAccount}}
     <tr>
       <td>xkonto</td>
       <td>{{controllers.application.customerDetails.xAccount}}</td>
     </tr>
+    {{/if}}
   </tbody>
 </table>
