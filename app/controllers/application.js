@@ -34,7 +34,10 @@ export default Ember.Controller.extend({
 		phoneNumber: null,
 		organisation: null,
 		department: null,
-		institution: null,
+		unit: null,
+		address: null,
+		postalCode: null,
+		city: null,
 		libraryCardNumber: null,
 		xAccount: null
 	},
@@ -126,7 +129,7 @@ export default Ember.Controller.extend({
 		this.set('customerDetails.phoneNumber', null);
 		this.set('customerDetails.organisation', null);
 		this.set('customerDetails.department', null);
-		this.set('customerDetails.institution', null);
+		this.set('customerDetails.unit', null);
 		this.set('customerDetails.libraryCardNumber', null);
 		this.set('customerDetails.xAccount', null);
 

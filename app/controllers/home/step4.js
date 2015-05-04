@@ -97,7 +97,7 @@ export default Ember.Controller.extend({
           phone_number:                       this.get('controllers.application.customerDetails.phoneNumber'),
           company1:                           this.get('controllers.application.customerDetails.organisation'),
           company2:                           this.get('controllers.application.customerDetails.department'),
-          company3:                           this.get('controllers.application.customerDetails.institution'),
+          company3:                           this.get('controllers.application.customerDetails.unit'),
           library_card_number:                this.get('controllers.application.customerDetails.libraryCardNumber'),
           x_account:                          this.get('controllers.application.customerDetails.xAccount'),
 
