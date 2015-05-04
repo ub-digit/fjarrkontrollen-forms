@@ -1,0 +1,52 @@
+<h3>{{t 'home.step2.microfilm.header'}}</h3>
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.microfilm.newspaper'}}*</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.newspaper}}
+    </span>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.microfilm.period'}}*</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.period}}
+    </span>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.microfilm.startyear'}}</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.startyear}}
+    </span>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.microfilm.notValidAfter'}}</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.notValidAfter}}
+    </span>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.microfilm.comment'}}</label>
+      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.microfilm.comment}}
+    </span>
+  </div>
+</div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+  </div>
+</div>

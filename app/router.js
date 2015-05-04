@@ -13,6 +13,7 @@ Router.map(function() {
       this.route('book');
       this.route('chapter');
       this.route('score');
+      this.route('microfilm');
     });
     this.route('step3');
     this.route('step4');

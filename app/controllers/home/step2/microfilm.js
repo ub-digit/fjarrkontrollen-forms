@@ -2,15 +2,16 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['application'],
+  orderDetailsBinding: 'controllers.application.orderDetails',
 
   isFormComplete: function() {
-    if (this.get('controllers.application.orderDetails.book.bookTitle') && this.get('controllers.application.orderDetails.book.authors')) {
+    if (this.get('orderDetails.microfilm.newspaper') && this.get('orderDetails.microfilm.period')) {
       return true;
     }
     else {
       return false;
     }
-  }.property('controllers.application.orderDetails.book.bookTitle', 'controllers.application.orderDetails.book.authors'),
+  }.property('orderDetails.microfilm.newspaper','orderDetails.microfilm.period'),
 
   actions: {
 		back: function() {

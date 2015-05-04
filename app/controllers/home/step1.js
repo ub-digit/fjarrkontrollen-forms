@@ -16,19 +16,19 @@ export default Ember.Controller.extend({
 			    case 'book':
 			    	this.transitionToRoute('home.step2.book');
 			        break;
-			    case 'book-chapter-copy':
+			    case 'chapter':
 			    	this.transitionToRoute('home.step2.chapter');
 			        break;
-			    case 'scores':
+			    case 'score':
 			    	this.transitionToRoute('home.step2.score');
 			        break;
-			    case 'micro-film':
-			    	//this.transitionToRoute('home.step2.article');
+			    case 'microfilm':
+			    	this.transitionToRoute('home.step2.microfilm');
 			        break;
 			    default:
 			        break;
-			};	
+			};
 		}
 	}
-	
+
 });

@@ -18,8 +18,33 @@ export default {
 					bookTitle: 'Titel',
 					authors: 'Författare',
 					isbn: 'ISBN',
+					publicationYear: 'Publikationsår',
 					outsideNordics: 'Utanför norden',
 					allowCopy: 'Kopior är ok',
+					notValidAfter: 'Ej aktuell efter',
+					comment: 'Kommentar'
+				},
+				chapter: {
+					chapterTitle: 'Kapiteltitel',
+					bookTitle: 'Boktitel',
+					authors: 'Författare',
+					isbn: 'ISBN',
+					publicationYear: 'Publiceringsår',
+					pages: 'Sidor',
+					notValidAfter: 'Ej aktuell efter',
+					comment: 'Kommentar'
+				},
+				score: {
+					composers: 'Kompositör/Tonsättare',
+					opusTitle: 'Titel',
+					publicationType: 'Publikationstyp (Partitur, klaverutdrag, orkesterstämmor, etc)',
+					notValidAfter: 'Ej aktuell efter',
+					comment: 'Kommentar'
+				},
+				microfilm: {
+					newspaper: 'Dagstidning',
+					period: 'Datum/period',
+					startyear: 'Startår',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
 				}
@@ -39,6 +64,15 @@ export default {
 				},
 				book: {
 					header: 'Bokbeställning'
+				},
+				chapter: {
+					header: 'Kapitelbeställning'
+				},
+				score: {
+					header: 'Musiktryck'
+				},
+				microfilm: {
+					header: 'Mikrofilmad dagstidning'
 				},
 				nextBtn: 'Nästa',
 				prevBtn: 'Föregående',

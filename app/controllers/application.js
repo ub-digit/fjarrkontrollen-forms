@@ -21,8 +21,33 @@ export default Ember.Controller.extend({
 			bookTitle: null,
 			authors: null,
 			isbn: null,
+			publicationYear: null,
 			outsideNordics: false,
 			allowCopy: false,
+			notValidAfter: null,
+			comment: null
+		},
+		chapter: {
+			chapterTitle: null,
+			bookTitle: null,
+			authors: null,
+			isbn: null,
+			publicationYear: null,
+			pages: null,
+			notValidAfter: null,
+			comment: null
+		},
+		score: {
+			composers: null,
+			opusTitle: null,
+			publicationType: null,
+			notValidAfter: null,
+			comment: null
+		},
+		microfilm: {
+			newspaper: null,
+			period: null,
+			startyear: null,
 			notValidAfter: null,
 			comment: null
 		}
@@ -63,7 +88,7 @@ export default Ember.Controller.extend({
 	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', 'orderDetails.book.allowCopy', function() {
 		if (
 			// Check if order type is micro film, which is always without charge
-			(this.get('selectedOrderType.identifier') === 'micro-film') ||
+			(this.get('selectedOrderType.identifier') === 'microfilm') ||
 
 			// Check if order type is book, which is always without charged...
 			( (this.get('selectedOrderType.identifier') === 'book') &&
@@ -90,7 +115,7 @@ export default Ember.Controller.extend({
 	isShippable: Ember.computed('selectedOrderType', function() {
 
 		// Check if order type is of a kind that never will be shipped
-		if (this.get('selectedOrderType.identifier') === 'book' || this.get('selectedOrderType.identifier') === 'micro-film') {
+		if (this.get('selectedOrderType.identifier') === 'book' || this.get('selectedOrderType.identifier') === 'microfilm') {
 			return false;
 		} else {
 			return true;
@@ -113,10 +138,33 @@ export default Ember.Controller.extend({
 		this.set('orderDetails.book.bookTitle', null);
 		this.set('orderDetails.book.authors', null);
 		this.set('orderDetails.book.isbn', null);
+		this.set('orderDetails.book.publicationYear', null);
 		this.set('orderDetails.book.outsideNordics', false);
 		this.set('orderDetails.book.allowCopy', false);
 		this.set('orderDetails.book.notValidAfter', null);
 		this.set('orderDetails.book.comment', null);
+
+
+		this.set('orderDetails.chapter.chapterTitle', null);
+		this.set('orderDetails.chapter.bookTitle', null);
+		this.set('orderDetails.chapter.authors', null);
+		this.set('orderDetails.chapter.isbn', null);
+		this.set('orderDetails.chapter.publicationYear', null);
+		this.set('orderDetails.chapter.pages', null);
+		this.set('orderDetails.chapter.notValidAfter', null);
+		this.set('orderDetails.chapter.comment', null);
+
+		this.set('orderDetails.score.composers', null);
+		this.set('orderDetails.score.opusTitle', null);
+		this.set('orderDetails.score.publicationType', null);
+		this.set('orderDetails.score.notValidAfter', null);
+		this.set('orderDetails.score.comment', null);
+
+		this.set('orderDetails.microfilm.newspaper', null);
+		this.set('orderDetails.microfilm.period', null);
+		this.set('orderDetails.microfilm.startyear', null);
+		this.set('orderDetails.microfilm.notValidAfter', null);
+		this.set('orderDetails.microfilm.comment', null);
 
 		this.set('pubMedId', null);
 

@@ -1,46 +1,52 @@
-<h3>Musiktryck</h3>
+<h3>{{t 'home.step2.score.header'}}</h3>
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.url:has-error"}}>
-      <label class="control-label">Tonsättare*</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.articleTitle}}
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.score.composers'}}*</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.composers}}
     </span>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.links:has-error"}}>
-      <label class="control-label">Titel*</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.authors}}
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.score.opusTitle'}}*</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.opusTitle}}
     </span>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.url:has-error"}}>
-      <label class="control-label">Publikationsform:</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.issn}}
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.score.publicationType'}}</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.publicationType}}
     </span>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Order inaktuell efter:</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.notValidAfter}}
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.score.notValidAfter'}}</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.notValidAfter}}
     </span>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group errors.project:has-error"}}>
-      <label class="control-label">Kommentar:</label>
-      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.comment}}
+    <span {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.score.comment'}}</label>
+      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.score.comment}}
     </span>
   </div>
 </div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+  </div>
+</div>
