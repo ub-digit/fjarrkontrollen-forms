@@ -1,12 +1,13 @@
-<h3>Bekräftelse</h3>
+<h3>{{t 'home.step5.confirmationHeader'}}</h3>
 
 <div class="row">
 	<div class="col-xs-12">
-		Här är ditt lång jobbiga referensnummer: {{model}}
+		<p>{{t 'home.step5.confirmationMessage'}}</p>
+		<h4>{{model}}</h4>		
 	</div>
 </div>
 <div class="row">
 	<div class="col-xs-12">
-        <button {{action 'resetForm'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>Beställ en tillx</button>
+        <button {{action 'resetForm'  }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>{{t 'home.step5.orderOneMore'}}</button>
 	</div>
 </div>

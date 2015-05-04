@@ -38,7 +38,8 @@ export default Ember.Route.extend({
 		deliveryMethods.pushObject({id:1, identifier: 'pickup', title_special: "Hämtas", title: 'Hämta', title_en: 'Pickup'});
 		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title: 'Skicka', title_en: 'Send'});
 		controller.set("deliveryMethods", deliveryMethods);
-		controller.set("selectedDeliveryMethod", null);
+		controller.set("selectedDeliveryMethod", null);	
+
 	},
 
 	actions: {

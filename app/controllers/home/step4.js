@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
     return 'home/step4/' + this.get('controllers.application.selectedOrderType.identifier');
   }),
 
+  isDeliveryTypeShipping: Ember.computed.equal('controllers.application.selectedDeliveryMethod.identifier', 'send'),
+
   getLocale: function() {
     var application = this.container.lookup('application:main');
     var local = application.get("locale");

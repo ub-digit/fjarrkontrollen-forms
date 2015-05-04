@@ -17,14 +17,23 @@ export default Ember.Controller.extend({
     deliveryMethodsBinding: 'controllers.application.deliveryMethods',
     selectedDeliveryMethodBinding: 'controllers.application.selectedDeliveryMethod',
 
-
     // Bool to check if customer type is set
     isCustomerTypeSet: Ember.computed.notEmpty('selectedCustomerType'),
 
 
     // Observes selected customer type and resets selected delivery method to null
-    resetShippingMethod: Ember.observer('selectedCustomerType', function() {
+    resetDeliveryMethod: Ember.observer('selectedCustomerType', function() {
       this.set('selectedDeliveryMethod', null);
+    }),
+
+
+    // Bool to check if delivery method is set, but only of there are multiple options available
+    isDeliveryMethodSet: Ember.computed('selectedDeliveryMethod', 'isShippingAvailable', function() {
+      if (this.get('isShippingAvailable')) {
+        return (this.get('selectedDeliveryMethod'));
+      } else {
+        return true;
+      }
     }),
 
 
@@ -69,6 +78,7 @@ export default Ember.Controller.extend({
     }),
 
 
+
     // Properties for showing/hiding and validating fields
 
     // Organisation
@@ -83,7 +93,7 @@ export default Ember.Controller.extend({
     // Bool to check if organisation is filled in
     isOrganisationValid: Ember.computed('isOrganisationMandatory', 'customerDetails.organisation', function() {
       if (this.get('isOrganisationMandatory')) {
-        return (this.get('customerDetails.department.organisation') > 1);
+        return (this.get('customerDetails.organisation.length') > 1);
       } else {
         return true;
       }
@@ -182,7 +192,6 @@ export default Ember.Controller.extend({
       }
     }),
 
-
     // xAccount
     // Bool to check whether to show xAccount field or not
     showXAccount: Ember.computed.equal('selectedCustomerType.identifier', 'univ'),
@@ -196,7 +205,6 @@ export default Ember.Controller.extend({
         return true;
       }
     }),
-
 
     // Customer ID
     // Bool to check whether to show customerId field or not
@@ -218,7 +226,7 @@ export default Ember.Controller.extend({
 
 
     // Bool to check if form is complete, based on all isValid-properties
-    isFormComplete: Ember.computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isCustomerIdValid'),
+    isFormComplete: Ember.computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isCustomerIdValid', 'isDeliveryMethodSet'),
 
 
 
