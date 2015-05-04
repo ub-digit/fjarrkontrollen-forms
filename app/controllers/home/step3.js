@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
     selectedCustomerTypeBinding:'controllers.application.selectedCustomerType',
     deliveryMethodsBinding: 'controllers.application.deliveryMethods',
     selectedDeliveryMethodBinding: 'controllers.application.selectedDeliveryMethod',
+        
 
     // Bool to check if customer type is set
     isCustomerTypeSet: Ember.computed.notEmpty('selectedCustomerType'),

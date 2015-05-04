@@ -83,7 +83,7 @@ export default {
    		},
    		step4: {
    			nextBtn: 'Nästa',
-   			prevBtn: 'Föregående'
+   			prevBtn: 'Skicka beställning'
    		},
 			step5: {
 				confirmationHeader: 'Tack för din beställning!',
