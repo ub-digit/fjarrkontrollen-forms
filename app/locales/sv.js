@@ -75,15 +75,15 @@ export default {
 					header: 'Mikrofilmad dagstidning'
 				},
 				nextBtn: 'Nästa',
-				prevBtn: 'Föregående'
+				prevBtn: 'Bakåt'
    		},
    		step3: {
    			nextBtn: 'Nästa',
-   			prevBtn: 'Föregående'
+   			prevBtn: 'Bakåt'
    		},
    		step4: {
-   			nextBtn: 'Nästa',
-   			prevBtn: 'Skicka beställning'
+   			nextBtn: 'Skicka beställning',
+   			prevBtn: 'Bakåt'
    		},
 			step5: {
 				confirmationHeader: 'Tack för din beställning!',
