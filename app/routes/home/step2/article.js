@@ -36,6 +36,7 @@ export default Ember.Route.extend({
           // Kolla om pubmed ID inte kan hittas
           if (data.result[resultId].error) {
 
+            Ember.$("body").removeClass("loading");
             that.controllerFor('home.step2.article').set('error', true);
 
           // Om pbumed ID hittas

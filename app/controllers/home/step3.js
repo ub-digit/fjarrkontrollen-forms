@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
     selectedCustomerTypeBinding:'controllers.application.selectedCustomerType',
     deliveryMethodsBinding: 'controllers.application.deliveryMethods',
     selectedDeliveryMethodBinding: 'controllers.application.selectedDeliveryMethod',
-        
+
 
     // Bool to check if customer type is set
     isCustomerTypeSet: Ember.computed.notEmpty('selectedCustomerType'),
@@ -25,6 +25,11 @@ export default Ember.Controller.extend({
     // Observes selected customer type and resets selected delivery method to null
     resetDeliveryMethod: Ember.observer('selectedCustomerType', function() {
       this.set('selectedDeliveryMethod', null);
+      this.set('deliveryDetails.company', null);
+      this.set('deliveryDetails.name', null);
+      this.set('deliveryDetails.address', null);
+      this.set('deliveryDetails.postalCode', null);
+      this.set('deliveryDetails.city', null);
     }),
 
 
@@ -207,6 +212,20 @@ export default Ember.Controller.extend({
       }
     }),
 
+
+    // Bool to check if delivery fields are mandatory
+    areDeliveryFieldsMandatory: Ember.computed.equal('selectedDeliveryMethod.identifier', 'send'),
+
+    // Bool to check if delivery fields ar valid
+    areDeliveryFieldsValid: Ember.computed('areDeliveryFieldsMandatory', 'deliveryDetails.company', 'deliveryDetails.name', 'deliveryDetails.address', 'deliveryDetails.postalCode', 'deliveryDetails.city', function() {
+      if (this.get('areDeliveryFieldsMandatory')) {
+         return (this.get('deliveryDetails.company.length') > 1 || this.get('deliveryDetails.name.length') > 1 || this.get('deliveryDetails.address.length') > 1 || this.get('deliveryDetails.postalCode.length') > 1 || this.get('deliveryDetails.city.length') > 1 );
+      } else {
+        return true;
+      }
+    }),
+
+
     // Customer ID
     // Bool to check whether to show customerId field or not
     showCustomerId: Ember.computed('selectedCustomerType', function() {
@@ -227,7 +246,7 @@ export default Ember.Controller.extend({
 
 
     // Bool to check if form is complete, based on all isValid-properties
-    isFormComplete: Ember.computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isCustomerIdValid', 'isDeliveryMethodSet'),
+    isFormComplete: Ember.computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isCustomerIdValid', 'isDeliveryMethodSet', 'areDeliveryFieldsValid'),
 
 
 
