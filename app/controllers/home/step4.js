@@ -38,6 +38,8 @@ export default Ember.Controller.extend({
       var comments =                          null;
       var photocopies_if_loan_not_possible =  null;
       var order_outside_scandinavia =         null;
+      var publication_type =                  null;
+      var period =                            null;
 
       var orderType =                         this.get("controllers.application.selectedOrderType");
       switch(orderType.identifier) {
@@ -62,6 +64,30 @@ export default Ember.Controller.extend({
           order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.allowCopy');
           not_valid_after =                   this.get('controllers.application.orderDetails.book.notValidAfter');
           comments =                          this.get('controllers.application.orderDetails.book.comment');
+          break;    
+        case 'chapter':
+          title =                             this.get('controllers.application.orderDetails.chapter.chapterTitle');
+          journal_title =                     this.get('controllers.application.orderDetails.chapter.bookTitle'); // Change ?
+          authors =                           this.get('controllers.application.orderDetails.chapter.authors');
+          issn_isbn =                         this.get('controllers.application.orderDetails.chapter.isbn');
+          publication_year =                  this.get('controllers.application.orderDetails.chapter.publicationYear');
+          pages =                             this.get('controllers.application.orderDetails.chapter.pages');
+          not_valid_after =                   this.get('controllers.application.orderDetails.chapter.notValidAfter');
+          comments =                          this.get('controllers.application.orderDetails.chapter.comment');
+          break;
+        case 'score':
+          title =                             this.get('controllers.application.orderDetails.score.opusTitle');
+          authors =                           this.get('controllers.application.orderDetails.score.composers');
+          publication_type =                  this.get('controllers.application.orderDetails.score.publicationType');
+          not_valid_after =                   this.get('controllers.application.orderDetails.score.notValidAfter');
+          comments =                          this.get('controllers.application.orderDetails.score.comment');
+          break;
+        case 'microfilm':
+          title =                             this.get('controllers.application.orderDetails.microfilm.newspaper');
+          period =                            this.get('controllers.application.orderDetails.microfilm.period'); 
+          publication_year =                  this.get('controllers.application.orderDetails.microfilm.startyear'); 
+          not_valid_after =                   this.get('controllers.application.orderDetails.microfilm.notValidAfter');
+          comments =                          this.get('controllers.application.orderDetails.microfilm.comment');
           break;
         default:
           break;
@@ -91,6 +117,9 @@ export default Ember.Controller.extend({
           comments:                           comments,
           photocopies_if_loan_not_possible:   photocopies_if_loan_not_possible,
           order_outside_scandinavia:          order_outside_scandinavia,
+
+          publication_type:                   publication_type,
+          period:                             period,
 
           name:                               this.get('controllers.application.customerDetails.name'),
           email_address:                      this.get('controllers.application.customerDetails.emailAddress'),
