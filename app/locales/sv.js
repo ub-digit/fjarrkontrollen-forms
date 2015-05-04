@@ -19,7 +19,7 @@ export default {
 					authors: 'Författare',
 					isbn: 'ISBN',
 					publicationYear: 'Publikationsår',
-					outsideNordics: 'Jag godkänner att boken lånas in från utanför norden mot en kostnad, om nödvändigt',
+					outsideNordics: 'Beställ mot avgift från bibliotek utanför norden, om nödvändigt',
 					allowCopy: 'Jag vill kopior om boken ej går att låna',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'

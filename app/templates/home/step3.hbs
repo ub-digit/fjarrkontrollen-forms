@@ -133,13 +133,15 @@
 			</div>
 		</div>
 		{{/if}}
-		{{/if }}
 		<!-- customerInfoForm end -->
 
 		<!-- deliveryChoiceDropDown start -->
+
+		<h4>Leveransalternativ</h4>
+
 		{{#if isShippingAvailable}}
 
-		<h4>Välj leveranssätt</h4>
+
 		<div class="row">
 			<div class="col-xs-12">
 				{{view "select" class="form-control"
@@ -156,6 +158,7 @@
 
 		<!-- div  deliveryInfoText            : start                                 -->
 		{{#if showDeliveryInfoText}}
+
 		<div class="row">
 			<div class="col-xs-12">
 				<p class="deliveryInfoText">Beställningen skall avhämtas på {{selectedLocation.title}}</p>
@@ -226,13 +229,13 @@
 
 		<!-- billingInfoForm start -->
 		{{#if isInvoicingAvaliable}}
-		<h4>Ange faktureringsuppgifter</h4>
+		<h4>Faktureringsuppgifter*</h4>
 
 		{{#if showCustomerId}}
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="order-id">Beställar-ID{{#if isCustomerIdMandatory}}*{{/if}}</label>
+					<label for="order-id">Beställar-ID</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.customerId}}
 				</div>
 			</div>
@@ -284,8 +287,8 @@
 			</div>
 		</div>
 
-	{{/if }}  <!-- /div isBillableFlag  : end                                           -->
-	<!-- billingInfoForm end -->
+	{{/if }}
+	{{/if }}
 	</div>
 </div>
 <div class="row">
