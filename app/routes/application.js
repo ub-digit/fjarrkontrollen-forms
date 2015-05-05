@@ -1,8 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	model: function(params) {
+		return params;
+	},
 	setupController: function(controller, model) {
-		var locations = [];
+  		var locations = [];
 		locations.pushObject({id:1, identifier: 'G', title: 'Humanistiska biblioteket', title_en: 'Humanities Library'});
 		locations.pushObject({id:2, identifier: 'Ge', title: 'Ekonomiska biblioteket', title_en: 'Economics Library'});
 		locations.pushObject({id:3, identifier: 'Gg', title: 'Geovetenskapliga biblioteket med kulturvård', title_en: 'Earth Sciences and Conservation Library'});
@@ -40,6 +43,33 @@ export default Ember.Route.extend({
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
 
+
+   // queryParams: ['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author'],
+        console.log(model.rft_genre);
+
+        if (model.rft_genre === 'article') {
+        	console.log("asd");
+        	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
+			controller.set("orderDetails.article.issn", model.isbn_issn);
+			controller.set("orderDetails.article.journalTitle", model.journal_title);
+			controller.set("orderDetails.article.articleTitle", model.title_of_article);
+			controller.set("orderDetails.article.publicationYear", model.year);
+			controller.set("orderDetails.article.issue", model.issue);
+			controller.set("orderDetails.article.volume", model.volume);
+			controller.set("orderDetails.article.pages", model.pages);
+			controller.set("orderDetails.article.authors", model.author);
+			controller.set("orderPath", "SFX");
+
+
+        }
+        else if (model.rft_genre === 'book') {
+            controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
+			controller.set("orderDetails.book.isbn", model.isbn_issn);
+			controller.set("orderDetails.book.bookTitle", model.book_title);
+			controller.set("orderDetails.book.publicationYear", model.year);
+			controller.set("orderDetails.book.authors", model.author);
+			controller.set("orderPath", "SFX");
+		}
 	},
 
 	actions: {

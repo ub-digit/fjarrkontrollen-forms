@@ -112,7 +112,8 @@ export default Ember.Controller.extend({
           email_confirmation:                 true, // Always set to true
           form_lang:                          that.getLocale(),
           delivery_place:                     delivery_place,
-          order_path:                         "Web",
+          order_path:                         this.get('controllers.application.orderPath'),
+
           title:                              title,
           journal_title:                      journal_title,
           authors:                            authors,
@@ -157,11 +158,15 @@ export default Ember.Controller.extend({
         dataType: 'json'
       }).then(function(response) {
         Ember.$("body").removeClass("loading");
-        var orderNumber = response.order.order_number;
-        that.transitionToRoute('home.step5', orderNumber);
+        var result = {};
+        result.orderNumber = response.order.order_number;
+        that.transitionToRoute('home.step5', result);
       },
       function(error) {
         Ember.$("body").removeClass("loading");
+        var result = {};
+        result.error = error;
+        that.transitionToRoute('home.step5', result);
       });
     }
   }

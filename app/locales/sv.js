@@ -139,7 +139,10 @@ export default {
 			step5: {
 				confirmationHeader: 'Tack för din beställning!',
 				confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
-				orderOneMore: 'Gör en till beställning'
+				orderOneMore: 'Gör en till beställning',
+				errorHeader: 'Fel!',
+				errorMessage: 'Det gick ej att genomföra din beställning. Försök senare.',
+				back: 'Tillbaka'
 			}
   	}
 

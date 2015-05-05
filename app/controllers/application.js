@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
+    queryParams: ['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author'],
 	pubMedId: null,
-
+    
 	orderDetails: {
 		article: {
 			articleTitle: null,
@@ -84,6 +84,7 @@ export default Ember.Controller.extend({
 		customerId: null
 	},
 
+    orderPath: "Web",
 
 	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', 'orderDetails.book.allowCopy', function() {
 		if (
