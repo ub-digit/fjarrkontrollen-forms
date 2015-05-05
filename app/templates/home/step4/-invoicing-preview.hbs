@@ -1,29 +1,31 @@
 {{#if hasInvoicing}}
-<h4>Faktureringsuppgifter</h4>
+<h4>{{t 'home.step4.invoicingDetailsSubheader'}}</h4>
 <table class="table table-striped">
   <tbody>
+    {{#if controllers.application.invoicingDetails.customerId}}
     <tr>
-      <td>Beställar-ID</td>
+      <td>{{t 'home.invoicingDetails.customerId'}}</td>
       <td>{{controllers.application.invoicingDetails.customerId}}</td>
     </tr>
+    {{/if}}
     <tr>
-      <td>Namn</td>
-      <td>{{controllers.application.invoicingDetails.name}}</td>
-    </tr>
-    <tr>
-      <td>Företag</td>
+      <td>{{t 'home.invoicingDetails.company'}}</td>
       <td>{{controllers.application.invoicingDetails.company}}</td>
     </tr>
     <tr>
-      <td>Gatuadress/Box</td>
+      <td>{{t 'home.invoicingDetails.name'}}</td>
+      <td>{{controllers.application.invoicingDetails.name}}</td>
+    </tr>    
+    <tr>
+      <td>{{t 'home.invoicingDetails.address'}}</td>
       <td>{{controllers.application.invoicingDetails.address}}</td>
     </tr>
     <tr>
-      <td>Postnummer</td>
+      <td>{{t 'home.invoicingDetails.postalCode'}}</td>
       <td>{{controllers.application.invoicingDetails.postalCode}}</td>
     </tr>
     <tr>
-      <td>Ort</td>
+      <td>{{t 'home.invoicingDetails.city'}}</td>
       <td>{{controllers.application.invoicingDetails.city}}</td>
     </tr>
   </tbody>

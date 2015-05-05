@@ -1,8 +1,8 @@
-<h4>Leveransuppgifter</h4>
+<h4>{{t 'home.step4.deliveryOptionsSubheader'}}</h4>
 <!-- Om leveranssätt är skickas -->
 {{#if isDeliveryTypeShipping}}
 
-<p>Skickas till:</p>
+<p>{{t 'home.step4.shippingInfoText'}}</p>
 
 <table class="table table-striped">
   <tbody>
@@ -27,6 +27,6 @@
 
 {{else}}
 
-<p>Hämtas på {{controllers.application.selectedLocation.title}}</p>
+<p>{{t 'home.step4.pickupInfoText'}} {{controllers.application.selectedLocation.title}}</p>
 
 {{/if}}

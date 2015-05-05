@@ -104,9 +104,10 @@ export default {
 				microfilm: {
 					header: 'Mikrofilmad dagstidning'
 				},
+				otherDetailsText: 'Övriga uppgifter om beställningen',
+				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare',
 				nextBtn: 'Nästa',
-				prevBtn: 'Bakåt',
-				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
+				prevBtn: 'Bakåt'
    		},
    		step3: {
 				header: 'Beställaruppgifter',
@@ -114,13 +115,22 @@ export default {
 				customerDetailsSubheader: 'Fyll i dina uppgifter',
 				deliveryOptionsSubheader: 'Leveransalternativ',
 				pickupInfoText: 'Hämtas på',
-				deliveryDetailsSubheader: 'Leveransalternativ',
+				deliveryDetailsSubheader: 'Leveransuppgifter',
 				invoicingDetailsSubheader: 'Faktureringsuppgifter',
    			nextBtn: 'Nästa',
    			prevBtn: 'Bakåt',
 				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
    		},
    		step4: {
+				header: 'Förhandsgranska',
+				orderDetailsSubheader: 'Beställningsuppgifter',
+				yes: 'Ja',
+				no: 'Nej',
+				customerDetailsSubheader: 'Personuppgifter',
+				deliveryOptionsSubheader: 'Leveransalternativ',
+				invoicingDetailsSubheader: 'Faktureringsuppgifter',
+				shippingInfoText: 'Skickas till:',
+				pickupInfoText: 'Hämtas på',
    			nextBtn: 'Skicka beställning',
    			prevBtn: 'Bakåt'
    		},

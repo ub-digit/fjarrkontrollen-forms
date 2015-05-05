@@ -1,44 +1,63 @@
+<h4>{{t 'home.step4.customerDetailsSubheader'}}</h4>
 <table class="table table-striped">
   <tbody>
     {{#if controllers.application.customerDetails.organisation}}
     <tr>
-      <td>Organisation</td>
+      <td>{{t 'home.customerDetails.organisation'}}</td>
       <td>{{controllers.application.customerDetails.organisation}}</td>
     </tr>
     {{/if}}
     <tr>
-      <td>Namn</td>
+      <td>{{t 'home.customerDetails.name'}}</td>
       <td>{{controllers.application.customerDetails.name}}</td>
     </tr>
-    {{#if controllers.application.customerDetails.emailAddress}}
     <tr>
-      <td>Email</td>
+      <td>{{t 'home.customerDetails.emailAddress'}}</td>
       <td>{{controllers.application.customerDetails.emailAddress}}</td>
     </tr>
-    {{/if}}
     <tr>
-      <td>Telefon</td>
+      <td>{{t 'home.customerDetails.phoneNumber'}}</td>
       <td>{{controllers.application.customerDetails.phoneNumber}}</td>
     </tr>
     {{#if controllers.application.customerDetails.department}}
     <tr>
-      <td>Institution</td>
+      <td>{{t 'home.customerDetails.department'}}</td>
       <td>{{controllers.application.customerDetails.department}}</td>
     </tr>
     {{/if}}
     {{#if controllers.application.customerDetails.unit}}
     <tr>
-      <td>Avdelning</td>
+      <td>{{t 'home.customerDetails.unit'}}</td>
       <td>{{controllers.application.customerDetails.unit}}</td>
     </tr>
     {{/if}}
+    {{#if controllers.application.customerDetails.address}}
     <tr>
-      <td>Lånekortsnummer</td>
+      <td>{{t 'home.customerDetails.address'}}</td>
+      <td>{{controllers.application.customerDetails.address}}</td>
+    </tr>
+    {{/if}}
+    {{#if controllers.application.customerDetails.postalCode}}
+    <tr>
+      <td>{{t 'home.customerDetails.postalCode'}}</td>
+      <td>{{controllers.application.customerDetails.postalCode}}</td>
+    </tr>
+    {{/if}}
+    {{#if controllers.application.customerDetails.city}}
+    <tr>
+      <td>{{t 'home.customerDetails.city'}}</td>
+      <td>{{controllers.application.customerDetails.city}}</td>
+    </tr>
+    {{/if}}
+    {{#if controllers.application.customerDetails.libraryCardNumber}}
+    <tr>
+      <td>{{t 'home.customerDetails.libraryCardNumber'}}</td>
       <td>{{controllers.application.customerDetails.libraryCardNumber}}</td>
     </tr>
+    {{/if}}
     {{#if controllers.application.customerDetails.xAccount}}
     <tr>
-      <td>xkonto</td>
+      <td>{{t 'home.customerDetails.xAccount'}}</td>
       <td>{{controllers.application.customerDetails.xAccount}}</td>
     </tr>
     {{/if}}

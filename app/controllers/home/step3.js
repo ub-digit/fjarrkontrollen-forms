@@ -119,7 +119,8 @@ export default Ember.Controller.extend({
     //isEmailValid: Ember.computed.notEmpty('customerDetails.emailAddress'),
     isEmailValid: Ember.computed('isEmailMandatory', 'customerDetails.emailAddress', function() {
       if (this.get('isEmailMandatory')) {
-        return (this.get('customerDetails.emailAddress.length') > 1);
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return (re.test(this.get('customerDetails.emailAddress')));        
       } else {
         return true;
       }
