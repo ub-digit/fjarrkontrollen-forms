@@ -17,7 +17,6 @@ export default Ember.Controller.extend({
     deliveryMethodsBinding: 'controllers.application.deliveryMethods',
     selectedDeliveryMethodBinding: 'controllers.application.selectedDeliveryMethod',
 
-
     // Bool to check if customer type is set
     isCustomerTypeSet: Ember.computed.notEmpty('selectedCustomerType'),
 
@@ -120,7 +119,7 @@ export default Ember.Controller.extend({
     isEmailValid: Ember.computed('isEmailMandatory', 'customerDetails.emailAddress', function() {
       if (this.get('isEmailMandatory')) {
         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-        return (re.test(this.get('customerDetails.emailAddress')));        
+        return (re.test(this.get('customerDetails.emailAddress')));
       } else {
         return true;
       }

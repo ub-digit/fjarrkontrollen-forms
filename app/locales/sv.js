@@ -111,9 +111,11 @@ export default {
    		},
    		step3: {
 				header: 'Beställaruppgifter',
-				customerTypeHeader: 'Jag är...',
+				customerTypeHeader: 'Kundkategori',
+				customerTypePrompt: 'Välj kundkategori:',
 				customerDetailsSubheader: 'Fyll i dina uppgifter',
 				deliveryOptionsSubheader: 'Leveransalternativ',
+				deliveryMethodPrompt: 'Välj leveranssätt:',
 				pickupInfoText: 'Beställningen hämtas på',
 				deliveryDetailsSubheader: 'Leveransuppgifter',
 				invoicingDetailsSubheader: 'Faktureringsuppgifter',

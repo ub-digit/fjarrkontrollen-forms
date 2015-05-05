@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "bootstrap": "~3.3.4",
-    "components-font-awesome": "~4.3.0"
+    "components-font-awesome": "~4.3.0",
+    "ember-i18n": "~3.1.0"
   }
 }

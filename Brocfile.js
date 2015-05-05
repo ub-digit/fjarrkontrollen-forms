@@ -28,6 +28,8 @@ var app = new EmberApp({
   This example is more verbose than necessary for the sake of illustration.
   You could, for example, include the Font Awesome assets as a Broccoli tree.
 */
+
+app.import('bower_components/ember-i18n/lib/i18n.js');
 app.import("bower_components/components-font-awesome/css/font-awesome.css");
 app.import("bower_components/components-font-awesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
 app.import("bower_components/components-font-awesome/fonts/fontawesome-webfont.svg", { destDir: "fonts" });

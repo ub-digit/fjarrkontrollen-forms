@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	needs: ['application'],
 
-	isEnabled: Ember.computed.and('controllers.application.selectedOrderType', 'controllers.application.selectedLocation'),
+	isFormComplete: Ember.computed.and('controllers.application.selectedOrderType', 'controllers.application.selectedLocation'),
 
 	actions: {
 		nextStep: function() {

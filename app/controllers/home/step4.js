@@ -47,6 +47,7 @@ export default Ember.Controller.extend({
       var order_outside_scandinavia =         null;
       var publication_type =                  null;
       var period =                            null;
+      var delivery_place = this.get('controllers.application.selectedDeliveryMethod.title_special') || "Hämtas";
 
       var orderType =                         this.get("controllers.application.selectedOrderType");
       switch(orderType.identifier) {
@@ -110,7 +111,7 @@ export default Ember.Controller.extend({
           form_library:                       this.get('controllers.application.selectedLocation.identifier'), // Change?
           email_confirmation:                 true, // Always set to true
           form_lang:                          that.getLocale(),
-          delivery_place:                     this.get('controllers.application.selectedDeliveryMethod.title_special'),
+          delivery_place:                     delivery_place,
           order_path:                         "Web",
           title:                              title,
           journal_title:                      journal_title,
@@ -156,15 +157,11 @@ export default Ember.Controller.extend({
         dataType: 'json'
       }).then(function(response) {
         Ember.$("body").removeClass("loading");
-        console.log(response);
         var orderNumber = response.order.order_number;
-        console.log(orderNumber);
-        console.log(that.getLocale());
         that.transitionToRoute('home.step5', orderNumber);
       },
       function(error) {
         Ember.$("body").removeClass("loading");
-        console.log(error);
       });
     }
   }
