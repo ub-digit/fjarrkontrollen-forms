@@ -114,7 +114,7 @@ export default {
 				customerTypeHeader: 'Jag är...',
 				customerDetailsSubheader: 'Fyll i dina uppgifter',
 				deliveryOptionsSubheader: 'Leveransalternativ',
-				pickupInfoText: 'Hämtas på',
+				pickupInfoText: 'Beställningen hämtas på',
 				deliveryDetailsSubheader: 'Leveransuppgifter',
 				invoicingDetailsSubheader: 'Faktureringsuppgifter',
    			nextBtn: 'Nästa',

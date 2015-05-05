@@ -23,8 +23,11 @@
 			</div>
 		</div>
 
-
-		<button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step4.prevBtn'}}</button>
-		<button {{action 'save'  }} {{ bind-attr class=":btn :btn-success :pull-right"}}>{{t 'home.step4.nextBtn'}}</button>
+		<div class="row">
+			<div class="col-xs-12 next-prev">
+				<button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}>{{t 'home.step4.prevBtn'}}</button>
+				<button {{action 'save'  }} {{ bind-attr class=":btn :btn-success :pull-right"}}>{{t 'home.step4.nextBtn'}}</button>
+			</div>
+		</div>
 	</div>
 </div>
