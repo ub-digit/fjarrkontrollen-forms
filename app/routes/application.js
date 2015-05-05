@@ -16,7 +16,7 @@ export default Ember.Route.extend({
 
 		var orderTypes = [];
 		orderTypes.pushObject({id:1, identifier: 'article', title: 'Artikelkopia', title_en: 'Photocopy'});
-		orderTypes.pushObject({id:2, identifier: 'book', title: 'Lån', title_en: 'Loan'});
+		orderTypes.pushObject({id:2, identifier: 'book', title: 'Bok', title_en: 'Loan'});
 		orderTypes.pushObject({id:3, identifier: 'chapter', title: 'Kopia av bokkapitel', title_en: 'Book chapter photocopy'});
 		orderTypes.pushObject({id:4, identifier: 'score', title: 'Musiktryck', title_en: 'Score'});
 		orderTypes.pushObject({id:5, identifier: 'microfilm', title: 'Mikrofilmad dagstidning', title_en: 'Loan micro-film'});
@@ -38,7 +38,7 @@ export default Ember.Route.extend({
 		deliveryMethods.pushObject({id:1, identifier: 'pickup', title_special: "Hämtas", title: 'Hämta', title_en: 'Pickup'});
 		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title: 'Skicka', title_en: 'Send'});
 		controller.set("deliveryMethods", deliveryMethods);
-		controller.set("selectedDeliveryMethod", null);	
+		controller.set("selectedDeliveryMethod", null);
 
 	},
 
