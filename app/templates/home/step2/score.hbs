@@ -2,46 +2,55 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.composers'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.composers}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.opusTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.opusTitle}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.publicationType'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.publicationType}}
-    </span>
+      <span id="helpBlock" class="help-block">{{t 'home.step2.score.publicationTypeHelpText'}}</span>
+    </div>
+
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.notValidAfter'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.notValidAfter}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.score.comment}}
-    </span>
+    </div>
+  </div>
+</div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="pull-right">
+      <p>{{t 'home.step2.mandatoryText'}}</p>
+    </div>
   </div>
 </div> <!-- end row -->
 <div class="row">

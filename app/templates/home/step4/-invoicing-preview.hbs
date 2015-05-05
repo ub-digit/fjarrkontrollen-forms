@@ -1,5 +1,11 @@
+{{#if hasInvoicing}}
+<h4>Faktureringsuppgifter</h4>
 <table class="table table-striped">
   <tbody>
+    <tr>
+      <td>Beställar-ID</td>
+      <td>{{controllers.application.invoicingDetails.customerId}}</td>
+    </tr>
     <tr>
       <td>Namn</td>
       <td>{{controllers.application.invoicingDetails.name}}</td>
@@ -20,9 +26,6 @@
       <td>Ort</td>
       <td>{{controllers.application.invoicingDetails.city}}</td>
     </tr>
-    <tr>
-      <td>Beställar-ID</td>
-      <td>{{controllers.application.invoicingDetails.customerId}}</td>
-    </tr>
   </tbody>
 </table>
+{{/if}}

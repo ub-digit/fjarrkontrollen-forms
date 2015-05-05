@@ -3,12 +3,17 @@ import ENV from 'fjarrkontrollen-forms/config/environment';
 
 export default Ember.Controller.extend({
   needs: ['application'],
+  invoicingDetailsBinding: 'controllers.application.invoicingDetails',
 
   orderPreviewPartialName: Ember.computed('controllers.application.selectedOrderType.identifier', function() {
     return 'home/step4/' + this.get('controllers.application.selectedOrderType.identifier');
   }),
 
   isDeliveryTypeShipping: Ember.computed.equal('controllers.application.selectedDeliveryMethod.identifier', 'send'),
+
+  hasInvoicing: Ember.computed('invoicingDetails.name','invoicingDetails.company', 'invoicingDetails.address', 'invoicingDetails.postalCode', 'invoicingDetails.city', 'invoicingDetails.customerId', function() {
+    return (this.get('invoicingDetails.name') || this.get('invoicingDetails.company') || this.get('invoicingDetails.address') || this.get('invoicingDetails.postalCode') || this.get('invoicingDetails.city') || this.get('invoicingDetails.customerId'));
+  }),
 
   getLocale: function() {
     var application = this.container.lookup('application:main');
@@ -66,7 +71,7 @@ export default Ember.Controller.extend({
           order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.allowCopy');
           not_valid_after =                   this.get('controllers.application.orderDetails.book.notValidAfter');
           comments =                          this.get('controllers.application.orderDetails.book.comment');
-          break;    
+          break;
         case 'chapter':
           title =                             this.get('controllers.application.orderDetails.chapter.chapterTitle');
           journal_title =                     this.get('controllers.application.orderDetails.chapter.bookTitle'); // Change ?
@@ -86,8 +91,8 @@ export default Ember.Controller.extend({
           break;
         case 'microfilm':
           title =                             this.get('controllers.application.orderDetails.microfilm.newspaper');
-          period =                            this.get('controllers.application.orderDetails.microfilm.period'); 
-          publication_year =                  this.get('controllers.application.orderDetails.microfilm.startyear'); 
+          period =                            this.get('controllers.application.orderDetails.microfilm.period');
+          publication_year =                  this.get('controllers.application.orderDetails.microfilm.startyear');
           not_valid_after =                   this.get('controllers.application.orderDetails.microfilm.notValidAfter');
           comments =                          this.get('controllers.application.orderDetails.microfilm.comment');
           break;

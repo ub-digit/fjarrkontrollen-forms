@@ -2,37 +2,37 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.bookTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.bookTitle}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.authors'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.authors}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.isbn'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.isbn}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <span {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.publicationYear'}}</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.publicationYear}}
-    </span>
+    </div>
   </div>
 </div> <!-- end row -->
 
@@ -43,6 +43,7 @@
         {{input type='checkbox' checked=controllers.application.orderDetails.book.outsideNordics}} {{t 'home.orderDetails.book.outsideNordics'}}
       </label>
     </div>
+    <span id="helpBlock" class="help-block">{{t 'home.step2.book.outsideNordicsHelpText'}}</span>
   </div>
 </div>
 <div class="row">
@@ -69,6 +70,13 @@
     <div {{bind-attr class=":form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.book.comment'}}</label>
       {{textarea classBinding=":form-control" value=controllers.application.orderDetails.book.comment}}
+    </div>
+  </div>
+</div> <!-- end row -->
+<div class="row">
+  <div class="col-xs-12">
+    <div class="pull-right">
+      <p>{{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
 </div> <!-- end row -->

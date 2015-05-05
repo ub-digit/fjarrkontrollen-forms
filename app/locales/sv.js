@@ -19,8 +19,8 @@ export default {
 					authors: 'Författare',
 					isbn: 'ISBN',
 					publicationYear: 'Publikationsår',
-					outsideNordics: 'Jag godkänner att boken lånas in från utanför norden mot en kostnad, om nödvändigt',
-					allowCopy: 'Jag vill kopior om boken ej går att låna',
+					outsideNordics: 'Godkänn lån utanför Norden',
+					allowCopy: 'Jag vill ha kopior om boken ej går att låna',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
 				},
@@ -35,9 +35,9 @@ export default {
 					comment: 'Kommentar'
 				},
 				score: {
-					composers: 'Kompositör/Tonsättare',
+					composers: 'Kompositör/tonsättare',
 					opusTitle: 'Titel',
-					publicationType: 'Publikationstyp (partitur, klaverutdrag, orkesterstämmor, etc)',
+					publicationType: 'Publikationstyp',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
 				},
@@ -49,9 +49,37 @@ export default {
 					comment: 'Kommentar'
 				}
 			},
+			customerDetails: {
+				name: 'Namn',
+				emailAddress: 'Epost',
+				phoneNumber: 'Telefonnummer',
+				organisation: 'Organisation/företag',
+				department: 'Institution',
+				unit: 'Avdelning',
+				address: 'Adress',
+				postalCode: 'Postnummer',
+				city: 'Ort',
+				libraryCardNumber: 'Lånekortsnummer',
+				xAccount: 'xkonto'
+			},
+			deliveryDetails: {
+				company: 'Organisation/företag',
+				name: 'Namn',
+				address: 'Adress/box',
+				postalCode: 'Postnummer',
+				city: 'Ort'
+			},
+			invoicingDetails: {
+				name: 'Namn',
+				company: 'Organisation/företag',
+				address: 'Adress/box',
+				postalCode: 'Postnummer',
+				city: 'Ort',
+				customerId: 'Beställar-ID'
+			},
    		step1: {
-   			typeHeader: 'Välj typ:',
-        locationHeader: 'Välj varifrån du vill beställa:',
+   			typeHeader: 'Välj vad vill du beställa',
+        locationHeader: 'Välj bibliotek',
    			nextBtn: 'Nästa',
    		},
    		step2: {
@@ -63,23 +91,34 @@ export default {
 					pubMedError: 'Hittade ingen artikel med angivet id i PubMed.',
 				},
 				book: {
-					header: 'Bokbeställning'
+					header: 'Bokbeställning',
+					outsideNordicsHelpText: 'Om boken inte finns tillgänglig inom norden kan den eventuellt lånas in från ett bibliotek utanför norden, mote en avgift.',
 				},
 				chapter: {
 					header: 'Kapitelbeställning'
 				},
 				score: {
-					header: 'Musiktryck'
+					header: 'Musiktryck',
+					publicationTypeHelpText: '(partitur, klaverutdrag, orkesterstämmor, etc)'
 				},
 				microfilm: {
 					header: 'Mikrofilmad dagstidning'
 				},
 				nextBtn: 'Nästa',
-				prevBtn: 'Bakåt'
+				prevBtn: 'Bakåt',
+				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
    		},
    		step3: {
+				header: 'Beställaruppgifter',
+				customerTypeHeader: 'Jag är...',
+				customerDetailsSubheader: 'Fyll i dina uppgifter',
+				deliveryOptionsSubheader: 'Leveransalternativ',
+				pickupInfoText: 'Hämtas på',
+				deliveryDetailsSubheader: 'Leveransalternativ',
+				invoicingDetailsSubheader: 'Faktureringsuppgifter',
    			nextBtn: 'Nästa',
-   			prevBtn: 'Bakåt'
+   			prevBtn: 'Bakåt',
+				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
    		},
    		step4: {
    			nextBtn: 'Skicka beställning',

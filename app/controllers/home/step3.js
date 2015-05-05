@@ -219,11 +219,26 @@ export default Ember.Controller.extend({
     // Bool to check if delivery fields ar valid
     areDeliveryFieldsValid: Ember.computed('areDeliveryFieldsMandatory', 'deliveryDetails.company', 'deliveryDetails.name', 'deliveryDetails.address', 'deliveryDetails.postalCode', 'deliveryDetails.city', function() {
       if (this.get('areDeliveryFieldsMandatory')) {
-         return (this.get('deliveryDetails.company.length') > 1 || this.get('deliveryDetails.name.length') > 1 || this.get('deliveryDetails.address.length') > 1 || this.get('deliveryDetails.postalCode.length') > 1 || this.get('deliveryDetails.city.length') > 1 );
+        return (this.get('deliveryDetails.company.length') > 1 || this.get('deliveryDetails.name.length') > 1 || this.get('deliveryDetails.address.length') > 1 || this.get('deliveryDetails.postalCode.length') > 1 || this.get('deliveryDetails.city.length') > 1 );
       } else {
         return true;
       }
     }),
+
+
+    // Bool to check if invoicing fiels are valid
+    areInvoicingFieldsValid: Ember.computed('isInvoicingAvaliable', 'invoicingDetails.customerId', 'invoicingDetails.name', 'invoicingDetails.company', 'invoicingDetails.address', 'invoicingDetails.postalCode', 'invoicingDetails.city', function() {
+      if (this.get('isInvoicingAvaliable')) {
+        if (this.get('showCustomerId')) {
+          return ((this.get('invoicingDetails.customerId.length') > 1) && (this.get('invoicingDetails.name.length') > 1 || this.get('invoicingDetails.company.length') > 1 || this.get('invoicingDetails.name.length') > 1 || this.get('invoicingDetails.address.length') > 1 || this.get('invoicingDetails.postalCode.length') > 1 || this.get('invoicingDetails.city.length') > 1 ));
+        } else {
+          return (this.get('invoicingDetails.name.length') > 1 || this.get('invoicingDetails.address.length') > 1 || this.get('invoicingDetails.postalCode.length') > 1 || this.get('invoicingDetails.city.length') > 1 );
+        }
+      } else {
+        return true;
+      }
+    }),
+
 
 
     // Customer ID
@@ -231,37 +246,22 @@ export default Ember.Controller.extend({
     showCustomerId: Ember.computed('selectedCustomerType', function() {
       return ((this.get('selectedCustomerType.identifier') === 'univ') || (this.get('selectedCustomerType.identifier') === 'sahl'));
     }),
-    // Bool to check whether customerId field is mandatory or not
-    isCustomerIdMandatory: Ember.computed('selectedCustomerType', function() {
-      return ( this.get('isInvoicingAvaliable') && ((this.get('selectedCustomerType.identifier') === 'univ') || (this.get('selectedCustomerType.identifier') === 'sahl')));
-    }),
-    // Bool to check if customer ID is filled in
-    isCustomerIdValid: Ember.computed('isCustomerIdMandatory', 'invoicingDetails.customerId', function() {
-      if (this.get('isCustomerIdMandatory')) {
-        return (this.get('invoicingDetails.customerId.length') > 1);
-      } else {
-        return true;
-      }
-    }),
 
 
     // Bool to check if form is complete, based on all isValid-properties
-    isFormComplete: Ember.computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isCustomerIdValid', 'isDeliveryMethodSet', 'areDeliveryFieldsValid'),
-
+    isFormComplete: Ember.computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isDeliveryMethodSet', 'areDeliveryFieldsValid', 'areInvoicingFieldsValid'),
 
 
     // method for reseting fields values when customer type is changed, so no fields are hidden with their values maintained
     resetUnusedFields: Ember.observer('selectedCustomerType', function() {
      switch (this.get('selectedCustomerType.identifier')) {
         case 'univ':
-          console.log('reset univ fields');
           this.set('customerDetails.organisation', null);
           this.set('customerDetails.adress', null);
           this.set('customerDetails.postalCode', null);
           this.set('customerDetails.city', null);
           break;
         case 'stud':
-          console.log('reset stud fields');
           this.set('customerDetails.organisation', null);
           this.set('customerDetails.department', null);
           this.set('customerDetails.unit', null);
@@ -271,7 +271,6 @@ export default Ember.Controller.extend({
           this.set('customerDetails.xAccount', null);
           break;
         case 'sahl':
-          console.log('reset sahl fields');
           this.set('customerDetails.organisation', null);
           this.set('customerDetails.department', null);
           this.set('customerDetails.adress', null);
@@ -281,14 +280,12 @@ export default Ember.Controller.extend({
           this.set('customerDetails.xAccount', null);
           break;
         case 'priv':
-          console.log('reset priv fields');
           this.set('customerDetails.organisation', null);
           this.set('customerDetails.department', null);
           this.set('customerDetails.unit', null);
           this.set('customerDetails.xAccount', null);
           break;
         case 'ftag':
-          console.log('reset ftag fields');
           this.set('customerDetails.department', null);
           this.set('customerDetails.unit', null);
           this.set('customerDetails.adress', null);
@@ -298,7 +295,6 @@ export default Ember.Controller.extend({
           this.set('customerDetails.xAccount', null);
           break;
         case 'ovri':
-          console.log('reset ovri fields');
           this.set('customerDetails.department', null);
           this.set('customerDetails.unit', null);
           this.set('customerDetails.adress', null);
@@ -308,13 +304,26 @@ export default Ember.Controller.extend({
           this.set('customerDetails.xAccount', null);
           break;
         case 'dist':
-          console.log('reset dist fields');
           this.set('customerDetails.organisation', null);
           this.set('customerDetails.department', null);
           this.set('customerDetails.unit', null);
           this.set('customerDetails.xAccount', null);
           break;
      }
+
+     this.set('deliveryDetails.company', null);
+     this.set('deliveryDetails.name', null);
+     this.set('deliveryDetails.address', null);
+     this.set('deliveryDetails.postalCode', null);
+     this.set('deliveryDetails.city', null);
+
+     this.set('invoicingDetails.name', null);
+     this.set('invoicingDetails.company', null);
+     this.set('invoicingDetails.address', null);
+     this.set('invoicingDetails.postalCode', null);
+     this.set('invoicingDetails.city', null);
+     this.set('invoicingDetails.customerId', null);
+
     }),
 
 
