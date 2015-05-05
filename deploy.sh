@@ -25,7 +25,7 @@ set -e # Makes sure that script exits on any error
 appname='fjarrkontrollen-forms'                # Name used in directories
 app_domain_name='fjarrkontrollen-forms'        # Name used in dns
 #remote_user='app-user'                        # User used for deploy to remote server
-remote_user='rails'                            # User used for deploy to remote server
+remote_user='app-user'                         # User used for deploy to remote server
 valid_environments="production test demo"      # Possible environments to choose from
 top_domain='ub.gu.se'                          # Top domain name, ie 'my.domain.com'
 local_app_location='.'                         # must be set for script to work
