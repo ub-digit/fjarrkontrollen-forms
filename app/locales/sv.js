@@ -84,18 +84,18 @@ export default {
    		},
    		step2: {
 				article: {
-					header: 'Artikelbeställning',
+					header: 'Artikelkopia',
 					subHeader1: 'Ange PubMed ID...',
 					subHeader2: '...eller fyll i uppgifterna:',
 					getPubMedBtn: 'Hämta',
 					pubMedError: 'Hittade ingen artikel med angivet id i PubMed.',
 				},
 				book: {
-					header: 'Bokbeställning',
+					header: 'Bok',
 					outsideNordicsHelpText: 'Om boken inte finns tillgänglig inom norden kan den eventuellt lånas in från ett bibliotek utanför norden, mote en avgift.',
 				},
 				chapter: {
-					header: 'Kapitelbeställning'
+					header: 'Kopia av bokkapitel'
 				},
 				score: {
 					header: 'Musiktryck',
@@ -124,7 +124,7 @@ export default {
 				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
    		},
    		step4: {
-				header: 'Förhandsgranska',
+				header: 'Summering',
 				orderDetailsSubheader: 'Beställningsuppgifter',
 				yes: 'Ja',
 				no: 'Nej',
