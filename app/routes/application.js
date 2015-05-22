@@ -43,13 +43,8 @@ export default Ember.Route.extend({
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
 
-
-   // queryParams: ['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author'],
-        console.log(model.rft_genre);
-
-        if (model.rft_genre === 'article') {
-        	console.log("asd");
-        	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
+    if (model.rft_genre === 'article') {
+    	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
 			controller.set("orderDetails.article.issn", model.isbn_issn);
 			controller.set("orderDetails.article.journalTitle", model.journal_title);
 			controller.set("orderDetails.article.articleTitle", model.title_of_article);
@@ -59,11 +54,9 @@ export default Ember.Route.extend({
 			controller.set("orderDetails.article.pages", model.pages);
 			controller.set("orderDetails.article.authors", model.author);
 			controller.set("orderPath", "SFX");
-
-
-        }
-        else if (model.rft_genre === 'book') {
-            controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
+    }
+    else if (model.rft_genre === 'book') {
+			controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
 			controller.set("orderDetails.book.isbn", model.isbn_issn);
 			controller.set("orderDetails.book.bookTitle", model.book_title);
 			controller.set("orderDetails.book.publicationYear", model.year);
@@ -75,7 +68,12 @@ export default Ember.Route.extend({
 	actions: {
 		resetForm: function() {
 			this.controllerFor("application").resetAllData();
+		},
+
+		orderAnother: function() {
+			this.controllerFor("application").orderAnother();
 		}
+		
 	}
 
 

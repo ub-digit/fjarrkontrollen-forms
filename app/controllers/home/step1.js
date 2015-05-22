@@ -8,6 +8,8 @@ export default Ember.Controller.extend({
 	actions: {
 		nextStep: function() {
 			// based on values in selectedOrderType
+			this.transitionToRoute('home.step2');
+			/*
 			var orderType = this.get("controllers.application.selectedOrderType");
 			switch(orderType.identifier) {
 			    case 'article':
@@ -28,6 +30,7 @@ export default Ember.Controller.extend({
 			    default:
 			        break;
 			};
+			*/
 		}
 	}
 

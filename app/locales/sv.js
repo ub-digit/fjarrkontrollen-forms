@@ -142,7 +142,12 @@ export default {
 				orderOneMore: 'Gör en till beställning',
 				errorHeader: 'Fel!',
 				errorMessage: 'Det gick ej att genomföra din beställning. Försök senare.',
-				back: 'Tillbaka'
+				back: 'Tillbaka',
+				orderAnotherArticle: '',
+				orderAnotherBook: '',
+				orderAnotherChapter: '',
+				orderAnotherScore: '',
+				orderAnotherMicrofilm: ''
 			}
   	}
 

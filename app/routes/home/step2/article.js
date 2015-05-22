@@ -4,6 +4,12 @@ import request from 'ic-ajax';
 
 export default Ember.Route.extend({
 
+  beforeModel: function() {
+    if (this.controllerFor('application').get('selectedOrderType.identifier') != 'article') {
+      this.transitionTo('home.step1');
+    }
+  },
+
   actions: {
     getPubMedId: function(id) {
 

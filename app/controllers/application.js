@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    queryParams: ['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author'],
+  queryParams: ['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author'],
 	pubMedId: null,
-    
+
 	orderDetails: {
 		article: {
 			articleTitle: null,
@@ -124,7 +124,6 @@ export default Ember.Controller.extend({
 	}),
 
 	resetOrderDetails: function() {
-
 		this.set('orderDetails.article.articleTitle', null);
 		this.set('orderDetails.article.journalTitle', null);
 		this.set('orderDetails.article.authors', null);
@@ -168,11 +167,9 @@ export default Ember.Controller.extend({
 		this.set('orderDetails.microfilm.comment', null);
 
 		this.set('pubMedId', null);
-
 	},
 
 	resetCustomerDetails: function() {
-
 		this.set('customerDetails.name', null);
 		this.set('customerDetails.emailAddress', null);
 		this.set('customerDetails.phoneNumber', null);
@@ -181,28 +178,23 @@ export default Ember.Controller.extend({
 		this.set('customerDetails.unit', null);
 		this.set('customerDetails.libraryCardNumber', null);
 		this.set('customerDetails.xAccount', null);
-
 	},
 
-	resetDeliverDetails: function() {
-
+	resetDeliveryDetails: function() {
 		this.set('deliveryDetails.company', null);
 		this.set('deliveryDetails.name', null);
 		this.set('deliveryDetails.address', null);
 		this.set('deliveryDetails.postalCode', null);
 		this.set('deliveryDetails.city', null);
-
 	},
 
 	resetInvoicingDetails: function() {
-
 		this.set('invoicingDetails.name', null);
 		this.set('invoicingDetails.company', null);
 		this.set('invoicingDetails.address', null);
 		this.set('invoicingDetails.postalCode', null);
 		this.set('invoicingDetails.city', null);
 		this.set('invoicingDetails.customerId', null);
-
 	},
 
 
@@ -214,9 +206,14 @@ export default Ember.Controller.extend({
 
 		this.resetOrderDetails();
 		this.resetCustomerDetails();
-		this.resetDeliverDetails();
+		this.resetDeliveryDetails();
 		this.resetInvoicingDetails();
 
 		this.transitionToRoute('home.step1');
-	}
+	},
+
+  orderAnother: function() {
+    this.resetOrderDetails();
+    this.transitionToRoute('home.step2');
+  }
 });

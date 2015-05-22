@@ -48,10 +48,12 @@ export default Ember.Controller.extend({
     //  - Customer type is Sahlgrenska, Company or Others, or university if book
     //  - Order type is billable
     isInvoicingAvaliable: Ember.computed('selectedOrderType', 'selectedCustomerType', 'isBillable', 'isCustomerTypeSet', function () {
+      var isInvoicable = null;
+
       if (this.get('selectedOrderType.identifier') === 'book') {
-        var isInvoicable = (this.get('selectedCustomerType.identifier') === 'univ' || this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
+        isInvoicable = (this.get('selectedCustomerType.identifier') === 'univ' || this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
       } else {
-        var isInvoicable = (this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
+        isInvoicable = (this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
       }
       return (this.get('isBillable') && isInvoicable && this.get('isCustomerTypeSet'));
     }),
@@ -180,14 +182,14 @@ export default Ember.Controller.extend({
       return ((this.get('selectedCustomerType.identifier') === 'univ') ||
               (this.get('selectedCustomerType.identifier') === 'stud') ||
               (this.get('selectedCustomerType.identifier') === 'priv') ||
-              (this.get('selectedCustomerType.identifier') === 'dist'))
+              (this.get('selectedCustomerType.identifier') === 'dist'));
     }),
     // Bool to check whether library card number field is mandatory or not
     isLibraryCardNumberMandatory: Ember.computed('selectedCustomerType', function() {
       return ((this.get('selectedCustomerType.identifier') === 'univ') ||
               (this.get('selectedCustomerType.identifier') === 'stud') ||
               (this.get('selectedCustomerType.identifier') === 'priv') ||
-              (this.get('selectedCustomerType.identifier') === 'dist'))
+              (this.get('selectedCustomerType.identifier') === 'dist'));
     }),
     // Bool to check if library card number is filled in
     isLibraryCardNumberValid: Ember.computed('isLibraryCardNumberMandatory', 'customerDetails.libraryCardNumber', function() {
@@ -238,7 +240,6 @@ export default Ember.Controller.extend({
         return true;
       }
     }),
-
 
 
     // Customer ID
@@ -330,12 +331,14 @@ export default Ember.Controller.extend({
 
   	actions: {
   		back: function() {
+        this.transitionToRoute('home.step2');
+        /*
   			if (this.get("selectedOrderType")) {
   				var selectedOrderType = this.get("selectedOrderType");
   				var routeStr = "home.step2." + selectedOrderType.identifier;
-  				this.transitionTo(routeStr);
+  				this.transitionToRoute(routeStr);
   			}
-
+        */
   		}
   	}
 });

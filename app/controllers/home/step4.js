@@ -159,13 +159,14 @@ export default Ember.Controller.extend({
       }).then(function(response) {
         Ember.$("body").removeClass("loading");
         var result = {};
-        result.orderNumber = response.order.order_number;
+        result.id = response.order.order_number;
         that.transitionToRoute('home.step5', result);
       },
       function(error) {
         Ember.$("body").removeClass("loading");
         var result = {};
         result.error = error;
+        result.id = 'error';
         that.transitionToRoute('home.step5', result);
       });
     }
