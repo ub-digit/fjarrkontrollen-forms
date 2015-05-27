@@ -140,12 +140,10 @@ export default Ember.Controller.extend({
           x_account:                          this.get('controllers.application.customerDetails.xAccount'),
 
           delivery_address:                   this.get('controllers.application.deliveryDetails.address'),
+          delivery_box:                       this.get('controllers.application.deliveryDetails.box'),
           delivery_postal_code:               this.get('controllers.application.deliveryDetails.postalCode'),
           delivery_city:                      this.get('controllers.application.deliveryDetails.city'),
-
-          // To Add
-          // deliveryDetails.box
-          // deliveryDetails.comment
+          delivery_comments:                  this.get('controllers.application.deliveryDetails.comment'),
 
           invoicing_name:                     this.get('controllers.application.invoicingDetails.name'),
           invoicing_company:                  this.get('controllers.application.invoicingDetails.company'),
