@@ -6,22 +6,29 @@
 
 <table class="table table-striped">
   <tbody>
+    {{#if controllers.application.deliveryDetails.box}}
     <tr>
-      <td>Företag</td>
-      <td>{{controllers.application.deliveryDetails.company}}</td>
+      <td>{{t 'home.deliveryDetails.box'}}</td>
+      <td>{{controllers.application.deliveryDetails.box}}</td>
     </tr>
     <tr>
-      <td>Namn</td>
-      <td>{{controllers.application.deliveryDetails.name}}</td>
+      <td>{{t 'home.deliveryDetails.comment'}}</td>
+      <td>{{controllers.application.deliveryDetails.comment}}</td>
     </tr>
+    {{else}}
     <tr>
-      <td>Gatuadress/Box</td>
+      <td>{{t 'home.deliveryDetails.address'}}</td>
       <td>{{controllers.application.deliveryDetails.address}}</td>
     </tr>
     <tr>
-      <td>Ort</td>
+      <td>{{t 'home.deliveryDetails.postalCode'}}</td>
+      <td>{{controllers.application.deliveryDetails.postalCode}}</td>
+    </tr>
+    <tr>
+      <td>{{t 'home.deliveryDetails.city'}}</td>
       <td>{{controllers.application.deliveryDetails.city}}</td>
     </tr>
+    {{/if}}    
   </tbody>
 </table>
 

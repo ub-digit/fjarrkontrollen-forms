@@ -54,102 +54,102 @@ export default {
 				department: 'Department',
 				unit: 'Unit',
 				address: 'Address',
-				postalCode: 'Postnummer',
-				city: 'Ort',
-				libraryCardNumber: 'Lånekortsnummer',
-				xAccount: 'xkonto'
+				postalCode: 'Postal code',
+				city: 'City',
+				libraryCardNumber: 'Library card number',
+				xAccount: 'x-account'
 			},
 			deliveryDetails: {
 				address: 'Address/box',
-				postalCode: 'Postnummer',
-				city: 'Ort',
+				postalCode: 'Postal code',
+				city: 'City',
 				box: 'Box',
-				comment: 'Kommentar, (tex. tillfällig adress)'
+				comment: 'Comment, (eg. temporary address)'
 			},
 			invoicingDetails: {
-				name: 'Namn',
-				company: 'Organisation/företag',
+				name: 'Name',
+				company: 'Organisation/company',
 				address: 'Address/box',
-				postalCode: 'Postnummer',
-				city: 'Ort',
-				customerId: 'Beställar-ID'
+				postalCode: 'Postal code',
+				city: 'City',
+				customerId: 'Purchase ID'
 			},
    		step1: {
-				header: 'Typ och bibliotek',
-   			typeHeader: 'Välj vad vill du beställa',
-        locationHeader: 'Välj bibliotek',
-   			nextBtn: 'Nästa',
+				header: 'Order and library',
+   			typeHeader: 'What do you want to order',
+        locationHeader: 'Select library to order from',
+   			nextBtn: 'Next',
    		},
    		step2: {
 				article: {
-					header: 'Artikelkopia',
-					price: 'Kostnad: 80:- (gratis för anställda vid GU, företag 160:-)',
-					subHeader1: 'Ange PubMed ID...',
-					subHeader2: '...eller fyll i uppgifterna:',
-					getPubMedBtn: 'Hämta',
-					pubMedError: 'Hittade ingen artikel med angivet id i PubMed.',
+					header: 'Copy of article',
+					price: 'Charge: 80 SEK (no charge for GU staff, charge for companies 160 SEK)',
+					subHeader1: 'Enter a PubMed ID...',
+					subHeader2: '...or enter the details:',
+					getPubMedBtn: 'Fetch',
+					pubMedError: 'Could not find an article with the entered PubMed ID.',
 				},
 				book: {
-					header: 'Bok',
-					outsideNordicsHelpText: 'Kostnad 200:- (företag 400:-)',
+					header: 'Book',
+					outsideNordicsHelpText: 'Charge: 200 SEK (charge for companies 400:-)',
 				},
 				chapter: {
-					header: 'Kopia av bokkapitel',
-					price: 'Kostnad: 80:- (gratis för anställda vid GU)',
+					header: 'Copy of book chapter',
+					price: 'Charge: 80:- (no charge for GU staff)',
 				},
 				score: {
-					header: 'Musiktryck',
-					publicationTypeHelpText: '(partitur, klaverutdrag, orkesterstämmor, etc)'
+					header: 'Musical score',
+					publicationTypeHelpText: '(scores, sheet music, orchestral parts, etc)'
 				},
 				microfilm: {
-					header: 'Mikrofilmad dagstidning'
+					header: 'Microfilmed newspaper'
 				},
-				header: 'Beställningsuppgifter',
-				otherDetailsText: 'Övriga uppgifter om beställningen',
-				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare',
-				nextBtn: 'Nästa',
-				prevBtn: 'Bakåt'
+				header: 'Order details',
+				otherDetailsText: 'Additional details about the order',
+				mandatoryText: '* Mandatory fields must be filled in before you can proceed',
+				nextBtn: 'Next',
+				prevBtn: 'Back'
    		},
    		step3: {
-				header: 'Dina uppgifter',
-				customerTypeHeader: 'Jag är...',
-				customerTypePrompt: 'Välj kundkategori',
-				customerDetailsSubheader: 'Fyll i dina uppgifter',
-				deliveryOptionsSubheader: 'Leveransalternativ',
-				deliveryMethodPrompt: 'Välj leveranssätt:',
-				pickupInfoText: 'Beställningen hämtas på',
-				deliveryDetailsSubheader: 'Leveransuppgifter',
-				invoicingDetailsSubheader: 'Faktureringsuppgifter',
-   			nextBtn: 'Nästa',
-   			prevBtn: 'Bakåt',
-				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
+				header: 'Your personal details',
+				customerTypeHeader: 'I am a...',
+				customerTypePrompt: 'Choose customer category',
+				customerDetailsSubheader: 'Fill in your details',
+				deliveryOptionsSubheader: 'Delivery options',
+				deliveryMethodPrompt: 'Choose a delivery option:',
+				pickupInfoText: 'The order will be picked up at',
+				deliveryDetailsSubheader: 'Delivery details',
+				invoicingDetailsSubheader: 'Invoicing details',
+				nextBtn: 'Next',
+				prevBtn: 'Back',
+				mandatoryText: '* Mandatory fields must be filled in before you can proceed'
    		},
    		step4: {
-				header: 'Summering',
-				orderDetailsSubheader: 'Beställningsuppgifter',
-				yes: 'Ja',
-				no: 'Nej',
-				customerDetailsSubheader: 'Personuppgifter',
-				deliveryOptionsSubheader: 'Leveransalternativ',
-				invoicingDetailsSubheader: 'Faktureringsuppgifter',
-				shippingInfoText: 'Skickas till:',
-				pickupInfoText: 'Hämtas på',
-   			nextBtn: 'Skicka beställning',
-   			prevBtn: 'Bakåt'
+				header: 'Summary',
+				orderDetailsSubheader: 'Order details',
+				yes: 'Yes',
+				no: 'No',
+				customerDetailsSubheader: 'Personal details',
+				deliveryOptionsSubheader: 'Delivery details',
+				invoicingDetailsSubheader: 'Invoicing details',
+				shippingInfoText: 'Will be sent to:',
+				pickupInfoText: 'Pickup at',
+   			nextBtn: 'Submit order',
+   			prevBtn: 'Back'
    		},
 			step5: {
-				header: 'Bekräftelse',
-				confirmationHeader: 'Tack för din beställning!',
-				confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
-				startOver: 'Börja om med en ny beställning',
-				errorHeader: 'Något gick fel',
-				errorMessage: 'Det gick ej att genomföra din beställning. Försök senare.',
-				back: 'Tillbaka',
-				orderAnotherArticle: 'Beställ en artikel till',
-				orderAnotherBook: 'Beställ en bok till',
-				orderAnotherChapter: 'Beställ en kapitelkopia till',
-				orderAnotherScore: 'Beställ ett musiktryck till',
-				orderAnotherMicrofilm: 'Beställ en mikrofilm till'
+				header: 'Confirmation',
+				confirmationHeader: 'Thank you for your order!',
+				confirmationMessage: 'Your order has been recieved and has been assigned the following order number:',
+				startOver: 'Start over with a new order',
+				errorHeader: 'Something went wrong',
+				errorMessage: 'It was not possible to process your order. Please try again later.',
+				back: 'Back',
+				orderAnotherArticle: 'Order one more article',
+				orderAnotherBook: 'Order one more book',
+				orderAnotherChapter: 'Order one more book chapter',
+				orderAnotherScore: 'Order one more musical score',
+				orderAnotherMicrofilm: 'Order one more microfilm'
 			}
   	}
 };

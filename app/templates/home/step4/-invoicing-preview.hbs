@@ -7,7 +7,7 @@
       <td>{{t 'home.invoicingDetails.customerId'}}</td>
       <td>{{controllers.application.invoicingDetails.customerId}}</td>
     </tr>
-    {{/if}}
+    {{else}}
     <tr>
       <td>{{t 'home.invoicingDetails.company'}}</td>
       <td>{{controllers.application.invoicingDetails.company}}</td>
@@ -28,6 +28,7 @@
       <td>{{t 'home.invoicingDetails.city'}}</td>
       <td>{{controllers.application.invoicingDetails.city}}</td>
     </tr>
+    {{/if}}
   </tbody>
 </table>
 {{/if}}
