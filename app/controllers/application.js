@@ -23,7 +23,6 @@ export default Ember.Controller.extend({
 			isbn: null,
 			publicationYear: null,
 			outsideNordics: false,
-			allowCopy: false,
 			notValidAfter: null,
 			comment: null
 		},
@@ -56,7 +55,6 @@ export default Ember.Controller.extend({
 	customerDetails: {
 		name: null,
 		emailAddress: null,
-		phoneNumber: null,
 		organisation: null,
 		department: null,
 		unit: null,
@@ -68,11 +66,11 @@ export default Ember.Controller.extend({
 	},
 
 	deliveryDetails: {
-		company: null,
-		name: null,
 		address: null,
 		postalCode: null,
-		city: null
+		city: null,
+    box: null,
+    comment: null
 	},
 
 	invoicingDetails: {
@@ -84,7 +82,7 @@ export default Ember.Controller.extend({
 		customerId: null
 	},
 
-    orderPath: "Web",
+  orderPath: "Web",
 
 	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', 'orderDetails.book.allowCopy', function() {
 		if (
@@ -92,12 +90,12 @@ export default Ember.Controller.extend({
 			(this.get('selectedOrderType.identifier') === 'microfilm') ||
 
 			// Check if order type is book, which is always without charged...
-			( (this.get('selectedOrderType.identifier') === 'book') &&
+			(
+        (this.get('selectedOrderType.identifier') === 'book') &&
 
 			// ... as long as neither of outside nordics or copies accepted are checked
-			!(
-				this.get('orderDetails.book.outsideNordics') ||
-				this.get('orderDetails.book.allowCopy')) )
+			!(this.get('orderDetails.book.outsideNordics'))
+      )
 		) {
 			return false;
 		} else {
@@ -116,7 +114,7 @@ export default Ember.Controller.extend({
 	isShippable: Ember.computed('selectedOrderType', function() {
 
 		// Check if order type is of a kind that never will be shipped
-		if (this.get('selectedOrderType.identifier') === 'book' || this.get('selectedOrderType.identifier') === 'microfilm') {
+		if (this.get('selectedOrderType.identifier') === 'book' || this.get('selectedOrderType.identifier') === 'microfilm' || this.get('selectedOrderType.identifier') === 'score') {
 			return false;
 		} else {
 			return true;
@@ -140,7 +138,6 @@ export default Ember.Controller.extend({
 		this.set('orderDetails.book.isbn', null);
 		this.set('orderDetails.book.publicationYear', null);
 		this.set('orderDetails.book.outsideNordics', false);
-		this.set('orderDetails.book.allowCopy', false);
 		this.set('orderDetails.book.notValidAfter', null);
 		this.set('orderDetails.book.comment', null);
 
@@ -172,7 +169,6 @@ export default Ember.Controller.extend({
 	resetCustomerDetails: function() {
 		this.set('customerDetails.name', null);
 		this.set('customerDetails.emailAddress', null);
-		this.set('customerDetails.phoneNumber', null);
 		this.set('customerDetails.organisation', null);
 		this.set('customerDetails.department', null);
 		this.set('customerDetails.unit', null);
@@ -181,11 +177,11 @@ export default Ember.Controller.extend({
 	},
 
 	resetDeliveryDetails: function() {
-		this.set('deliveryDetails.company', null);
-		this.set('deliveryDetails.name', null);
 		this.set('deliveryDetails.address', null);
 		this.set('deliveryDetails.postalCode', null);
 		this.set('deliveryDetails.city', null);
+    this.set('deliveryDetails.box', null);
+    this.set('deliveryDetails.comment', null);
 	},
 
 	resetInvoicingDetails: function() {

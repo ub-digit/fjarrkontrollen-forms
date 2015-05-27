@@ -68,7 +68,7 @@ export default Ember.Controller.extend({
           authors =                           this.get('controllers.application.orderDetails.book.authors');
           issn_isbn =                         this.get('controllers.application.orderDetails.book.isbn');
           publication_year =                  this.get('controllers.application.orderDetails.book.publicationYear');
-          photocopies_if_loan_not_possible =  this.get('controllers.application.orderDetails.book.outsideNordics');
+          //photocopies_if_loan_not_possible =  this.get('controllers.application.orderDetails.book.outsideNordics');
           order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.allowCopy');
           not_valid_after =                   this.get('controllers.application.orderDetails.book.notValidAfter');
           comments =                          this.get('controllers.application.orderDetails.book.comment');
@@ -124,7 +124,7 @@ export default Ember.Controller.extend({
           pages:                              pages,
           not_valid_after:                    not_valid_after,
           comments:                           comments,
-          photocopies_if_loan_not_possible:   photocopies_if_loan_not_possible,
+          //photocopies_if_loan_not_possible:   photocopies_if_loan_not_possible,
           order_outside_scandinavia:          order_outside_scandinavia,
 
           publication_type:                   publication_type,
@@ -132,20 +132,20 @@ export default Ember.Controller.extend({
 
           name:                               this.get('controllers.application.customerDetails.name'),
           email_address:                      this.get('controllers.application.customerDetails.emailAddress'),
-          phone_number:                       this.get('controllers.application.customerDetails.phoneNumber'),
+          //phone_number:                       this.get('controllers.application.customerDetails.phoneNumber'),
           company1:                           this.get('controllers.application.customerDetails.organisation'),
           company2:                           this.get('controllers.application.customerDetails.department'),
           company3:                           this.get('controllers.application.customerDetails.unit'),
           library_card_number:                this.get('controllers.application.customerDetails.libraryCardNumber'),
           x_account:                          this.get('controllers.application.customerDetails.xAccount'),
 
-
-          delivery_company:                   this.get('controllers.application.deliveryDetails.company'),
-          delivery_name:                      this.get('controllers.application.deliveryDetails.name'),
           delivery_address:                   this.get('controllers.application.deliveryDetails.address'),
           delivery_postal_code:               this.get('controllers.application.deliveryDetails.postalCode'),
           delivery_city:                      this.get('controllers.application.deliveryDetails.city'),
 
+          // To Add
+          // deliveryDetails.box
+          // deliveryDetails.comment
 
           invoicing_name:                     this.get('controllers.application.invoicingDetails.name'),
           invoicing_company:                  this.get('controllers.application.invoicingDetails.company'),

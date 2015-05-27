@@ -1,14 +1,13 @@
 export default {
 	home: {
-   		crumbtrail: 'crumbtrail',
 			orderDetails: {
 				article: {
 					articleTitle: 'Artikelns titel',
 					journalTitle: 'Tidskriftstitel',
 					authors: 'Författare',
 					issn: 'ISSN',
-					publicationYear: 'Publikationsår',
-					issue: 'Utgåva',
+					publicationYear: 'År',
+					issue: 'Nummer',
 					volume: 'Volym',
 					pages: 'Sidor',
 					notValidAfter: 'Ej aktuell efter',
@@ -16,20 +15,19 @@ export default {
 				},
 				book: {
 					bookTitle: 'Titel',
-					authors: 'Författare',
+					authors: 'Författare/utgivare',
 					isbn: 'ISBN',
-					publicationYear: 'Publikationsår',
+					publicationYear: 'År',
 					outsideNordics: 'Godkänn lån utanför Norden',
-					allowCopy: 'Jag vill ha kopior om boken ej går att låna',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
 				},
 				chapter: {
 					chapterTitle: 'Kapiteltitel',
 					bookTitle: 'Boktitel',
-					authors: 'Författare',
+					authors: 'Författare/utgivare',
 					isbn: 'ISBN',
-					publicationYear: 'Publiceringsår',
+					publicationYear: 'År',
 					pages: 'Sidor',
 					notValidAfter: 'Ej aktuell efter',
 					comment: 'Kommentar'
@@ -56,18 +54,18 @@ export default {
 				organisation: 'Organisation/företag',
 				department: 'Institution',
 				unit: 'Avdelning',
-				address: 'Adress',
+				address: 'Address',
 				postalCode: 'Postnummer',
 				city: 'Ort',
 				libraryCardNumber: 'Lånekortsnummer',
 				xAccount: 'xkonto'
 			},
 			deliveryDetails: {
-				company: 'Organisation/företag',
-				name: 'Namn',
-				address: 'Adress/box',
+				address: 'Address/box',
 				postalCode: 'Postnummer',
-				city: 'Ort'
+				city: 'Ort',
+				box: 'Box',
+				comment: 'Kommentar, (tex. tillfällig adress)'
 			},
 			invoicingDetails: {
 				name: 'Namn',
@@ -78,6 +76,7 @@ export default {
 				customerId: 'Beställar-ID'
 			},
    		step1: {
+				header: 'Typ och bibliotek',
    			typeHeader: 'Välj vad vill du beställa',
         locationHeader: 'Välj bibliotek',
    			nextBtn: 'Nästa',
@@ -85,6 +84,7 @@ export default {
    		step2: {
 				article: {
 					header: 'Artikelkopia',
+					price: 'Kostnad: 80:- (gratis för anställda vid GU, företag 160:-)',
 					subHeader1: 'Ange PubMed ID...',
 					subHeader2: '...eller fyll i uppgifterna:',
 					getPubMedBtn: 'Hämta',
@@ -92,10 +92,11 @@ export default {
 				},
 				book: {
 					header: 'Bok',
-					outsideNordicsHelpText: 'Om boken inte finns tillgänglig inom norden kan den eventuellt lånas in från ett bibliotek utanför norden, mote en avgift.',
+					outsideNordicsHelpText: 'Kostnad 200:- (företag 400:-)',
 				},
 				chapter: {
-					header: 'Kopia av bokkapitel'
+					header: 'Kopia av bokkapitel',
+					price: 'Kostnad: 80:- (gratis för anställda vid GU)',
 				},
 				score: {
 					header: 'Musiktryck',
@@ -104,15 +105,16 @@ export default {
 				microfilm: {
 					header: 'Mikrofilmad dagstidning'
 				},
+				header: 'Beställningsuppgifter',
 				otherDetailsText: 'Övriga uppgifter om beställningen',
 				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare',
 				nextBtn: 'Nästa',
 				prevBtn: 'Bakåt'
    		},
    		step3: {
-				header: 'Beställaruppgifter',
-				customerTypeHeader: 'Kundkategori',
-				customerTypePrompt: 'Välj kundkategori:',
+				header: 'Dina uppgifter',
+				customerTypeHeader: 'Jag är...',
+				customerTypePrompt: 'Välj kundkategori',
 				customerDetailsSubheader: 'Fyll i dina uppgifter',
 				deliveryOptionsSubheader: 'Leveransalternativ',
 				deliveryMethodPrompt: 'Välj leveranssätt:',
@@ -137,19 +139,18 @@ export default {
    			prevBtn: 'Bakåt'
    		},
 			step5: {
+				header: 'Bekräftelse',
 				confirmationHeader: 'Tack för din beställning!',
 				confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
-				orderOneMore: 'Gör en till beställning',
-				errorHeader: 'Fel!',
+				startOver: 'Börja om med en ny beställning',
+				errorHeader: 'Något gick fel',
 				errorMessage: 'Det gick ej att genomföra din beställning. Försök senare.',
 				back: 'Tillbaka',
-				orderAnotherArticle: '',
-				orderAnotherBook: '',
-				orderAnotherChapter: '',
-				orderAnotherScore: '',
-				orderAnotherMicrofilm: ''
+				orderAnotherArticle: 'Beställ en artikel till',
+				orderAnotherBook: 'Beställ en bok till',
+				orderAnotherChapter: 'Beställ en kapitelkopia till',
+				orderAnotherScore: 'Beställ ett musiktryck till',
+				orderAnotherMicrofilm: 'Beställ en mikrofilm till'
 			}
   	}
-
-
 };

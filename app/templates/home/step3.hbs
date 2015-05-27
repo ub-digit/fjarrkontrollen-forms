@@ -48,15 +48,6 @@
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="phone">{{t 'home.customerDetails.phoneNumber'}}</label>
-					{{input type='text' classBinding=":form-control" value=customerDetails.phoneNumber}}
-				</div>
-			</div>
-		</div>
-
 		{{#if showDepartment}}
 		<div class="row">
 			<div class="col-xs-12">
@@ -83,8 +74,8 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.customerDetails.address'}}</label>
-					{{input type='text' classBinding=":form-control" value=customerDetails.address}}
+					<label for="department">{{t 'home.customerDetails.Address'}}</label>
+					{{input type='text' classBinding=":form-control" value=customerDetails.Address}}
 				</div>
 			</div>
 		</div>
@@ -169,13 +160,14 @@
 
 		<!-- div deliveryInfoForm             : start                                 -->
 		{{#if showDeliveryInfoForm}}
-		<h4>{{t 'home.step3.deliveryDetailsSubheader'}}{{#if areDeliveryFieldsMandatory}}*{{/if}}</h4>
+		<h4>{{t 'home.step3.deliveryDetailsSubheader'}}</h4>
 
+		{{#if showDeliveryAddressFields}}
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.company'}}</label>
-					{{input type='text' classBinding=":form-control" value=deliveryDetails.company}}
+					<label for="department">{{t 'home.deliveryDetails.Address'}}{{#if areDeliveryAddressFieldsMandatory}}*{{/if}}</label>
+					{{input type='text' classBinding=":form-control" value=deliveryDetails.Address}}
 				</div>
 			</div>
 		</div>
@@ -183,25 +175,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.name'}}</label>
-					{{input type='text' classBinding=":form-control" value=deliveryDetails.name}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.address'}}</label>
-					{{input type='text' classBinding=":form-control" value=deliveryDetails.address}}
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.postalCode'}}</label>
+					<label for="department">{{t 'home.deliveryDetails.postalCode'}}{{#if areDeliveryAddressFieldsMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.postalCode}}
 				</div>
 			</div>
@@ -210,34 +184,53 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.city'}}</label>
+					<label for="department">{{t 'home.deliveryDetails.city'}}{{#if areDeliveryAddressFieldsMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.city}}
 				</div>
 			</div>
 		</div>
+		{{/if}}
+		{{#if showDeliveryBoxField}}
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="form-group">
+					<label for="box">{{t 'home.deliveryDetails.box'}}{{#if isDeliveryBoxFieldMandatory}}*{{/if}}</label>
+					{{input type='text' classBinding=":form-control" value=deliveryDetails.box}}
+				</div>
+			</div>
+		</div>
+		<div class="row">
+		  <div class="col-xs-12">
+		    <div {{bind-attr class=":form-group"}}>
+		      <label class="control-label">{{t 'home.deliveryDetails.comment'}}</label>
+		      {{textarea classBinding=":form-control" value=controllers.application.deliveryDetails.comment}}
+		    </div>
+		  </div>
+		</div> <!-- end row -->
+		{{/if}}
 		<!-- div deliveryInfoForm             : end                                   -->
 
 		{{/if }}
 
 		<!-- billingInfoForm start -->
 		{{#if isInvoicingAvaliable}}
-		<h4>{{t 'home.step3.invoicingDetailsSubheader'}}*</h4>
+		<h4>{{t 'home.step3.invoicingDetailsSubheader'}}</h4>
 
 		{{#if showCustomerId}}
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="order-id">{{t 'home.invoicingDetails.customerId'}}</label>
+					<label for="order-id">{{t 'home.invoicingDetails.customerId'}}{{#if isCustomerIdMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.customerId}}
 				</div>
 			</div>
 		</div>
 		{{/if}}
-
+		{{#if showInvoicingAddressFields}}
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="company">{{t 'home.invoicingDetails.company'}}</label>
+					<label for="company">{{t 'home.invoicingDetails.company'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.company}}
 				</div>
 			</div>
@@ -246,7 +239,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.invoicingDetails.name'}}</label>
+					<label for="department">{{t 'home.invoicingDetails.name'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.name}}
 				</div>
 			</div>
@@ -255,8 +248,8 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="street-adress">{{t 'home.invoicingDetails.address'}}</label>
-					{{input type='text' classBinding=":form-control" value=invoicingDetails.address}}
+					<label for="street-Address">{{t 'home.invoicingDetails.Address'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
+					{{input type='text' classBinding=":form-control" value=invoicingDetails.Address}}
 				</div>
 			</div>
 		</div>
@@ -264,7 +257,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="postalcode">{{t 'home.invoicingDetails.postalCode'}}</label>
+					<label for="postalcode">{{t 'home.invoicingDetails.postalCode'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.postalCode}}
 				</div>
 			</div>
@@ -273,11 +266,12 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="city">{{t 'home.invoicingDetails.city'}}</label>
+					<label for="city">{{t 'home.invoicingDetails.city'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.city}}
 				</div>
 			</div>
 		</div>
+		{{/if}}
 
 		{{/if }}
 		<div class="row">

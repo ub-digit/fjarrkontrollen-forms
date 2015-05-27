@@ -5,13 +5,13 @@ export default Ember.Controller.extend({
   orderDetailsBinding: 'controllers.application.orderDetails',
 
   isFormComplete: function() {
-    if (this.get('orderDetails.chapter.chapterTitle') && this.get('orderDetails.chapter.bookTitle') && this.get('orderDetails.chapter.authors')) {
+    if (this.get('orderDetails.chapter.chapterTitle') && this.get('orderDetails.chapter.bookTitle')) {
       return true;
     }
     else {
       return false;
     }
-  }.property('orderDetails.chapter.chapterTitle','orderDetails.chapter.bookTitle', 'orderDetails.chapter.authors'),
+  }.property('orderDetails.chapter.chapterTitle','orderDetails.chapter.bookTitle'),
 
   actions: {
 		back: function() {

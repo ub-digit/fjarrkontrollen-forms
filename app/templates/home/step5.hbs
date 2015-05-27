@@ -23,8 +23,8 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 next-prev">
-        <button {{action 'resetForm' }} {{ bind-attr class=":btn :btn-primary isDisabled:disabled"}}>{{t 'home.step5.orderOneMore'}}</button>
-				<button {{action 'orderAnother' }} {{ bind-attr class=":btn :btn-primary"}}>{{orderAnotherText}}</button>
+		<button {{action 'orderAnother' }} {{ bind-attr class=":btn :btn-primary"}}>{{orderAnotherText}}</button>		
+    <button {{action 'resetForm' }} {{ bind-attr class=":btn :btn-link :pull-right"}}>{{t 'home.step5.startOver'}}</button>
 	</div>
 </div>
 {{/if}}

@@ -1,5 +1,5 @@
 <h3>{{t 'home.step2.article.header'}}</h3>
-
+<p>{{t 'home.step2.article.price'}}</p>
 <h4>{{t 'home.step2.article.subHeader1'}}</h4>
 <div class="row">
   <div class="col-xs-12">
@@ -42,7 +42,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group"}}>
-      <label class="control-label">{{t 'home.orderDetails.article.journalTitle'}}</label>
+      <label class="control-label">{{t 'home.orderDetails.article.journalTitle'}}*</label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.journalTitle}}
     </div>
   </div>
@@ -115,13 +115,16 @@
     </div>
   </div>
 </div> <!-- end row -->
+
 <div class="row">
   <div class="col-xs-12 mandatory-text">
     <div class="pull-right">
       <p>{{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
-</div> <!-- end row -->
+</div>
+
+
 
 <div class="row">
   <div class="col-xs-12 next-prev">
