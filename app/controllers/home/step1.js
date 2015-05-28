@@ -8,10 +8,8 @@ export default Ember.Controller.extend({
 		switch (this.get('lang')) {
 			case 'sv':
 				return 'content.title_sv';
-				break;
 			default:
-				return 'content.title_en';
-				break;
+				return 'content.title_en';				
 		}
 
 	}),

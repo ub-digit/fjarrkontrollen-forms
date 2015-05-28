@@ -22,10 +22,8 @@ export default Ember.Controller.extend({
   		switch (this.get('lang')) {
   			case 'sv':
   				return 'content.title_sv';
-  				break;
   			default:
   				return 'content.title_en';
-  				break;
   		}
     }),
 
@@ -33,10 +31,8 @@ export default Ember.Controller.extend({
       switch (this.get('lang')) {
         case 'sv':
           return this.get('controllers.application.selectedLocation.title_sv');
-          break;
         default:
-          return this.get('controllers.application.selectedLocation.title_en');
-          break;
+          return this.get('controllers.application.selectedLocation.title_en');          
       }
     }),
 

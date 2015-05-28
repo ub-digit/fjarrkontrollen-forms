@@ -13,10 +13,8 @@ export default Ember.Controller.extend({
     switch (this.get('lang')) {
       case 'sv':
         return this.get('controllers.application.selectedLocation.title_sv');
-        break;
       default:
         return this.get('controllers.application.selectedLocation.title_en');
-        break;
     }
   }),
 
@@ -45,7 +43,7 @@ export default Ember.Controller.extend({
       var pages =                             null;
       var not_valid_after =                   null;
       var comments =                          null;
-      var photocopies_if_loan_not_possible =  null;
+      //var photocopies_if_loan_not_possible =  null;
       var order_outside_scandinavia =         null;
       var publication_type =                  null;
       var period =                            null;
@@ -112,7 +110,7 @@ export default Ember.Controller.extend({
           customer_type:                      this.get('controllers.application.selectedCustomerType.identifier'),
           form_library:                       this.get('controllers.application.selectedLocation.identifier'), // Change?
           email_confirmation:                 true, // Always set to true
-          form_lang:                          lang,
+          form_lang:                          this.get('lang'),
           delivery_place:                     delivery_place,
           order_path:                         this.get('controllers.application.orderPath'),
 
