@@ -9,8 +9,8 @@ Ember.View.reopen(Ember.I18n.TranslateableAttributes);
 export default {
   name: 'locale-init',
     initialize: function(container) {
-      //var rootElement = Ember.$(ENV.APP.rootElement);
-      var lang; // = rootElement.data().lang;
+      var rootElement = Ember.$(ENV.APP.rootElement);
+      var lang = rootElement.data().lang;
 
       if (!lang) {
         lang = ENV.APP.defaultLocale;

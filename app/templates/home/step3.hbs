@@ -8,7 +8,7 @@
 				{{view "select" class="form-control"
 				content=customerTypes
 				optionValuePath="content.id"
-				optionLabelPath="content.title"
+				optionLabelPath=optionLabelPath
 				selection=selectedCustomerType
 				prompt=(t 'home.step3.customerTypePrompt')
 				}}
@@ -23,7 +23,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div {{bind-attr class=":form-group"}}>
-					<label for="organization">{{t 'home.customerDetails.organisation'}}{{#if isOrganisationMandatory}}*{{/if}}</label>
+					<label for="organization">{{t 'home.customerDetails.organisation'}}{{#if isOrganisationMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.organisation}}
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="name">{{t 'home.customerDetails.name'}}*</label>
+					<label for="name">{{t 'home.customerDetails.name'}} <i class="fa fa-asterisk mandatory"></i></label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.name}}
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="email">{{t 'home.customerDetails.emailAddress'}}{{#if isEmailMandatory}}*{{/if}}</label>
+					<label for="email">{{t 'home.customerDetails.emailAddress'}}{{#if isEmailMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='email' classBinding=":form-control" value=customerDetails.emailAddress}}
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="institution">{{t 'home.customerDetails.department'}}{{#if isDepartmentMandatory}}*{{/if}}</label>
+					<label for="institution">{{t 'home.customerDetails.department'}}{{#if isDepartmentMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.department}}
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.customerDetails.unit'}}{{#if isUnitMandatory}}*{{/if}}</label>
+					<label for="department">{{t 'home.customerDetails.unit'}}{{#if isUnitMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.unit}}
 				</div>
 			</div>
@@ -107,7 +107,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="cardnumber">{{t 'home.customerDetails.libraryCardNumber'}}{{#if isLibraryCardNumberMandatory}}*{{/if}}</label>
+					<label for="cardnumber">{{t 'home.customerDetails.libraryCardNumber'}}{{#if isLibraryCardNumberMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.libraryCardNumber}}
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="xaccount">{{t 'home.customerDetails.xAccount'}}{{#if isXAccountMandatory}}*{{/if}}</label>
+					<label for="xaccount">{{t 'home.customerDetails.xAccount'}}{{#if isXAccountMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.xAccount}}
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 				{{view "select" class="form-control"
 				content=deliveryMethods
 				optionValuePath="content.id"
-				optionLabelPath="content.title"
+				optionLabelPath=optionLabelPath
 				selection=selectedDeliveryMethod
 				prompt=(t 'home.step3.deliveryMethodPrompt')
 				}}
@@ -152,7 +152,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="alert alert-info" role="alert">{{t 'home.step3.pickupInfoText'}} {{selectedLocation.title}}</div>
+				<div class="alert alert-info" role="alert">{{t 'home.step3.pickupInfoText'}} {{selectedLibraryNameString}}</div>
 			</div>
 		</div>
 		{{/if }}
@@ -166,7 +166,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.address'}}{{#if areDeliveryAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="department">{{t 'home.deliveryDetails.address'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.address}}
 				</div>
 			</div>
@@ -175,7 +175,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.postalCode'}}{{#if areDeliveryAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="department">{{t 'home.deliveryDetails.postalCode'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.postalCode}}
 				</div>
 			</div>
@@ -184,7 +184,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.deliveryDetails.city'}}{{#if areDeliveryAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="department">{{t 'home.deliveryDetails.city'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.city}}
 				</div>
 			</div>
@@ -194,7 +194,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="box">{{t 'home.deliveryDetails.box'}}{{#if isDeliveryBoxFieldMandatory}}*{{/if}}</label>
+					<label for="box">{{t 'home.deliveryDetails.box'}}{{#if isDeliveryBoxFieldMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.box}}
 				</div>
 			</div>
@@ -220,7 +220,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="order-id">{{t 'home.invoicingDetails.customerId'}}{{#if isCustomerIdMandatory}}*{{/if}}</label>
+					<label for="order-id">{{t 'home.invoicingDetails.customerId'}}{{#if isCustomerIdMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.customerId}}
 				</div>
 			</div>
@@ -230,7 +230,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="company">{{t 'home.invoicingDetails.company'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="company">{{t 'home.invoicingDetails.company'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.company}}
 				</div>
 			</div>
@@ -239,7 +239,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="department">{{t 'home.invoicingDetails.name'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="department">{{t 'home.invoicingDetails.name'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.name}}
 				</div>
 			</div>
@@ -248,7 +248,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="street-Address">{{t 'home.invoicingDetails.address'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="street-Address">{{t 'home.invoicingDetails.address'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.address}}
 				</div>
 			</div>
@@ -257,7 +257,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="postalcode">{{t 'home.invoicingDetails.postalCode'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="postalcode">{{t 'home.invoicingDetails.postalCode'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.postalCode}}
 				</div>
 			</div>
@@ -266,7 +266,7 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="form-group">
-					<label for="city">{{t 'home.invoicingDetails.city'}}{{#if areInvoicingAddressFieldsMandatory}}*{{/if}}</label>
+					<label for="city">{{t 'home.invoicingDetails.city'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.city}}
 				</div>
 			</div>
@@ -277,7 +277,7 @@
 		<div class="row">
 		  <div class="col-xs-12 mandatory-text">
 		    <div class="pull-right">
-		      <p>{{t 'home.step3.mandatoryText'}}</p>
+		      <p><i class="fa fa-asterisk mandatory"></i> {{t 'home.step3.mandatoryText'}}</p>
 		    </div>
 		  </div>
 		</div> <!-- end row -->

@@ -106,7 +106,7 @@ export default {
 				},
 				header: 'Order details',
 				otherDetailsText: 'Additional details about the order',
-				mandatoryText: '* Mandatory fields must be filled in before you can proceed',
+				mandatoryText: 'Mandatory fields must be filled in before you can proceed',
 				nextBtn: 'Next',
 				prevBtn: 'Back'
    		},
@@ -122,7 +122,7 @@ export default {
 				invoicingDetailsSubheader: 'Invoicing details',
 				nextBtn: 'Next',
 				prevBtn: 'Back',
-				mandatoryText: '* Mandatory fields must be filled in before you can proceed'
+				mandatoryText: 'Mandatory fields must be filled in before you can proceed'
    		},
    		step4: {
 				header: 'Summary',

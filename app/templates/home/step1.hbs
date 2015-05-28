@@ -5,7 +5,7 @@
 		{{view "select" class="form-control"
 		   content=controllers.application.orderTypes
 		   optionValuePath="content.identifier"
-		   optionLabelPath="content.title"
+		   optionLabelPath=optionLabelPath
 		   selection=controllers.application.selectedOrderType
 		   prompt=(t 'home.step1.typeHeader')
 		}}
@@ -18,7 +18,7 @@
 		{{view "select" class="form-control"
 		   content=controllers.application.locations
 		   optionValuePath="content.id"
-		   optionLabelPath="content.title"
+		   optionLabelPath=optionLabelPath
 		   selection=controllers.application.selectedLocation
 		   prompt=(t 'home.step1.locationHeader')
 		}}

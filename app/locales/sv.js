@@ -107,7 +107,7 @@ export default {
 				},
 				header: 'Beställningsuppgifter',
 				otherDetailsText: 'Övriga uppgifter om beställningen',
-				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare',
+				mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare',
 				nextBtn: 'Nästa',
 				prevBtn: 'Bakåt'
    		},
@@ -123,7 +123,7 @@ export default {
 				invoicingDetailsSubheader: 'Faktureringsuppgifter',
    			nextBtn: 'Nästa',
    			prevBtn: 'Bakåt',
-				mandatoryText: '* Obligatoriska fält måste fyllas i innan du kan gå vidare'
+				mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare'
    		},
    		step4: {
 				header: 'Summering',
@@ -144,7 +144,7 @@ export default {
 				confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
 				startOver: 'Börja om med en ny beställning',
 				errorHeader: 'Något gick fel',
-				errorMessage: 'Det gick ej att genomföra din beställning. Försök senare.',
+				errorMessage: 'Det gick ej att genomföra din beställning. Försök igen senare.',
 				back: 'Tillbaka',
 				orderAnotherArticle: 'Beställ en artikel till',
 				orderAnotherBook: 'Beställ en bok till',

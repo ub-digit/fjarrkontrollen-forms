@@ -9,20 +9,22 @@ export default Ember.Controller.extend({
     return 'home/step4/' + this.get('controllers.application.selectedOrderType.identifier');
   }),
 
+  selectedLibraryNameString: Ember.computed('lang', function() {
+    switch (this.get('lang')) {
+      case 'sv':
+        return this.get('controllers.application.selectedLocation.title_sv');
+        break;
+      default:
+        return this.get('controllers.application.selectedLocation.title_en');
+        break;
+    }
+  }),
+
   isDeliveryTypeShipping: Ember.computed.equal('controllers.application.selectedDeliveryMethod.identifier', 'send'),
 
   hasInvoicing: Ember.computed('invoicingDetails.name','invoicingDetails.company', 'invoicingDetails.address', 'invoicingDetails.postalCode', 'invoicingDetails.city', 'invoicingDetails.customerId', function() {
     return (this.get('invoicingDetails.name') || this.get('invoicingDetails.company') || this.get('invoicingDetails.address') || this.get('invoicingDetails.postalCode') || this.get('invoicingDetails.city') || this.get('invoicingDetails.customerId'));
   }),
-
-  getLocale: function() {
-    var application = this.container.lookup('application:main');
-    var local = application.get("locale");
-    if (!local) {
-      local = application.get('defaultLocale');
-    }
-    return local;
-  },
 
   actions: {
     back: function() {
@@ -110,7 +112,7 @@ export default Ember.Controller.extend({
           customer_type:                      this.get('controllers.application.selectedCustomerType.identifier'),
           form_library:                       this.get('controllers.application.selectedLocation.identifier'), // Change?
           email_confirmation:                 true, // Always set to true
-          form_lang:                          that.getLocale(),
+          form_lang:                          lang,
           delivery_place:                     delivery_place,
           order_path:                         this.get('controllers.application.orderPath'),
 

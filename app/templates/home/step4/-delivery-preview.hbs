@@ -28,12 +28,12 @@
       <td>{{t 'home.deliveryDetails.city'}}</td>
       <td>{{controllers.application.deliveryDetails.city}}</td>
     </tr>
-    {{/if}}    
+    {{/if}}
   </tbody>
 </table>
 
 {{else}}
 
-<p>{{t 'home.step4.pickupInfoText'}} {{controllers.application.selectedLocation.title}}</p>
+<p>{{t 'home.step4.pickupInfoText'}} {{selectedLibraryNameString}}</p>
 
 {{/if}}

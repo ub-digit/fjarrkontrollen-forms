@@ -17,6 +17,30 @@ export default Ember.Controller.extend({
     deliveryMethodsBinding: 'controllers.application.deliveryMethods',
     selectedDeliveryMethodBinding: 'controllers.application.selectedDeliveryMethod',
 
+
+    optionLabelPath: Ember.computed('lang', function() {
+  		switch (this.get('lang')) {
+  			case 'sv':
+  				return 'content.title_sv';
+  				break;
+  			default:
+  				return 'content.title_en';
+  				break;
+  		}
+    }),
+
+    selectedLibraryNameString: Ember.computed('lang', function() {
+      switch (this.get('lang')) {
+        case 'sv':
+          return this.get('controllers.application.selectedLocation.title_sv');
+          break;
+        default:
+          return this.get('controllers.application.selectedLocation.title_en');
+          break;
+      }
+    }),
+
+
     // Bool to check if customer type is set
     isCustomerTypeSet: Ember.computed.notEmpty('selectedCustomerType'),
 
