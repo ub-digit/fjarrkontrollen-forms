@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     var orderType = this.get("controllers.application.selectedOrderType");
     switch(orderType.identifier) {
       case 'article':
-        return Ember.I18n.t('home.step5.orderAnotherArticle');        
+        return Ember.I18n.t('home.step5.orderAnotherArticle');
       case 'book':
         return Ember.I18n.t('home.step5.orderAnotherBook');
       case 'chapter':
@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
         return Ember.I18n.t('home.step5.orderAnotherScore');
       case 'microfilm':
         return Ember.I18n.t('home.step5.orderAnotherMicrofilm');
-    };
+    }
 
 
   })

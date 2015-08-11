@@ -25,7 +25,7 @@ export default Ember.Route.extend(ResetScroll, {
       default:
         this.transitionTo('home.step1');
         break;
-    };
+    }
 
   },
 

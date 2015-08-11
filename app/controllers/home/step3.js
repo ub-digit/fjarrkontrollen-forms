@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
         case 'sv':
           return this.get('controllers.application.selectedLocation.title_sv');
         default:
-          return this.get('controllers.application.selectedLocation.title_en');          
+          return this.get('controllers.application.selectedLocation.title_en');
       }
     }),
 
@@ -134,7 +134,7 @@ export default Ember.Controller.extend({
     // Email
     // Bool to check whether email is mandatory or not
     isEmailMandatory: Ember.computed('selectedCustomerType', function() {
-      return !(this.get('selectedCustomerType.identifier') === 'priv');
+      return (this.get('selectedCustomerType.identifier') !== 'priv');
     }),
     // Bool to check if email is filled in
     //isEmailValid: Ember.computed.notEmpty('customerDetails.emailAddress'),

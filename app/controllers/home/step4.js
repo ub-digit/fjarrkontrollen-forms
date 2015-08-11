@@ -99,7 +99,7 @@ export default Ember.Controller.extend({
           break;
         default:
           break;
-      };
+      }
 
       var that = this;
       Ember.$.ajax({
