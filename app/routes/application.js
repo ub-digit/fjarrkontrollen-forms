@@ -43,26 +43,63 @@ export default Ember.Route.extend({
 		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title_sv: 'Skicka', title_en: 'Send'});
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
+		
 
-    if (model.rft_genre === 'article') {
-    	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
-			controller.set("orderDetails.article.issn", model.isbn_issn);
-			controller.set("orderDetails.article.journalTitle", model.journal_title);
-			controller.set("orderDetails.article.articleTitle", model.title_of_article);
-			controller.set("orderDetails.article.publicationYear", model.year);
-			controller.set("orderDetails.article.issue", model.issue);
-			controller.set("orderDetails.article.volume", model.volume);
-			controller.set("orderDetails.article.pages", model.pages);
-			controller.set("orderDetails.article.authors", model.author);
+		if (model.is_sfx === 'yes') {
+
 			controller.set("orderPath", "SFX");
-    }
-    else if (model.rft_genre === 'book') {
-			controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
-			controller.set("orderDetails.book.isbn", model.isbn_issn);
-			controller.set("orderDetails.book.bookTitle", model.book_title);
-			controller.set("orderDetails.book.publicationYear", model.year);
-			controller.set("orderDetails.book.authors", model.author);
-			controller.set("orderPath", "SFX");
+
+			if (model.rft_genre === 'book') {
+	    	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
+	    }
+			else if (model.rft_genre === 'bookitem') {
+				controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'chapter'));
+			}
+	    else {
+				controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
+			}
+
+			if (model.isbn_issn) {
+				controller.set("orderDetails.article.issn", model.isbn_issn);
+				controller.set("orderDetails.book.isbn", model.isbn_issn);
+				controller.set("orderDetails.chapter.isbn", model.isbn_issn);
+			}
+
+			if (model.book_title) {
+				controller.set("orderDetails.book.bookTitle", model.book_title);
+				controller.set("orderDetails.chapter.bookTitle", model.book_title);
+			}
+
+			if (model.journal_title) {
+				controller.set("orderDetails.article.journalTitle", model.journal_title);
+			}
+
+			if (model.title_of_article) {
+				controller.set("orderDetails.article.articleTitle", model.title_of_article);
+			}
+
+			if (model.author) {
+				controller.set("orderDetails.article.authors", model.author);
+			}
+
+			if (model.year) {
+				controller.set("orderDetails.article.publicationYear", model.year);
+				controller.set("orderDetails.book.publicationYear", model.year);
+				controller.set("orderDetails.chapter.publicationYear", model.year);
+			}
+
+			if (model.volume) {
+				controller.set("orderDetails.article.volume", model.volume);
+			}
+
+			if (model.issue) {
+				controller.set("orderDetails.article.issue", model.issue);
+			}
+
+			if (model.pages) {
+				controller.set("orderDetails.article.pages", model.pages);
+				controller.set("orderDetails.chapter.pages", model.pages);
+			}
 		}
 	},
 
