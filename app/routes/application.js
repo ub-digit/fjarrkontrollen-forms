@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model: function(params) {
+		console.log(params);
 		return params;
 	},
 	setupController: function(controller, model) {
@@ -43,9 +44,12 @@ export default Ember.Route.extend({
 		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title_sv: 'Skicka', title_en: 'Send'});
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
-		
+
+		console.log(model);
 
 		if (model.is_sfx === 'yes') {
+
+			console.log('is_sfx');
 
 			controller.set("orderPath", "SFX");
 
