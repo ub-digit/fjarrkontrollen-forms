@@ -1,5 +1,7 @@
 html {
 	overflow-y: scroll;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 #spinner {
@@ -40,11 +42,11 @@ html {
 }
 
 
-
+/*
 .prefered-max-width-forms {
 	max-width: 700px;
 }
-
+*/
 .vertical-space-bottom-20 {
 	margin-bottom: 20px;
 }
@@ -73,18 +75,50 @@ select.form-control {
 }
 
 .step-indicator {
-	a{
 
+	ol {
+		list-style-type: decimal;
+		list-style-position: inside;
+		padding: 0;
+		li {
+			float: left;
+			margin-right: 15px;
+			list-style: none;
+			padding: 0;
+			font-size: 13px;
+			span {
+				padding: 6px;
+			}
+			&:after {
+				content: '\f054';
+				font-family: 'FontAwesome';
+				margin-left: 15px;
+			}
+			&:last-child {
+				&:after {
+					content: none;
+				}
+			}
+			&.active {
+				span {
+					color: #fff;
+					background-color: @brand-primary;
+					border-radius: 4px;
+				}
+			}
+		}
+	}
+	a{
 		color: @gray-light;
 		&.active {
-			color:@gray-darker !important;
+			color:#025da6 !important;
 		}
 	}
 
 	&.disabled {
 		a {
 
-			cursor: default;
+			cursor: text;
 			&:hover {
 				text-decoration: none;
 				color: @gray-light;
