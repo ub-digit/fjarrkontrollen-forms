@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
   		}
     }),
 
-    selectedLibraryNameString: Ember.computed('lang', function() {
+    selectedLibraryNameString: Ember.computed('lang', 'selectedLocation', function() {
       switch (this.get('lang')) {
         case 'sv':
           return this.get('controllers.application.selectedLocation.title_sv');
