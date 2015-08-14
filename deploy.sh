@@ -57,11 +57,14 @@ esac
 # Location: production: /apps/appName/, test: /apps/test/appName
 # Domain name: production: appName.topDomain, test: appName-test.topDomain
 # -------------------------------------------------- #
+echo "environment:$environment"
 if [[ ! "$environment" = "production" ]]; then
+    echo "environment wasn't production"
   remote_app_location="/apps/$environment/$appname"
   app_domain_name="$app_domain_name-$environment.$top_domain"
   build_environment="production-${environment}"
 else
+    echo "environment was production"
   remote_app_location="/apps/$appname"
   app_domain_name="$app_domain_name.$top_domain"
   build_environment="production"
@@ -83,6 +86,7 @@ fi
 # -------------------------------------------------- #
 # Rebuild dist folder
 # -------------------------------------------------- #
+echo ember build --environment=${build_environment}
 ember build --environment=${build_environment}
 
 if [ -d "$local_app_location/dist" ]; then
