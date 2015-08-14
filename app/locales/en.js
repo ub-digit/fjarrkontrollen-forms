@@ -113,7 +113,7 @@ export default {
    		step3: {
 				header: 'Your personal details',
 				customerTypeHeader: 'I am a...',
-				customerTypePrompt: 'Choose customer category',
+				customerTypePrompt: 'Choose category',
 				customerDetailsSubheader: 'Fill in your details',
 				deliveryOptionsSubheader: 'Delivery options',
 				deliveryMethodPrompt: 'Choose a delivery option:',

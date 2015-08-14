@@ -78,7 +78,7 @@ export default {
    		step1: {
 				header: 'Typ och bibliotek',
    			typeHeader: 'Välj vad vill du beställa',
-        locationHeader: 'Välj bibliotek',
+        locationHeader: 'Välj vilket bibliotek du vill beställa från',
    			nextBtn: 'Nästa',
    		},
    		step2: {
@@ -114,7 +114,7 @@ export default {
    		step3: {
 				header: 'Dina uppgifter',
 				customerTypeHeader: 'Jag är...',
-				customerTypePrompt: 'Välj kundkategori',
+				customerTypePrompt: 'Välj kategori',
 				customerDetailsSubheader: 'Fyll i dina uppgifter',
 				deliveryOptionsSubheader: 'Leveransalternativ',
 				deliveryMethodPrompt: 'Välj leveranssätt:',
