@@ -1,5 +1,10 @@
 <div class="row">
-  <div class="col-xs-12 col-md-8 col-md-offset-2 step-indicator disabled">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <h1>Beställ artiklar och fjärrlån</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 step-indicator disabled">
     <ol>
       {{#link-to 'home.step1' disabled=true tagName='li'}}<span>{{t 'home.step1.header'}}</span>{{/link-to}}
       {{#link-to 'home.step2' disabled=true tagName='li'}}<span>{{t 'home.step2.header'}}</span>{{/link-to}}
@@ -8,7 +13,7 @@
       {{#link-to 'home.step5' disabled=true tagName='li'}}<span>{{t 'home.step5.header'}}</span>{{/link-to}}
     </ol>
   </div>
-  <div class="col-xs-12 col-md-8 col-md-offset-2 prefered-max-width-forms">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 prefered-max-width-forms">
 		{{outlet}}
 	</div>
 </div>
