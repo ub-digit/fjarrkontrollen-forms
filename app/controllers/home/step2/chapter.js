@@ -4,14 +4,13 @@ export default Ember.Controller.extend({
   needs: ['application'],
   orderDetailsBinding: 'controllers.application.orderDetails',
 
-  isFormComplete: function() {
-    if (this.get('orderDetails.chapter.chapterTitle') && this.get('orderDetails.chapter.bookTitle')) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }.property('orderDetails.chapter.chapterTitle','orderDetails.chapter.bookTitle'),
+  isChapterTitleValid: Ember.computed.notEmpty('orderDetails.chapter.chapterTitle'),
+
+  isBookTitleValid: Ember.computed.notEmpty('orderDetails.chapter.bookTitle'),
+
+  isFormComplete: Ember.computed('orderDetails.chapter.chapterTitle', 'orderDetails.chapter.bookTitle', function() {
+    return (this.get('isChapterTitleValid') && this.get('isBookTitleValid'));
+  }),
 
   actions: {
 		back: function() {

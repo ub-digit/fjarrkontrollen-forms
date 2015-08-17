@@ -4,14 +4,13 @@ export default Ember.Controller.extend({
   needs: ['application'],
   orderDetailsBinding: 'controllers.application.orderDetails',
 
-  isFormComplete: function() {
-    if (this.get('orderDetails.microfilm.newspaper') && this.get('orderDetails.microfilm.period')) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }.property('orderDetails.microfilm.newspaper','orderDetails.microfilm.period'),
+  isNewspaperValid: Ember.computed.notEmpty('orderDetails.microfilm.newspaper'),
+
+  isPeriodValid: Ember.computed.notEmpty('orderDetails.microfilm.period'),
+
+  isFormComplete: Ember.computed('isNewspaperValid', 'isPeriodValid', function() {
+    return (this.get('isNewspaperValid') && this.get('isPeriodValid'));
+  }),
 
   actions: {
 		back: function() {

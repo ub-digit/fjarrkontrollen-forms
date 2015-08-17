@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group isNewspaperValid::has-error"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.newspaper'}} <i class="fa fa-asterisk mandatory"></i></label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.newspaper}}
     </div>
@@ -11,7 +11,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group isPeriodValid::has-error"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.period'}} <i class="fa fa-asterisk mandatory"></i></label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.period}}
     </div>
@@ -47,7 +47,7 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="pull-right mandatory-text">
-      <p><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
+      <p {{bind-attr class="isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
 </div> <!-- end row -->

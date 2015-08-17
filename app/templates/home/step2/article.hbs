@@ -41,7 +41,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group isJournalTitleValid::has-error"}}>
       <label class="control-label">{{t 'home.orderDetails.article.journalTitle'}} <i class="fa fa-asterisk mandatory"></i></label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.journalTitle}}
     </div>
@@ -60,7 +60,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group isPublicationYearValid::has-error"}}>
       <label class="control-label">{{t 'home.orderDetails.article.publicationYear'}} <i class="fa fa-asterisk mandatory"></i></label>
       {{input id="publicationYear" type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.publicationYear}}
       <span {{bind-attr class=":form-control-feedback"}}><i class="fa fa-check" aria-hidden="true"></i></span>
@@ -91,7 +91,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div {{bind-attr class=":form-group isPagesValid::has-error"}}>
       <label class="control-label">{{t 'home.orderDetails.article.pages'}} <i class="fa fa-asterisk mandatory"></i></label>
       {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.pages}}
     </div>
@@ -119,7 +119,7 @@
 <div class="row">
   <div class="col-xs-12 mandatory-text">
     <div class="pull-right">
-      <p><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
+      <p {{bind-attr class="isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
 </div>

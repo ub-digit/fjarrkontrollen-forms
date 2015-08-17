@@ -4,14 +4,14 @@ export default Ember.Controller.extend({
   needs: ['application'],
   orderDetailsBinding: 'controllers.application.orderDetails',
 
-  isFormComplete: function() {
-    if (this.get('orderDetails.score.composers') && this.get('orderDetails.score.opusTitle')) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }.property('orderDetails.score.composers','orderDetails.score.opusTitle'),
+  isComposersValid: Ember.computed.notEmpty('orderDetails.score.composers'),
+
+  isOpusTitleValid: Ember.computed.notEmpty('orderDetails.score.opusTitle'),
+
+
+  isFormComplete: Ember.computed('isComposersValid', 'isOpusTitleValid', function() {
+    return (this.get('isComposersValid') && this.get('isOpusTitleValid'));
+  }),
 
   actions: {
 		back: function() {

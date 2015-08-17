@@ -239,6 +239,7 @@ export default Ember.Controller.extend({
       return (this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri' || this.get('selectedCustomerType.identifier') === 'dist');
     }),
 
+    // Bool to check if all delivery address fields are mandatory
     areDeliveryAddressFieldsValid: Ember.computed('areDeliveryAddressFieldsMandatory', 'deliveryDetails.address', 'deliveryDetails.postalCode', 'deliveryDetails.city', function() {
       if (this.get('areDeliveryAddressFieldsMandatory')) {
         return (this.get('deliveryDetails.address.length') > 1 && this.get('deliveryDetails.postalCode.length') > 1 && this.get('deliveryDetails.city.length') > 1 );
@@ -246,6 +247,33 @@ export default Ember.Controller.extend({
         return true;
       }
     }),
+
+
+    // Bools to check if individual delivery fields are validating
+    isDeliveryAddressValid: Ember.computed('areDeliveryAddressFieldsMandatory', 'deliveryDetails.address', function() {
+      if (this.get('areDeliveryAddressFieldsMandatory')) {
+        return (this.get('deliveryDetails.address.length') > 1);
+      } else {
+        return true;
+      }
+    }),
+
+    isDeliveryPostalCodeValid: Ember.computed('areDeliveryAddressFieldsMandatory', 'deliveryDetails.postalCode', function() {
+      if (this.get('areDeliveryAddressFieldsMandatory')) {
+        return (this.get('deliveryDetails.postalCode.length') > 1);
+      } else {
+        return true;
+      }
+    }),
+
+    isDeliveryCityValid: Ember.computed('areDeliveryAddressFieldsMandatory', 'deliveryDetails.city', function() {
+      if (this.get('areDeliveryAddressFieldsMandatory')) {
+        return (this.get('deliveryDetails.city.length') > 1 );
+      } else {
+        return true;
+      }
+    }),
+
 
     // Delivery box
     // Bool to check whether to show delivery box fields
@@ -293,6 +321,47 @@ export default Ember.Controller.extend({
         return true;
       }
     }),
+
+    // Bool to check if individual invoicing fields are valid
+    isInvoicingCompanyValid: Ember.computed('areInvoicingAddressFieldsMandatory', 'invoicingDetails.company', function(){
+      if (this.get('areInvoicingAddressFieldsMandatory')) {
+        return (this.get('invoicingDetails.company.length') > 0);
+      } else {
+        return true;
+      }
+    }),
+    isInvoicingNameValid: Ember.computed('areInvoicingAddressFieldsMandatory', 'invoicingDetails.name', function(){
+      if (this.get('areInvoicingAddressFieldsMandatory')) {
+        return (this.get('invoicingDetails.name.length') > 0);
+      } else {
+        return true;
+      }
+    }),
+
+    isInvoicingAddressValid: Ember.computed('areInvoicingAddressFieldsMandatory', 'invoicingDetails.address', function(){
+      if (this.get('areInvoicingAddressFieldsMandatory')) {
+        return (this.get('invoicingDetails.address.length') > 0);
+      } else {
+        return true;
+      }
+    }),
+
+    isInvoicingPostalCodeValid: Ember.computed('areInvoicingAddressFieldsMandatory', 'invoicingDetails.postalCode', function(){
+      if (this.get('areInvoicingAddressFieldsMandatory')) {
+        return (this.get('invoicingDetails.postalCode.length') > 0);
+      } else {
+        return true;
+      }
+    }),
+
+    isInvoicingCityValid: Ember.computed('areInvoicingAddressFieldsMandatory', 'invoicingDetails.city', function(){
+      if (this.get('areInvoicingAddressFieldsMandatory')) {
+        return (this.get('invoicingDetails.city.length') > 0);
+      } else {
+        return true;
+      }
+    }),
+
 
     // Customer ID
     // Bool to check whether to show customerId field or not

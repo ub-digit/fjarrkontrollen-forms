@@ -3,14 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   needs: ['application'],
 
-  isFormComplete: function() {
-    if (this.get('controllers.application.orderDetails.book.bookTitle') && this.get('controllers.application.orderDetails.book.authors')) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }.property('controllers.application.orderDetails.book.bookTitle', 'controllers.application.orderDetails.book.authors'),
+  isTitleValid: Ember.computed.notEmpty('controllers.application.orderDetails.book.bookTitle'),
+
+  isAuthorsValid: Ember.computed.notEmpty('controllers.application.orderDetails.book.authors'),
+
+  isFormComplete: Ember.computed('isTitleValid', 'isAuthorsValid', function() {
+    return (this.get('isTitleValid') && this.get('isAuthorsValid'));
+  }),
 
   actions: {
 		back: function() {

@@ -22,7 +22,7 @@
 		{{#if showOrganisation}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group"}}>
+				<div {{bind-attr class=":form-group isOrganisationValid::has-error"}}>
 					<label for="organization">{{t 'home.customerDetails.organisation'}}{{#if isOrganisationMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.organisation}}
 				</div>
@@ -32,7 +32,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isNameValid::has-error"}}>
 					<label for="name">{{t 'home.customerDetails.name'}} <i class="fa fa-asterisk mandatory"></i></label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.name}}
 				</div>
@@ -41,7 +41,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isEmailValid::has-error"}}>
 					<label for="email">{{t 'home.customerDetails.emailAddress'}}{{#if isEmailMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='email' classBinding=":form-control" value=customerDetails.emailAddress}}
 				</div>
@@ -51,7 +51,7 @@
 		{{#if showDepartment}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isDepartmentValid::has-error"}}>
 					<label for="institution">{{t 'home.customerDetails.department'}}{{#if isDepartmentMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.department}}
 				</div>
@@ -62,7 +62,7 @@
 		{{#if showUnit}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isUnitValid::has-error"}}>
 					<label for="department">{{t 'home.customerDetails.unit'}}{{#if isUnitMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.unit}}
 				</div>
@@ -106,7 +106,7 @@
 		{{#if showLibraryCardNumber}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isLibraryCardNumberValid::has-error"}}>
 					<label for="cardnumber">{{t 'home.customerDetails.libraryCardNumber'}}{{#if isLibraryCardNumberMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.libraryCardNumber}}
 				</div>
@@ -117,7 +117,7 @@
 		{{#if showXAccount}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isXAccountValid::has-error"}}>
 					<label for="xaccount">{{t 'home.customerDetails.xAccount'}}{{#if isXAccountMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=customerDetails.xAccount}}
 				</div>
@@ -128,7 +128,7 @@
 
 		<!-- deliveryChoiceDropDown start -->
 
-		<h4>{{t 'home.step3.deliveryOptionsSubheader'}}</h4>
+		<h4>{{t 'home.step3.deliveryOptionsSubheader'}}{{#if isShippingAvailable}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</h4>
 
 		{{#if isShippingAvailable}}
 
@@ -165,7 +165,7 @@
 		{{#if showDeliveryAddressFields}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isDeliveryAddressValid::has-error"}}>
 					<label for="department">{{t 'home.deliveryDetails.address'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.address}}
 				</div>
@@ -174,7 +174,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isDeliveryPostalCodeValid::has-error"}}>
 					<label for="department">{{t 'home.deliveryDetails.postalCode'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.postalCode}}
 				</div>
@@ -183,7 +183,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isDeliveryCityValid::has-error"}}>
 					<label for="department">{{t 'home.deliveryDetails.city'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.city}}
 				</div>
@@ -193,7 +193,7 @@
 		{{#if showDeliveryBoxField}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isDeliveryBoxFieldValid::has-error"}}>
 					<label for="box">{{t 'home.deliveryDetails.box'}}{{#if isDeliveryBoxFieldMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=deliveryDetails.box}}
 				</div>
@@ -219,7 +219,7 @@
 		{{#if showCustomerId}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isCustomerIdValid::has-error"}}>
 					<label for="order-id">{{t 'home.invoicingDetails.customerId'}}{{#if isCustomerIdMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.customerId}}
 				</div>
@@ -229,7 +229,7 @@
 		{{#if showInvoicingAddressFields}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isInvoicingCompanyValid::has-error"}}>
 					<label for="company">{{t 'home.invoicingDetails.company'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.company}}
 				</div>
@@ -238,7 +238,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isInvoicingNameValid::has-error"}}>
 					<label for="department">{{t 'home.invoicingDetails.name'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.name}}
 				</div>
@@ -247,7 +247,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isInvoicingAddressValid::has-error"}}>
 					<label for="street-Address">{{t 'home.invoicingDetails.address'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.address}}
 				</div>
@@ -256,7 +256,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group isInvoicingPostalCodeValid::has-error"}}>
 					<label for="postalcode">{{t 'home.invoicingDetails.postalCode'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.postalCode}}
 				</div>
@@ -265,7 +265,7 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="form-group">
+				<div {{bind-attr class=":form-group areInvoicingAddressFieldsValid::has-error"}}>
 					<label for="city">{{t 'home.invoicingDetails.city'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
 					{{input type='text' classBinding=":form-control" value=invoicingDetails.city}}
 				</div>
