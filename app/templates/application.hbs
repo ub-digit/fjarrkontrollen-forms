@@ -12,15 +12,15 @@
 			</div>
 			<div class="gu-header-title hidden-xs">
 				<div>
-					<a class="level1" href="http://www.ub.gu.se/">Göteborgs universitetsbibliotek</a>
+					<a class="level1" href="http://www.ub.gu.se/">{{t 'home.headers.level1'}}</a>
 				</div>
 				<div>
-					<a class="level2" href="/">Fjärrlån</a>
+					<a class="level2" href="/">{{t 'home.headers.level2'}}</a>
 				</div>
 			</div>
 			<div class="gu-header-links pull-right">
 				<ul>
-					<li><span lang="en"><a title="To the English version of this page" href="/index_en.html">In English</a></span></li>
+					<li><span lang="en"><a title="To the English version of this page" {{bind-attr href=(t 'home.headers.langLinkUrl')}}>{{t 'home.headers.langLink'}}</a></span></li>
 				</ul>
 			</div>
 		</div>
@@ -30,4 +30,14 @@
 
 <div class="container">
 	{{outlet}}
+</div>
+
+<div class="gu-footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<p>{{{t 'home.footer.content'}}}</p>
+			</div>
+		</div>
+	</div>
 </div>

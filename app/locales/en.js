@@ -1,5 +1,15 @@
 export default {
 	home: {
+			headers: {
+				level1: 'Gothenburg university library',
+				level2: 'Inter library loans',
+				mainHeader: 'Order inter library loans and articles',
+				langLink: 'På svenska',
+				langLinkUrl: '/'
+			},
+			footer: {
+				content: '© <a title="Göteborgs universitet" href="http://www.gu.se/">University of Gothenburg, Sweden</a><br>Box 100, S-405 30 Gothenburg<br>Phone +46 31-786 0000, <a title="Contact" href="http://www.gu.se/omuniversitetet/kontakt/">Contact</a>'
+			},
 			orderDetails: {
 				article: {
 					articleTitle: 'Article title',
