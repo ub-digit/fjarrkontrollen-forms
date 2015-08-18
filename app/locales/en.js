@@ -1,9 +1,9 @@
 export default {
 	home: {
 			headers: {
-				level1: 'Gothenburg university library',
-				level2: 'Inter library loans',
-				mainHeader: 'Order inter library loans and articles',
+				level1: 'Gothenburg University Library',
+				level2: 'Interlibrary loans',
+				mainHeader: 'Order articles and interlibrary loans',
 				langLink: 'På svenska',
 				langLinkUrl: '/'
 			},
@@ -86,13 +86,13 @@ export default {
 			},
    		step1: {
 				header: 'Order and library',
-   			typeHeader: 'What do you want to order',
+   			typeHeader: 'Select what you want to order',
         locationHeader: 'Select library to order from',
    			nextBtn: 'Next',
    		},
    		step2: {
 				article: {
-					header: 'Copy of article',
+					header: 'Photocopy of article',
 					price: 'Charge: 80 SEK (no charge for GU staff, charge for companies 160 SEK)',
 					subHeader1: 'Enter a PubMed ID...',
 					subHeader2: '...or enter the details:',
@@ -104,7 +104,7 @@ export default {
 					outsideNordicsHelpText: 'Charge: 200 SEK (charge for companies 400:-)',
 				},
 				chapter: {
-					header: 'Copy of book chapter',
+					header: 'Photocopy of book chapter',
 					price: 'Charge: 80:- (no charge for GU staff)',
 				},
 				score: {
@@ -112,7 +112,7 @@ export default {
 					publicationTypeHelpText: '(scores, sheet music, orchestral parts, etc)'
 				},
 				microfilm: {
-					header: 'Microfilmed newspaper'
+					header: 'Microfilm newspaper'
 				},
 				header: 'Order details',
 				otherDetailsText: 'Additional details about the order',
@@ -123,11 +123,11 @@ export default {
    		step3: {
 				header: 'Your personal details',
 				customerTypeHeader: 'I am a...',
-				customerTypePrompt: 'Choose category',
+				customerTypePrompt: 'Select a category',
 				customerDetailsSubheader: 'Fill in your details',
 				deliveryOptionsSubheader: 'Delivery options',
-				deliveryMethodPrompt: 'Choose a delivery option:',
-				pickupInfoText: 'The order will be picked up at',
+				deliveryMethodPrompt: 'Select a delivery option:',
+				pickupInfoText: 'The order can be picked up at',
 				deliveryDetailsSubheader: 'Delivery details',
 				invoicingDetailsSubheader: 'Invoicing details',
 				nextBtn: 'Next',
@@ -155,11 +155,11 @@ export default {
 				errorHeader: 'Something went wrong',
 				errorMessage: 'It was not possible to process your order. Please try again later.',
 				back: 'Back',
-				orderAnotherArticle: 'Order one more article',
-				orderAnotherBook: 'Order one more book',
-				orderAnotherChapter: 'Order one more book chapter',
-				orderAnotherScore: 'Order one more musical score',
-				orderAnotherMicrofilm: 'Order one more microfilm'
+				orderAnotherArticle: 'Order another article',
+				orderAnotherBook: 'Order another book',
+				orderAnotherChapter: 'Order another book chapter',
+				orderAnotherScore: 'Order another musical score',
+				orderAnotherMicrofilm: 'Order another microfilm'
 			}
   	}
 };

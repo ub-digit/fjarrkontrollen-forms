@@ -20,28 +20,29 @@ export default Ember.Route.extend({
 		controller.set("selectedLocation", null);
 
 		var orderTypes = [];
-		orderTypes.pushObject({id:1, identifier: 'article', title_sv: 'Artikelkopia', title_en: 'Photocopy'});
+		orderTypes.pushObject({id:1, identifier: 'article', title_sv: 'Artikelkopia', title_en: 'Photocopy of article'});
 		orderTypes.pushObject({id:2, identifier: 'book', title_sv: 'Bok', title_en: 'Loan'});
-		orderTypes.pushObject({id:3, identifier: 'chapter', title_sv: 'Kopia av bokkapitel', title_en: 'Book chapter photocopy'});
+		orderTypes.pushObject({id:3, identifier: 'chapter', title_sv: 'Kopia av bokkapitel', title_en: 'Photocopy of book chapter'});
 		orderTypes.pushObject({id:4, identifier: 'score', title_sv: 'Musiktryck', title_en: 'Score'});
-		orderTypes.pushObject({id:5, identifier: 'microfilm', title_sv: 'Mikrofilmad dagstidning', title_en: 'Loan micro-film'});
+		orderTypes.pushObject({id:5, identifier: 'microfilm', title_sv: 'Mikrofilmad dagstidning', title_en: 'Microfilm newspaper'});
 		controller.set("orderTypes", orderTypes);
 		controller.set("selectedOrderType", null);
 
 		var customerTypes = [];
 		customerTypes.pushObject({id:1, identifier: 'univ', title_sv: 'Forskare/anställd', title_en: 'Researcher/staff'});
 		customerTypes.pushObject({id:2, identifier: 'stud', title_sv: 'Student', title_en: 'Student'});
-		customerTypes.pushObject({id:3, identifier: 'sahl', title_sv: 'Anställd på Sahlgrenska universitetssjukhuset ', title_en: 'Sahlgrenska staff'});
+		customerTypes.pushObject({id:3, identifier: 'sahl', title_sv: 'Anställd på Sahlgrenska universitetssjukhuset ', title_en: 'Sahlgrenska University Hospital staff'});
 		customerTypes.pushObject({id:4, identifier: 'priv', title_sv: 'Privatperson', title_en: 'Private person'});
 		customerTypes.pushObject({id:5, identifier: 'ftag', title_sv: 'Företag', title_en: 'Company'});
-		customerTypes.pushObject({id:6, identifier: 'ovri', title_sv: 'Övriga', title_en: 'Other'});
-		customerTypes.pushObject({id:7, identifier: 'dist', title_sv: 'Distansstudent', title_en: 'Distance student'});
+		customerTypes.pushObject({id:6, identifier: 'dist', title_sv: 'Distansstudent', title_en: 'Distance student'});
+		customerTypes.pushObject({id:7, identifier: 'ovri', title_sv: 'Övriga', title_en: 'Other'});
+
 		controller.set("customerTypes", customerTypes);
 		controller.set("selectedCustomerType", null);
 
 		var deliveryMethods = [];
-		deliveryMethods.pushObject({id:1, identifier: 'pickup', title_special: "Hämtas", title_sv: 'Hämta', title_en: 'Pickup'});
-		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title_sv: 'Skicka', title_en: 'Send'});
+		deliveryMethods.pushObject({id:1, identifier: 'pickup', title_special: "Hämtas", title_sv: 'Hämtas på bibliotek', title_en: 'Pickup at library'});
+		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title_sv: 'Skickas till adress', title_en: 'Send to my address'});
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
 
