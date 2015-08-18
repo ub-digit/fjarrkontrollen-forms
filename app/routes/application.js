@@ -6,7 +6,11 @@ export default Ember.Route.extend({
 		return params;
 	},
 	setupController: function(controller, model) {
-  		var locations = [];
+
+		var application = this.container.lookup('application:main');
+		controller.set('currentLocale', application.get("locale") || application.get('defaultLocale'));
+
+  	var locations = [];
 		locations.pushObject({id:1, identifier: 'G', title_sv: 'Humanistiska biblioteket', title_en: 'Humanities Library'});
 		locations.pushObject({id:2, identifier: 'Ge', title_sv: 'Ekonomiska biblioteket', title_en: 'Economics Library'});
 		locations.pushObject({id:3, identifier: 'Gg', title_sv: 'Geovetenskapliga biblioteket med kulturvård', title_en: 'Earth Sciences and Conservation Library'});
@@ -46,11 +50,7 @@ export default Ember.Route.extend({
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
 
-		console.log(model);
-
 		if (model.is_sfx === 'yes') {
-
-			console.log('is_sfx');
 
 			controller.set("orderPath", "SFX");
 

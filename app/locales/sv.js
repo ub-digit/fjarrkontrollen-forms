@@ -1,6 +1,7 @@
 export default {
 	home: {
 			headers: {
+				logoPrintUrl: 'http://gu.se/digitalAssets/1498/1498141_ny_logo_sv_high.png',
 				level1: 'Göteborgs universitetesbibliotek',
 				level2: 'Fjärrlån',
 				mainHeader: 'Beställ artiklar och fjärrlån',

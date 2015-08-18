@@ -6,8 +6,8 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div>
-				<a class="gu-logo" href="http://www.gu.se/" title="Länk till Göteborgs universitets startsida">
-					<img src="http://gu.se/digitalAssets/1498/1498139_ny_logo_en_high.png" alt="Göteborgs universitet" class="gu-logoForPrint">
+				<a {{bind-attr class=":gu-logo currentLocale"}} href="http://www.gu.se/" title="Länk till Göteborgs universitets startsida">
+					<img {{bind-attr src=(t 'home.headers.logoPrintUrl')}} alt="Göteborgs universitet" class="gu-logoForPrint">
 				</a>
 			</div>
 			<div class="gu-header-title hidden-xs">
@@ -20,7 +20,7 @@
 			</div>
 			<div class="gu-header-links pull-right">
 				<ul>
-					<li><span lang="en"><a title="To the English version of this page" {{bind-attr href=(t 'home.headers.langLinkUrl')}}>{{t 'home.headers.langLink'}}</a></span></li>
+					<li><a title="To the English version of this page" {{bind-attr href=(t 'home.headers.langLinkUrl')}}>{{t 'home.headers.langLink'}}</a></li>
 				</ul>
 			</div>
 		</div>
