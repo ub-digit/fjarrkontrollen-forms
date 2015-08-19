@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['application'],
+  queryParams: ['id'],
 
   orderAnotherText: Ember.computed('controllers.application.selectedOrderType', function() {
 

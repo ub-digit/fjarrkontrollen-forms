@@ -17,7 +17,7 @@ Router.map(function() {
     });
     this.route('step3');
     this.route('step4');
-    this.route('step5', {path: '/:id'});
+    this.route('step5');
   });
 
 });

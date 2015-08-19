@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function(params) {
-		console.log(params);
+	model: function(params) {		
 		return params;
 	},
 	setupController: function(controller, model) {
@@ -45,8 +44,8 @@ export default Ember.Route.extend({
 		controller.set("selectedCustomerType", null);
 
 		var deliveryMethods = [];
-		deliveryMethods.pushObject({id:1, identifier: 'pickup', title_special: "Hämtas", title_sv: 'Hämtas på bibliotek', title_en: 'Pickup at library'});
-		deliveryMethods.pushObject({id:2, identifier: 'send', title_special: "Skickas", title_sv: 'Skickas till adress', title_en: 'Send to my address'});
+		deliveryMethods.pushObject({id:1, identifier: 'pickup', title_internal: "Hämtas", title_sv: 'Hämtas på bibliotek', title_en: 'Pickup at library'});
+		deliveryMethods.pushObject({id:2, identifier: 'send', title_internal: "Skickas", title_sv: 'Skickas till adress', title_en: 'Send to my address'});
 		controller.set("deliveryMethods", deliveryMethods);
 		controller.set("selectedDeliveryMethod", null);
 
