@@ -9,8 +9,8 @@ export default Ember.Controller.extend({
     return 'home/step4/' + this.get('controllers.application.selectedOrderType.identifier');
   }),
 
-  selectedLibraryNameString: Ember.computed('lang', function() {
-    switch (this.get('lang')) {
+  selectedLibraryNameString: Ember.computed('controllers.application.currentLocale', function() {
+    switch (this.get('controllers.application.currentLocale')) {
       case 'sv':
         return this.get('controllers.application.selectedLocation.title_sv');
       default:
@@ -110,7 +110,7 @@ export default Ember.Controller.extend({
           customer_type:                      this.get('controllers.application.selectedCustomerType.identifier'),
           form_library:                       this.get('controllers.application.selectedLocation.identifier'), // Change?
           email_confirmation:                 true, // Always set to true
-          form_lang:                          this.get('lang'),
+          form_lang:                          this.get('controllers.application.currentLocale'),
           delivery_place:                     delivery_place,
           order_path:                         this.get('controllers.application.orderPath'),
 

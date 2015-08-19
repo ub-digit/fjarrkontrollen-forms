@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function(params) {		
+	model: function(params) {
 		return params;
 	},
 	setupController: function(controller, model) {
@@ -104,6 +104,8 @@ export default Ember.Route.extend({
 				controller.set("orderDetails.article.pages", model.pages);
 				controller.set("orderDetails.chapter.pages", model.pages);
 			}
+
+			this.transitionTo("sfx");
 		}
 	},
 

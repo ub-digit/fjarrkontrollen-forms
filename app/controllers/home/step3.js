@@ -18,8 +18,8 @@ export default Ember.Controller.extend({
     selectedDeliveryMethodBinding: 'controllers.application.selectedDeliveryMethod',
 
 
-    optionLabelPath: Ember.computed('lang', function() {
-  		switch (this.get('lang')) {
+    optionLabelPath: Ember.computed('controllers.application.currentLocale', function() {
+  		switch (this.get('controllers.application.currentLocale')) {
   			case 'sv':
   				return 'content.title_sv';
   			default:
@@ -27,8 +27,8 @@ export default Ember.Controller.extend({
   		}
     }),
 
-    selectedLibraryNameString: Ember.computed('lang', 'selectedLocation', function() {
-      switch (this.get('lang')) {
+    selectedLibraryNameString: Ember.computed('controllers.application.currentLocale', 'selectedLocation', function() {
+      switch (this.get('controllers.application.currentLocale')) {
         case 'sv':
           return this.get('controllers.application.selectedLocation.title_sv');
         default:

@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.resource('home', {path: '/'}, function() {
-    this.route('step1');
+    this.route('step1', function() {});
     this.route('step2', function() {
       this.route('article');
       this.route('book');
@@ -19,7 +19,7 @@ Router.map(function() {
     this.route('step4');
     this.route('step5');
   });
-
+  this.route('sfx');
 });
 
 export default Router;

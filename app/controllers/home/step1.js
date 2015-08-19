@@ -4,12 +4,12 @@ export default Ember.Controller.extend({
 	needs: ['application'],
 
 
-	optionLabelPath: Ember.computed('lang', function() {
-		switch (this.get('lang')) {
+	optionLabelPath: Ember.computed('controllers.application.currentLocale', function() {
+		switch (this.get('controllers.application.currentLocale')) {
 			case 'sv':
 				return 'content.title_sv';
 			default:
-				return 'content.title_en';				
+				return 'content.title_en';
 		}
 
 	}),
