@@ -1,4 +1,4 @@
-{{#if model.error}}
+{{#unless model.id}}
 <h2>{{t 'home.step5.errorHeader'}}</h2>
 <div class="row">
 	<div class="col-xs-12" >
@@ -27,4 +27,4 @@
     <button {{action 'resetForm' }} {{ bind-attr class=":btn :btn-link :pull-right"}}>{{t 'home.step5.startOver'}}</button>
 	</div>
 </div>
-{{/if}}
+{{/unless}}
