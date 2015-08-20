@@ -13,6 +13,16 @@ export default Ember.Route.extend({
   actions: {
     getPubMedId: function(id) {
 
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          'event' : 'GAEvent',
+          'eventCategory' : 'Click',
+          'eventAction' : 'Get PubMed ID',
+          'eventLabel' : id,
+          'eventValue' : null
+        });
+      }
+
       var that = this;
 
       that.controllerFor('application').set('orderDetails.article.articleTitle', null);
@@ -31,7 +41,7 @@ export default Ember.Route.extend({
           Ember.$("body").removeClass("loading");
           that.controllerFor('home.step2.article').set('error', true);
 
-        // Om pubmed ID inte är ogiltigt
+          // Om pubmed ID inte är ogiltigt
         } else {
 
           that.controllerFor('home.step2.article').set('error', false);
@@ -45,7 +55,7 @@ export default Ember.Route.extend({
             Ember.$("body").removeClass("loading");
             that.controllerFor('home.step2.article').set('error', true);
 
-          // Om pbumed ID hittas
+            // Om pbumed ID hittas
           } else {
             Ember.$("body").removeClass("loading");
             that.controllerFor('application').set('orderDetails.article.articleTitle', data.result[resultId].title);
