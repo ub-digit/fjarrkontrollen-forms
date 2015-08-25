@@ -89,7 +89,7 @@ export default {
    		step1: {
 				header: 'Typ och bibliotek',
    			typeHeader: 'Välj vad vill du beställa',
-        locationHeader: 'Välj vilket bibliotek du vill beställa från',
+        locationHeader: 'Välj vilket bibliotek du vill hämta på',
    			nextBtn: 'Nästa',
    		},
    		step2: {
