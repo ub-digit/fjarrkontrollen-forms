@@ -196,7 +196,8 @@ export default Ember.Controller.extend({
     }),
     // Bool to check whether library card number field is mandatory or not
     isLibraryCardNumberMandatory: Ember.computed('selectedCustomerType', function() {
-      return ((this.get('selectedCustomerType.identifier') === 'stud') ||
+      return ((this.get('selectedCustomerType.identifier') === 'univ') ||
+              (this.get('selectedCustomerType.identifier') === 'stud') ||
               (this.get('selectedCustomerType.identifier') === 'priv') ||
               (this.get('selectedCustomerType.identifier') === 'dist'));
     }),
