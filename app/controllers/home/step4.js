@@ -159,7 +159,8 @@ export default Ember.Controller.extend({
         if(window.dataLayer) {
           window.dataLayer.push({
             'orderType': that.get('controllers.application.selectedOrderType.title_sv'),
-            'location': that.get('controllers.application.selectedLocation.title_sv')
+            'location': that.get('controllers.application.selectedLocation.title_sv'),
+            'customerType': that.get('controllers.application.selectedCustomerType.title_sv')
           });
         }
 
