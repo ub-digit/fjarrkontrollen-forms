@@ -173,7 +173,7 @@ export default Ember.Controller.extend({
         var result = {};
         result.error = error;
         result.id = 'error';
-        that.transitionToRoute('home.step5');
+        that.transitionToRoute('home.error');
       });
     }
   }

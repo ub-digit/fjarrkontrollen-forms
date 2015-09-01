@@ -154,14 +154,16 @@ export default {
 				confirmationHeader: 'Tack för din beställning!',
 				confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
 				startOver: 'Börja om med en ny beställning',
-				errorHeader: 'Något gick fel',
-				errorMessage: 'Det gick ej att genomföra din beställning. Försök igen senare.',
-				back: 'Tillbaka',
 				orderAnotherArticle: 'Beställ en artikel till',
 				orderAnotherBook: 'Beställ en bok till',
 				orderAnotherChapter: 'Beställ en kapitelkopia till',
 				orderAnotherScore: 'Beställ ett musiktryck till',
 				orderAnotherMicrofilm: 'Beställ en mikrofilm till'
+			},
+			error: {
+				errorHeader: 'Något gick fel',
+				errorMessage: 'Det gick inte att genomföra din beställning. Försök igen senare.',
+				back: 'Tillbaka'
 			}
   	}
 };

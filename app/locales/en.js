@@ -153,14 +153,16 @@ export default {
 				confirmationHeader: 'Thank you for your order!',
 				confirmationMessage: 'Your order has been recieved and has been assigned the following order number:',
 				startOver: 'Start over with a new order',
-				errorHeader: 'Something went wrong',
-				errorMessage: 'It was not possible to process your order. Please try again later.',
-				back: 'Back',
 				orderAnotherArticle: 'Order another article',
 				orderAnotherBook: 'Order another book',
 				orderAnotherChapter: 'Order another book chapter',
 				orderAnotherScore: 'Order another musical score',
 				orderAnotherMicrofilm: 'Order another microfilm'
+			},
+			error: {
+				errorHeader: 'Something went wrong',
+				errorMessage: 'It was not possible to process your order. Please try again later.',
+				back: 'Back'
 			}
-  	}
+  	}		
 };
