@@ -5,10 +5,10 @@ export default Ember.Route.extend(ResetScroll, {
 
   actions: {
     nextstep: function() {
-      this.transitionTo('home.step4');
+      this.transitionTo('sfx.step3');
     },
     back: function() {
-      this.transitionTo('home.step2');
+      this.transitionTo('sfx.step1');
     }
   }
 });

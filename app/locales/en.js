@@ -164,5 +164,10 @@ export default {
 				errorMessage: 'It was not possible to process your order. Please try again later.',
 				back: 'Back'
 			}
-  	}		
+  	},
+		sfx: {
+			step1: {
+				header: 'Select library'
+			}
+		}
 };

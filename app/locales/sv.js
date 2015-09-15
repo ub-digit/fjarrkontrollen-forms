@@ -165,5 +165,10 @@ export default {
 				errorMessage: 'Det gick inte att genomföra din beställning. Försök igen senare.',
 				back: 'Tillbaka'
 			}
-  	}
+  	},
+		sfx: {
+			step1: {
+				header: 'Välj bibliotek'
+			}
+		}
 };

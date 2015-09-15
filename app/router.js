@@ -20,7 +20,13 @@ Router.map(function() {
     this.route('step5');
     this.route('error');
   });
-  this.route('sfx');
+  this.route('sfx', function() {
+    this.route('step1');
+    this.route('step2');
+    this.route('step3');
+    this.route('step4');
+    this.route('error');
+  });
 });
 
 export default Router;

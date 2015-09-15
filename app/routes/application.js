@@ -53,7 +53,8 @@ export default Ember.Route.extend({
 
 			controller.set("orderPath", "SFX");
 
-			if (model.rft_genre === 'book') {
+			// set the correct order type based on param rft_genre
+			if (model.rft_genre === 'book' || model.rft_genre === 'dissertation') {
 	    	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
 	    }
 			else if (model.rft_genre === 'bookitem') {
@@ -63,6 +64,7 @@ export default Ember.Route.extend({
 				controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
 			}
 
+			// populate order details with data from params
 			if (model.isbn_issn) {
 				controller.set("orderDetails.article.issn", model.isbn_issn);
 				controller.set("orderDetails.book.isbn", model.isbn_issn);
@@ -105,7 +107,7 @@ export default Ember.Route.extend({
 				controller.set("orderDetails.chapter.pages", model.pages);
 			}
 
-			this.transitionTo("sfx");
+			this.transitionTo("sfx.step1");
 		}
 	},
 

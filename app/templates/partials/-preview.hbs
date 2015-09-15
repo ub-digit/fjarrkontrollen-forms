@@ -1,0 +1,33 @@
+<h2>{{t 'home.step4.header'}}</h2>
+<div class="row">
+	<div class="col-xs-12">
+		<h4>{{t 'home.step4.orderDetailsSubheader'}}</h4>
+		<div class="row">
+			<div class="col-xs-12">
+				{{partial orderPreviewPartialName}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				{{partial 'partials/customer-preview'}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				{{partial 'partials/delivery-preview'}}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				{{partial 'partials/invoicing-preview'}}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 next-prev">
+				<button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step4.prevBtn'}}</button>
+				<button {{action 'save'  }} {{ bind-attr class=":btn :btn-success :pull-right"}}>{{t 'home.step4.nextBtn'}}</button>
+			</div>
+		</div>
+	</div>
+</div>

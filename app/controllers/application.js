@@ -199,6 +199,7 @@ export default Ember.Controller.extend({
 		this.set('selectedDeliveryMethod', null);
 		this.set('selectedLocation', null);
 		this.set('selectedCustomerType', null);
+    this.set('orderPath', 'Web');
 
 		this.resetOrderDetails();
 		this.resetCustomerDetails();

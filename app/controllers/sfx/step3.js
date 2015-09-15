@@ -7,19 +7,19 @@ export default Ember.Controller.extend(PreviewController, {
 
     var result = {};
     result.id = response.order.order_number;
-    this.transitionToRoute('home.step5', {queryParams: result});
+    this.transitionToRoute('sfx.step4', {queryParams: result});
 
   },
 
   errorHandler: function(error) {
 
-    this.transitionToRoute('home.error');
+    this.transitionToRoute('sfx.error');
 
   },
 
   actions: {
     back: function() {
-      this.transitionToRoute("home.step3");
+      this.transitionToRoute("sfx.step2");
     }
   }
 });

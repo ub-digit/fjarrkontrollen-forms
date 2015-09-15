@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-12">
+    <dl class="dl-horizontal">
+      <dt>{{t 'home.orderDetails.book.bookTitle'}}:</dt>
+      <dd>{{controllers.application.orderDetails.book.bookTitle}}</dd>
+      <dt>{{t 'home.orderDetails.book.authors'}}:</dt>
+      <dd>{{controllers.application.orderDetails.book.authors}}</dd>
+      <dt>{{t 'home.orderDetails.book.isbn'}}:</dt>
+      <dd>{{controllers.application.orderDetails.book.isbn}}</dd>
+      <dt>{{t 'home.orderDetails.book.publicationYear'}}:</dt>
+      <dd>{{controllers.application.orderDetails.book.publicationYear}}</dd>
+    </dl>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="checkbox">
+      <label>
+        {{input type='checkbox' checked=controllers.application.orderDetails.book.outsideNordics}} {{t 'home.orderDetails.book.outsideNordics'}}
+      </label>
+    </div>
+    <span class="help-block">{{t 'home.step2.book.outsideNordicsHelpText'}}</span>
+  </div>
+</div>
+
+<h4>{{t 'home.step2.otherDetailsText'}}</h4>
+<div class="row">
+  <div class="col-xs-12">
+    <div {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.book.notValidAfter'}}</label>
+      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.book.notValidAfter}}
+    </div>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <div {{bind-attr class=":form-group"}}>
+      <label class="control-label">{{t 'home.orderDetails.book.comment'}}</label>
+      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.book.comment}}
+    </div>
+  </div>
+</div> <!-- end row -->

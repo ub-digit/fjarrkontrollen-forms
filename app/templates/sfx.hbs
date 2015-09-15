@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <h1>{{t 'home.headers.mainHeader'}}</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 step-indicator disabled">
+    <ol>
+      {{#link-to 'sfx.step1' disabled=true tagName='li'}}<span>{{t 'sfx.step1.header'}}</span>{{/link-to}}
+      {{#link-to 'sfx.step2' disabled=true tagName='li'}}<span>{{t 'home.step3.header'}}</span>{{/link-to}}
+      {{#link-to 'sfx.step3' disabled=true tagName='li'}}<span>{{t 'home.step4.header'}}</span>{{/link-to}}
+      {{#link-to 'sfx.step4' disabled=true tagName='li'}}<span>{{t 'home.step5.header'}}</span>{{/link-to}}
+    </ol>
+  </div>
+  <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+		{{outlet}}
+	</div>
+</div>
