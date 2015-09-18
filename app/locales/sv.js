@@ -168,7 +168,8 @@ export default {
   	},
 		sfx: {
 			step1: {
-				header: 'Välj bibliotek'
+				header: 'Välj bibliotek',
+				article_intro: 'Du har påbörjat en beställning av en kopia. För priser, <a href="http://www.ub.gu.se/priser/koplanpriser/" target="_blank">se prislista.</a>'
 			}
 		}
 };

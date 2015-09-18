@@ -167,7 +167,8 @@ export default {
   	},
 		sfx: {
 			step1: {
-				header: 'Select library'
+				header: 'Select library',
+				article_intro: 'You have initiated an order of a photocopy. For prices, <a href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/" target="_blank">please see price list.</a>'
 			}
 		}
 };
