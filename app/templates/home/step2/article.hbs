@@ -1,12 +1,18 @@
 <h2>{{t 'home.step2.article.header'}}</h2>
-<p>{{t 'home.step2.article.price'}}</p>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="alert alert-info" role="alert">
+      {{{t 'home.step2.article.price'}}}
+    </div>
+  </div>
+</div>
 <h4>{{t 'home.step2.article.subHeader1'}}</h4>
 <div class="row">
   <div class="col-xs-12">
     <div {{bind-attr class=":form-group errors.links:has-error"}}>
       <form class="input-group">
-      {{input type='text' classBinding=":form-control" value=pubMedId}}
-       <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-default isPubMedButtonEnabled:enabled:disabled"}}>{{t 'home.step2.article.getPubMedBtn'}}</button></span>
+        {{input type='text' classBinding=":form-control" value=pubMedId}}
+        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-default isPubMedButtonEnabled:enabled:disabled"}}>{{t 'home.step2.article.getPubMedBtn'}}</button></span>
       </form>
     </div>
   </div>

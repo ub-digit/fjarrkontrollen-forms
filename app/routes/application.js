@@ -23,9 +23,9 @@ export default Ember.Route.extend({
 		controller.set("selectedLocation", null);
 
 		var orderTypes = [];
-		orderTypes.pushObject({id:1, identifier: 'article', title_sv: 'Artikelkopia', title_en: 'Photocopy of article'});
+		orderTypes.pushObject({id:1, identifier: 'article', title_sv: 'Artikelkopia', title_en: 'Copy of article'});
 		orderTypes.pushObject({id:2, identifier: 'book', title_sv: 'Bok', title_en: 'Loan'});
-		orderTypes.pushObject({id:3, identifier: 'chapter', title_sv: 'Kopia av bokkapitel', title_en: 'Photocopy of book chapter'});
+		orderTypes.pushObject({id:3, identifier: 'chapter', title_sv: 'Kopia av bokkapitel', title_en: 'Copy of book chapter'});
 		orderTypes.pushObject({id:4, identifier: 'score', title_sv: 'Musiktryck', title_en: 'Score'});
 		orderTypes.pushObject({id:5, identifier: 'microfilm', title_sv: 'Mikrofilmad dagstidning', title_en: 'Microfilm newspaper'});
 		controller.set("orderTypes", orderTypes);

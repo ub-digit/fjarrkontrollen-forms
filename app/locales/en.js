@@ -93,8 +93,8 @@ export default {
    		},
    		step2: {
 				article: {
-					header: 'Photocopy of article',
-					price: 'Charge: 80 SEK (no charge for GU staff, charge for companies 160 SEK)',
+					header: 'Copy of article',
+					price: '<strong>Prices:</strong><ul><li>A copy of an article costs SEK 80.</li><li>Copies of articles are free for employees at the University of Gothenburg.</li><li>Companies pay SEK 180 for copies of articles</li><li><a target="_blank" href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a></li></ul>',
 					subHeader1: 'Enter a PubMed ID...',
 					subHeader2: '...or enter the details:',
 					getPubMedBtn: 'Fetch',
@@ -105,7 +105,7 @@ export default {
 					outsideNordicsHelpText: 'Charge: 200 SEK (charge for companies 400:-)',
 				},
 				chapter: {
-					header: 'Photocopy of book chapter',
+					header: 'Copy of book chapter',
 					price: 'Charge: 80:- (no charge for GU staff)',
 				},
 				score: {
@@ -167,8 +167,7 @@ export default {
   	},
 		sfx: {
 			step1: {
-				header: 'Select library',
-				article_intro: 'You have initiated an order of a photocopy. For prices, <a href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/" target="_blank">please see price list.</a>'
+				header: 'Select library'
 			}
 		}
 };

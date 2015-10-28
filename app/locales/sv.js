@@ -95,7 +95,7 @@ export default {
    		step2: {
 				article: {
 					header: 'Artikelkopia',
-					price: 'Kostnad: 80:- (gratis för anställda vid GU, företag 160:-)',
+					price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda vid Göteborgs universitet.</li><li>Företag betalar 180 kronor för en artikelkopia.</li><li><a target="_blank" href="http://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a></li></ul>',
 					subHeader1: 'Ange PubMed ID...',
 					subHeader2: '...eller fyll i uppgifterna:',
 					getPubMedBtn: 'Hämta',
@@ -168,8 +168,7 @@ export default {
   	},
 		sfx: {
 			step1: {
-				header: 'Välj bibliotek',
-				article_intro: 'Du har påbörjat en beställning av en kopia. För priser, <a href="http://www.ub.gu.se/priser/koplanpriser/" target="_blank">se prislista.</a>'
+				header: 'Välj bibliotek'
 			}
 		}
 };
