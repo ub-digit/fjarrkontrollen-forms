@@ -34,7 +34,7 @@ export default Ember.Route.extend({
       that.controllerFor('application').set('orderDetails.article.issue', null);
       that.controllerFor('application').set('orderDetails.article.authors', null);
       Ember.$("body").addClass("loading");
-      request('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
+      request('//eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
 
         // Kolla om pubmed ID är ogiltigt
         if (data.error) {

@@ -1,7 +1,7 @@
 export default {
 	home: {
 			headers: {
-				logoPrintUrl: 'http://gu.se/digitalAssets/1498/1498139_ny_logo_en_high.png',
+				logoPrintUrl: '/gu_logo_en_high.png',
 				level1: 'Gothenburg University Library',
 				level2: 'Interlibrary loans',
 				mainHeader: 'Order articles and interlibrary loans',
