@@ -26,7 +26,6 @@
 </div>
 <div class="row">
 	<div class="col-xs-12">
-		<button {{action 'nextStep'}} id="step1NextButton" {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step1.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
-
+		<button {{action 'nextStep'}} id="step1NextButton" disabled={{unless isFormComplete 'disabled'}} {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step1.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
 	</div>
 </div>
