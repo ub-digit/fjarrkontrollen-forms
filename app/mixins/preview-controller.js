@@ -61,7 +61,7 @@ export default Ember.Mixin.create({
         authors =                           this.get('controllers.application.orderDetails.book.authors');
         issn_isbn =                         this.get('controllers.application.orderDetails.book.isbn');
         publication_year =                  this.get('controllers.application.orderDetails.book.publicationYear');
-        order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.allowCopy');
+        order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.outsideNordics');
         not_valid_after =                   this.get('controllers.application.orderDetails.book.notValidAfter');
         comments =                          this.get('controllers.application.orderDetails.book.comment');
         break;
