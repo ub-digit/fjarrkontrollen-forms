@@ -102,11 +102,11 @@ export default {
 				},
 				book: {
 					header: 'Book',
-					outsideNordicsHelpText: 'Charge: 200 SEK (charge for companies 400:-)',
+					outsideNordicsHelpText: 'Charge: 200 SEK (charge for companies 400 SEK, no charge for employees at the University of Gothenburg)',
 				},
 				chapter: {
 					header: 'Copy of book chapter',
-					price: 'Charge: 80:- (no charge for GU staff)',
+					price: 'Charge: 80 SEK (no charge for GU staff)',
 				},
 				score: {
 					header: 'Musical score',

@@ -103,7 +103,7 @@ export default {
 				},
 				book: {
 					header: 'Bok',
-					outsideNordicsHelpText: 'Kostnad 200:- (företag 400:-)',
+					outsideNordicsHelpText: 'Kostnad 200:- (företag 400:-, gratis för anställda vid Göteborgs universitet)',
 				},
 				chapter: {
 					header: 'Kopia av bokkapitel',

@@ -84,16 +84,16 @@ export default Ember.Controller.extend({
 
   orderPath: "Web",
 
-	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', 'orderDetails.book.allowCopy', function() {
+	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', function() {
 		if (
 			// Check if order type is micro film, which is always without charge
 			(this.get('selectedOrderType.identifier') === 'microfilm') ||
 
-			// Check if order type is book, which is always without charged...
+			// Check if order type is book, which is always without charge...
 			(
         (this.get('selectedOrderType.identifier') === 'book') &&
 
-			// ... as long as neither of outside nordics or copies accepted are checked
+			// ... as long as outside nordics are not checked
 			!(this.get('orderDetails.book.outsideNordics'))
       )
 		) {

@@ -65,14 +65,15 @@ export default Ember.Mixin.create({
 
   // Bool to check if order might be invoiced and invoicing details are needed, based on
   //  - Customer type has been set, and
-  //  - Order typ is book outside nordics or article
+  //  - Order type is book outside nordics or article
   //  - Customer type is Sahlgrenska, Company or Others, or university if book
   //  - Order type is billable
   isInvoicingAvaliable: Ember.computed('selectedOrderType', 'selectedCustomerType', 'isBillable', 'isCustomerTypeSet', function () {
     var isInvoicable = null;
 
     if (this.get('selectedOrderType.identifier') === 'book') {
-      isInvoicable = (this.get('selectedCustomerType.identifier') === 'univ' || this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
+      //isInvoicable = (this.get('selectedCustomerType.identifier') === 'univ' || this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
+      isInvoicable = (this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
     } else {
       isInvoicable = (this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
     }
