@@ -82,6 +82,7 @@ export default Ember.Route.extend({
 
 			if (model.title_of_article) {
 				controller.set("orderDetails.article.articleTitle", model.title_of_article);
+				controller.set("orderDetails.chapter.chapterTitle", model.title_of_article);
 			}
 
 			if (model.author) {
