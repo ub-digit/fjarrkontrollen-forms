@@ -87,6 +87,8 @@ export default Ember.Route.extend({
 
 			if (model.author) {
 				controller.set("orderDetails.article.authors", model.author);
+				controller.set("orderDetails.book.authors", model.author);
+				controller.set("orderDetails.chapter.authors", model.author);
 			}
 
 			if (model.year) {
