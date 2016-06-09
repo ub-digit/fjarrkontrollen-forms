@@ -2,31 +2,33 @@
 	<i class="fa fa-circle-o-notch fa-spin"></i>
 </div>
 
-<div class="container gu-header">
-	<div class="row">
-		<div class="col-xs-12">
-			<div>
-				<a {{bind-attr class=":gu-logo currentLocale"}} href="http://www.gu.se/" title="Länk till Göteborgs universitets startsida">
-					<img {{bind-attr src=(t 'home.headers.logoPrintUrl')}} alt="Göteborgs universitet" class="gu-logoForPrint">
-				</a>
-			</div>
-			<div class="gu-header-title hidden-xs">
-				<div>
-					<a class="level1" href="http://www.ub.gu.se/">{{t 'home.headers.level1'}}</a>
-				</div>
-				<div>
-					<a class="level2" href="/">{{t 'home.headers.level2'}}</a>
-				</div>
-			</div>
-			<div class="gu-header-links pull-right">
-				<ul>
-					<li><a title="To the English version of this page" {{bind-attr href=(t 'home.headers.langLinkUrl')}}>{{t 'home.headers.langLink'}}</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
+<div class="gu-header-container">
+  <div class="container">
+    <div class="row gu-header">
+      <div class="col-xs-12">
+        <div {{bind-attr class=":logo currentLocale"}}>
+          <a href="http://www.gu.se">
+            <img class="visible-print-block" {{bind-attr src=(t 'home.headers.logoPrintUrl')}} />
+          </a>
+        </div>
+        <div class="headers">
+          <div class="level1">
+            <a href="http://www.ub.gu.se">{{t 'home.headers.level1'}}</a>
+          </div>
+					<div class="level2">
+						<a href="/">{{t 'home.headers.level2'}}</a>
+					</div>
+        </div>
+        <div class="gu-header-links pull-right hidden-print">
+					<ul>
+						<li><a title="To the English version of this page" {{bind-attr href=(t 'home.headers.langLinkUrl')}}>{{t 'home.headers.langLink'}}</a></li>
+					</ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="gu-header-border"></div>
 
 <div class="container">
 	{{outlet}}
