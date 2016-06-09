@@ -32,10 +32,10 @@ export default Ember.Route.extend({
 		controller.set("selectedOrderType", null);
 
 		var customerTypes = [];
-		customerTypes.pushObject({id:1, identifier: 'univ', title_sv: 'Forskare/anställd', title_en: 'Researcher/staff'});
+		customerTypes.pushObject({id:1, identifier: 'univ', title_sv: 'Forskare/anställd vid Göteborgs universitet', title_en: 'Researcher/staff at the University of Gothenburg'});
 		customerTypes.pushObject({id:2, identifier: 'stud', title_sv: 'Student', title_en: 'Student'});
-		customerTypes.pushObject({id:3, identifier: 'sahl', title_sv: 'Anställd på Sahlgrenska universitetssjukhuset ', title_en: 'Sahlgrenska University Hospital staff'});
-		customerTypes.pushObject({id:4, identifier: 'priv', title_sv: 'Privatperson', title_en: 'Private person'});
+		customerTypes.pushObject({id:3, identifier: 'sahl', title_sv: 'Anställd inom Västra Götalandsregionen', title_en: 'Staff at Region Västra Götaland'});
+		customerTypes.pushObject({id:4, identifier: 'priv', title_sv: 'Privatperson', title_en: 'Private individual'});
 		customerTypes.pushObject({id:5, identifier: 'ftag', title_sv: 'Företag', title_en: 'Company'});
 		customerTypes.pushObject({id:6, identifier: 'dist', title_sv: 'Distansstudent', title_en: 'Distance student'});
 		customerTypes.pushObject({id:7, identifier: 'ovri', title_sv: 'Övriga', title_en: 'Other'});

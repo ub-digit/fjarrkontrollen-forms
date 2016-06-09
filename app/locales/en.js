@@ -87,6 +87,7 @@ export default {
 			},
    		step1: {
 				header: 'Order and library',
+				subHeader1: "Select what to order and where to pick up",
    			typeHeader: 'Select what you want to order',
         locationHeader: 'Select library to order from',
    			nextBtn: 'Next',
@@ -124,13 +125,16 @@ export default {
    		step3: {
 				header: 'Your personal details',
 				customerTypeHeader: 'I am a...',
+				customerTypeLabel: 'Customer category',
 				customerTypePrompt: 'Select a category',
 				customerDetailsSubheader: 'Fill in your details',
+				xAccountHelptext: 'If you lack an x-account but are a researcher or staff at the University of Gothenburg, please write “xx” in this field.',
 				deliveryOptionsSubheader: 'Delivery options',
 				deliveryMethodPrompt: 'Select a delivery option:',
 				pickupInfoText: 'The order can be picked up at',
 				deliveryDetailsSubheader: 'Delivery details',
 				invoicingDetailsSubheader: 'Invoicing details',
+				customerIdHelptext: 'A purchase ID is a 5 or 7 digit number used by Region Västra Götaland for invoicing. If you are not eligible for a Purchase ID, please order and pay as a Private person.',
 				nextBtn: 'Next',
 				prevBtn: 'Back',
 				mandatoryText: 'Mandatory fields must be filled in before you can proceed'
