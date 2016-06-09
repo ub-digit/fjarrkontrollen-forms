@@ -88,8 +88,10 @@ export default {
    		step1: {
 				header: 'Order and library',
 				subHeader1: "Select what to order and where to pick up",
-   			typeHeader: 'Select what you want to order',
-        locationHeader: 'Select library to order from',
+   			typeHeader: 'Type of material',
+				typePrompt: 'Select type',
+        locationHeader: 'Pick up library ',
+				locationPrompt: 'Select library',
    			nextBtn: 'Next',
    		},
    		step2: {

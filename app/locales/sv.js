@@ -89,8 +89,10 @@ export default {
    		step1: {
 				header: 'Typ och bibliotek',
 				subHeader1: "Välj vad du vill beställa och var du vill hämta",
-   			typeHeader: 'Välj vad vill du beställa',
-        locationHeader: 'Välj vilket bibliotek du vill hämta på',
+   			typeHeader: 'Typ av material',
+				typePrompt: 'Välj typ',
+        locationHeader: 'Bibliotek att hämta på',
+				locationPrompt: 'Välj bibliotek',
    			nextBtn: 'Nästa',
    		},
    		step2: {
