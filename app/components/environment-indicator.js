@@ -9,33 +9,11 @@ export default Ember.Component.extend({
 
     console.log((ENV.environment !== 'production'));
 
-    return (ENV.environment !== 'production');
+    return (ENV.environment !== 'production' || ENV.environment !== 'development');
 
   }),
 
   environmentNameString: Ember.computed('ENV.environment', function() {
-
-    var name = null;
-
-    switch (ENV.environment) {
-      case 'development':
-        //name = 
-        break;
-      case 'test':
-
-        break;
-      case 'lab':
-
-        break;
-      case 'staging':
-
-        break;
-      case 'production':
-
-        break;
-      default:
-
-    }
 
     return ENV.environment;
 
