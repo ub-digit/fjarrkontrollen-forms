@@ -7,9 +7,7 @@ export default Ember.Component.extend({
 
   componentVisible: Ember.computed('ENV.environment', function() {
 
-    console.log((ENV.environment !== 'production'));
-
-    return (ENV.environment !== 'production' || ENV.environment !== 'development');
+    return ((ENV.environment !== 'production') && (ENV.environment !== 'development'));
 
   }),
 
