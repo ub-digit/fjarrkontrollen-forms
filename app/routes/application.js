@@ -31,7 +31,7 @@ export default Ember.Route.extend({
 		controller.set("selectedOrderType", null);
 
 		var customerTypes = [];
-		customerTypes.pushObject({id:1, identifier: 'univ', title_sv: 'Forskare/anställd vid Göteborgs universitet', title_en: 'Researcher/staff at the University of Gothenburg'});
+		customerTypes.pushObject({id:1, identifier: 'univ', title_sv: 'Forskare/anställd/doktorand vid GU', title_en: 'Researcher/staff/PhD student at GU'});
 		customerTypes.pushObject({id:2, identifier: 'stud', title_sv: 'Student', title_en: 'Student'});
 		customerTypes.pushObject({id:3, identifier: 'sahl', title_sv: 'Anställd inom Västra Götalandsregionen', title_en: 'Staff at Region Västra Götaland'});
 		customerTypes.pushObject({id:4, identifier: 'priv', title_sv: 'Privatperson', title_en: 'Private individual'});
