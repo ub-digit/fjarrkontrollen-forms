@@ -11,9 +11,9 @@ export default Ember.Route.extend({
 
   	var locations = [];
 		locations.pushObject({id:1, identifier: 'G', title_sv: 'Humanistiska biblioteket', title_en: 'Humanities Library'});
-		//locations.pushObject({id:2, identifier: 'Ge', title_sv: 'Ekonomiska biblioteket', title_en: 'Economics Library'});
+		locations.pushObject({id:2, identifier: 'Ge', title_sv: 'Ekonomiska biblioteket', title_en: 'Economics Library'});
 		locations.pushObject({id:4, identifier: 'Gm', title_sv: 'Biomedicinska biblioteket', title_en: 'Biomedical Library'});
-		//locations.pushObject({id:5, identifier: 'Gp', title_sv: 'Pedagogiska biblioteket', title_en: 'Education Library'});
+		locations.pushObject({id:5, identifier: 'Gp', title_sv: 'Pedagogiska biblioteket', title_en: 'Education Library'});
 		locations.pushObject({id:6, identifier: 'Gk', title_sv: 'Samhällsvetenskapliga biblioteket', title_en: 'Social Sciences Library'});
 		locations.pushObject({id:7, identifier: 'Ghdk', title_sv: 'Konstbiblioteket', title_en: 'Art Library'});
 		locations.pushObject({id:8, identifier: 'Gumu', title_sv: 'Biblioteket för musik och dramatik', title_en: 'Music and Drama Library'});
