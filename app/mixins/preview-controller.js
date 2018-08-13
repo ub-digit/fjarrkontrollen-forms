@@ -1,32 +1,37 @@
-import Ember from 'ember';
+import Mixin from '@ember/object/mixin';
+import { inject as inject_controller } from '@ember/controller';
+import { inject as inject_service } from '@ember/service';
+import { computed } from '@ember/object';
 import ENV from 'fjarrkontrollen-forms/config/environment';
+import $ from 'jquery';
 
-export default Ember.Mixin.create({
-  needs: ['application'],
-  invoicingDetailsBinding: 'controllers.application.invoicingDetails',
+export default Mixin.create({
+  applicationController: inject_controller('application'),
+  i18n: inject_service(),
 
-  orderPreviewPartialName: Ember.computed('controllers.application.selectedOrderType.identifier', function() {
-    return 'partials/' + this.get('controllers.application.selectedOrderType.identifier') + '-preview';
+
+  orderPreviewPartialName: computed('applicationController.selectedOrderType.identifier', function() {
+    return 'partials/' + this.get('applicationController.selectedOrderType.identifier') + '-preview';
   }),
 
-  selectedLibraryNameString: Ember.computed('controllers.application.currentLocale', function() {
-    switch (this.get('controllers.application.currentLocale')) {
+  selectedLibraryNameString: computed('i18n.locale', function() {
+    switch (this.get('i18n.locale')) {
       case 'sv':
-      return this.get('controllers.application.selectedLocation.title_sv');
+      return this.get('applicationController.selectedLocation.title_sv');
       default:
-      return this.get('controllers.application.selectedLocation.title_en');
+      return this.get('applicationController.selectedLocation.title_en');
     }
   }),
 
-  isDeliveryTypeShipping: Ember.computed.equal('controllers.application.selectedDeliveryMethod.identifier', 'send'),
+  isDeliveryTypeShipping: computed.equal('applicationController.selectedDeliveryMethod.identifier', 'send'),
 
-  hasInvoicing: Ember.computed('invoicingDetails.name','invoicingDetails.company', 'invoicingDetails.address', 'invoicingDetails.postalCode', 'invoicingDetails.city', 'invoicingDetails.customerId', function() {
-    return (this.get('invoicingDetails.name') || this.get('invoicingDetails.company') || this.get('invoicingDetails.address') || this.get('invoicingDetails.postalCode') || this.get('invoicingDetails.city') || this.get('invoicingDetails.customerId'));
+  hasInvoicing: computed('applicationController.{invoicingDetails.name,invoicingDetails.company,invoicingDetails.address,invoicingDetails.postalCode,invoicingDetails.city,invoicingDetails.customerId}', function() {
+    return (this.get('applicationController.invoicingDetails.name') || this.get('applicationController.invoicingDetails.company') || this.get('applicationController.invoicingDetails.address') || this.get('applicationController.invoicingDetails.postalCode') || this.get('applicationController.invoicingDetails.city') || this.get('applicationController.invoicingDetails.customerId'));
   }),
 
   actions: {
     save: function() {
-      Ember.$("body").addClass("loading");
+      $("body").addClass("loading");
       var title =                             null;
       var journal_title =                     null;
       var authors =                           null;
@@ -40,71 +45,71 @@ export default Ember.Mixin.create({
       var order_outside_scandinavia =         null;
       var publication_type =                  null;
       var period =                            null;
-      var delivery_place = this.get('controllers.application.selectedDeliveryMethod.title_internal') || "Hämtas";
+      var delivery_place = this.get('applicationController.selectedDeliveryMethod.title_internal') || "Hämtas";
 
-      var orderType =                         this.get("controllers.application.selectedOrderType");
+      var orderType =                         this.get("applicationController.selectedOrderType");
       switch(orderType.identifier) {
         case 'article':
-        title =                             this.get('controllers.application.orderDetails.article.articleTitle');
-        journal_title =                     this.get('controllers.application.orderDetails.article.journalTitle');
-        authors =                           this.get('controllers.application.orderDetails.article.authors');
-        issn_isbn =                         this.get('controllers.application.orderDetails.article.issn');
-        publication_year =                  this.get('controllers.application.orderDetails.article.publicationYear');
-        volume =                            this.get('controllers.application.orderDetails.article.volume');
-        issue =                             this.get('controllers.application.orderDetails.article.issue');
-        pages =                             this.get('controllers.application.orderDetails.article.pages');
-        not_valid_after =                   this.get('controllers.application.orderDetails.article.notValidAfter');
-        comments =                          this.get('controllers.application.orderDetails.article.comment');
+        title =                             this.get('applicationController.orderDetails.article.articleTitle');
+        journal_title =                     this.get('applicationController.orderDetails.article.journalTitle');
+        authors =                           this.get('applicationController.orderDetails.article.authors');
+        issn_isbn =                         this.get('applicationController.orderDetails.article.issn');
+        publication_year =                  this.get('applicationController.orderDetails.article.publicationYear');
+        volume =                            this.get('applicationController.orderDetails.article.volume');
+        issue =                             this.get('applicationController.orderDetails.article.issue');
+        pages =                             this.get('applicationController.orderDetails.article.pages');
+        not_valid_after =                   this.get('applicationController.orderDetails.article.notValidAfter');
+        comments =                          this.get('applicationController.orderDetails.article.comment');
         break;
         case 'book':
-        title =                             this.get('controllers.application.orderDetails.book.bookTitle');
-        authors =                           this.get('controllers.application.orderDetails.book.authors');
-        issn_isbn =                         this.get('controllers.application.orderDetails.book.isbn');
-        publication_year =                  this.get('controllers.application.orderDetails.book.publicationYear');
-        order_outside_scandinavia =         this.get('controllers.application.orderDetails.book.outsideNordics');
-        not_valid_after =                   this.get('controllers.application.orderDetails.book.notValidAfter');
-        comments =                          this.get('controllers.application.orderDetails.book.comment');
+        title =                             this.get('applicationController.orderDetails.book.bookTitle');
+        authors =                           this.get('applicationController.orderDetails.book.authors');
+        issn_isbn =                         this.get('applicationController.orderDetails.book.isbn');
+        publication_year =                  this.get('applicationController.orderDetails.book.publicationYear');
+        order_outside_scandinavia =         this.get('applicationController.orderDetails.book.outsideNordics');
+        not_valid_after =                   this.get('applicationController.orderDetails.book.notValidAfter');
+        comments =                          this.get('applicationController.orderDetails.book.comment');
         break;
         case 'chapter':
-        title =                             this.get('controllers.application.orderDetails.chapter.chapterTitle');
-        journal_title =                     this.get('controllers.application.orderDetails.chapter.bookTitle'); // Change ?
-        authors =                           this.get('controllers.application.orderDetails.chapter.authors');
-        issn_isbn =                         this.get('controllers.application.orderDetails.chapter.isbn');
-        publication_year =                  this.get('controllers.application.orderDetails.chapter.publicationYear');
-        pages =                             this.get('controllers.application.orderDetails.chapter.pages');
-        not_valid_after =                   this.get('controllers.application.orderDetails.chapter.notValidAfter');
-        comments =                          this.get('controllers.application.orderDetails.chapter.comment');
+        title =                             this.get('applicationController.orderDetails.chapter.chapterTitle');
+        journal_title =                     this.get('applicationController.orderDetails.chapter.bookTitle'); // Change ?
+        authors =                           this.get('applicationController.orderDetails.chapter.authors');
+        issn_isbn =                         this.get('applicationController.orderDetails.chapter.isbn');
+        publication_year =                  this.get('applicationController.orderDetails.chapter.publicationYear');
+        pages =                             this.get('applicationController.orderDetails.chapter.pages');
+        not_valid_after =                   this.get('applicationController.orderDetails.chapter.notValidAfter');
+        comments =                          this.get('applicationController.orderDetails.chapter.comment');
         break;
         case 'score':
-        title =                             this.get('controllers.application.orderDetails.score.opusTitle');
-        authors =                           this.get('controllers.application.orderDetails.score.composers');
-        publication_type =                  this.get('controllers.application.orderDetails.score.publicationType');
-        not_valid_after =                   this.get('controllers.application.orderDetails.score.notValidAfter');
-        comments =                          this.get('controllers.application.orderDetails.score.comment');
+        title =                             this.get('applicationController.orderDetails.score.opusTitle');
+        authors =                           this.get('applicationController.orderDetails.score.composers');
+        publication_type =                  this.get('applicationController.orderDetails.score.publicationType');
+        not_valid_after =                   this.get('applicationController.orderDetails.score.notValidAfter');
+        comments =                          this.get('applicationController.orderDetails.score.comment');
         break;
         case 'microfilm':
-        title =                             this.get('controllers.application.orderDetails.microfilm.newspaper');
-        period =                            this.get('controllers.application.orderDetails.microfilm.period');
-        publication_year =                  this.get('controllers.application.orderDetails.microfilm.startyear');
-        not_valid_after =                   this.get('controllers.application.orderDetails.microfilm.notValidAfter');
-        comments =                          this.get('controllers.application.orderDetails.microfilm.comment');
+        title =                             this.get('applicationController.orderDetails.microfilm.newspaper');
+        period =                            this.get('applicationController.orderDetails.microfilm.period');
+        publication_year =                  this.get('applicationController.orderDetails.microfilm.startyear');
+        not_valid_after =                   this.get('applicationController.orderDetails.microfilm.notValidAfter');
+        comments =                          this.get('applicationController.orderDetails.microfilm.comment');
         break;
         default:
         break;
       }
 
       var that = this;
-      Ember.$.ajax({
+      $.ajax({
         type: 'POST',
         url: ENV.APP.serviceURL + '/orders',
         data: JSON.stringify({
           order_type_id:                      orderType.id,
-          customer_type:                      this.get('controllers.application.selectedCustomerType.identifier'),
-          form_library:                       this.get('controllers.application.selectedLocation.identifier'), // Change?
+          customer_type:                      this.get('applicationController.selectedCustomerType.identifier'),
+          form_library:                       this.get('applicationController.selectedLocation.identifier'), // Change?
           email_confirmation:                 true, // Always set to true
-          form_lang:                          this.get('controllers.application.currentLocale'),
+          form_lang:                          this.get('i18n.locale'),
           delivery_place:                     delivery_place,
-          order_path:                         this.get('controllers.application.orderPath'),
+          order_path:                         this.get('applicationController.orderPath'),
 
           title:                              title,
           journal_title:                      journal_title,
@@ -121,26 +126,26 @@ export default Ember.Mixin.create({
           publication_type:                   publication_type,
           period:                             period,
 
-          name:                               this.get('controllers.application.customerDetails.name'),
-          email_address:                      this.get('controllers.application.customerDetails.emailAddress'),
-          company1:                           this.get('controllers.application.customerDetails.organisation'),
-          company2:                           this.get('controllers.application.customerDetails.department'),
-          company3:                           this.get('controllers.application.customerDetails.unit'),
-          library_card_number:                this.get('controllers.application.customerDetails.libraryCardNumber'),
-          x_account:                          this.get('controllers.application.customerDetails.xAccount'),
+          name:                               this.get('applicationController.customerDetails.name'),
+          email_address:                      this.get('applicationController.customerDetails.emailAddress'),
+          company1:                           this.get('applicationController.customerDetails.organisation'),
+          company2:                           this.get('applicationController.customerDetails.department'),
+          company3:                           this.get('applicationController.customerDetails.unit'),
+          library_card_number:                this.get('applicationController.customerDetails.libraryCardNumber'),
+          x_account:                          this.get('applicationController.customerDetails.xAccount'),
 
-          delivery_address:                   this.get('controllers.application.deliveryDetails.address'),
-          delivery_box:                       this.get('controllers.application.deliveryDetails.box'),
-          delivery_postal_code:               this.get('controllers.application.deliveryDetails.postalCode'),
-          delivery_city:                      this.get('controllers.application.deliveryDetails.city'),
-          delivery_comments:                  this.get('controllers.application.deliveryDetails.comment'),
+          delivery_address:                   this.get('applicationController.deliveryDetails.address'),
+          delivery_box:                       this.get('applicationController.deliveryDetails.box'),
+          delivery_postal_code:               this.get('applicationController.deliveryDetails.postalCode'),
+          delivery_city:                      this.get('applicationController.deliveryDetails.city'),
+          delivery_comments:                  this.get('applicationController.deliveryDetails.comment'),
 
-          invoicing_name:                     this.get('controllers.application.invoicingDetails.name'),
-          invoicing_company:                  this.get('controllers.application.invoicingDetails.company'),
-          invoicing_address:                  this.get('controllers.application.invoicingDetails.address'),
-          invoicing_postal_address1:          this.get('controllers.application.invoicingDetails.postalCode'),
-          invoicing_postal_address2:          this.get('controllers.application.invoicingDetails.city'),
-          invoicing_id:                       this.get('controllers.application.invoicingDetails.customerId')
+          invoicing_name:                     this.get('applicationController.invoicingDetails.name'),
+          invoicing_company:                  this.get('applicationController.invoicingDetails.company'),
+          invoicing_address:                  this.get('applicationController.invoicingDetails.address'),
+          invoicing_postal_address1:          this.get('applicationController.invoicingDetails.postalCode'),
+          invoicing_postal_address2:          this.get('applicationController.invoicingDetails.city'),
+          invoicing_id:                       this.get('applicationController.invoicingDetails.customerId')
         }),
         contentType: 'application/json',
         dataType: 'json'
@@ -148,26 +153,26 @@ export default Ember.Mixin.create({
 
         if(window.dataLayer) {
           window.dataLayer.push({
-            'orderType': that.get('controllers.application.selectedOrderType.title_sv'),
-            'location': that.get('controllers.application.selectedLocation.title_sv'),
-            'customerType': that.get('controllers.application.selectedCustomerType.title_sv')
+            'orderType': that.get('applicationController.selectedOrderType.title_sv'),
+            'location': that.get('applicationController.selectedLocation.title_sv'),
+            'customerType': that.get('applicationController.selectedCustomerType.title_sv')
           });
         }
 
-        Ember.$("body").removeClass("loading");
+        $("body").removeClass("loading");
         that.successHandler(response);
       },
       function(error) {
 
         if(window.dataLayer) {
           window.dataLayer.push({
-            'orderType': that.get('controllers.application.selectedOrderType.title_sv'),
-            'location': that.get('controllers.application.selectedLocation.title_sv'),
-            'customerType': that.get('controllers.application.selectedCustomerType.title_sv')
+            'orderType': that.get('applicationController.selectedOrderType.title_sv'),
+            'location': that.get('applicationController.selectedLocation.title_sv'),
+            'customerType': that.get('applicationController.selectedCustomerType.title_sv')
           });
         }
 
-        Ember.$("body").removeClass("loading");
+        $("body").removeClass("loading");
         that.errorHandler(error);
       });
     }

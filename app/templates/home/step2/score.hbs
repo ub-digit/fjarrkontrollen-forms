@@ -2,27 +2,27 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isComposersValid::has-error"}}>
+    <div class="form-group {{if isComposersValid '' 'has-error'}}">
       <label class="control-label">{{t 'home.orderDetails.score.composers'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.composers}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.score.composers}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isOpusTitleValid::has-error"}}>
+    <div class="form-group {{if isOpusTitleValid '' 'has-error'}}">
       <label class="control-label">{{t 'home.orderDetails.score.opusTitle'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.opusTitle}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.score.opusTitle}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div  class={{"form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.publicationType'}}</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.publicationType}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.score.publicationType}}
       <span id="helpBlock" class="help-block">{{t 'home.step2.score.publicationTypeHelpText'}}</span>
     </div>
 
@@ -31,31 +31,31 @@
 <h3>{{t 'home.step2.otherDetailsText'}}</h3>
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div  class={{"form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.notValidAfter'}}</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.score.notValidAfter}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.score.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.score.comment'}}</label>
-      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.score.comment}}
+      {{textarea class="form-control" value=applicationController.orderDetails.score.comment}}
     </div>
   </div>
 </div> <!-- end row -->
 <div class="row">
   <div class="col-xs-12">
     <div class="pull-right mandatory-text">
-      <p {{bind-attr class="isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
+      <p  class={{"isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
 </div> <!-- end row -->
 <div class="row">
   <div class="col-xs-12 next-prev">
-    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
-    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}} {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+    <button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right {{if isFormComplete 'enabled' 'disabled'}}">{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
   </div>
 </div>

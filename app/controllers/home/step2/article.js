@@ -1,21 +1,25 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { inject as inject_controller } from '@ember/controller';
+import { inject as inject_service} from '@ember/service';
+import { computed } from '@ember/object';
 
-export default Ember.Controller.extend({
-  needs: ['application'],
-  pubMedIdBinding: 'controllers.application.pubMedId',
+export default Controller.extend({
+  applicationController: inject_controller('application'),
+  i18n: inject_service(),
+  pubMedIdBinding: 'applicationController.pubMedId',
 
-  isPagesValid: Ember.computed.notEmpty('controllers.application.orderDetails.article.pages'),
+  isPagesValid: computed.notEmpty('applicationController.orderDetails.article.pages'),
 
-  isPublicationYearValid: Ember.computed.notEmpty('controllers.application.orderDetails.article.publicationYear'),
+  isPublicationYearValid: computed.notEmpty('applicationController.orderDetails.article.publicationYear'),
 
-  isJournalTitleValid: Ember.computed.notEmpty('controllers.application.orderDetails.article.journalTitle'),
+  isJournalTitleValid: computed.notEmpty('applicationController.orderDetails.article.journalTitle'),
   
-  isFormComplete: Ember.computed('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid', function() {
+  isFormComplete: computed('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid', function() {
     return (this.get('isPagesValid') && this.get('isPublicationYearValid') && this.get('isJournalTitleValid'));
   }),
 
 
-  isPubMedButtonEnabled: Ember.computed.gte('pubMedId.length', 1),
+  isPubMedButtonEnabled: computed.gte('pubMedId.length', 1),
 
 
   actions: {

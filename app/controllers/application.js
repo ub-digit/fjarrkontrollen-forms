@@ -1,7 +1,12 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import { observer } from '@ember/object';
+import { inject as inject_service} from '@ember/service';
 
-export default Ember.Controller.extend({
-  queryParams: ['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author', 'is_sfx'],
+export default Controller.extend({
+	i18n: inject_service(),
+  queryParams: ['lang'],
+  lang: null,
 	pubMedId: null,
 
 	orderDetails: {
@@ -84,7 +89,7 @@ export default Ember.Controller.extend({
 
   orderPath: "Web",
 
-	isBillable: Ember.computed('selectedOrderType', 'orderDetails.book.outsideNordics', function() {
+	isBillable: computed('selectedOrderType', 'orderDetails.book.outsideNordics', function() {
 		if (
 			// Check if order type is micro film, which is always without charge
 			(this.get('selectedOrderType.identifier') === 'microfilm') ||
@@ -104,14 +109,14 @@ export default Ember.Controller.extend({
 	}),
 
 
-	resetOrderDetailsWhenOrderTypeChanges: Ember.observer('selectedOrderType', function() {
+	resetOrderDetailsWhenOrderTypeChanges: observer('selectedOrderType', function() {
 
 		this.resetOrderDetails();
 
 	}),
 
 
-	isShippable: Ember.computed('selectedOrderType', function() {
+	isShippable: computed('selectedOrderType', function() {
 
 		// Check if order type is of a kind that never will be shipped
 		if (this.get('selectedOrderType.identifier') === 'book' || this.get('selectedOrderType.identifier') === 'microfilm' || this.get('selectedOrderType.identifier') === 'score') {

@@ -2,58 +2,58 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isNewspaperValid::has-error"}}>
+    <div class="form-group {{if isNewspaperValid 'ok' 'has-error'}}">
       <label class="control-label">{{t 'home.orderDetails.microfilm.newspaper'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.newspaper}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.microfilm.newspaper}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isPeriodValid::has-error"}}>
+    <div class="form-group {{if isPeriodValid 'ok' 'has-error'}}">
       <label class="control-label">{{t 'home.orderDetails.microfilm.period'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.period}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.microfilm.period}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div  class={{"form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.startyear'}}</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.startyear}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.microfilm.startyear}}
     </div>
   </div>
 </div> <!-- end row -->
 <h3>{{t 'home.step2.otherDetailsText'}}</h3>
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div  class={{"form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.notValidAfter'}}</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.microfilm.notValidAfter}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.microfilm.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label class="control-label">{{t 'home.orderDetails.microfilm.comment'}}</label>
-      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.microfilm.comment}}
+      {{textarea class="form-control" value=applicationController.orderDetails.microfilm.comment}}
     </div>
   </div>
 </div> <!-- end row -->
 <div class="row">
   <div class="col-xs-12">
     <div class="pull-right mandatory-text">
-      <p {{bind-attr class="isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
+      <p class="{{if isFormComplete 'ok' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
 </div> <!-- end row -->
 <div class="row">
   <div class="col-xs-12 next-prev">
-    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
-    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}} {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+    <button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right {{if isFormComplete 'enabled' 'disabled'}}">{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
   </div>
 </div>

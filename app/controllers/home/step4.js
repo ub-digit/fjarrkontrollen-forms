@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller'
 import PreviewController from 'fjarrkontrollen-forms/mixins/preview-controller';
 
-export default Ember.Controller.extend(PreviewController, {
+export default Controller.extend(PreviewController, {
 
   successHandler: function(response) {
 
@@ -12,9 +12,7 @@ export default Ember.Controller.extend(PreviewController, {
   },
 
   errorHandler: function(error) {
-
     this.transitionToRoute('home.error');
-
   },
 
   actions: {

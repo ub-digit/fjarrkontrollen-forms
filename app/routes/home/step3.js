@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 import ResetScroll from '../../mixins/ResetScroll';
 
-export default Ember.Route.extend(ResetScroll, {
+export default Route.extend(ResetScroll, {
 
   actions: {
     nextstep: function() {
@@ -10,5 +10,7 @@ export default Ember.Route.extend(ResetScroll, {
     back: function() {
       this.transitionTo('home.step2');
     }
+
+
   }
 });

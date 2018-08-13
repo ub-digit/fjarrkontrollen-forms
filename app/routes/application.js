@@ -1,15 +1,17 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
+import { inject as service} from '@ember/service';
 
-export default Ember.Route.extend({
+
+export default Route.extend({
+	i18n: service(),
 	model: function(params) {
+		if (params.lang) {
+			this.set('i18n.locale', params.lang);
+		}
 		return params;
 	},
 	setupController: function(controller, model) {
-
-		var application = this.container.lookup('application:main');
-		controller.set('currentLocale', application.get("locale") || application.get('defaultLocale'));
-
-  	var locations = [];
+		var locations = [];
 		locations.pushObject({id:1, identifier: 'G', title_sv: 'Humanistiska biblioteket', title_en: 'Humanities Library'});
 		locations.pushObject({id:2, identifier: 'Ge', title_sv: 'Ekonomiska biblioteket', title_en: 'Economics Library'});
 		locations.pushObject({id:4, identifier: 'Gm', title_sv: 'Biomedicinska biblioteket', title_en: 'Biomedical Library'});
@@ -54,12 +56,12 @@ export default Ember.Route.extend({
 
 			// set the correct order type based on param rft_genre
 			if (model.rft_genre === 'book' || model.rft_genre === 'dissertation') {
-	    	controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
-	    }
+				controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
+			}
 			else if (model.rft_genre === 'bookitem') {
 				controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'chapter'));
 			}
-	    else {
+			else {
 				controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
 			}
 
@@ -116,6 +118,18 @@ export default Ember.Route.extend({
 	actions: {
 		resetForm: function() {
 			this.controllerFor("application").resetAllData();
+		},
+
+		toggleLang: function() {
+			if (this.get("i18n.locale") === 'en') {
+				this.set('i18n.locale', 'sv');
+				this.controllerFor("application").set("lang", 'sv');
+			}
+			else {
+				this.set('i18n.locale', 'en');
+				this.controllerFor("application").set("lang", 'en');
+			}
+			
 		},
 
 		orderAnother: function() {

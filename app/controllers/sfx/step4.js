@@ -1,23 +1,27 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import { inject as inject_service } from '@ember/service';
+import { inject as inject_controller } from '@ember/controller';
 
-export default Ember.Controller.extend({
-  needs: ['application'],
+export default Controller.extend({
+  applicationController: inject_controller('application'),
+  i18n: inject_service(),
   queryParams: ['id'],
 
-  orderAnotherText: Ember.computed('controllers.application.selectedOrderType', function() {
+  orderAnotherText: computed('applicationController.selectedOrderType', function() {
 
-    var orderType = this.get("controllers.application.selectedOrderType");
+    var orderType = this.get("applicationController.selectedOrderType");
     switch(orderType.identifier) {
       case 'article':
-        return Ember.I18n.t('home.step5.orderAnotherArticle');
+        return this.get("i18n").t('home.step5.orderAnotherArticle');
       case 'book':
-        return Ember.I18n.t('home.step5.orderAnotherBook');
+        return this.get("i18n").t('home.step5.orderAnotherBook');
       case 'chapter':
-        return Ember.I18n.t('home.step5.orderAnotherChapter');
+        return this.get("i18n").t('home.step5.orderAnotherChapter');
       case 'score':
-        return Ember.I18n.t('home.step5.orderAnotherScore');
+        return this.get("i18n").t('home.step5.orderAnotherScore');
       case 'microfilm':
-        return Ember.I18n.t('home.step5.orderAnotherMicrofilm');
+        return this.get("i18n").t('home.step5.orderAnotherMicrofilm');
     }
 
 
