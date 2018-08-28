@@ -3,40 +3,36 @@
 <div class="row">
 	<div class="col-xs-12">
 		<label for="typeSelector">{{t 'home.step1.typeHeader'}}</label>
-		{{#power-select
-				class='form-control'
-				options=applicationController.orderTypes
-				selected=applicationController.selectedOrderType
-				placeholder=(t 'home.step1.typePrompt')
-				searchEnabled=false
-				onchange=(action "handleSelectType")
-			  as |type|}}
-			  {{#if isEnglish}}
-			   <strong>{{type.title_en}}</strong>
-			  {{else}}
-			   <strong>{{type.title_sv}}</strong>
-			  {{/if}}
-		{{/power-select}}
+		{{#x-select class="form-control" on-change=(action 'handleSelectType') value=applicationController.selectedOrderType as |item|}}
+		  {{#item.option}}{{t 'home.step1.typePrompt'}}{{/item.option}}
+		  {{#each applicationController.orderTypes as |type|}}
+		    {{#item.option value=type}}
+				  {{#if isEnglish}}
+				   <strong>{{type.title_en}}</strong>
+				  {{else}}
+				   <strong>{{type.title_sv}}</strong>
+				  {{/if}}
+		    {{/item.option}}
+		  {{/each}}
+		{{/x-select}}
 	</div>
 </div>
 
 <div class="row vertical-space-bottom-20">
 	<div class="col-xs-12">
 		<label for="locationSelector">{{t 'home.step1.locationHeader'}}</label>
-		{{#power-select
-
-				options=applicationController.locations
-				selected=applicationController.selectedLocation
-				placeholder=(t 'home.step1.locationPrompt')
-				searchEnabled=false
-				onchange=(action "handleSelectLocation")
-			  as |location|}}
+		{{#x-select class="form-control" on-change=(action 'handleSelectLocation') value=applicationController.selectedLocation as |item|}}
+	  {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
+	  {{#each applicationController.locations as |location|}}
+	    {{#item.option value=location}}
 			  {{#if isEnglish}}
 			   <strong>{{location.title_en}}</strong>
 			  {{else}}
 			   <strong>{{location.title_sv}}</strong>
 			  {{/if}}
-		{{/power-select}}
+	    {{/item.option}}
+	  {{/each}}
+	{{/x-select}}
 	</div>
 </div>
 <div class="row">
