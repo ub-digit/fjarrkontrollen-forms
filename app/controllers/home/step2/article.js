@@ -6,7 +6,6 @@ import { computed } from '@ember/object';
 export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
-  pubMedIdBinding: 'applicationController.pubMedId',
 
   isPagesValid: computed.notEmpty('applicationController.orderDetails.article.pages'),
 
@@ -19,7 +18,7 @@ export default Controller.extend({
   }),
 
 
-  isPubMedButtonEnabled: computed.gte('pubMedId.length', 1),
+  isPubMedButtonEnabled: computed.gte('applicationController.pubMedId.length', 1),
 
 
   actions: {

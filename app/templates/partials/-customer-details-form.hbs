@@ -143,24 +143,21 @@
 
 
 		{{#if isShippingAvailable}}
-
-
 		<div class="row">
 			<div class="col-xs-12">
 				<label for="deliveryMethordSelector">{{t 'home.step3.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
 				{{#x-select class="form-control" on-change=(action 'handleSelectDeliveryMethod') value=applicationController.selectedDeliveryMethod as |item|}}
-				  {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
+				  {{#item.option}}{{t 'home.step3.deliveryMethodPrompt'}}{{/item.option}}
 				  {{#each applicationController.deliveryMethods as |method|}}
 				    {{#item.option value=method}}
 						  {{#if isEnglish}}
 						   <strong>{{method.title_en}}</strong>
-						  {{else}}
+						  {{else}}	
 						   <strong>{{method.title_sv}}</strong>
 						  {{/if}}
 				    {{/item.option}}
 				  {{/each}}
 				{{/x-select}}
-
 			</div>
 		</div>
 		{{/if }}

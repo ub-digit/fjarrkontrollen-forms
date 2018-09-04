@@ -186,7 +186,7 @@ export default Mixin.create({
             (this.get('applicationController.selectedCustomerType.identifier') === 'dist'));
   }),
   // Bool to check whether library card number field is mandatory or not
-  isLibraryCardNumberMandatory: computed('selectedCustomerType', function() {
+  isLibraryCardNumberMandatory: computed('applicationController.selectedCustomerType', function() {
     return ((this.get('applicationController.selectedCustomerType.identifier') === 'univ') ||
             (this.get('applicationController.selectedCustomerType.identifier') === 'stud') ||
             (this.get('applicationController.selectedCustomerType.identifier') === 'priv') ||
@@ -387,7 +387,6 @@ export default Mixin.create({
 
   // Bool to check if form is complete, based on all isValid-properties
   isFormComplete: computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isDeliveryMethodSet', 'areDeliveryFieldsValid', 'areInvoicingFieldsValid'),
-
 
   // method for reseting fields values when customer type is changed, so no fields are hidden with their values maintained
   resetUnusedFields: observer('applicationController.selectedCustomerType', function() {

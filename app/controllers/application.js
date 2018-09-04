@@ -2,10 +2,12 @@ import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { observer } from '@ember/object';
 import { inject as inject_service} from '@ember/service';
+import { inject as inject_controller } from '@ember/controller';
 
 export default Controller.extend({
 	i18n: inject_service(),
-  queryParams: ['lang'],
+	applicationController: inject_controller('application'),
+	queryParams: ['lang','rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author', 'is_sfx'],
   lang: null,
 	pubMedId: null,
 

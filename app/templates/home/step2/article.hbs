@@ -12,8 +12,8 @@
     <div class="form-group {{if errors.links has-error}}">
       <label for="pubmedIdInput">PubMed ID</label>
       <div class="input-group">
-        {{input type='text' class="form-control" value=pubMedId id="pubmedIdInput"}}
-        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' pubMedId}} class="btn btn-default {{if isPubMedButtonEnabled 'enabled' 'disabled'}}">{{t 'home.step2.article.getPubMedBtn'}}</button></span>
+        {{input type='text' class="form-control" value=applicationController.pubMedId id="pubmedIdInput"}}
+        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' applicationController.pubMedId}} class="btn btn-default {{if isPubMedButtonEnabled 'enabled' 'disabled'}}">{{t 'home.step2.article.getPubMedBtn'}}</button></span>
       </div>
     </div>
   </div>

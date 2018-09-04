@@ -21,11 +21,14 @@ export default Controller.extend({
     return 'sfx/step1/' + this.get('applicationController.selectedOrderType.identifier');
   }),
 
-	isFormComplete: computed.and('applicationController.{selectedOrderType, selectedLocation}'),
+	isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),
 
 	actions: {
 		nextStep: function() {
 			this.transitionToRoute('sfx.step2');
-		}
+		},
+    handleSelectLocation: function(location) {
+      this.set("applicationController.selectedLocation", location);
+    }
 	}
 });
