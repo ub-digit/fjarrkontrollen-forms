@@ -110,7 +110,9 @@ export default Route.extend({
 				controller.set("orderDetails.article.pages", model.pages);
 				controller.set("orderDetails.chapter.pages", model.pages);
 			}
-
+			['rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author', 'is_sfx'].forEach(function(item) {
+				controller.set(item, null);
+			});
 			this.transitionTo("sfx.step1");
 		}
 	},
