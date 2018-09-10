@@ -7,6 +7,15 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
+  isEnglish: computed('i18n.locale', function() {
+    switch (this.get('i18n.locale')) {
+      case 'sv':
+        return false;
+      default:
+        return true;
+    }
+  }),
+
   optionLabelPath: computed('i18n.locale', function() {
 		switch (this.get("i18n.locale")) {
 			case 'sv':
