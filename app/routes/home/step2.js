@@ -4,7 +4,6 @@ import ResetScroll from '../../mixins/ResetScroll';
 export default Route.extend(ResetScroll, {
 
   beforeModel: function() {
-
     var orderType = this.controllerFor('application').get('selectedOrderType');
     switch(orderType.identifier) {
       case 'article':
@@ -26,7 +25,6 @@ export default Route.extend(ResetScroll, {
         this.transitionTo('home.step1');
         break;
     }
-
   },
 
   actions: {

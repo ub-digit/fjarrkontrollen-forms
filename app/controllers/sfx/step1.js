@@ -17,27 +17,27 @@ export default Controller.extend({
   }),
 
   optionLabelPath: computed('i18n.locale', function() {
-		switch (this.get("i18n.locale")) {
-			case 'sv':
-				return 'content.title_sv';
-			default:
-				return 'content.title_en';
-		}
+    switch (this.get("i18n.locale")) {
+      case 'sv':
+        return 'content.title_sv';
+      default:
+        return 'content.title_en';
+    }
 
-	}),
+  }),
 
   orderPreviewPartialName: computed('applicationController.selectedOrderType.identifier', function() {
     return 'sfx/step1/' + this.get('applicationController.selectedOrderType.identifier');
   }),
 
-	isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),
+  isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),
 
-	actions: {
-		nextStep: function() {
-			this.transitionToRoute('sfx.step2');
-		},
+  actions: {
+    nextStep: function() {
+      this.transitionToRoute('sfx.step2');
+    },
     handleSelectLocation: function(location) {
       this.set("applicationController.selectedLocation", location);
     }
-	}
+  }
 });
