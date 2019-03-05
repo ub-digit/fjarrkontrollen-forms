@@ -1,10 +1,23 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { computed } from '@ember/object';
+import { inject as inject_service } from '@ember/service';
+import { inject as inject_controller } from '@ember/controller';
 
-export default Ember.Controller.extend({
-  needs: ['application'],
+export default Controller.extend({
+  applicationController: inject_controller('application'),
+  i18n: inject_service(),
 
-  optionLabelPath: Ember.computed('controllers.application.currentLocale', function() {
-		switch (this.get('controllers.application.currentLocale')) {
+  isEnglish: computed('i18n.locale', function() {
+    switch (this.get('i18n.locale')) {
+      case 'sv':
+        return false;
+      default:
+        return true;
+    }
+  }),
+
+  optionLabelPath: computed('i18n.locale', function() {
+		switch (this.get("i18n.locale")) {
 			case 'sv':
 				return 'content.title_sv';
 			default:
@@ -13,15 +26,18 @@ export default Ember.Controller.extend({
 
 	}),
 
-  orderPreviewPartialName: Ember.computed('controllers.application.selectedOrderType.identifier', function() {
-    return 'sfx/step1/' + this.get('controllers.application.selectedOrderType.identifier');
+  orderPreviewPartialName: computed('applicationController.selectedOrderType.identifier', function() {
+    return 'sfx/step1/' + this.get('applicationController.selectedOrderType.identifier');
   }),
 
-	isFormComplete: Ember.computed.and('controllers.application.selectedOrderType', 'controllers.application.selectedLocation'),
+	isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),
 
 	actions: {
 		nextStep: function() {
 			this.transitionToRoute('sfx.step2');
-		}
+		},
+    handleSelectLocation: function(location) {
+      this.set("applicationController.selectedLocation", location);
+    }
 	}
 });

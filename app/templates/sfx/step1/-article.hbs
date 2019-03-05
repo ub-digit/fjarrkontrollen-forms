@@ -10,21 +10,21 @@
   <div class="col-xs-12">
     <dl class="dl-horizontal">
         <dt>{{t 'home.orderDetails.article.articleTitle'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.articleTitle}}</dd>
+        <dd>{{applicationController.orderDetails.article.articleTitle}}</dd>
         <dt>{{t 'home.orderDetails.article.authors'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.authors}}</dd>
+        <dd>{{applicationController.orderDetails.article.authors}}</dd>
         <dt>{{t 'home.orderDetails.article.journalTitle'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.journalTitle}}</dd>
+        <dd>{{applicationController.orderDetails.article.journalTitle}}</dd>
         <dt>{{t 'home.orderDetails.article.issn'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.issn}}</dd>
+        <dd>{{applicationController.orderDetails.article.issn}}</dd>
         <dt>{{t 'home.orderDetails.article.publicationYear'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.publicationYear}}</dd>
+        <dd>{{applicationController.orderDetails.article.publicationYear}}</dd>
         <dt>{{t 'home.orderDetails.article.issue'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.issue}}</dd>
+        <dd>{{applicationController.orderDetails.article.issue}}</dd>
         <dt>{{t 'home.orderDetails.article.volume'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.volume}}</dd>
+        <dd>{{applicationController.orderDetails.article.volume}}</dd>
         <dt>{{t 'home.orderDetails.article.pages'}}:</dt>
-        <dd>{{controllers.application.orderDetails.article.pages}}</dd>
+        <dd>{{applicationController.orderDetails.article.pages}}</dd>
     </dl>
   </div>
 </div>
@@ -32,18 +32,18 @@
 <h4>{{t 'home.step2.otherDetailsText'}}</h4>
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class="form-group">
       <label class="control-label">{{t 'home.orderDetails.article.notValidAfter'}}</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.notValidAfter}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.article.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class="form-group">
       <label class="control-label">{{t 'home.orderDetails.article.comment'}}</label>
-      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.article.comment}}
+      {{textarea classBinding=":form-control" value=applicationController.orderDetails.article.comment}}
     </div>
   </div>
 </div> <!-- end row -->

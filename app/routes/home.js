@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-	beforeModel: function() {
-		this.replaceWith("home.step1");
-	}
+export default Route.extend({
+  beforeModel: function() {
+    this.replaceWith("home.step1");
+  }
 });

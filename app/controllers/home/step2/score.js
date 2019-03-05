@@ -1,15 +1,18 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { inject as inject_controller } from '@ember/controller';
+import { inject as inject_service} from '@ember/service';
+import { computed } from '@ember/object';
 
-export default Ember.Controller.extend({
-  needs: ['application'],
-  orderDetailsBinding: 'controllers.application.orderDetails',
+export default Controller.extend({
+  applicationController: inject_controller('application'),
+  i18n: inject_service(),
 
-  isComposersValid: Ember.computed.notEmpty('orderDetails.score.composers'),
+  isComposersValid: computed.notEmpty('applicationController.orderDetails.score.composers'),
 
-  isOpusTitleValid: Ember.computed.notEmpty('orderDetails.score.opusTitle'),
+  isOpusTitleValid: computed.notEmpty('applicationController.orderDetails.score.opusTitle'),
 
 
-  isFormComplete: Ember.computed('isComposersValid', 'isOpusTitleValid', function() {
+  isFormComplete: computed('isComposersValid', 'isOpusTitleValid', function() {
     return (this.get('isComposersValid') && this.get('isOpusTitleValid'));
   }),
 

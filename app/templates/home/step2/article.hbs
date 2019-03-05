@@ -9,11 +9,11 @@
 <h3>{{t 'home.step2.article.subHeader1'}}</h3>
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group errors.links:has-error"}}>
+    <div class="form-group {{if errors.links has-error}}">
       <label for="pubmedIdInput">PubMed ID</label>
       <div class="input-group">
-        {{input type='text' classBinding=":form-control" value=pubMedId id="pubmedIdInput"}}
-        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' pubMedId}} {{ bind-attr class=":btn :btn-default isPubMedButtonEnabled:enabled:disabled"}}>{{t 'home.step2.article.getPubMedBtn'}}</button></span>
+        {{input type='text' class="form-control" value=applicationController.pubMedId id="pubmedIdInput"}}
+        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' applicationController.pubMedId}} class="btn btn-default {{if isPubMedButtonEnabled 'enabled' 'disabled'}}">{{t 'home.step2.article.getPubMedBtn'}}</button></span>
       </div>
     </div>
   </div>
@@ -30,27 +30,27 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label for="articleTitleInput" class="control-label">{{t 'home.orderDetails.article.articleTitle'}}</label>
-      {{input type='text' id="articleTitleInput" classBinding=":form-control" value=controllers.application.orderDetails.article.articleTitle}}
+      {{input type='text' id="articleTitleInput" class="form-control" value=applicationController.orderDetails.article.articleTitle}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div  class={{"form-group"}}>
       <label for="articleAuthorsInput" class="control-label">{{t 'home.orderDetails.article.authors'}}</label>
-      {{input type='text' id="articleAuthorsInput" classBinding=":form-control" value=controllers.application.orderDetails.article.authors}}
+      {{input type='text' id="articleAuthorsInput" class="form-control" value=applicationController.orderDetails.article.authors}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isJournalTitleValid::has-error"}}>
+    <div class="form-group {{if isJournalTitleValid 'ok' 'has-error'}}">
       <label for="articleJournalTitleInput" class="control-label">{{t 'home.orderDetails.article.journalTitle'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' id="articleJournalTitleInput" classBinding=":form-control" value=controllers.application.orderDetails.article.journalTitle}}
+      {{input type='text' id="articleJournalTitleInput" class="form-control" value=applicationController.orderDetails.article.journalTitle}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -58,18 +58,18 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label for="articleIssnInput" class="control-label">{{t 'home.orderDetails.article.issn'}}</label>
-      {{input type='text' id="articleIssnInput" classBinding=":form-control" value=controllers.application.orderDetails.article.issn}}
+      {{input type='text' id="articleIssnInput" class="form-control" value=applicationController.orderDetails.article.issn}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isPublicationYearValid::has-error"}}>
+    <div class="form-group {{if isPublicationYearValid 'ok' 'has-error'}}">
       <label for="articlePublicationYearInput" class="control-label">{{t 'home.orderDetails.article.publicationYear'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input id="articlePublicationYearInput" type='text' classBinding=":form-control" value=controllers.application.orderDetails.article.publicationYear}}
+      {{input id="articlePublicationYearInput" type='text' class="form-control" value=applicationController.orderDetails.article.publicationYear}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -77,9 +77,9 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label for="articleIssueInput" class="control-label">{{t 'home.orderDetails.article.issue'}}</label>
-      {{input type='text' id="articleIssueInput" classBinding=":form-control" value=controllers.application.orderDetails.article.issue}}
+      {{input type='text' id="articleIssueInput" class="form-control" value=applicationController.orderDetails.article.issue}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -87,36 +87,36 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label for="articleVolumeInput" class="control-label">{{t 'home.orderDetails.article.volume'}}</label>
-      {{input type='text' id="articleVolumeInput" classBinding=":form-control" value=controllers.application.orderDetails.article.volume}}
+      {{input type='text' id="articleVolumeInput" class="form-control" value=applicationController.orderDetails.article.volume}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group isPagesValid::has-error"}}>
+    <div class="form-group {{if isPagesValid 'ok' 'has-error'}}">
       <label for="articlePagesInput" class="control-label">{{t 'home.orderDetails.article.pages'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' id="articlePagesInput" classBinding=":form-control" value=controllers.application.orderDetails.article.pages}}
+      {{input type='text' id="articlePagesInput" class="form-control" value=applicationController.orderDetails.article.pages}}
     </div>
   </div>
 </div> <!-- end row -->
 <h3>{{t 'home.step2.otherDetailsText'}}</h3>
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label for="articleNotValidAfterInput" class="control-label">{{t 'home.orderDetails.article.notValidAfter'}}</label>
-      {{input type='text' id="articleNotValidAfterInput" classBinding=":form-control" value=controllers.application.orderDetails.article.notValidAfter}}
+      {{input type='text' id="articleNotValidAfterInput" class="form-control" value=applicationController.orderDetails.article.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class={{"form-group"}}>
       <label for="articleCommentInput" class="control-label">{{t 'home.orderDetails.article.comment'}}</label>
-      {{textarea id="articleCommentInput" classBinding=":form-control" value=controllers.application.orderDetails.article.comment}}
+      {{textarea id="articleCommentInput" class="form-control" value=applicationController.orderDetails.article.comment}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -124,7 +124,7 @@
 <div class="row">
   <div class="col-xs-12 mandatory-text">
     <div class="pull-right">
-      <p {{bind-attr class="isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
+      <p  class="{{if isFormComplete 'ok' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
     </div>
   </div>
 </div>
@@ -133,7 +133,7 @@
 
 <div class="row">
   <div class="col-xs-12 next-prev">
-    <button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
-    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}} {{bind-attr class=":btn :btn-primary :pull-right isFormComplete:enabled:disabled"}}>{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+    <button {{action 'back'}} class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
+    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}} class="btn btn-primary pull-right {{if isFormComplete 'enabled' 'disabled'}}">{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
   </div>
 </div>

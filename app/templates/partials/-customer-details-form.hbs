@@ -6,13 +6,18 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<label for="customerTypeSelector">{{t 'home.step3.customerTypeLabel'}}</label>
-				{{view "select" class="form-control" id="customerTypeSelector"
-				content=customerTypes
-				optionValuePath="content.id"
-				optionLabelPath=optionLabelPath
-				selection=selectedCustomerType
-				prompt=(t 'home.step3.customerTypePrompt')
-				}}
+				{{#x-select class="form-control" on-change=(action 'handleSelectCustomerType') value=applicationController.selectedCustomerType as |item|}}
+			  {{#item.option}}{{t 'home.step3.customerTypePrompt'}}{{/item.option}}
+			  {{#each applicationController.customerTypes as |type|}}
+			    {{#item.option value=type}}
+					  {{#if isEnglish}}
+					   <strong>{{type.title_en}}</strong>
+					  {{else}}
+					   <strong>{{type.title_sv}}</strong>
+					  {{/if}}
+			    {{/item.option}}
+			  {{/each}}
+			{{/x-select}}
 			</div>
 		</div>
 
@@ -23,9 +28,9 @@
 		{{#if showOrganisation}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isOrganisationValid::has-error"}}>
+				<div class="form-group {{if isOrganisationValid 'ok' 'has-error'}}">
 					<label for="organizationInput">{{t 'home.customerDetails.organisation'}}{{#if isOrganisationMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="organizationInput" classBinding=":form-control" value=customerDetails.organisation}}
+					{{input type='text' id="organizationInput" class="form-control" value=applicationController.customerDetails.organisation}}
 				</div>
 			</div>
 		</div>
@@ -33,18 +38,18 @@
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isNameValid::has-error"}}>
+				<div class="form-group {{if isNameValid '' 'has-error'}}">
 					<label for="nameInput">{{t 'home.customerDetails.name'}} <i class="fa fa-asterisk mandatory"></i></label>
-					{{input type='text' id="nameInput" classBinding=":form-control" value=customerDetails.name}}
+					{{input type='text' id="nameInput" class="form-control" value=applicationController.customerDetails.name}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isEmailValid::has-error"}}>
+				<div  class="form-group {{ if isEmailValid '' 'has-error'}}">
 					<label for="emailInput">{{t 'home.customerDetails.emailAddress'}}{{#if isEmailMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='email' id="emailInput" classBinding=":form-control" value=customerDetails.emailAddress}}
+					{{input type='email' id="emailInput" class="form-control" value=applicationController.customerDetails.emailAddress}}
 				</div>
 			</div>
 		</div>
@@ -52,9 +57,9 @@
 		{{#if showDepartment}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isDepartmentValid::has-error"}}>
+				<div class="form-group {{if isDepartmentValid '' 'has-error'}}">
 					<label for="institutionInput">{{t 'home.customerDetails.department'}}{{#if isDepartmentMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="institutionInput" classBinding=":form-control" value=customerDetails.department}}
+					{{input type='text' id="institutionInput" class="form-control" value=applicationController.customerDetails.department}}
 				</div>
 			</div>
 		</div>
@@ -63,9 +68,9 @@
 		{{#if showUnit}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isUnitValid::has-error"}}>
+				<div class="form-group {{if isUnitValid '' 'has-error'}}">
 					<label for="departmentInput">{{t 'home.customerDetails.unit'}}{{#if isUnitMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="departmentInput" classBinding=":form-control" value=customerDetails.unit}}
+					{{input type='text' id="departmentInput" class="form-control" value=applicationController.customerDetails.unit}}
 				</div>
 			</div>
 		</div>
@@ -76,7 +81,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="addressInput">{{t 'home.customerDetails.address'}}</label>
-					{{input type='text' id="addressInput" classBinding=":form-control" value=customerDetails.address}}
+					{{input type='text' id="addressInput" class="form-control" value=applicationController.customerDetails.address}}
 				</div>
 			</div>
 		</div>
@@ -87,7 +92,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="postalCodeInput">{{t 'home.customerDetails.postalCode'}}</label>
-					{{input type='text' id="postalCodeInput" classBinding=":form-control" value=customerDetails.postalCode}}
+					{{input type='text' id="postalCodeInput" class="form-control" value=applicationController.customerDetails.postalCode}}
 				</div>
 			</div>
 		</div>
@@ -98,7 +103,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<label for="cityInput">{{t 'home.customerDetails.city'}}</label>
-					{{input type='text' id="cityInput" classBinding=":form-control" value=customerDetails.city}}
+					{{input type='text' id="cityInput" class="form-control" value=applicationController.customerDetails.city}}
 				</div>
 			</div>
 		</div>
@@ -107,9 +112,9 @@
 		{{#if showLibraryCardNumber}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isLibraryCardNumberValid::has-error"}}>
+				<div class="form-group {{if isLibraryCardNumberValid '' 'has-error'}}">
 					<label for="libraryCardNumberInput">{{t 'home.customerDetails.libraryCardNumber'}}{{#if isLibraryCardNumberMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="libraryCardNumberInput" classBinding=":form-control" value=customerDetails.libraryCardNumber}}
+					{{input type='text' id="libraryCardNumberInput" class="form-control" value=applicationController.customerDetails.libraryCardNumber}}
 				</div>
 			</div>
 		</div>
@@ -118,9 +123,9 @@
 		{{#if showXAccount}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isXAccountValid::has-error"}}>
+				<div class="form-group {{if isXAccountValid '' 'has-error'}}">
 					<label for="xAccountInput">{{t 'home.customerDetails.xAccount'}}{{#if isXAccountMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="xAccountInput" classBinding=":form-control" value=customerDetails.xAccount}}
+					{{input type='text' id="xAccountInput" class="form-control" value=applicationController.customerDetails.xAccount}}
 				</div>
 				<div>
 					<span id="helpBlock" class="help-block">{{t 'home.step3.xAccountHelptext'}}</span>
@@ -138,18 +143,21 @@
 
 
 		{{#if isShippingAvailable}}
-
-
 		<div class="row">
 			<div class="col-xs-12">
 				<label for="deliveryMethordSelector">{{t 'home.step3.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
-				{{view "select" class="form-control" id="deliveryMethordSelector"
-				content=deliveryMethods
-				optionValuePath="content.id"
-				optionLabelPath=optionLabelPath
-				selection=selectedDeliveryMethod
-				prompt=(t 'home.step3.deliveryMethodPrompt')
-				}}
+				{{#x-select class="form-control" on-change=(action 'handleSelectDeliveryMethod') value=applicationController.selectedDeliveryMethod as |item|}}
+				  {{#item.option}}{{t 'home.step3.deliveryMethodPrompt'}}{{/item.option}}
+				  {{#each applicationController.deliveryMethods as |method|}}
+				    {{#item.option value=method}}
+						  {{#if isEnglish}}
+						   <strong>{{method.title_en}}</strong>
+						  {{else}}	
+						   <strong>{{method.title_sv}}</strong>
+						  {{/if}}
+				    {{/item.option}}
+				  {{/each}}
+				{{/x-select}}
 			</div>
 		</div>
 		{{/if }}
@@ -173,27 +181,27 @@
 		{{#if showDeliveryAddressFields}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isDeliveryAddressValid::has-error"}}>
+				<div class="form-group {{if isDeliveryAddressValid '' 'has-error'}}">
 					<label for="deliveryAddressInput">{{t 'home.deliveryDetails.address'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="deliveryAddressInput" classBinding=":form-control" value=deliveryDetails.address}}
+					{{input type='text' id="deliveryAddressInput" class="form-control" value=applicationController.deliveryDetails.address}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isDeliveryPostalCodeValid::has-error"}}>
+				<div class="form-group {{if isDeliveryPostalCodeValid '' 'has-error'}}">
 					<label for="deliveryPostalCodeInput">{{t 'home.deliveryDetails.postalCode'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="deliveryPostalCodeInput" classBinding=":form-control" value=deliveryDetails.postalCode}}
+					{{input type='text' id="deliveryPostalCodeInput" class="form-control" value=applicationController.deliveryDetails.postalCode}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isDeliveryCityValid::has-error"}}>
+				<div class="form-group {{if isDeliveryCityValid '' 'has-error'}}">
 					<label for="deliveryCityInput">{{t 'home.deliveryDetails.city'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="deliveryCityInput" classBinding=":form-control" value=deliveryDetails.city}}
+					{{input type='text' id="deliveryCityInput" class="form-control" value=applicationController.deliveryDetails.city}}
 				</div>
 			</div>
 		</div>
@@ -201,17 +209,17 @@
 		{{#if showDeliveryBoxField}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isDeliveryBoxFieldValid::has-error"}}>
+				<div class="form-group {{if isDeliveryBoxFieldValid '' 'has-error'}}">
 					<label for="deliveryBoxInput">{{t 'home.deliveryDetails.box'}}{{#if isDeliveryBoxFieldMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="deliveryBoxInput" classBinding=":form-control" value=deliveryDetails.box}}
+					{{input type='text' id="deliveryBoxInput" class="form-control" value=applicationController.deliveryDetails.box}}
 				</div>
 			</div>
 		</div>
 		<div class="row">
 		  <div class="col-xs-12">
-		    <div {{bind-attr class=":form-group"}}>
+		    <div class={{"form-group"}}>
 		      <label for="deliveryCommentsInput" class="control-label">{{t 'home.deliveryDetails.comment'}}</label>
-		      {{textarea id="deliveryCommentsInput" classBinding=":form-control" value=controllers.application.deliveryDetails.comment}}
+		      {{textarea id="deliveryCommentsInput" class="form-control" value=applicationController.deliveryDetails.comment}}
 		    </div>
 		  </div>
 		</div> <!-- end row -->
@@ -227,9 +235,9 @@
 		{{#if showCustomerId}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isCustomerIdValid::has-error"}}>
+				<div class="form-group {{if isCustomerIdValid '' 'has-error'}}">
 					<label for="customerIdInput">{{t 'home.invoicingDetails.customerId'}}{{#if isCustomerIdMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="customerIdInput" classBinding=":form-control" value=invoicingDetails.customerId}}
+					{{input type='text' id="customerIdInput" class="form-control" value=applicationController.invoicingDetails.customerId}}
 				</div>
 				<div>
 					<span id="helpBlock" class="help-block">{{t 'home.step3.customerIdHelptext'}}</span>
@@ -240,45 +248,45 @@
 		{{#if showInvoicingAddressFields}}
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isInvoicingCompanyValid::has-error"}}>
+				<div class="form-group {{if isInvoicingCompanyValid '' 'has-error'}}">
 					<label for="invoicingCompanyInput">{{t 'home.invoicingDetails.company'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="invoicingCompanyInput" classBinding=":form-control" value=invoicingDetails.company}}
+					{{input type='text' id="invoicingCompanyInput" class="form-control" value=applicationController.invoicingDetails.company}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isInvoicingNameValid::has-error"}}>
+				<div class="form-group {{if isInvoicingNameValid '' 'has-error'}}">
 					<label for="invoicingNameInput">{{t 'home.invoicingDetails.name'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="invoicingNameInput" classBinding=":form-control" value=invoicingDetails.name}}
+					{{input type='text' id="invoicingNameInput" class="form-control" value=applicationController.invoicingDetails.name}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isInvoicingAddressValid::has-error"}}>
+				<div class="form-group {{if isInvoicingAddressValid '' 'has-error'}}">
 					<label for="invoicingAddressInput">{{t 'home.invoicingDetails.address'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="invoicingAddressInput" classBinding=":form-control" value=invoicingDetails.address}}
+					{{input type='text' id="invoicingAddressInput" class="form-control" value=applicationController.invoicingDetails.address}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group isInvoicingPostalCodeValid::has-error"}}>
+				<div  class="form-group {{if isInvoicingPostalCodeValid '' 'has-error'}}">
 					<label for="invoicingPostalCodeInput">{{t 'home.invoicingDetails.postalCode'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="invoicingPostalCodeInput" classBinding=":form-control" value=invoicingDetails.postalCode}}
+					{{input type='text' id="invoicingPostalCodeInput" class="form-control" value=applicationController.invoicingDetails.postalCode}}
 				</div>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div {{bind-attr class=":form-group areInvoicingAddressFieldsValid::has-error"}}>
+				<div  class="form-group {{if areInvoicingAddressFieldsValid '' 'has-error'}}">
 					<label for="invoicingCityInput">{{t 'home.invoicingDetails.city'}}{{#if areInvoicingAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-					{{input type='text' id="invoicingCityInput" classBinding=":form-control" value=invoicingDetails.city}}
+					{{input type='text' id="invoicingCityInput" class="form-control" value=applicationController.invoicingDetails.city}}
 				</div>
 			</div>
 		</div>
@@ -288,7 +296,7 @@
 		<div class="row">
 		  <div class="col-xs-12 mandatory-text">
 		    <div class="pull-right">
-		      <p {{bind-attr class="isFormComplete::text-danger"}}><i class="fa fa-asterisk mandatory"></i> {{t 'home.step3.mandatoryText'}}</p>
+		      <p class="{{if isFormComplete '' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.step3.mandatoryText'}}</p>
 		    </div>
 		  </div>
 		</div> <!-- end row -->
@@ -297,7 +305,7 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 next-prev">
-		<button {{action 'back'}} {{ bind-attr class=":btn :btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step3.prevBtn'}}</button>
-		<button {{action 'nextstep'  }} disabled={{unless isFormComplete 'disabled'}} {{ bind-attr class=":btn :btn-primary :pull-right isFormComplete::disabled"}}>{{t 'home.step3.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+		<button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step3.prevBtn'}}</button>
+		<button {{action 'nextstep'  }} disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right {{if isFormComplete '' 'disabled'}}">{{t 'home.step3.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
 	</div>
 </div>

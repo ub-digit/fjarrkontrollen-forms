@@ -6,27 +6,27 @@
 
 <table class="table table-striped">
   <tbody>
-    {{#if controllers.application.deliveryDetails.box}}
+    {{#if applicationController.deliveryDetails.box}}
     <tr>
       <td>{{t 'home.deliveryDetails.box'}}</td>
-      <td>{{controllers.application.deliveryDetails.box}}</td>
+      <td>{{applicationController.deliveryDetails.box}}</td>
     </tr>
     <tr>
       <td>{{t 'home.deliveryDetails.comment'}}</td>
-      <td>{{controllers.application.deliveryDetails.comment}}</td>
+      <td>{{applicationController.deliveryDetails.comment}}</td>
     </tr>
     {{else}}
     <tr>
       <td>{{t 'home.deliveryDetails.address'}}</td>
-      <td>{{controllers.application.deliveryDetails.address}}</td>
+      <td>{{applicationController.deliveryDetails.address}}</td>
     </tr>
     <tr>
       <td>{{t 'home.deliveryDetails.postalCode'}}</td>
-      <td>{{controllers.application.deliveryDetails.postalCode}}</td>
+      <td>{{applicationController.deliveryDetails.postalCode}}</td>
     </tr>
     <tr>
       <td>{{t 'home.deliveryDetails.city'}}</td>
-      <td>{{controllers.application.deliveryDetails.city}}</td>
+      <td>{{applicationController.deliveryDetails.city}}</td>
     </tr>
     {{/if}}
   </tbody>

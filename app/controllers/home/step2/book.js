@@ -1,13 +1,17 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { inject as inject_controller } from '@ember/controller';
+import { inject as inject_service} from '@ember/service';
+import { computed } from '@ember/object';
 
-export default Ember.Controller.extend({
-  needs: ['application'],
+export default Controller.extend({
+  applicationController: inject_controller('application'),
+  i18n: inject_service(),
 
-  isTitleValid: Ember.computed.notEmpty('controllers.application.orderDetails.book.bookTitle'),
+  isTitleValid: computed.notEmpty('applicationController.orderDetails.book.bookTitle'),
 
-  isAuthorsValid: Ember.computed.notEmpty('controllers.application.orderDetails.book.authors'),
+  isAuthorsValid: computed.notEmpty('applicationController.orderDetails.book.authors'),
 
-  isFormComplete: Ember.computed('isTitleValid', 'isAuthorsValid', function() {
+  isFormComplete: computed('isTitleValid', 'isAuthorsValid', function() {
     return (this.get('isTitleValid') && this.get('isAuthorsValid'));
   }),
 

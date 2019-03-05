@@ -1,24 +1,32 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
+import { inject as inject_controller } from '@ember/controller';
+import { inject as inject_service} from '@ember/service';
+import { computed } from '@ember/object';
 
-export default Ember.Controller.extend({
-	needs: ['application'],
+export default Controller.extend({
+	applicationController: inject_controller('application'),
+	i18n: inject_service(),
 
-
-	optionLabelPath: Ember.computed('controllers.application.currentLocale', function() {
-		switch (this.get('controllers.application.currentLocale')) {
+	isEnglish: computed('i18n.locale', function() {
+		switch (this.get('i18n.locale')) {
 			case 'sv':
-				return 'content.title_sv';
+				return false;
 			default:
-				return 'content.title_en';
+				return true;
 		}
-
 	}),
 
-	isFormComplete: Ember.computed.and('controllers.application.selectedOrderType', 'controllers.application.selectedLocation'),
+	isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),
 
 	actions: {
 		nextStep: function() {
 			this.transitionToRoute('home.step2');
+		},
+		handleSelectType: function(type) {
+			this.set('applicationController.selectedOrderType', type);
+		},
+		handleSelectLocation: function(location) {
+			this.set("applicationController.selectedLocation", location);
 		}
 	}
 

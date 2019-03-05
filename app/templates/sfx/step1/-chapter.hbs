@@ -3,17 +3,17 @@
   <div class="col-xs-12">
     <dl class="dl-horizontal">
       <dt>{{t 'home.orderDetails.chapter.chapterTitle'}}:</dt>
-      <dd>{{controllers.application.orderDetails.chapter.chapterTitle}}</dd>
+      <dd>{{applicationController.orderDetails.chapter.chapterTitle}}</dd>
       <dt>{{t 'home.orderDetails.chapter.bookTitle'}}:</dt>
-      <dd>{{controllers.application.orderDetails.chapter.bookTitle}}</dd>
+      <dd>{{applicationController.orderDetails.chapter.bookTitle}}</dd>
       <dt>{{t 'home.orderDetails.chapter.authors'}}:</dt>
-      <dd>{{controllers.application.orderDetails.chapter.authors}}</dd>
+      <dd>{{applicationController.orderDetails.chapter.authors}}</dd>
       <dt>{{t 'home.orderDetails.chapter.isbn'}}:</dt>
-      <dd>{{controllers.application.orderDetails.chapter.isbn}}</dd>
+      <dd>{{applicationController.orderDetails.chapter.isbn}}</dd>
       <dt>{{t 'home.orderDetails.chapter.publicationYear'}}:</dt>
-      <dd>{{controllers.application.orderDetails.chapter.publicationYear}}</dd>
+      <dd>{{applicationController.orderDetails.chapter.publicationYear}}</dd>
       <dt>{{t 'home.orderDetails.chapter.pages'}}:</dt>
-      <dd>{{controllers.application.orderDetails.chapter.pages}}</dd>
+      <dd>{{applicationController.orderDetails.chapter.pages}}</dd>
     </dl>
   </div>
 </div>
@@ -21,18 +21,18 @@
 <h4>{{t 'home.step2.otherDetailsText'}}</h4>
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class="form-group">
       <label class="control-label">{{t 'home.orderDetails.chapter.notValidAfter'}}</label>
-      {{input type='text' classBinding=":form-control" value=controllers.application.orderDetails.chapter.notValidAfter}}
+      {{input type='text' class="form-control" value=applicationController.orderDetails.chapter.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
 
 <div class="row">
   <div class="col-xs-12">
-    <div {{bind-attr class=":form-group"}}>
+    <div class="form-group">
       <label class="control-label">{{t 'home.orderDetails.chapter.comment'}}</label>
-      {{textarea classBinding=":form-control" value=controllers.application.orderDetails.chapter.comment}}
+      {{textarea class="form-control" value=applicationController.orderDetails.chapter.comment}}
     </div>
   </div>
 </div> <!-- end row -->

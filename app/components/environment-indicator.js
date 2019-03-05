@@ -1,17 +1,18 @@
-import Ember from 'ember';
 import ENV from '../config/environment';
+import Component from '@ember/component'
+import { computed } from '@ember/object'
 
-export default Ember.Component.extend({
+export default Component.extend({
 
   tagName: '',
 
-  componentVisible: Ember.computed('ENV.environment', function() {
+  componentVisible: computed('ENV.environment', function() {
 
     return ((ENV.environment !== 'production') && (ENV.environment !== 'development'));
 
   }),
 
-  environmentNameString: Ember.computed('ENV.environment', function() {
+  environmentNameString: computed('ENV.environment', function() {
 
     return ENV.environment;
 
