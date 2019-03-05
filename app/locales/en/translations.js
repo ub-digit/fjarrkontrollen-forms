@@ -95,6 +95,10 @@ export default {
         locationPrompt: 'Select library',
         nextBtn: 'Next',
       },
+      login: {
+        header: 'Login',
+        subHeader1: "Please login to continue",
+      },
       step2: {
         article: {
           header: 'Copy of article',

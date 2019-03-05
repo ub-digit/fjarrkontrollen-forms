@@ -96,6 +96,10 @@ export default {
         locationPrompt: 'Välj bibliotek',
         nextBtn: 'Nästa',
       },
+      login: {
+        header: 'Logga in',
+        subHeader1: "Var god logga in för att fortsätta",
+      },
       step2: {
         article: {
           header: 'Artikelkopia',
