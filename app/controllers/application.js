@@ -89,6 +89,10 @@ export default Controller.extend({
 
   orderPath: "Web",
 
+  authRequired: computed('selectedOrderType', function() {
+    return this.get('selectedOrderType.auth_required');
+  }),
+
   isBillable: computed('selectedOrderType', 'orderDetails.book.outsideNordics', function() {
     return !(
       // Check if order type is micro film, which is always without charge
