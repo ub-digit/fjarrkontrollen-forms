@@ -1,14 +1,14 @@
 <h2>{{t 'home.step5.confirmationHeader'}}</h2>
 
 <div class="row vertical-space-bottom-20">
-	<div class="col-xs-12">
-		<p>{{t 'home.step5.confirmationMessage'}}</p>
-		<span class="order-ref-number">{{model.id}}</span>
-	</div>
+  <div class="col-xs-12">
+    <p>{{t 'home.step5.confirmationMessage'}}</p>
+    <span class="order-ref-number">{{model.id}}</span>
+  </div>
 </div>
 <div class="row">
-	<div class="col-xs-12 next-prev">
-		<button {{action 'orderAnother' }} class={{"btn btn-primary"}}>{{orderAnotherText}}</button>
+  <div class="col-xs-12 next-prev">
+    <button {{action 'orderAnother' }} class={{"btn btn-primary"}}>{{orderAnotherText}}</button>
     <button {{action 'resetForm' }} class={{"btn btn-link pull-right"}}>{{t 'home.step5.startOver'}}</button>
-	</div>
+  </div>
 </div>
