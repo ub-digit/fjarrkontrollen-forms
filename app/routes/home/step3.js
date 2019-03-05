@@ -10,7 +10,5 @@ export default Route.extend(ResetScroll, {
     back: function() {
       this.transitionTo('home.step2');
     }
-
-
   }
 });
