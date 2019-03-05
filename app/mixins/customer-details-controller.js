@@ -3,29 +3,19 @@ import { inject as inject_controller } from '@ember/controller';
 import { inject as inject_service} from '@ember/service';
 import { computed } from '@ember/object';
 import { observer } from '@ember/object';
+import { isEmpty } from '@ember/utils';
 
 export default Mixin.create({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
   isEnglish: computed('i18n.locale', function() {
-    switch (this.get('i18n.locale')) {
-      case 'sv':
-        return false;
-      default:
-        return true;
-    }
+    return this.get('i18n.locale') === 'en';
   }),
 
   selectedLibraryNameString: computed('applicationController.{currentLocale,selectedLocation}', function() {
-    switch (this.get('i18n.locale')) {
-      case 'sv':
-        return this.get('applicationController.selectedLocation.title_sv');
-      default:
-        return this.get('applicationController.selectedLocation.title_en');
-    }
+    return this.get('applicationController.selectedLocation.title_' + this.get('i18n.locale'));
   }),
-
 
   // Bool to check if customer type is set
   isCustomerTypeSet: computed.notEmpty('applicationController.selectedCustomerType'),
@@ -44,11 +34,10 @@ export default Mixin.create({
 
   // Bool to check if delivery method is set, but only of there are multiple options available
   isDeliveryMethodSet: computed('applicationController.selectedDeliveryMethod','isShippingAvailable', function() {
-    if (this.get('isShippingAvailable')) {
-      return (this.get('applicationController.selectedDeliveryMethod'));
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isShippingAvailable') &&
+      isEmpty(this.get('applicationController.selectedDeliveryMethod'))
+    );
   }),
 
 
@@ -60,13 +49,20 @@ export default Mixin.create({
   isInvoicingAvaliable: computed('applicationController.{selectedOrderType,selectedCustomerType,isBillable,isCustomerTypeSet}', function () {
     var isInvoicable = null;
 
+    //TODO: remove since same conditions?
     if (this.get('applicationController.selectedOrderType.identifier') === 'book') {
       //isInvoicable = (this.get('selectedCustomerType.identifier') === 'univ' || this.get('selectedCustomerType.identifier') === 'sahl' || this.get('selectedCustomerType.identifier') === 'ftag' || this.get('selectedCustomerType.identifier') === 'ovri');
-      isInvoicable = (this.get('applicationController.selectedCustomerType.identifier') === 'sahl' || this.get('applicationController.selectedCustomerType.identifier') === 'ftag' || this.get('applicationController.selectedCustomerType.identifier') === 'ovri');
+      isInvoicable =
+        this.get('applicationController.selectedCustomerType.identifier') === 'sahl' ||
+        this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+        this.get('applicationController.selectedCustomerType.identifier') === 'ovri';
     } else {
-      isInvoicable = (this.get('applicationController.selectedCustomerType.identifier') === 'sahl' || this.get('applicationController.selectedCustomerType.identifier') === 'ftag' || this.get('applicationController.selectedCustomerType.identifier') === 'ovri');
+      isInvoicable =
+        this.get('applicationController.selectedCustomerType.identifier') === 'sahl' ||
+        this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+        this.get('applicationController.selectedCustomerType.identifier') === 'ovri';
     }
-    return (this.get('applicationController.isBillable') && isInvoicable && this.get('isCustomerTypeSet'));
+    return this.get('applicationController.isBillable') && isInvoicable && this.get('isCustomerTypeSet');
   }),
 
 
@@ -75,8 +71,10 @@ export default Mixin.create({
   //  - Customer type is not student or private, and
   //  - Order type is shippable
   isShippingAvailable: computed('applicationController.{selectedCustomerType,isShippable,isCustomerTypeSet}', function() {
-    var studentOrPrivate = (this.get('applicationController.selectedCustomerType.identifier') === 'stud' || this.get('applicationController.selectedCustomerType.identifier') === 'priv');
-    return (this.get('applicationController.isShippable') && !studentOrPrivate && this.get('isCustomerTypeSet'));
+    var studentOrPrivate =
+      this.get('applicationController.selectedCustomerType.identifier') === 'stud' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'priv';
+    return this.get('applicationController.isShippable') && !studentOrPrivate && this.get('isCustomerTypeSet');
   }),
 
 
@@ -84,7 +82,10 @@ export default Mixin.create({
   //  - If shipping is available as an option, and
   //  - If shipping is the selected delivery option
   showDeliveryInfoForm: computed('isShippingAvailable','applicationController.selectedDeliveryMethod.identifier', function() {
-    return (this.get('isShippingAvailable') && this.get('applicationController.selectedDeliveryMethod.identifier') === 'send');
+    return (
+      this.get('isShippingAvailable') &&
+      this.get('applicationController.selectedDeliveryMethod.identifier') === 'send'
+    );
   }),
 
 
@@ -92,7 +93,13 @@ export default Mixin.create({
   //  - Pickup is the selected delivery option, or shipping is unavailable as an option, and
   //  - Customer type has been set, and
   showDeliveryInfoText: computed('isShippingAvailable','applicationController.selectedDeliveryMethod.identifier','isCustomerTypeSet', function() {
-    return ((this.get('applicationController.selectedDeliveryMethod.identifier') === 'pickup') || !this.get('isShippingAvailable')) && this.get('isCustomerTypeSet');
+    return (
+      (
+        this.get('applicationController.selectedDeliveryMethod.identifier') === 'pickup' ||
+        !this.get('isShippingAvailable')
+      ) &&
+      this.get('isCustomerTypeSet')
+    );
   }),
 
 
@@ -102,19 +109,24 @@ export default Mixin.create({
   // Organisation
   // Bool to check whether to show organisation field or not
   showOrganisation: computed('applicationController.selectedCustomerType', function() {
-    return ((this.get('applicationController.selectedCustomerType.identifier') === 'ftag') || (this.get('applicationController.selectedCustomerType.identifier') === 'ovri'));
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ovri'
+    );
   }),
   // Bool to check whether organisation field is mandatory or not
   isOrganisationMandatory: computed('applicationController.selectedCustomerType', function() {
-    return ((this.get('applicationController.selectedCustomerType.identifier') === 'ftag') || (this.get('applicationController.selectedCustomerType.identifier') === 'ovri'));
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ovri'
+    );
   }),
   // Bool to check if organisation is filled in
   isOrganisationValid: computed('isOrganisationMandatory', 'applicationController.customerDetails.organisation', function() {
-    if (this.get('isOrganisationMandatory')) {
-      return (this.get('applicationController.customerDetails.organisation.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isOrganisationMandatory') &&
+      isEmpty(this.get('applicationController.customerDetails.organisation'))
+    );
   }),
 
 
@@ -125,7 +137,7 @@ export default Mixin.create({
   // Email
   // Bool to check whether email is mandatory or not
   isEmailMandatory: computed('applicationController.selectedCustomerType', function() {
-    return (this.get('applicationController.selectedCustomerType.identifier') !== 'priv');
+    return this.get('applicationController.selectedCustomerType.identifier') !== 'priv';
   }),
   // Bool to check if email is filled in
   //isEmailValid: computed.notEmpty('customerDetails.emailAddress'),
@@ -146,11 +158,10 @@ export default Mixin.create({
   isDepartmentMandatory: computed.equal('applicationController.selectedCustomerType.identifier', 'univ'),
   // Bool to check if department is filled in
   isDepartmentValid: computed('isDepartmentMandatory', 'applicationController.customerDetails.department', function() {
-    if (this.get('isDepartmentMandatory')) {
-      return (this.get('applicationController.customerDetails.department.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isDepartmentMandatory') &&
+      isEmpty(this.get('applicationController.customerDetails.department'))
+    );
   }),
 
   // Unit
@@ -160,11 +171,10 @@ export default Mixin.create({
   isUnitMandatory: computed.equal('applicationController.selectedCustomerType.identifier', 'sahl'),
   // Bool to check if unit is filled in
   isUnitValid: computed('isUnitMandatory', 'applicationController.customerDetails.unit', function() {
-    if (this.get('isUnitMandatory')) {
-      return (this.get('applicationController.customerDetails.unit.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isUnitMandatory') &&
+      isEmpty(this.get('applicationController.customerDetails.unit'))
+    );
   }),
 
   // Address
@@ -180,27 +190,29 @@ export default Mixin.create({
   // Library card number
   // Bool to check whether to show library card number field or not
   showLibraryCardNumber: computed('applicationController.selectedCustomerType', function() {
-    return ((this.get('applicationController.selectedCustomerType.identifier') === 'univ') ||
-            (this.get('applicationController.selectedCustomerType.identifier') === 'stud') ||
-            (this.get('applicationController.selectedCustomerType.identifier') === 'priv') ||
-            (this.get('applicationController.selectedCustomerType.identifier') === 'dist'));
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'univ' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'stud' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'priv' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'dist'
+    );
   }),
   // Bool to check whether library card number field is mandatory or not
   isLibraryCardNumberMandatory: computed('applicationController.selectedCustomerType', function() {
-    return ((this.get('applicationController.selectedCustomerType.identifier') === 'univ') ||
-            (this.get('applicationController.selectedCustomerType.identifier') === 'stud') ||
-            (this.get('applicationController.selectedCustomerType.identifier') === 'priv') ||
-            (this.get('applicationController.selectedCustomerType.identifier') === 'dist'));
+    return (
+      this.get('applicationController.selectedCustomerType.identifier' === 'univ') ||
+      this.get('applicationController.selectedCustomerType.identifier' === 'stud') ||
+      this.get('applicationController.selectedCustomerType.identifier' === 'priv') ||
+      this.get('applicationController.selectedCustomerType.identifier' === 'dist')
+    );
   }),
   // Bool to check if library card number is filled in
   isLibraryCardNumberValid: computed('isLibraryCardNumberMandatory', 'applicationController.customerDetails.libraryCardNumber', function() {
-    if (this.get('isLibraryCardNumberMandatory')) {
-      return (this.get('applicationController.customerDetails.libraryCardNumber.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isLibraryCardNumberMandatory') &&
+      isEmpty(this.get('applicationController.customerDetails.libraryCardNumber'))
+    );
   }),
-
 
   // xAccount
   // Bool to check whether to show xAccount field or not
@@ -209,11 +221,10 @@ export default Mixin.create({
   isXAccountMandatory: computed.equal('applicationController.selectedCustomerType.identifier', 'univ'),
   // Bool to check if xAccount is filled in
   isXAccountValid: computed('isXAccountMandatory', 'applicationController.customerDetails.xAccount', function() {
-    if (this.get('isXAccountMandatory')) {
-      return (this.get('applicationController.customerDetails.xAccount.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isXAccountMandatory') &&
+      isEmpty(this.get('applicationController.customerDetails.xAccount.length'))
+    );
   }),
 
 
@@ -223,47 +234,56 @@ export default Mixin.create({
   // Delivery address
   // Bool to check whether to show delivery address fields
   showDeliveryAddressFields: computed('applicationController.selectedCustomerType.identifier', function() {
-    return (this.get('applicationController.selectedCustomerType.identifier') === 'sahl' || this.get('applicationController.selectedCustomerType.identifier') === 'ftag' || this.get('applicationController.selectedCustomerType.identifier') === 'ovri' || this.get('applicationController.selectedCustomerType.identifier') === 'dist');
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'sahl' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ovri' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'dist'
+    );
   }),
 
   // Bool to check if delivery address fields are mandatory
   areDeliveryAddressFieldsMandatory: computed('applicationController.{selectedDeliveryMethod.identifier,selectedCustomerType.identifier}', function() {
-    return (this.get('applicationController.selectedCustomerType.identifier') === 'sahl' || this.get('applicationController.selectedCustomerType.identifier') === 'ftag' || this.get('applicationController.selectedCustomerType.identifier') === 'ovri' || this.get('applicationController.selectedCustomerType.identifier') === 'dist');
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'sahl' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ovri' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'dist'
+    );
   }),
 
   // Bool to check if all delivery address fields are mandatory
   areDeliveryAddressFieldsValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.{deliveryDetails.address,deliveryDetails.postalCode,deliveryDetails.city}', function() {
-    if (this.get('areDeliveryAddressFieldsMandatory')) {
-      return (this.get('applicationController.deliveryDetails.address.length') > 1 && this.get('applicationController.deliveryDetails.postalCode.length') > 1 && this.get('applicationController.deliveryDetails.city.length') > 1 );
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areDeliveryAddressFieldsMandatory') && (
+       isEmpty(this.get('applicationController.deliveryDetails.address')) ||
+       isEmpty(this.get('applicationController.deliveryDetails.postalCode')) ||
+       isEmpty(this.get('applicationController.deliveryDetails.city'))
+      )
+    );
   }),
 
 
   // Bools to check if individual delivery fields are validating
   isDeliveryAddressValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.address', function() {
-    if (this.get('areDeliveryAddressFieldsMandatory')) {
-      return (this.get('applicationController.deliveryDetails.address.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areDeliveryAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.deliveryDetails.address'))
+    );
   }),
 
   isDeliveryPostalCodeValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.postalCode', function() {
-    if (this.get('areDeliveryAddressFieldsMandatory')) {
-      return (this.get('applicationController.deliveryDetails.postalCode.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areDeliveryAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.deliveryDetails.postalCode'))
+    );
   }),
 
   isDeliveryCityValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.city', function() {
-    if (this.get('areDeliveryAddressFieldsMandatory')) {
-      return (this.get('applicationController.deliveryDetails.city.length') > 1 );
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areDeliveryAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.deliveryDetails.city'))
+    );
   }),
 
 
@@ -276,20 +296,20 @@ export default Mixin.create({
 
   // Bool to check if delivery box field is valid
   isDeliveryBoxFieldValid: computed('isDeliveryBoxFieldMandatory', 'applicationController.deliveryDetails.box', function() {
-    if (this.get('isDeliveryBoxFieldMandatory')) {
-      return (this.get('applicationController.deliveryDetails.box.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isDeliveryBoxFieldMandatory') &&
+      isEmpty(this.get('applicationController.deliveryDetails.box'))
+    );
   }),
 
   // Bool to check if delivery fields are valid
   areDeliveryFieldsValid: computed('applicationController.selectedDeliveryMethod.identifier', 'areDeliveryAddressFieldsValid', 'isDeliveryBoxFieldValid', function() {
-    if (this.get('applicationController.selectedDeliveryMethod.identifier') === 'send') {
-      return (this.get('areDeliveryAddressFieldsValid') && this.get('isDeliveryBoxFieldValid'));
-    } else {
-      return true;
-    }
+    return !(
+      this.get('applicationController.selectedDeliveryMethod.identifier') === 'send' && (
+        isEmpty(this.get('areDeliveryAddressFieldsValid')) ||
+        isEmpty(this.get('isDeliveryBoxFieldValid'))
+      )
+    );
   }),
 
 
@@ -299,94 +319,119 @@ export default Mixin.create({
   // Invoicing address
   // Bool to check whether to show invoicing address fields
   showInvoicingAddressFields: computed('applicationController.selectedCustomerType.identifier', function() {
-    return (this.get('applicationController.selectedCustomerType.identifier') === 'ftag' || this.get('applicationController.selectedCustomerType.identifier') === 'ovri');
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ovri'
+    );
   }),
 
   areInvoicingAddressFieldsMandatory: computed('applicationController.selectedCustomerType.identifier', function() {
-    return (this.get('applicationController.selectedCustomerType.identifier') === 'ftag' || this.get('applicationController.selectedCustomerType.identifier') === 'ovri');
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'ftag' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'ovri'
+    );
   }),
 
-  areInvoicingAddressFieldsValid: computed('areInvoicingAddressFieldsMandatory', 'invoicingDetails.name', 'applicationController.{invoicingDetails.company,invoicingDetails.address,invoicingDetails.postalCode,invoicingDetails.city}', function(){
-    if (this.get('areInvoicingAddressFieldsMandatory')) {
-      return (this.get('applicationController.invoicingDetails.name.length') > 0 && this.get('applicationController.invoicingDetails.company.length') > 0 && this.get('applicationController.invoicingDetails.address.length') > 0 && this.get('applicationController.invoicingDetails.postalCode.length') > 0 && this.get('applicationController.invoicingDetails.city.length') > 0);
-    } else {
-      return true;
+  areInvoicingAddressFieldsValid: computed(
+    'areInvoicingAddressFieldsMandatory',
+    'invoicingDetails.name',
+    'applicationController.{invoicingDetails.company,invoicingDetails.address,invoicingDetails.postalCode,invoicingDetails.city}',
+    function() {
+      return !(
+        this.get('areInvoicingAddressFieldsMandatory') && (
+          isEmpty(this.get('applicationController.invoicingDetails.name')) ||
+          isEmpty(this.get('applicationController.invoicingDetails.company')) ||
+          isEmpty(this.get('applicationController.invoicingDetails.address')) ||
+          isEmpty(this.get('applicationController.invoicingDetails.postalCode')) ||
+          isEmpty(this.get('applicationController.invoicingDetails.city'))
+        )
+      );
     }
-  }),
-
+  ),
   // Bool to check if individual invoicing fields are valid
   isInvoicingCompanyValid: computed('areInvoicingAddressFieldsMandatory', 'applicationController.invoicingDetails.company', function(){
-    if (this.get('areInvoicingAddressFieldsMandatory')) {
-      return (this.get('applicationController.invoicingDetails.company.length') > 0);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areInvoicingAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.invoicingDetails.company'))
+    );
   }),
   isInvoicingNameValid: computed('areInvoicingAddressFieldsMandatory', 'applicationController.invoicingDetails.name', function(){
-    if (this.get('areInvoicingAddressFieldsMandatory')) {
-      return (this.get('applicationController.invoicingDetails.name.length') > 0);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areInvoicingAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.invoicingDetails.name'))
+    );
   }),
 
   isInvoicingAddressValid: computed('areInvoicingAddressFieldsMandatory', 'applicationController.invoicingDetails.address', function(){
-    if (this.get('areInvoicingAddressFieldsMandatory')) {
-      return (this.get('applicationController.invoicingDetails.address.length') > 0);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areInvoicingAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.invoicingDetails.address'))
+    );
   }),
 
   isInvoicingPostalCodeValid: computed('areInvoicingAddressFieldsMandatory', 'applicationController.invoicingDetails.postalCode', function(){
-    if (this.get('areInvoicingAddressFieldsMandatory')) {
-      return (this.get('applicationController.invoicingDetails.postalCode.length') > 0);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areInvoicingAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.invoicingDetails.postalCode'))
+    );
   }),
 
   isInvoicingCityValid: computed('areInvoicingAddressFieldsMandatory', 'applicationController.invoicingDetails.city', function(){
-    if (this.get('areInvoicingAddressFieldsMandatory')) {
-      return (this.get('applicationController.invoicingDetails.city.length') > 0);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('areInvoicingAddressFieldsMandatory') &&
+      isEmpty(this.get('applicationController.invoicingDetails.city'))
+    );
   }),
-
 
   // Customer ID
   // Bool to check whether to show customerId field or not
   showCustomerId: computed('applicationController.selectedCustomerType', function() {
-    return ((this.get('applicationController.selectedCustomerType.identifier') === 'univ') || (this.get('applicationController.selectedCustomerType.identifier') === 'sahl'));
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'univ' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'sahl'
+    );
   }),
 
   // Bool to check whether customerId is mandatory or not
   isCustomerIdMandatory: computed('applicationController.selectedCustomerType', function() {
-    return ((this.get('applicationController.selectedCustomerType.identifier') === 'univ') || (this.get('applicationController.selectedCustomerType.identifier') === 'sahl'));
+    return (
+      this.get('applicationController.selectedCustomerType.identifier') === 'univ' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'sahl'
+    );
   }),
 
   // Bool to check whether customerId is valid or not
   isCustomerIdValid: computed('isCustomerIdMandatory', 'applicationController.invoicingDetails.customerId', function() {
-    if (this.get('isCustomerIdMandatory')) {
-      return (this.get('applicationController.invoicingDetails.customerId.length') > 1);
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isCustomerIdMandatory') &&
+      isEmpty(this.get('applicationController.invoicingDetails.customerId'))
+    );
   }),
 
   // Bool to check if invoicing fiels are valid
   areInvoicingFieldsValid: computed('isInvoicingAvaliable', 'areInvoicingAddressFieldsValid', 'isCustomerIdValid', function() {
-    if (this.get('isInvoicingAvaliable')) {
-      return (this.get('areInvoicingAddressFieldsValid') && this.get('isCustomerIdValid'));
-    } else {
-      return true;
-    }
+    return !(
+      this.get('isInvoicingAvaliable') && (
+        isEmpty(this.get('areInvoicingAddressFieldsValid')) ||
+        isEmpty(this.get('isCustomerIdValid'))
+      )
+    );
   }),
 
 
   // Bool to check if form is complete, based on all isValid-properties
-  isFormComplete: computed.and('isOrganisationValid', 'isNameValid', 'isEmailValid', 'isDepartmentValid', 'isUnitValid', 'isLibraryCardNumberValid', 'isXAccountValid', 'isDeliveryMethodSet', 'areDeliveryFieldsValid', 'areInvoicingFieldsValid'),
+  isFormComplete: computed.and(
+    'isOrganisationValid',
+    'isNameValid',
+    'isEmailValid',
+    'isDepartmentValid',
+    'isUnitValid',
+    'isLibraryCardNumberValid',
+    'isXAccountValid',
+    'isDeliveryMethodSet',
+    'areDeliveryFieldsValid',
+    'areInvoicingFieldsValid'
+  ),
 
   // method for reseting fields values when customer type is changed, so no fields are hidden with their values maintained
   resetUnusedFields: observer('applicationController.selectedCustomerType', function() {
