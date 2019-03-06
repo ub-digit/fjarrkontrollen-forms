@@ -23,8 +23,5 @@ export default Controller.extend({
       case 'microfilm':
         return this.get("i18n").t('home.step5.orderAnotherMicrofilm');
     }
-
-
   })
-
 });

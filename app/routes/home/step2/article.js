@@ -12,7 +12,6 @@ export default Route.extend({
 
   actions: {
     getPubMedId: function(id) {
-
       if (window.dataLayer) {
         window.dataLayer.push({
           'event' : 'GAEvent',
@@ -79,11 +78,8 @@ export default Route.extend({
           }
         }
       }, function() {
-
         that.controllerFor('home.step2.article').set('error', true);
-
       });
     }
   }
-
 });

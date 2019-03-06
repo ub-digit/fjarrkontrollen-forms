@@ -9,7 +9,6 @@ export default Controller.extend({
   queryParams: ['id'],
 
   orderAnotherText: computed('applicationController.selectedOrderType', function() {
-
     var orderType = this.get("applicationController.selectedOrderType");
     switch(orderType.identifier) {
       case 'article':
@@ -23,8 +22,5 @@ export default Controller.extend({
       case 'microfilm':
         return this.get("i18n").t('home.step5.orderAnotherMicrofilm');
     }
-
-
   })
-
 });

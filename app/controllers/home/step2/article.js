@@ -12,14 +12,12 @@ export default Controller.extend({
   isPublicationYearValid: computed.notEmpty('applicationController.orderDetails.article.publicationYear'),
 
   isJournalTitleValid: computed.notEmpty('applicationController.orderDetails.article.journalTitle'),
-  
+
   isFormComplete: computed('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid', function() {
     return (this.get('isPagesValid') && this.get('isPublicationYearValid') && this.get('isJournalTitleValid'));
   }),
 
-
   isPubMedButtonEnabled: computed.gte('applicationController.pubMedId.length', 1),
-
 
   actions: {
     back: function() {
@@ -29,6 +27,4 @@ export default Controller.extend({
       this.transitionToRoute("home.step3");
     }
   }
-
-
 });
