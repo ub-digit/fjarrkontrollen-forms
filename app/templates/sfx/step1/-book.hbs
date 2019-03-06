@@ -2,14 +2,14 @@
 <div class="row">
   <div class="col-xs-12">
     <dl class="dl-horizontal">
-      <dt>{{t 'home.orderDetails.book.bookTitle'}}:</dt>
-      <dd>{{applicationController.orderDetails.book.bookTitle}}</dd>
-      <dt>{{t 'home.orderDetails.book.authors'}}:</dt>
-      <dd>{{applicationController.orderDetails.book.authors}}</dd>
-      <dt>{{t 'home.orderDetails.book.isbn'}}:</dt>
-      <dd>{{applicationController.orderDetails.book.isbn}}</dd>
-      <dt>{{t 'home.orderDetails.book.publicationYear'}}:</dt>
-      <dd>{{applicationController.orderDetails.book.publicationYear}}</dd>
+      <dt>{{t 'home.orderDetailsBook.bookTitle'}}:</dt>
+      <dd>{{applicationController.orderDetailsBook.bookTitle}}</dd>
+      <dt>{{t 'home.orderDetailsBook.authors'}}:</dt>
+      <dd>{{applicationController.orderDetailsBook.authors}}</dd>
+      <dt>{{t 'home.orderDetailsBook.isbn'}}:</dt>
+      <dd>{{applicationController.orderDetailsBook.isbn}}</dd>
+      <dt>{{t 'home.orderDetailsBook.publicationYear'}}:</dt>
+      <dd>{{applicationController.orderDetailsBook.publicationYear}}</dd>
     </dl>
   </div>
 </div>
@@ -17,7 +17,7 @@
   <div class="col-xs-12">
     <div class="checkbox">
       <label>
-        {{input type='checkbox' checked=applicationController.orderDetails.book.outsideNordics}} {{t 'home.orderDetails.book.outsideNordics'}}
+        {{input type='checkbox' checked=applicationController.orderDetailsBook.outsideNordics}} {{t 'home.orderDetailsBook.outsideNordics'}}
       </label>
     </div>
     <span class="help-block">{{t 'home.step2.book.outsideNordicsHelpText'}}</span>
@@ -28,8 +28,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div  class="form-group">
-      <label class="control-label">{{t 'home.orderDetails.book.notValidAfter'}}</label>
-      {{input type='text' class="form-control" value=applicationController.orderDetails.book.notValidAfter}}
+      <label class="control-label">{{t 'home.orderDetailsBook.notValidAfter'}}</label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsBook.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -37,8 +37,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group">
-      <label class="control-label">{{t 'home.orderDetails.book.comment'}}</label>
-      {{textarea class="form-control" value=applicationController.orderDetails.book.comment}}
+      <label class="control-label">{{t 'home.orderDetailsBook.comment'}}</label>
+      {{textarea class="form-control" value=applicationController.orderDetailsBook.comment}}
     </div>
   </div>
 </div> <!-- end row -->

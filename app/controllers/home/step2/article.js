@@ -7,24 +7,24 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isPagesValid: computed.notEmpty('applicationController.orderDetails.article.pages'),
+  isPagesValid: computed.notEmpty('applicationController.orderDetailsArticle.pages'),
 
-  isPublicationYearValid: computed.notEmpty('applicationController.orderDetails.article.publicationYear'),
+  isPublicationYearValid: computed.notEmpty('applicationController.orderDetailsArticle.publicationYear'),
 
-  isJournalTitleValid: computed.notEmpty('applicationController.orderDetails.article.journalTitle'),
+  isJournalTitleValid: computed.notEmpty('applicationController.orderDetailsArticle.journalTitle'),
 
-  isFormComplete: computed('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid', function() {
-    return (this.get('isPagesValid') && this.get('isPublicationYearValid') && this.get('isJournalTitleValid'));
-  }),
+  isFormComplete: computed.and('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid'),
 
-  isPubMedButtonEnabled: computed.gte('applicationController.pubMedId.length', 1),
+  isPubMedButtonEnabled: computed.notEmpty('applicationController.orderDetailsArticle.pubMedId'),
 
   actions: {
     back: function() {
       this.transitionToRoute("home.step1");
     },
     nextStep: function() {
-      this.transitionToRoute("home.step3");
+      let step = "home.step3";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 });

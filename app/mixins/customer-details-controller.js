@@ -4,6 +4,7 @@ import { inject as inject_service} from '@ember/service';
 import { computed } from '@ember/object';
 import { observer } from '@ember/object';
 import { isEmpty } from '@ember/utils';
+import { storageFor } from 'ember-local-storage';
 
 export default Mixin.create({
   applicationController: inject_controller('application'),
@@ -200,10 +201,10 @@ export default Mixin.create({
   // Bool to check whether library card number field is mandatory or not
   isLibraryCardNumberMandatory: computed('applicationController.selectedCustomerType', function() {
     return (
-      this.get('applicationController.selectedCustomerType.identifier' === 'univ') ||
-      this.get('applicationController.selectedCustomerType.identifier' === 'stud') ||
-      this.get('applicationController.selectedCustomerType.identifier' === 'priv') ||
-      this.get('applicationController.selectedCustomerType.identifier' === 'dist')
+      this.get('applicationController.selectedCustomerType.identifier') === 'univ' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'stud' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'priv' ||
+      this.get('applicationController.selectedCustomerType.identifier') === 'dist'
     );
   }),
   // Bool to check if library card number is filled in
@@ -421,7 +422,6 @@ export default Mixin.create({
 
   // Bool to check if form is complete, based on all isValid-properties
   isFormComplete: computed.and(
-    'isOrganisationValid',
     'isNameValid',
     'isEmailValid',
     'isDepartmentValid',
@@ -509,12 +509,13 @@ export default Mixin.create({
   }),
 
   actions: {
-    handleSelectCustomerType: function(type) {
-      this.set("applicationController.selectedCustomerType", type);
+    nextstep: function() {
+      let step = "home.step4";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     },
-    handleSelectDeliveryMethod: function(type) {
-      this.set("applicationController.selectedDeliveryMethod", type);
+    back: function() {
+      this.transitionTo('home.step2');
     }
   }
-
 });

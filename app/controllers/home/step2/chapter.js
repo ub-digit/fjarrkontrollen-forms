@@ -7,20 +7,20 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isChapterTitleValid: computed.notEmpty('applicationController.orderDetails.chapter.chapterTitle'),
+  isChapterTitleValid: computed.notEmpty('applicationController.orderDetailsChapter.chapterTitle'),
 
-  isBookTitleValid: computed.notEmpty('applicationController.orderDetails.chapter.bookTitle'),
+  isBookTitleValid: computed.notEmpty('applicationController.orderDetailsChapter.bookTitle'),
 
-  isFormComplete: computed('applicationController.{orderDetails.chapter.chapterTitle,orderDetails.chapter.bookTitle}', function() {
-    return (this.get('isChapterTitleValid') && this.get('isBookTitleValid'));
-  }),
+  isFormComplete: computed.and('isChapterTitleValid', 'isBookTitleValid'),
 
   actions: {
     back: function() {
       this.transitionToRoute("home.step1");
     },
     nextStep: function() {
-      this.transitionToRoute("home.step3");
+      let step = "home.step3";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 

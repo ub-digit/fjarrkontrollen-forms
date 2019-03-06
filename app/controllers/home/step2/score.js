@@ -7,20 +7,20 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isComposersValid: computed.notEmpty('applicationController.orderDetails.score.composers'),
+  isComposersValid: computed.notEmpty('applicationController.orderDetailsScore.composers'),
 
-  isOpusTitleValid: computed.notEmpty('applicationController.orderDetails.score.opusTitle'),
+  isOpusTitleValid: computed.notEmpty('applicationController.orderDetailsScore.opusTitle'),
 
-  isFormComplete: computed('isComposersValid', 'isOpusTitleValid', function() {
-    return (this.get('isComposersValid') && this.get('isOpusTitleValid'));
-  }),
+  isFormComplete: computed.and('isComposersValid', 'isOpusTitleValid'),
 
   actions: {
     back: function() {
       this.transitionToRoute("home.step1");
     },
     nextStep: function() {
-      this.transitionToRoute("home.step3");
+      let step = "home.step3";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 });

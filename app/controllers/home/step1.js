@@ -16,17 +16,13 @@ export default Controller.extend({
     }
   }),
 
-  isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),
+  isFormComplete: computed.and('applicationController.order.{selectedOrderType,selectedLocation}'),
 
   actions: {
     nextStep: function() {
-      this.transitionToRoute('home.step2');
-    },
-    handleSelectType: function(type) {
-      this.set('applicationController.selectedOrderType', type);
-    },
-    handleSelectLocation: function(location) {
-      this.set("applicationController.selectedLocation", location);
+      let step = 'home.step2';
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 

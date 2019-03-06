@@ -24,14 +24,14 @@ export default Route.extend({
 
       var that = this;
 
-      that.controllerFor('application').set('orderDetails.article.articleTitle', null);
-      that.controllerFor('application').set('orderDetails.article.journalTitle', null);
-      that.controllerFor('application').set('orderDetails.article.issn', null);
-      that.controllerFor('application').set('orderDetails.article.publicationYear', null);
-      that.controllerFor('application').set('orderDetails.article.volume', null);
-      that.controllerFor('application').set('orderDetails.article.pages', null);
-      that.controllerFor('application').set('orderDetails.article.issue', null);
-      that.controllerFor('application').set('orderDetails.article.authors', null);
+      that.controllerFor('application').set('orderDetailsArticle.articleTitle', null);
+      that.controllerFor('application').set('orderDetailsArticle.journalTitle', null);
+      that.controllerFor('application').set('orderDetailsArticle.issn', null);
+      that.controllerFor('application').set('orderDetailsArticle.publicationYear', null);
+      that.controllerFor('application').set('orderDetailsArticle.volume', null);
+      that.controllerFor('application').set('orderDetailsArticle.pages', null);
+      that.controllerFor('application').set('orderDetailsArticle.issue', null);
+      that.controllerFor('application').set('orderDetailsArticle.authors', null);
       $("body").addClass("loading");
       request('//eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
 
@@ -57,13 +57,13 @@ export default Route.extend({
             // Om pbumed ID hittas
           } else {
             $("body").removeClass("loading");
-            that.controllerFor('application').set('orderDetails.article.articleTitle', data.result[resultId].title);
-            that.controllerFor('application').set('orderDetails.article.journalTitle', data.result[resultId].fulljournalname);
-            that.controllerFor('application').set('orderDetails.article.issn', data.result[resultId].issn);
-            that.controllerFor('application').set('orderDetails.article.publicationYear', data.result[resultId].pubdate);
-            that.controllerFor('application').set('orderDetails.article.volume', data.result[resultId].volume);
-            that.controllerFor('application').set('orderDetails.article.pages', data.result[resultId].pages);
-            that.controllerFor('application').set('orderDetails.article.issue', data.result[resultId].issue);
+            that.controllerFor('application').set('orderDetailsArticle.articleTitle', data.result[resultId].title);
+            that.controllerFor('application').set('orderDetailsArticle.journalTitle', data.result[resultId].fulljournalname);
+            that.controllerFor('application').set('orderDetailsArticle.issn', data.result[resultId].issn);
+            that.controllerFor('application').set('orderDetailsArticle.publicationYear', data.result[resultId].pubdate);
+            that.controllerFor('application').set('orderDetailsArticle.volume', data.result[resultId].volume);
+            that.controllerFor('application').set('orderDetailsArticle.pages', data.result[resultId].pages);
+            that.controllerFor('application').set('orderDetailsArticle.issue', data.result[resultId].issue);
 
             var authors = '';
 
@@ -74,7 +74,7 @@ export default Route.extend({
               }
             });
 
-            that.controllerFor('application').set('orderDetails.article.authors', authors);
+            that.controllerFor('application').set('orderDetailsArticle.authors', authors);
           }
         }
       }, function() {

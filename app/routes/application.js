@@ -10,156 +10,6 @@ export default Route.extend({
     return params;
   },
   setupController: function(controller, model) {
-    var locations = [];
-    locations.pushObject({
-      id: 1,
-      identifier: 'G',
-      title_sv: 'Humanistiska biblioteket',
-      title_en: 'Humanities Library'
-    });
-    locations.pushObject({
-      id: 2,
-      identifier: 'Ge',
-      title_sv: 'Ekonomiska biblioteket',
-      title_en: 'Economics Library'
-    });
-    locations.pushObject({
-      id: 4,
-      identifier: 'Gm',
-      title_sv: 'Biomedicinska biblioteket',
-      title_en: 'Biomedical Library'
-    });
-    locations.pushObject({
-      id: 5,
-      identifier: 'Gp',
-      title_sv: 'Pedagogiska biblioteket',
-      title_en: 'Education Library'
-    });
-    locations.pushObject({
-      id: 6,
-      identifier: 'Gk',
-      title_sv: 'Samhällsvetenskapliga biblioteket',
-      title_en: 'Social Sciences Library'
-    });
-    locations.pushObject({
-      id: 7,
-      identifier: 'Ghdk',
-      title_sv: 'Konstbiblioteket',
-      title_en: 'Art Library'
-    });
-    locations.pushObject({
-      id: 8,
-      identifier: 'Gumu',
-      title_sv: 'Biblioteket för musik och dramatik',
-      title_en: 'Music and Drama Library'
-    });
-    //locations.pushObject({id:8, identifier: 'Gcl', title_sv: 'Campus Linné', title_en: 'Learning Centre Campus Linné'});
-    controller.set("locations", locations);
-    controller.set("selectedLocation", null);
-
-    var orderTypes = [];
-    orderTypes.pushObject({
-      id: 1,
-      identifier: 'article',
-      auth_required: false,
-      title_sv: 'Artikelkopia',
-      title_en: 'Copy of article'
-    });
-    orderTypes.pushObject({
-      id: 2,
-      identifier: 'book',
-      auth_required: true,
-      title_sv: 'Bok',
-      title_en: 'Loan'
-    });
-    orderTypes.pushObject({
-      id: 3,
-      identifier: 'chapter',
-      auth_required: false,
-      title_sv: 'Kopia av bokkapitel',
-      title_en: 'Copy of book chapter'
-    });
-    orderTypes.pushObject({
-      id: 4,
-      identifier: 'score',
-      auth_required: true,
-      title_sv: 'Musiktryck',
-      title_en: 'Score'
-    });
-    orderTypes.pushObject({
-      id: 5,
-      identifier: 'microfilm',
-      auth_required: false,
-      title_sv: 'Mikrofilmad dagstidning',
-      title_en: 'Microfilm newspaper'
-    });
-    controller.set("orderTypes", orderTypes);
-    controller.set("selectedOrderType", null);
-
-    var customerTypes = [];
-    customerTypes.pushObject({
-      id: 1,
-      identifier: 'univ',
-      title_sv: 'Forskare/anställd/doktorand vid GU',
-      title_en: 'Researcher/staff/PhD student at GU'
-    });
-    customerTypes.pushObject({
-      id: 2,
-      identifier: 'stud',
-      title_sv: 'Student',
-      title_en: 'Student'
-    });
-    customerTypes.pushObject({
-      id: 3,
-      identifier: 'sahl',
-      title_sv: 'Anställd inom Västra Götalandsregionen',
-      title_en: 'Staff at Region Västra Götaland'
-    });
-    customerTypes.pushObject({
-      id: 4,
-      identifier: 'priv',
-      title_sv: 'Privatperson',
-      title_en: 'Private individual'
-    });
-    customerTypes.pushObject({
-      id: 5,
-      identifier: 'ftag',
-      title_sv: 'Företag',
-      title_en: 'Company'
-    });
-    customerTypes.pushObject({
-      id: 6,
-      identifier: 'dist',
-      title_sv: 'Distansstudent',
-      title_en: 'Distance student'
-    });
-    customerTypes.pushObject({
-      id: 7,
-      identifier: 'ovri',
-      title_sv: 'Övriga',
-      title_en: 'Other'
-    });
-
-    controller.set("customerTypes", customerTypes);
-    controller.set("selectedCustomerType", null);
-
-    var deliveryMethods = [];
-    deliveryMethods.pushObject({
-      id: 1,
-      identifier: 'pickup',
-      title_internal: "Hämtas",
-      title_sv: 'Hämtas på bibliotek',
-      title_en: 'Pickup at library'
-    });
-    deliveryMethods.pushObject({
-      id: 2,
-      identifier: 'send',
-      title_internal: "Skickas",
-      title_sv: 'Skickas till adress',
-      title_en: 'Send to my address'
-    });
-    controller.set("deliveryMethods", deliveryMethods);
-    controller.set("selectedDeliveryMethod", null);
 
     if (model.is_sfx === 'yes') {
 
@@ -178,48 +28,48 @@ export default Route.extend({
 
       // populate order details with data from params
       if (model.isbn_issn) {
-        controller.set("orderDetails.article.issn", model.isbn_issn);
-        controller.set("orderDetails.book.isbn", model.isbn_issn);
-        controller.set("orderDetails.chapter.isbn", model.isbn_issn);
+        controller.set("orderDetailsArticle.issn", model.isbn_issn);
+        controller.set("orderDetailsBook.isbn", model.isbn_issn);
+        controller.set("orderDetailsChapter.isbn", model.isbn_issn);
       }
 
       if (model.book_title) {
-        controller.set("orderDetails.book.bookTitle", model.book_title);
-        controller.set("orderDetails.chapter.bookTitle", model.book_title);
+        controller.set("orderDetailsBook.bookTitle", model.book_title);
+        controller.set("orderDetailsChapter.bookTitle", model.book_title);
       }
 
       if (model.journal_title) {
-        controller.set("orderDetails.article.journalTitle", model.journal_title);
+        controller.set("orderDetailsArticle.journalTitle", model.journal_title);
       }
 
       if (model.title_of_article) {
-        controller.set("orderDetails.article.articleTitle", model.title_of_article);
-        controller.set("orderDetails.chapter.chapterTitle", model.title_of_article);
+        controller.set("orderDetailsArticle.articleTitle", model.title_of_article);
+        controller.set("orderDetailsChapter.chapterTitle", model.title_of_article);
       }
 
       if (model.author) {
-        controller.set("orderDetails.article.authors", model.author);
-        controller.set("orderDetails.book.authors", model.author);
-        controller.set("orderDetails.chapter.authors", model.author);
+        controller.set("orderDetailsArticle.authors", model.author);
+        controller.set("orderDetailsBook.authors", model.author);
+        controller.set("orderDetailsChapter.authors", model.author);
       }
 
       if (model.year) {
-        controller.set("orderDetails.article.publicationYear", model.year);
-        controller.set("orderDetails.book.publicationYear", model.year);
-        controller.set("orderDetails.chapter.publicationYear", model.year);
+        controller.set("orderDetailsArticle.publicationYear", model.year);
+        controller.set("orderDetailsBook.publicationYear", model.year);
+        controller.set("orderDetailsChapter.publicationYear", model.year);
       }
 
       if (model.volume) {
-        controller.set("orderDetails.article.volume", model.volume);
+        controller.set("orderDetailsArticle.volume", model.volume);
       }
 
       if (model.issue) {
-        controller.set("orderDetails.article.issue", model.issue);
+        controller.set("orderDetailsArticle.issue", model.issue);
       }
 
       if (model.pages) {
-        controller.set("orderDetails.article.pages", model.pages);
-        controller.set("orderDetails.chapter.pages", model.pages);
+        controller.set("orderDetailsArticle.pages", model.pages);
+        controller.set("orderDetailsChapter.pages", model.pages);
       }
 
       [

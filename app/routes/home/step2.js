@@ -4,32 +4,40 @@ import ResetScroll from '../../mixins/ResetScroll';
 export default Route.extend(ResetScroll, {
 
   beforeModel: function() {
-    var orderType = this.controllerFor('application').get('selectedOrderType');
+    let applicationController = this.controllerFor('application');
+    var orderType = applicationController.get('selectedOrderType');
+    let step = null;
     switch(orderType.identifier) {
       case 'article':
-        this.transitionTo('home.step2.article');
+        step = 'home.step2.article';
+        //applicationController.set('order.currentStep', step);
+        this.transitionTo(step);
         break;
       case 'book':
-        this.transitionTo('home.step2.book');
+        step = 'home.step2.book';
+        //applicationController.set('order.currentStep', step);
+        this.transitionTo(step);
         break;
       case 'chapter':
-        this.transitionTo('home.step2.chapter');
+        step = 'home.step2.chapter';
+        //applicationController.set('order.currentStep', step);
+        this.transitionTo(step);
         break;
       case 'score':
-        this.transitionTo('home.step2.score');
+        step = 'home.step2.score';
+        //applicationController.set('order.currentStep', step);
+        this.transitionTo(step);
         break;
       case 'microfilm':
+        step = 'home.step2.microfilm';
+        //applicationController.set('order.currentStep', step);
         this.transitionTo('home.step2.microfilm');
         break;
       default:
-        this.transitionTo('home.step1');
+        step = 'home.step1';
+        //applicationController.set('order.currentStep', step);
+        this.transitionTo(step);
         break;
-    }
-  },
-
-  actions: {
-    nextstep: function() {
-      this.transitionTo('home.step3');
     }
   }
 });

@@ -38,6 +38,7 @@
     "ember-font-awesome": "^4.0.0-rc.4",
     "ember-i18n": "^5.2.1",
     "ember-load-initializers": "^1.1.0",
+    "ember-local-storage": "^1.6.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-power-select": "^2.0.4",
     "ember-resolver": "^4.0.0",
