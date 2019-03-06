@@ -4,6 +4,7 @@ import { inject as inject_service} from '@ember/service';
 import { computed } from '@ember/object';
 import { observer } from '@ember/object';
 import { isEmpty } from '@ember/utils';
+import { storageFor } from 'ember-local-storage';
 
 export default Mixin.create({
   applicationController: inject_controller('application'),

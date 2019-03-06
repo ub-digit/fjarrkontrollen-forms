@@ -55,7 +55,6 @@ export default Route.extend({
     });
     //locations.pushObject({id:8, identifier: 'Gcl', title_sv: 'Campus Linné', title_en: 'Learning Centre Campus Linné'});
     controller.set("locations", locations);
-    controller.set("selectedLocation", null);
 
     var orderTypes = [];
     orderTypes.pushObject({
@@ -94,7 +93,6 @@ export default Route.extend({
       title_en: 'Microfilm newspaper'
     });
     controller.set("orderTypes", orderTypes);
-    controller.set("selectedOrderType", null);
 
     var customerTypes = [];
     customerTypes.pushObject({
@@ -141,7 +139,6 @@ export default Route.extend({
     });
 
     controller.set("customerTypes", customerTypes);
-    controller.set("selectedCustomerType", null);
 
     var deliveryMethods = [];
     deliveryMethods.pushObject({
@@ -159,7 +156,6 @@ export default Route.extend({
       title_en: 'Send to my address'
     });
     controller.set("deliveryMethods", deliveryMethods);
-    controller.set("selectedDeliveryMethod", null);
 
     if (model.is_sfx === 'yes') {
 
@@ -178,48 +174,48 @@ export default Route.extend({
 
       // populate order details with data from params
       if (model.isbn_issn) {
-        controller.set("orderDetails.article.issn", model.isbn_issn);
-        controller.set("orderDetails.book.isbn", model.isbn_issn);
-        controller.set("orderDetails.chapter.isbn", model.isbn_issn);
+        controller.set("orderDetailsArticle.issn", model.isbn_issn);
+        controller.set("orderDetailsBook.isbn", model.isbn_issn);
+        controller.set("orderDetailsChapter.isbn", model.isbn_issn);
       }
 
       if (model.book_title) {
-        controller.set("orderDetails.book.bookTitle", model.book_title);
-        controller.set("orderDetails.chapter.bookTitle", model.book_title);
+        controller.set("orderDetailsBook.bookTitle", model.book_title);
+        controller.set("orderDetailsChapter.bookTitle", model.book_title);
       }
 
       if (model.journal_title) {
-        controller.set("orderDetails.article.journalTitle", model.journal_title);
+        controller.set("orderDetailsArticle.journalTitle", model.journal_title);
       }
 
       if (model.title_of_article) {
-        controller.set("orderDetails.article.articleTitle", model.title_of_article);
-        controller.set("orderDetails.chapter.chapterTitle", model.title_of_article);
+        controller.set("orderDetailsArticle.articleTitle", model.title_of_article);
+        controller.set("orderDetailsChapter.chapterTitle", model.title_of_article);
       }
 
       if (model.author) {
-        controller.set("orderDetails.article.authors", model.author);
-        controller.set("orderDetails.book.authors", model.author);
-        controller.set("orderDetails.chapter.authors", model.author);
+        controller.set("orderDetailsArticle.authors", model.author);
+        controller.set("orderDetailsBook.authors", model.author);
+        controller.set("orderDetailsChapter.authors", model.author);
       }
 
       if (model.year) {
-        controller.set("orderDetails.article.publicationYear", model.year);
-        controller.set("orderDetails.book.publicationYear", model.year);
-        controller.set("orderDetails.chapter.publicationYear", model.year);
+        controller.set("orderDetailsArticle.publicationYear", model.year);
+        controller.set("orderDetailsBook.publicationYear", model.year);
+        controller.set("orderDetailsChapter.publicationYear", model.year);
       }
 
       if (model.volume) {
-        controller.set("orderDetails.article.volume", model.volume);
+        controller.set("orderDetailsArticle.volume", model.volume);
       }
 
       if (model.issue) {
-        controller.set("orderDetails.article.issue", model.issue);
+        controller.set("orderDetailsArticle.issue", model.issue);
       }
 
       if (model.pages) {
-        controller.set("orderDetails.article.pages", model.pages);
-        controller.set("orderDetails.chapter.pages", model.pages);
+        controller.set("orderDetailsArticle.pages", model.pages);
+        controller.set("orderDetailsChapter.pages", model.pages);
       }
 
       [

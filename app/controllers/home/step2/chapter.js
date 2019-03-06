@@ -7,11 +7,11 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isChapterTitleValid: computed.notEmpty('applicationController.orderDetails.chapter.chapterTitle'),
+  isChapterTitleValid: computed.notEmpty('applicationController.orderDetailsChapter.chapterTitle'),
 
-  isBookTitleValid: computed.notEmpty('applicationController.orderDetails.chapter.bookTitle'),
+  isBookTitleValid: computed.notEmpty('applicationController.orderDetailsChapter.bookTitle'),
 
-  isFormComplete: computed('applicationController.{orderDetails.chapter.chapterTitle,orderDetails.chapter.bookTitle}', function() {
+  isFormComplete: computed('applicationController.{orderDetailsChapter.chapterTitle,orderDetailsChapter.bookTitle}', function() {
     return (this.get('isChapterTitleValid') && this.get('isBookTitleValid'));
   }),
 

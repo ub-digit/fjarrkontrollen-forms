@@ -7,9 +7,9 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isComposersValid: computed.notEmpty('applicationController.orderDetails.score.composers'),
+  isComposersValid: computed.notEmpty('applicationController.orderDetailsScore.composers'),
 
-  isOpusTitleValid: computed.notEmpty('applicationController.orderDetails.score.opusTitle'),
+  isOpusTitleValid: computed.notEmpty('applicationController.orderDetailsScore.opusTitle'),
 
   isFormComplete: computed('isComposersValid', 'isOpusTitleValid', function() {
     return (this.get('isComposersValid') && this.get('isOpusTitleValid'));

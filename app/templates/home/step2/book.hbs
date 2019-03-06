@@ -3,8 +3,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div  class="form-group {{if isTitleValid 'ok' 'has-error'}}">
-      <label class="control-label">{{t 'home.orderDetails.book.bookTitle'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' class="form-control" value=applicationController.orderDetails.book.bookTitle}}
+      <label class="control-label">{{t 'home.orderDetailsBook.bookTitle'}} <i class="fa fa-asterisk mandatory"></i></label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsBook.bookTitle}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -12,8 +12,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div  class="form-group {{if isAuthorsValid 'ok' 'has-error'}}">
-      <label class="control-label">{{t 'home.orderDetails.book.authors'}} <i class="fa fa-asterisk mandatory"></i></label>
-      {{input type='text' class="form-control" value=applicationController.orderDetails.book.authors}}
+      <label class="control-label">{{t 'home.orderDetailsBook.authors'}} <i class="fa fa-asterisk mandatory"></i></label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsBook.authors}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -21,8 +21,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div class={{"form-group"}}>
-      <label class="control-label">{{t 'home.orderDetails.book.isbn'}}</label>
-      {{input type='text' class="form-control" value=applicationController.orderDetails.book.isbn}}
+      <label class="control-label">{{t 'home.orderDetailsBook.isbn'}}</label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsBook.isbn}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -30,8 +30,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div class={{"form-group"}}>
-      <label class="control-label">{{t 'home.orderDetails.book.publicationYear'}}</label>
-      {{input type='text' class="form-control" value=applicationController.orderDetails.book.publicationYear}}
+      <label class="control-label">{{t 'home.orderDetailsBook.publicationYear'}}</label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsBook.publicationYear}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -40,7 +40,7 @@
   <div class="col-xs-12">
     <div class="checkbox">
       <label>
-        {{input type='checkbox' checked=applicationController.orderDetails.book.outsideNordics}} {{t 'home.orderDetails.book.outsideNordics'}}
+        {{input type='checkbox' checked=applicationController.orderDetailsBook.outsideNordics}} {{t 'home.orderDetailsBook.outsideNordics'}}
       </label>
     </div>
     <span class="help-block">{{t 'home.step2.book.outsideNordicsHelpText'}}</span>
@@ -50,8 +50,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div  class={{"form-group"}}>
-      <label class="control-label">{{t 'home.orderDetails.book.notValidAfter'}}</label>
-      {{input type='text' class="form-control" value=applicationController.orderDetails.book.notValidAfter}}
+      <label class="control-label">{{t 'home.orderDetailsBook.notValidAfter'}}</label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsBook.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -59,8 +59,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div  class={{"form-group"}}>
-      <label class="control-label">{{t 'home.orderDetails.book.comment'}}</label>
-      {{textarea class="form-control" value=applicationController.orderDetails.book.comment}}
+      <label class="control-label">{{t 'home.orderDetailsBook.comment'}}</label>
+      {{textarea class="form-control" value=applicationController.orderDetailsBook.comment}}
     </div>
   </div>
 </div> <!-- end row -->

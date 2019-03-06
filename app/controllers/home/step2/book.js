@@ -7,9 +7,9 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isTitleValid: computed.notEmpty('applicationController.orderDetails.book.bookTitle'),
+  isTitleValid: computed.notEmpty('applicationController.orderDetailsBook.bookTitle'),
 
-  isAuthorsValid: computed.notEmpty('applicationController.orderDetails.book.authors'),
+  isAuthorsValid: computed.notEmpty('applicationController.orderDetailsBook.authors'),
 
   isFormComplete: computed('isTitleValid', 'isAuthorsValid', function() {
     return (this.get('isTitleValid') && this.get('isAuthorsValid'));

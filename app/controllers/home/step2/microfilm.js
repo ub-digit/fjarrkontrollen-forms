@@ -7,9 +7,9 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: inject_service(),
 
-  isNewspaperValid: computed.notEmpty('applicationController.orderDetails.microfilm.newspaper'),
+  isNewspaperValid: computed.notEmpty('applicationController.orderDetailsMicrofilm.newspaper'),
 
-  isPeriodValid: computed.notEmpty('applicationController.orderDetails.microfilm.period'),
+  isPeriodValid: computed.notEmpty('applicationController.orderDetailsMicrofilm.period'),
 
   isFormComplete: computed('isNewspaperValid', 'isPeriodValid', function() {
     return (this.get('isNewspaperValid') && this.get('isPeriodValid'));
