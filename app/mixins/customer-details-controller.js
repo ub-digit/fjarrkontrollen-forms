@@ -515,7 +515,7 @@ export default Mixin.create({
       this.transitionToRoute(step);
     },
     back: function() {
-      this.transitionTo('home.step2');
+      this.transitionToRoute('home.step2');
     }
   }
 });
