@@ -11,16 +11,16 @@ export default Controller.extend({
 
   isAuthorsValid: computed.notEmpty('applicationController.orderDetailsBook.authors'),
 
-  isFormComplete: computed('isTitleValid', 'isAuthorsValid', function() {
-    return (this.get('isTitleValid') && this.get('isAuthorsValid'));
-  }),
+  isFormComplete: computed.and('isTitleValid', 'isAuthorsValid'),
 
   actions: {
     back: function() {
       this.transitionToRoute("home.step1");
     },
     nextStep: function() {
-      this.transitionToRoute("home.step3");
+      let step = "home.step3";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 });

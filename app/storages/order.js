@@ -5,10 +5,11 @@ const Storage = StorageObject.extend();
 Storage.reopenClass({
   initialState() {
     return {
-      id: null,
-      identifier: null,
-      title_sv: null,
-      title_en: null
+      currentStep: null,
+      selectedLocation: null,
+      selectedOrderType: null,
+      selectedCustomerType: null,
+      selectedDeliveryMethod: null
     };
   }
 });

@@ -13,18 +13,18 @@ export default Controller.extend({
 
   isJournalTitleValid: computed.notEmpty('applicationController.orderDetailsArticle.journalTitle'),
 
-  isFormComplete: computed('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid', function() {
-    return (this.get('isPagesValid') && this.get('isPublicationYearValid') && this.get('isJournalTitleValid'));
-  }),
+  isFormComplete: computed.and('isPagesValid', 'isPublicationYearValid', 'isJournalTitleValid'),
 
-  isPubMedButtonEnabled: computed.gte('applicationController.pubMedId.length', 1),
+  isPubMedButtonEnabled: computed.notEmpty('applicationController.orderDetailsArticle.pubMedId'),
 
   actions: {
     back: function() {
       this.transitionToRoute("home.step1");
     },
     nextStep: function() {
-      this.transitionToRoute("home.step3");
+      let step = "home.step3";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 });

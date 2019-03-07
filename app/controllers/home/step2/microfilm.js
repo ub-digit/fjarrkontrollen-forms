@@ -11,9 +11,7 @@ export default Controller.extend({
 
   isPeriodValid: computed.notEmpty('applicationController.orderDetailsMicrofilm.period'),
 
-  isFormComplete: computed('isNewspaperValid', 'isPeriodValid', function() {
-    return (this.get('isNewspaperValid') && this.get('isPeriodValid'));
-  }),
+  isFormComplete: computed.and('isNewspaperValid', 'isPeriodValid'),
 
   actions: {
     back: function() {

@@ -11,16 +11,16 @@ export default Controller.extend({
 
   isOpusTitleValid: computed.notEmpty('applicationController.orderDetailsScore.opusTitle'),
 
-  isFormComplete: computed('isComposersValid', 'isOpusTitleValid', function() {
-    return (this.get('isComposersValid') && this.get('isOpusTitleValid'));
-  }),
+  isFormComplete: computed.and('isComposersValid', 'isOpusTitleValid'),
 
   actions: {
     back: function() {
       this.transitionToRoute("home.step1");
     },
     nextStep: function() {
-      this.transitionToRoute("home.step3");
+      let step = "home.step3";
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 });

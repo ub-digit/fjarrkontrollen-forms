@@ -3,6 +3,7 @@ import { computed } from '@ember/object';
 import { observer } from '@ember/object';
 import { inject as inject_service} from '@ember/service';
 import { storageFor } from 'ember-local-storage';
+import { A } from '@ember/array';
 
 export default Controller.extend({
   i18n: inject_service(),
@@ -13,21 +14,171 @@ export default Controller.extend({
 
   init() {
     this._super(...arguments);
+
+    var locations = A([]);
+    locations.pushObject({
+      id: 1,
+      identifier: 'G',
+      title_sv: 'Humanistiska biblioteket',
+      title_en: 'Humanities Library'
+    });
+    locations.pushObject({
+      id: 2,
+      identifier: 'Ge',
+      title_sv: 'Ekonomiska biblioteket',
+      title_en: 'Economics Library'
+    });
+    locations.pushObject({
+      id: 4,
+      identifier: 'Gm',
+      title_sv: 'Biomedicinska biblioteket',
+      title_en: 'Biomedical Library'
+    });
+    locations.pushObject({
+      id: 5,
+      identifier: 'Gp',
+      title_sv: 'Pedagogiska biblioteket',
+      title_en: 'Education Library'
+    });
+    locations.pushObject({
+      id: 6,
+      identifier: 'Gk',
+      title_sv: 'Samhällsvetenskapliga biblioteket',
+      title_en: 'Social Sciences Library'
+    });
+    locations.pushObject({
+      id: 7,
+      identifier: 'Ghdk',
+      title_sv: 'Konstbiblioteket',
+      title_en: 'Art Library'
+    });
+    locations.pushObject({
+      id: 8,
+      identifier: 'Gumu',
+      title_sv: 'Biblioteket för musik och dramatik',
+      title_en: 'Music and Drama Library'
+    });
+    //locations.pushObject({id:8, identifier: 'Gcl', title_sv: 'Campus Linné', title_en: 'Learning Centre Campus Linné'});
+    this.set("locations", locations);
+
+    var orderTypes = A([]);
+    orderTypes.pushObject({
+      id: 1,
+      identifier: 'article',
+      auth_required: false,
+      title_sv: 'Artikelkopia',
+      title_en: 'Copy of article'
+    });
+    orderTypes.pushObject({
+      id: 2,
+      identifier: 'book',
+      auth_required: true,
+      title_sv: 'Bok',
+      title_en: 'Loan'
+    });
+    orderTypes.pushObject({
+      id: 3,
+      identifier: 'chapter',
+      auth_required: false,
+      title_sv: 'Kopia av bokkapitel',
+      title_en: 'Copy of book chapter'
+    });
+    orderTypes.pushObject({
+      id: 4,
+      identifier: 'score',
+      auth_required: true,
+      title_sv: 'Musiktryck',
+      title_en: 'Score'
+    });
+    orderTypes.pushObject({
+      id: 5,
+      identifier: 'microfilm',
+      auth_required: false,
+      title_sv: 'Mikrofilmad dagstidning',
+      title_en: 'Microfilm newspaper'
+    });
+    this.set("orderTypes", orderTypes);
+
+    var customerTypes = A([]);
+    customerTypes.pushObject({
+      id: 1,
+      identifier: 'univ',
+      title_sv: 'Forskare/anställd/doktorand vid GU',
+      title_en: 'Researcher/staff/PhD student at GU'
+    });
+    customerTypes.pushObject({
+      id: 2,
+      identifier: 'stud',
+      title_sv: 'Student',
+      title_en: 'Student'
+    });
+    customerTypes.pushObject({
+      id: 3,
+      identifier: 'sahl',
+      title_sv: 'Anställd inom Västra Götalandsregionen',
+      title_en: 'Staff at Region Västra Götaland'
+    });
+    customerTypes.pushObject({
+      id: 4,
+      identifier: 'priv',
+      title_sv: 'Privatperson',
+      title_en: 'Private individual'
+    });
+    customerTypes.pushObject({
+      id: 5,
+      identifier: 'ftag',
+      title_sv: 'Företag',
+      title_en: 'Company'
+    });
+    customerTypes.pushObject({
+      id: 6,
+      identifier: 'dist',
+      title_sv: 'Distansstudent',
+      title_en: 'Distance student'
+    });
+    customerTypes.pushObject({
+      id: 7,
+      identifier: 'ovri',
+      title_sv: 'Övriga',
+      title_en: 'Other'
+    });
+
+    this.set("customerTypes", customerTypes);
+
+    var deliveryMethods = A([]);
+    deliveryMethods.pushObject({
+      id: 1,
+      identifier: 'pickup',
+      title_internal: "Hämtas",
+      title_sv: 'Hämtas på bibliotek',
+      title_en: 'Pickup at library'
+    });
+    deliveryMethods.pushObject({
+      id: 2,
+      identifier: 'send',
+      title_internal: "Skickas",
+      title_sv: 'Skickas till adress',
+      title_en: 'Send to my address'
+    });
+    this.set("deliveryMethods", deliveryMethods);
   },
 
-  //selectedLocation
-  //selectedOrderType
-  //selectedCustomerType
-  //selectedDeliveryMethod
-
-  //TODO: Globally rename
-  selectedLocation: storageFor('pickup-location'),
-  selectedOrderType: storageFor('order-type'),
-  selectedCustomerType: storageFor('customer-type'),
-  selectedDeliveryMethod: storageFor('delivery-method'),
-
   /** Order **/
-  //order: storageFor('order'),
+  order: storageFor('order'),
+
+  //FIXME: @each?
+  selectedLocation: computed('order.selectedLocation', 'locations', function() {
+    return this.get('locations').findBy('identifier', this.get('order.selectedLocation'));
+  }),
+  selectedOrderType: computed('order.selectedOrderType', 'orderTypes', function() {
+    return this.get('orderTypes').findBy('identifier', this.get('order.selectedOrderType'));
+  }),
+  selectedCustomerType: computed('order.selectedCustomerType', 'customerTypes', function() {
+    return this.get('customerTypes').findBy('identifier', this.get('order.selectedCustomerType'));
+  }),
+  selectedDeliveryMethod: computed('order.selectedDeliveryMethod', 'deliveryMethods', function() {
+    return this.get('deliveryMethods').findBy('identifier', this.get('order.selectedDeliveryMethod'));
+  }),
 
   /** Customer details (dependant on selectedCustomerType) **/
   customerDetails: storageFor('customer-details'), //dashized?
@@ -79,12 +230,10 @@ export default Controller.extend({
 
   resetOrderDetails: function() {
     this.get('orderDetailsArticle').reset();
-    this.set('orderDetailsBook').reset();
+    this.get('orderDetailsBook').reset();
     this.get('orderDetailsChapter').reset();
     this.get('orderDetailsScore').reset();
     this.get('orderDetailsMicrofilm').reset()
-
-    this.get('pubMed').reset();
   },
 
   resetCustomerDetails: function() {

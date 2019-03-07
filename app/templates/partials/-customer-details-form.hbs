@@ -6,10 +6,14 @@
     <div class="row">
       <div class="col-xs-12">
         <label for="customerTypeSelector">{{t 'home.step3.customerTypeLabel'}}</label>
-        {{#x-select class="form-control" on-change=(action 'handleSelectCustomerType') value=applicationController.selectedCustomerType as |item|}}
+        {{#x-select
+          class="form-control"
+          on-change=(action (mut applicationController.order.selectedCustomerType))
+          value=applicationController.order.selectedCustomerType
+        as |item|}}
         {{#item.option}}{{t 'home.step3.customerTypePrompt'}}{{/item.option}}
         {{#each applicationController.customerTypes as |type|}}
-          {{#item.option value=type}}
+          {{#item.option value=type.identifier}}
             {{#if isEnglish}}
              <strong>{{type.title_en}}</strong>
             {{else}}
@@ -139,20 +143,21 @@
 
     <h3>{{t 'home.step3.deliveryOptionsSubheader'}}</h3>
 
-
-
-
     {{#if isShippingAvailable}}
     <div class="row">
       <div class="col-xs-12">
         <label for="deliveryMethordSelector">{{t 'home.step3.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
-        {{#x-select class="form-control" on-change=(action 'handleSelectDeliveryMethod') value=applicationController.selectedDeliveryMethod as |item|}}
+        {{#x-select
+          class="form-control"
+          on-change=(action (mut applicationController.order.selectedDeliveryMethod))
+          value=applicationController.order.selectedDeliveryMethod
+        as |item|}}
           {{#item.option}}{{t 'home.step3.deliveryMethodPrompt'}}{{/item.option}}
           {{#each applicationController.deliveryMethods as |method|}}
-            {{#item.option value=method}}
+            {{#item.option value=method.identifier}}
               {{#if isEnglish}}
                <strong>{{method.title_en}}</strong>
-              {{else}}  
+              {{else}}
                <strong>{{method.title_sv}}</strong>
               {{/if}}
             {{/item.option}}
