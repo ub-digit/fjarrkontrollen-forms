@@ -50,49 +50,49 @@ export default Mixin.create({
       var orderType =                         this.get("applicationController.selectedOrderType");
       switch(orderType.identifier) {
         case 'article':
-        title =                             this.get('applicationController.orderDetails.article.articleTitle');
-        journal_title =                     this.get('applicationController.orderDetails.article.journalTitle');
-        authors =                           this.get('applicationController.orderDetails.article.authors');
-        issn_isbn =                         this.get('applicationController.orderDetails.article.issn');
-        publication_year =                  this.get('applicationController.orderDetails.article.publicationYear');
-        volume =                            this.get('applicationController.orderDetails.article.volume');
-        issue =                             this.get('applicationController.orderDetails.article.issue');
-        pages =                             this.get('applicationController.orderDetails.article.pages');
-        not_valid_after =                   this.get('applicationController.orderDetails.article.notValidAfter');
-        comments =                          this.get('applicationController.orderDetails.article.comment');
+        title =                             this.get('applicationController.orderDetailsArticle.articleTitle');
+        journal_title =                     this.get('applicationController.orderDetailsArticle.journalTitle');
+        authors =                           this.get('applicationController.orderDetailsArticle.authors');
+        issn_isbn =                         this.get('applicationController.orderDetailsArticle.issn');
+        publication_year =                  this.get('applicationController.orderDetailsArticle.publicationYear');
+        volume =                            this.get('applicationController.orderDetailsArticle.volume');
+        issue =                             this.get('applicationController.orderDetailsArticle.issue');
+        pages =                             this.get('applicationController.orderDetailsArticle.pages');
+        not_valid_after =                   this.get('applicationController.orderDetailsArticle.notValidAfter');
+        comments =                          this.get('applicationController.orderDetailsArticle.comment');
         break;
         case 'book':
-        title =                             this.get('applicationController.orderDetails.book.bookTitle');
-        authors =                           this.get('applicationController.orderDetails.book.authors');
-        issn_isbn =                         this.get('applicationController.orderDetails.book.isbn');
-        publication_year =                  this.get('applicationController.orderDetails.book.publicationYear');
-        order_outside_scandinavia =         this.get('applicationController.orderDetails.book.outsideNordics');
-        not_valid_after =                   this.get('applicationController.orderDetails.book.notValidAfter');
-        comments =                          this.get('applicationController.orderDetails.book.comment');
+        title =                             this.get('applicationController.orderDetailsBook.bookTitle');
+        authors =                           this.get('applicationController.orderDetailsBook.authors');
+        issn_isbn =                         this.get('applicationController.orderDetailsBook.isbn');
+        publication_year =                  this.get('applicationController.orderDetailsBook.publicationYear');
+        order_outside_scandinavia =         this.get('applicationController.orderDetailsBook.outsideNordics');
+        not_valid_after =                   this.get('applicationController.orderDetailsBook.notValidAfter');
+        comments =                          this.get('applicationController.orderDetailsBook.comment');
         break;
         case 'chapter':
-        title =                             this.get('applicationController.orderDetails.chapter.chapterTitle');
-        journal_title =                     this.get('applicationController.orderDetails.chapter.bookTitle'); // Change ?
-        authors =                           this.get('applicationController.orderDetails.chapter.authors');
-        issn_isbn =                         this.get('applicationController.orderDetails.chapter.isbn');
-        publication_year =                  this.get('applicationController.orderDetails.chapter.publicationYear');
-        pages =                             this.get('applicationController.orderDetails.chapter.pages');
-        not_valid_after =                   this.get('applicationController.orderDetails.chapter.notValidAfter');
-        comments =                          this.get('applicationController.orderDetails.chapter.comment');
+        title =                             this.get('applicationController.orderDetailsChapter.chapterTitle');
+        journal_title =                     this.get('applicationController.orderDetailsChapter.bookTitle'); // Change ?
+        authors =                           this.get('applicationController.orderDetailsChapter.authors');
+        issn_isbn =                         this.get('applicationController.orderDetailsChapter.isbn');
+        publication_year =                  this.get('applicationController.orderDetailsChapter.publicationYear');
+        pages =                             this.get('applicationController.orderDetailsChapter.pages');
+        not_valid_after =                   this.get('applicationController.orderDetailsChapter.notValidAfter');
+        comments =                          this.get('applicationController.orderDetailsChapter.comment');
         break;
         case 'score':
-        title =                             this.get('applicationController.orderDetails.score.opusTitle');
-        authors =                           this.get('applicationController.orderDetails.score.composers');
-        publication_type =                  this.get('applicationController.orderDetails.score.publicationType');
-        not_valid_after =                   this.get('applicationController.orderDetails.score.notValidAfter');
-        comments =                          this.get('applicationController.orderDetails.score.comment');
+        title =                             this.get('applicationController.orderDetailsScore.opusTitle');
+        authors =                           this.get('applicationController.orderDetailsScore.composers');
+        publication_type =                  this.get('applicationController.orderDetailsScore.publicationType');
+        not_valid_after =                   this.get('applicationController.orderDetailsScore.notValidAfter');
+        comments =                          this.get('applicationController.orderDetailsScore.comment');
         break;
         case 'microfilm':
-        title =                             this.get('applicationController.orderDetails.microfilm.newspaper');
-        period =                            this.get('applicationController.orderDetails.microfilm.period');
-        publication_year =                  this.get('applicationController.orderDetails.microfilm.startyear');
-        not_valid_after =                   this.get('applicationController.orderDetails.microfilm.notValidAfter');
-        comments =                          this.get('applicationController.orderDetails.microfilm.comment');
+        title =                             this.get('applicationController.orderDetailsMicrofilm.newspaper');
+        period =                            this.get('applicationController.orderDetailsMicrofilm.period');
+        publication_year =                  this.get('applicationController.orderDetailsMicrofilm.startyear');
+        not_valid_after =                   this.get('applicationController.orderDetailsMicrofilm.notValidAfter');
+        comments =                          this.get('applicationController.orderDetailsMicrofilm.comment');
         break;
         default:
         break;

@@ -12,52 +12,50 @@ export default {
       footer: {
         content: '© <a title="Göteborgs universitet" href="http://www.gu.se/">University of Gothenburg, Sweden</a><br>Box 100, S-405 30 Gothenburg<br>Phone +46 31-786 0000, <a title="Contact" href="http://www.gu.se/omuniversitetet/kontakt/">Contact</a>'
       },
-      orderDetails: {
-        article: {
-          articleTitle: 'Article title',
-          journalTitle: 'Journal title',
-          authors: 'Authors',
-          issn: 'ISSN',
-          publicationYear: 'Year',
-          issue: 'Issue',
-          volume: 'Volume',
-          pages: 'Pages',
-          notValidAfter: 'Request not needed after',
-          comment: 'Comment'
-        },
-        book: {
-          bookTitle: 'Title',
-          authors: 'Author/publisher',
-          isbn: 'ISBN',
-          publicationYear: 'Year',
-          outsideNordics: 'Forward to library outside Scandinavia, if necessary',
-          notValidAfter: 'Request not needed after',
-          comment: 'Comment'
-        },
-        chapter: {
-          chapterTitle: 'Chapter title',
-          bookTitle: 'Book title',
-          authors: 'Author/publisher',
-          isbn: 'ISBN',
-          publicationYear: 'Year',
-          pages: 'Pages',
-          notValidAfter: 'Request not needed after',
-          comment: 'Comment'
-        },
-        score: {
-          composers: 'Composer',
-          opusTitle: 'Title',
-          publicationType: 'Publication type',
-          notValidAfter: 'Request not needed after',
-          comment: 'Comment'
-        },
-        microfilm: {
-          newspaper: 'Newspaper',
-          period: 'Date/period',
-          startyear: 'Starting year',
-          notValidAfter: 'Request not needed after',
-          comment: 'Comment'
-        }
+      orderDetailsArticle: {
+        articleTitle: 'Article title',
+        journalTitle: 'Journal title',
+        authors: 'Authors',
+        issn: 'ISSN',
+        publicationYear: 'Year',
+        issue: 'Issue',
+        volume: 'Volume',
+        pages: 'Pages',
+        notValidAfter: 'Request not needed after',
+        comment: 'Comment'
+      },
+      orderDetailsBook: {
+        bookTitle: 'Title',
+        authors: 'Author/publisher',
+        isbn: 'ISBN',
+        publicationYear: 'Year',
+        outsideNordics: 'Forward to library outside Scandinavia, if necessary',
+        notValidAfter: 'Request not needed after',
+        comment: 'Comment'
+      },
+      orderDetailsChapter: {
+        chapterTitle: 'Chapter title',
+        bookTitle: 'Book title',
+        authors: 'Author/publisher',
+        isbn: 'ISBN',
+        publicationYear: 'Year',
+        pages: 'Pages',
+        notValidAfter: 'Request not needed after',
+        comment: 'Comment'
+      },
+      orderDetailsScore: {
+        composers: 'Composer',
+        opusTitle: 'Title',
+        publicationType: 'Publication type',
+        notValidAfter: 'Request not needed after',
+        comment: 'Comment'
+      },
+      orderDetailsMicrofilm: {
+        newspaper: 'Newspaper',
+        period: 'Date/period',
+        startyear: 'Starting year',
+        notValidAfter: 'Request not needed after',
+        comment: 'Comment'
       },
       customerDetails: {
         name: 'Name',
@@ -94,6 +92,10 @@ export default {
         locationHeader: 'Pick up library ',
         locationPrompt: 'Select library',
         nextBtn: 'Next',
+      },
+      login: {
+        header: 'Login',
+        subHeader1: "Please login to continue",
       },
       step2: {
         article: {

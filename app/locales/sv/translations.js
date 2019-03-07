@@ -12,52 +12,50 @@ export default {
       footer: {
         content: '© <a title="Göteborgs universitet" href="http://www.gu.se/">Göteborgs universitet</a><br>Box 100, 405 30 Göteborg<br>Tel. 031-786 0000, <a title="Kontakta oss" href="http://www.gu.se/omuniversitetet/kontakt/">Kontakta oss</a>'
       },
-      orderDetails: {
-        article: {
-          articleTitle: 'Artikelns titel',
-          journalTitle: 'Tidskriftstitel',
-          authors: 'Författare',
-          issn: 'ISSN',
-          publicationYear: 'År',
-          issue: 'Nummer',
-          volume: 'Volym',
-          pages: 'Sidor',
-          notValidAfter: 'Ej aktuell efter',
-          comment: 'Kommentar'
-        },
-        book: {
-          bookTitle: 'Titel',
-          authors: 'Författare/utgivare',
-          isbn: 'ISBN',
-          publicationYear: 'År',
-          outsideNordics: 'Godkänn lån utanför Norden',
-          notValidAfter: 'Ej aktuell efter',
-          comment: 'Kommentar'
-        },
-        chapter: {
-          chapterTitle: 'Kapiteltitel',
-          bookTitle: 'Boktitel',
-          authors: 'Författare/utgivare',
-          isbn: 'ISBN',
-          publicationYear: 'År',
-          pages: 'Sidor',
-          notValidAfter: 'Ej aktuell efter',
-          comment: 'Kommentar'
-        },
-        score: {
-          composers: 'Kompositör/tonsättare',
-          opusTitle: 'Titel',
-          publicationType: 'Publikationstyp',
-          notValidAfter: 'Ej aktuell efter',
-          comment: 'Kommentar'
-        },
-        microfilm: {
-          newspaper: 'Dagstidning',
-          period: 'Datum/period',
-          startyear: 'Startår',
-          notValidAfter: 'Ej aktuell efter',
-          comment: 'Kommentar'
-        }
+      orderDetailsArticle: {
+        articleTitle: 'Artikelns titel',
+        journalTitle: 'Tidskriftstitel',
+        authors: 'Författare',
+        issn: 'ISSN',
+        publicationYear: 'År',
+        issue: 'Nummer',
+        volume: 'Volym',
+        pages: 'Sidor',
+        notValidAfter: 'Ej aktuell efter',
+        comment: 'Kommentar'
+      },
+      orderDetailsBook: {
+        bookTitle: 'Titel',
+        authors: 'Författare/utgivare',
+        isbn: 'ISBN',
+        publicationYear: 'År',
+        outsideNordics: 'Godkänn lån utanför Norden',
+        notValidAfter: 'Ej aktuell efter',
+        comment: 'Kommentar'
+      },
+      orderDetailsChapter: {
+        chapterTitle: 'Kapiteltitel',
+        bookTitle: 'Boktitel',
+        authors: 'Författare/utgivare',
+        isbn: 'ISBN',
+        publicationYear: 'År',
+        pages: 'Sidor',
+        notValidAfter: 'Ej aktuell efter',
+        comment: 'Kommentar'
+      },
+      orderDetailsScore: {
+        composers: 'Kompositör/tonsättare',
+        opusTitle: 'Titel',
+        publicationType: 'Publikationstyp',
+        notValidAfter: 'Ej aktuell efter',
+        comment: 'Kommentar'
+      },
+      orderDetailsMicrofilm: {
+        newspaper: 'Dagstidning',
+        period: 'Datum/period',
+        startyear: 'Startår',
+        notValidAfter: 'Ej aktuell efter',
+        comment: 'Kommentar'
       },
       customerDetails: {
         name: 'Namn',
@@ -95,6 +93,10 @@ export default {
         locationHeader: 'Bibliotek att hämta på',
         locationPrompt: 'Välj bibliotek',
         nextBtn: 'Nästa',
+      },
+      login: {
+        header: 'Logga in',
+        subHeader1: "Var god logga in för att fortsätta",
       },
       step2: {
         article: {

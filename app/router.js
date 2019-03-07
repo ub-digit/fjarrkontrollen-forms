@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('step4');
     this.route('step5');
     this.route('error');
+    this.route('login');
   });
   this.route('sfx', function() {
     this.route('step1');
