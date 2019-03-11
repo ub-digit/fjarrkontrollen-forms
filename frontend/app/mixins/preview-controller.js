@@ -2,7 +2,7 @@ import Mixin from '@ember/object/mixin';
 import { inject as inject_controller } from '@ember/controller';
 import { inject as inject_service } from '@ember/service';
 import { computed } from '@ember/object';
-import ENV from 'fjarrkontrollen-forms/config/environment';
+import ENV from 'frontend/config/environment';
 import $ from 'jquery';
 
 export default Mixin.create({

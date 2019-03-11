@@ -1,29 +1,30 @@
 <h2>{{t 'home.step3.header'}}</h2>
 <div class="row">
   <div class="col-xs-12">
-
-    <h3>{{t 'home.step3.customerTypeHeader'}}</h3>
-    <div class="row">
-      <div class="col-xs-12">
-        <label for="customerTypeSelector">{{t 'home.step3.customerTypeLabel'}}</label>
-        {{#x-select
-          class="form-control"
-          on-change=(action (mut applicationController.order.selectedCustomerType))
-          value=applicationController.order.selectedCustomerType
-        as |item|}}
-        {{#item.option}}{{t 'home.step3.customerTypePrompt'}}{{/item.option}}
-        {{#each applicationController.customerTypes as |type|}}
-          {{#item.option value=type.identifier}}
-            {{#if isEnglish}}
-             <strong>{{type.title_en}}</strong>
-            {{else}}
-             <strong>{{type.title_sv}}</strong>
-            {{/if}}
-          {{/item.option}}
-        {{/each}}
-      {{/x-select}}
+    {{#unless applicationController.selectedCustomerType.hidden}}
+      <h3>{{t 'home.step3.customerTypeHeader'}}</h3>
+      <div class="row">
+        <div class="col-xs-12">
+          <label for="customerTypeSelector">{{t 'home.step3.customerTypeLabel'}}</label>
+          {{#x-select
+            class="form-control"
+            on-change=(action (mut applicationController.order.selectedCustomerType))
+            value=applicationController.order.selectedCustomerType
+          as |item|}}
+          {{#item.option}}{{t 'home.step3.customerTypePrompt'}}{{/item.option}}
+          {{#each applicationController.selectableCustomerTypes as |type|}}
+            {{#item.option value=type.identifier}}
+              {{#if isEnglish}}
+               <strong>{{type.title_en}}</strong>
+              {{else}}
+               <strong>{{type.title_sv}}</strong>
+              {{/if}}
+            {{/item.option}}
+          {{/each}}
+        {{/x-select}}
+        </div>
       </div>
-    </div>
+    {{/unless}}
 
     <!-- customerInfoForm start -->
     {{#if isCustomerTypeSet}}

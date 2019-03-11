@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import PreviewController from 'fjarrkontrollen-forms/mixins/preview-controller';
+import PreviewController from 'frontend/mixins/preview-controller';
 
 export default Controller.extend(PreviewController, {
 

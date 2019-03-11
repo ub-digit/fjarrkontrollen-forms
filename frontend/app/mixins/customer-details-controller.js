@@ -72,12 +72,15 @@ export default Mixin.create({
   //  - Customer type is not student or private, and
   //  - Order type is shippable
   isShippingAvailable: computed('applicationController.{selectedCustomerType,isShippable,isCustomerTypeSet}', function() {
-    var studentOrPrivate =
-      this.get('applicationController.selectedCustomerType.identifier') === 'stud' ||
-      this.get('applicationController.selectedCustomerType.identifier') === 'priv';
-    return this.get('applicationController.isShippable') && !studentOrPrivate && this.get('isCustomerTypeSet');
+    return (
+      this.get('applicationController.isShippable') &&
+      !(
+        this.get('applicationController.selectedCustomerType.identifier') === 'stud' ||
+        this.get('applicationController.selectedCustomerType.identifier') === 'priv'
+      ) &&
+      this.get('isCustomerTypeSet')
+    );
   }),
-
 
   // Bool to check if delivery information form should be displayed, based on
   //  - If shipping is available as an option, and

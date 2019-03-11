@@ -1,5 +1,5 @@
 {
-  "name": "fjarrkontrollen-forms",
+  "name": "frontend",
   "version": "0.0.0",
   "private": true,
   "description": "Small description for fjarrkontrollen-forms goes here",
@@ -30,6 +30,7 @@
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-less": "^2.0.1",
     "ember-cli-qunit": "^4.3.2",
+    "ember-cli-rails-addon": "^0.10.0",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
@@ -42,6 +43,7 @@
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-power-select": "^2.0.4",
     "ember-resolver": "^4.0.0",
+    "ember-simple-auth": "^1.8.2",
     "ember-source": "~3.3.0",
     "emberx-select": "^3.1.1",
     "eslint-plugin-ember": "^5.0.0",

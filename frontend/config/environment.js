@@ -2,10 +2,10 @@
 
 module.exports = function(environment) {
   let ENV = {
-    modulePrefix: 'fjarrkontrollen-forms',
+    modulePrefix: 'frontend',
     environment,
     rootURL: '/',
-    locationType: 'hash',
+    locationType: 'auto',
     'ember-local-storage': {
       namespace: true
     },
@@ -21,6 +21,9 @@ module.exports = function(environment) {
     },
 
     APP: {
+      casBaseUrl: 'https://idp3.it.gu.se/idp/profile/cas',
+      registrationUrl: 'https://bibliotekskort.ub.gu.se',
+      authenticationBaseURL: '/api/sessions'
       // Here you can pass flags/options to your application instance
       // when it is created
     }

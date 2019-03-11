@@ -59,7 +59,7 @@ export default Controller.extend({
       title_en: 'Music and Drama Library'
     });
     //locations.pushObject({id:8, identifier: 'Gcl', title_sv: 'Campus Linné', title_en: 'Learning Centre Campus Linné'});
-    this.set("locations", locations);
+    this.set('locations', locations);
 
     var orderTypes = A([]);
     orderTypes.pushObject({
@@ -97,7 +97,7 @@ export default Controller.extend({
       title_sv: 'Mikrofilmad dagstidning',
       title_en: 'Microfilm newspaper'
     });
-    this.set("orderTypes", orderTypes);
+    this.set('orderTypes', orderTypes);
 
     var customerTypes = A([]);
     customerTypes.pushObject({
@@ -142,8 +142,15 @@ export default Controller.extend({
       title_sv: 'Övriga',
       title_en: 'Other'
     });
+    customerTypes.pushObject({
+      id: 8,
+      identifier: 'koha',
+      hidden: true,
+      title_sv: 'Kohaanvändaare',
+      title_en: 'Koha user'
+    });
 
-    this.set("customerTypes", customerTypes);
+    this.set('customerTypes', customerTypes);
 
     var deliveryMethods = A([]);
     deliveryMethods.pushObject({
@@ -160,7 +167,7 @@ export default Controller.extend({
       title_sv: 'Skickas till adress',
       title_en: 'Send to my address'
     });
-    this.set("deliveryMethods", deliveryMethods);
+    this.set('deliveryMethods', deliveryMethods);
   },
 
   /** Order **/
@@ -178,6 +185,10 @@ export default Controller.extend({
   }),
   selectedDeliveryMethod: computed('order.selectedDeliveryMethod', 'deliveryMethods', function() {
     return this.get('deliveryMethods').findBy('identifier', this.get('order.selectedDeliveryMethod'));
+  }),
+
+  selectableCustomerTypes: computed('customerTypes', function() {
+    return this.get('customerTypes').rejectBy('hidden');
   }),
 
   /** Customer details (dependant on selectedCustomerType) **/

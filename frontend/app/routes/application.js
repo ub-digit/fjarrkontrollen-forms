@@ -1,16 +1,41 @@
 import Route from '@ember/routing/route';
 import { inject as service} from '@ember/service';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import { storageFor } from 'ember-local-storage';
 
-export default Route.extend({
+export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
+  session: service(),
+
+  routeAfterAuthentication: 'home.step2',
+  routeIfAlreadyAuthenticated: 'home.step2',
+
   model: function(params) {
     if (params.lang) {
       this.set('i18n.locale', params.lang);
     }
     return params;
   },
-  setupController: function(controller, model) {
 
+  customerDetails: storageFor('customer-details'),
+
+  sessionAuthenticated() {
+    //TODO: Also run this on restored??
+    this._super(...arguments);
+    let user = this.get('session.data.authenticated.user');
+    this.set('customerDetails.name', user.get('first_name') + ' ' + user.get('last_name')); //computed prop on storage?
+    this.set('customerDetails.emailAddress', user.get('email'));
+    //this.set('customerDetails.organisation', user.get('')); //attribute in Koha for this?
+    //this.set('customerDetails.department', user.get('')); //attribute in Koha for this?
+    //this.set('customerDetails.unit', user.get('')); //attribute in Koha for this?
+    this.set('customerDetails.address', user.get('address'));
+    this.set('customerDetails.postalCode', user.get('zipcode'));
+    this.set('customerDetails.city', user.get('city'));
+    this.set('customerDetails.libraryCardNumber', user.get('cardnumber'));
+    this.set('customerDetails.xAccount', user.get('xaccount'));
+  },
+
+  setupController: function(controller, model) {
     if (model.is_sfx === 'yes') {
 
       controller.set("orderPath", "SFX");

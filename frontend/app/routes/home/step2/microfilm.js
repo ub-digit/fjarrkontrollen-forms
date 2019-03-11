@@ -1,9 +1,4 @@
-import Route from '@ember/routing/route';
+import MaybeAuthenticatedRoute from 'frontend/mixins/maybe-authenticated-route';
 
-export default Route.extend({
-  beforeModel: function() {
-    if (this.controllerFor('application').get('selectedOrderType.identifier') !== 'microfilm') {
-      this.transitionTo('home.step1');
-    }
-  },
+export default MaybeAuthenticatedRoute.extend({
 });

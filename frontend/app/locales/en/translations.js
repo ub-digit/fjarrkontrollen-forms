@@ -92,10 +92,22 @@ export default {
         locationHeader: 'Pick up library ',
         locationPrompt: 'Select library',
         nextBtn: 'Next',
+        authBtn: 'Login'
       },
       login: {
         header: 'Login',
         subHeader1: "Please login to continue",
+
+        heading: "Log in with GU account",
+        body: "For students and employees at GU with a gus-account or an x-account.",
+        accountHeading: "Log in with library account",
+        accountBody: "For users without a GU account.",
+        cardNumberLabel: "Library card number",
+        personalNumberLabel: "Personal identity number",
+        loginButton: "Log in",
+        libraryCardLinkText: "Sign up for an account",
+        loginError: "Wrong username or password. Please try again.",
+        or: "Or"
       },
       step2: {
         article: {

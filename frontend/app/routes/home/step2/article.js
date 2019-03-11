@@ -1,15 +1,8 @@
-import Route from '@ember/routing/route';
+import MaybeAuthenticatedRoute from 'frontend/mixins/maybe-authenticated-route';
 import request from 'ic-ajax';
 import $ from 'jquery';
 
-export default Route.extend({
-
-  beforeModel: function() {
-    if (this.controllerFor('application').get('selectedOrderType.identifier') !== 'article') {
-      this.transitionTo('home.step1');
-    }
-  },
-
+export default MaybeAuthenticatedRoute.extend({
   actions: {
     getPubMedId: function(id) {
       if (window.dataLayer) {

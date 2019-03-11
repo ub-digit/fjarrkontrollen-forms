@@ -93,10 +93,22 @@ export default {
         locationHeader: 'Bibliotek att hämta på',
         locationPrompt: 'Välj bibliotek',
         nextBtn: 'Nästa',
+        authBtn: 'Logga in'
       },
       login: {
-        header: 'Logga in',
+        header: "Logga in",
+
+        heading: "Logga in med GU-konto",
+        body: "För studenter och anställda vid GU med ett gus-konto eller x-konto.",
         subHeader1: "Var god logga in för att fortsätta",
+        accountHeading: "Logga in med bibliotekskonto",
+        accountBody: "För användare som inte har något GU-konto.",
+        cardNumberLabel: "Nummer på bibliotekskort",
+        personalNumberLabel: "Personnummer",
+        loginButton: "Logga in",
+        libraryCardLinkText: "Skaffa bibliotekskonto",
+        loginError: "Fel användarnamn eller lösenord. Vänligen försök igen.",
+        or: "Eller"
       },
       step2: {
         article: {
