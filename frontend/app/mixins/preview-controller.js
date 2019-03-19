@@ -1,179 +1,204 @@
 import Mixin from '@ember/object/mixin';
-import { inject as inject_controller } from '@ember/controller';
-import { inject as inject_service } from '@ember/service';
+import { inject as injectController } from '@ember/controller';
+import { inject as injectService } from '@ember/service';
 import { computed } from '@ember/object';
-import ENV from 'frontend/config/environment';
 import $ from 'jquery';
+import { assign } from '@ember/polyfills';
+import { run } from '@ember/runloop';
+import ENV from 'frontend/config/environment';
 
 export default Mixin.create({
-  applicationController: inject_controller('application'),
-  i18n: inject_service(),
+  applicationController: injectController('application'),
+  i18n: injectService(),
+  session: injectService(),
 
-
-  orderPreviewPartialName: computed('applicationController.selectedOrderType.identifier', function() {
-    return 'partials/' + this.get('applicationController.selectedOrderType.identifier') + '-preview';
+  orderPreviewPartialName: computed('applicationController.selectedOrderType.label', function() {
+    return 'partials/' + this.get('applicationController.selectedOrderType.label') + '-preview';
   }),
 
   selectedLibraryNameString: computed('i18n.locale', function() {
-    switch (this.get('i18n.locale')) {
-      case 'sv':
-      return this.get('applicationController.selectedLocation.title_sv');
-      default:
-      return this.get('applicationController.selectedLocation.title_en');
-    }
+    return this.get('applicationController.selectedLocation.title_' + this.get('i18n.locale'));
   }),
 
-  isDeliveryTypeShipping: computed.equal('applicationController.selectedDeliveryMethod.identifier', 'send'),
+  isDeliveryTypeShipping: computed.equal('applicationController.selectedDeliveryMethod.label', 'send'),
 
-  hasInvoicing: computed('applicationController.{invoicingDetails.name,invoicingDetails.company,invoicingDetails.address,invoicingDetails.postalCode,invoicingDetails.city,invoicingDetails.customerId}', function() {
-    return (this.get('applicationController.invoicingDetails.name') || this.get('applicationController.invoicingDetails.company') || this.get('applicationController.invoicingDetails.address') || this.get('applicationController.invoicingDetails.postalCode') || this.get('applicationController.invoicingDetails.city') || this.get('applicationController.invoicingDetails.customerId'));
+  hasInvoicing: computed('applicationController.invoicingDetails{name,company,address,postalCode,city,customerId}', function() {
+    return (
+      this.get('applicationController.invoicingDetails.name') ||
+      this.get('applicationController.invoicingDetails.company') ||
+      this.get('applicationController.invoicingDetails.address') ||
+      this.get('applicationController.invoicingDetails.postalCode') ||
+      this.get('applicationController.invoicingDetails.city') ||
+      this.get('applicationController.invoicingDetails.customerId')
+    );
   }),
 
   actions: {
     save: function() {
-      $("body").addClass("loading");
-      var title =                             null;
-      var journal_title =                     null;
-      var authors =                           null;
-      var issn_isbn =                         null;
-      var publication_year =                  null;
-      var volume =                            null;
-      var issue =                             null;
-      var pages =                             null;
-      var not_valid_after =                   null;
-      var comments =                          null;
-      var order_outside_scandinavia =         null;
-      var publication_type =                  null;
-      var period =                            null;
-      var delivery_place = this.get('applicationController.selectedDeliveryMethod.title_internal') || "Hämtas";
+      $('body').addClass('loading');
 
-      var orderType =                         this.get("applicationController.selectedOrderType");
-      switch(orderType.identifier) {
+      let order = {
+        // Valid properties:
+        /*
+        title: null,
+        journal_title: null,
+        authors: null,
+        issn_isbn: null,
+        publication_year: null,
+        volume: null,
+        issue: null,
+        pages: null,
+        not_valid_after: null,
+        comments: null,
+        order_outside_scandinavia: null,
+        publication_type: null,
+        period: null
+        */
+      };
+
+      let setOrderProperties = (properties, sourcePath) => {
+        properties.forEach((property) => {
+          order[property.decamelize()] = this.get(`${sourcePath}.${property}`);
+        });
+      };
+
+      let orderType = this.get('applicationController.selectedOrderType');
+      switch(orderType.label) {
         case 'article':
-        title =                             this.get('applicationController.orderDetailsArticle.articleTitle');
-        journal_title =                     this.get('applicationController.orderDetailsArticle.journalTitle');
-        authors =                           this.get('applicationController.orderDetailsArticle.authors');
-        issn_isbn =                         this.get('applicationController.orderDetailsArticle.issn');
-        publication_year =                  this.get('applicationController.orderDetailsArticle.publicationYear');
-        volume =                            this.get('applicationController.orderDetailsArticle.volume');
-        issue =                             this.get('applicationController.orderDetailsArticle.issue');
-        pages =                             this.get('applicationController.orderDetailsArticle.pages');
-        not_valid_after =                   this.get('applicationController.orderDetailsArticle.notValidAfter');
-        comments =                          this.get('applicationController.orderDetailsArticle.comment');
-        break;
-        case 'book':
-        title =                             this.get('applicationController.orderDetailsBook.bookTitle');
-        authors =                           this.get('applicationController.orderDetailsBook.authors');
-        issn_isbn =                         this.get('applicationController.orderDetailsBook.isbn');
-        publication_year =                  this.get('applicationController.orderDetailsBook.publicationYear');
-        order_outside_scandinavia =         this.get('applicationController.orderDetailsBook.outsideNordics');
-        not_valid_after =                   this.get('applicationController.orderDetailsBook.notValidAfter');
-        comments =                          this.get('applicationController.orderDetailsBook.comment');
-        break;
+          setOrderProperties([
+            'articleTitle',
+            'journalTitle',
+            'authors',
+            'publicationYear',
+            'volume',
+            'issue',
+            'pages',
+            'notValidAfter'
+          ], 'applicationController.orderDetailsArticle');
+          order['issn_isbn'] = this.get('applicationController.orderDetailsArticle.issn');
+          order['comments'] = this.get('applicationController.orderDetailsArticle.comment');
+          break;
+        case 'loan':
+          setOrderProperties([
+            'authors',
+            'publicationYear',
+            'notValidAfter'
+          ], 'applicationController.orderDetailsBook');
+          order['title'] = this.get('applicationController.orderDetailsBook.bookTitle');
+          order['order_outside_scandinavia'] = this.get('applicationController.orderDetailsBook.outsideNordics');
+          order['issn_isbn'] = this.get('applicationController.orderDetailsBook.isbn');
+          order['comments'] = this.get('applicationController.orderDetailsBook.comment');
+          break;
         case 'chapter':
-        title =                             this.get('applicationController.orderDetailsChapter.chapterTitle');
-        journal_title =                     this.get('applicationController.orderDetailsChapter.bookTitle'); // Change ?
-        authors =                           this.get('applicationController.orderDetailsChapter.authors');
-        issn_isbn =                         this.get('applicationController.orderDetailsChapter.isbn');
-        publication_year =                  this.get('applicationController.orderDetailsChapter.publicationYear');
-        pages =                             this.get('applicationController.orderDetailsChapter.pages');
-        not_valid_after =                   this.get('applicationController.orderDetailsChapter.notValidAfter');
-        comments =                          this.get('applicationController.orderDetailsChapter.comment');
-        break;
+          setOrderProperties([
+            'authors',
+            'publicationYear',
+            'pages',
+            'notValidAfter'
+          ], 'applicationController.orderDetailsChapter');
+          order['title'] = this.get('applicationController.orderDetailsChapter.chapterTitle');
+          order['journal_title'] = this.get('applicationController.orderDetailsChapter.bookTitle'); // Change ?
+          order['issn_isbn'] = this.get('applicationController.orderDetailsChapter.isbn');
+          order['comments'] = this.get('applicationController.orderDetailsChapter.comment');
+          break;
         case 'score':
-        title =                             this.get('applicationController.orderDetailsScore.opusTitle');
-        authors =                           this.get('applicationController.orderDetailsScore.composers');
-        publication_type =                  this.get('applicationController.orderDetailsScore.publicationType');
-        not_valid_after =                   this.get('applicationController.orderDetailsScore.notValidAfter');
-        comments =                          this.get('applicationController.orderDetailsScore.comment');
-        break;
+          setOrderProperties([
+            'publicationType',
+            'notValidAfter'
+          ], 'applicationController.orderDetailsScore');
+          order['authors'] = this.get('applicationController.orderDetailsScore.composers');
+          order['title'] = this.get('applicationController.orderDetailsScore.opusTitle');
+          order['comments'] = this.get('applicationController.orderDetailsScore.comment');
+          break;
         case 'microfilm':
-        title =                             this.get('applicationController.orderDetailsMicrofilm.newspaper');
-        period =                            this.get('applicationController.orderDetailsMicrofilm.period');
-        publication_year =                  this.get('applicationController.orderDetailsMicrofilm.startyear');
-        not_valid_after =                   this.get('applicationController.orderDetailsMicrofilm.notValidAfter');
-        comments =                          this.get('applicationController.orderDetailsMicrofilm.comment');
-        break;
+          setOrderProperties([
+            'period',
+            'notValidAfter'
+          ], 'applicationController.orderDetailsMicrofilm');
+          order['publication_year'] = this.get('applicationController.orderDetailsMicrofilm.startyear');
+          order['title'] = this.get('applicationController.orderDetailsMicrofilm.newspaper');
+          order['comments'] = this.get('applicationController.orderDetailsMicrofilm.comment');
+          break;
         default:
-        break;
+          break;
       }
 
-      var that = this;
+      assign(order, {
+        order_type_id:              orderType.id,
+        customer_type:              this.get('applicationController.selectedCustomerType.label'),
+        form_library:               this.get('applicationController.selectedLocation.label'), // Change? form??
+        email_confirmation:         true, // Always set to true
+        form_lang:                  this.get('i18n.locale'),
+        delivery_place:             this.get('applicationController.selectedDeliveryMethod.title_internal') || 'Hämtas',
+        order_path:                 this.get('applicationController.orderPath'), //TODO: Store/get from local storage!!
+
+        name:                       this.get('applicationController.customerDetails.name'),
+        email_address:              this.get('applicationController.customerDetails.emailAddress'),
+        company1:                   this.get('applicationController.customerDetails.organisation'),
+        company2:                   this.get('applicationController.customerDetails.department'),
+        company3:                   this.get('applicationController.customerDetails.unit'),
+        library_card_number:        this.get('applicationController.customerDetails.libraryCardNumber'),
+        x_account:                  this.get('applicationController.customerDetails.xAccount'),
+
+        delivery_address:           this.get('applicationController.deliveryDetails.address'),
+        delivery_box:               this.get('applicationController.deliveryDetails.box'),
+        delivery_postal_code:       this.get('applicationController.deliveryDetails.postalCode'),
+        delivery_city:              this.get('applicationController.deliveryDetails.city'),
+        delivery_comments:          this.get('applicationController.deliveryDetails.comment'),
+
+        invoicing_name:             this.get('applicationController.invoicingDetails.name'),
+        invoicing_company:          this.get('applicationController.invoicingDetails.company'),
+        invoicing_address:          this.get('applicationController.invoicingDetails.address'),
+        invoicing_postal_address1:  this.get('applicationController.invoicingDetails.postalCode'),
+        invoicing_postal_address2:  this.get('applicationController.invoicingDetails.city'),
+        invoicing_id:               this.get('applicationController.invoicingDetails.customerId')
+      });
+
+      $('body').removeClass('loading');
+      /*
+      this.successHandler({
+        order: {
+          order_number: 123
+        }
+      });
+      */
       $.ajax({
         type: 'POST',
-        url: ENV.APP.serviceURL + '/orders',
-        data: JSON.stringify({
-          order_type_id:                      orderType.id,
-          customer_type:                      this.get('applicationController.selectedCustomerType.identifier'),
-          form_library:                       this.get('applicationController.selectedLocation.identifier'), // Change?
-          email_confirmation:                 true, // Always set to true
-          form_lang:                          this.get('i18n.locale'),
-          delivery_place:                     delivery_place,
-          order_path:                         this.get('applicationController.orderPath'),
-
-          title:                              title,
-          journal_title:                      journal_title,
-          authors:                            authors,
-          issn_isbn:                          issn_isbn,
-          publication_year:                   publication_year,
-          volume:                             volume,
-          issue:                              issue,
-          pages:                              pages,
-          not_valid_after:                    not_valid_after,
-          comments:                           comments,
-          order_outside_scandinavia:          order_outside_scandinavia,
-
-          publication_type:                   publication_type,
-          period:                             period,
-
-          name:                               this.get('applicationController.customerDetails.name'),
-          email_address:                      this.get('applicationController.customerDetails.emailAddress'),
-          company1:                           this.get('applicationController.customerDetails.organisation'),
-          company2:                           this.get('applicationController.customerDetails.department'),
-          company3:                           this.get('applicationController.customerDetails.unit'),
-          library_card_number:                this.get('applicationController.customerDetails.libraryCardNumber'),
-          x_account:                          this.get('applicationController.customerDetails.xAccount'),
-
-          delivery_address:                   this.get('applicationController.deliveryDetails.address'),
-          delivery_box:                       this.get('applicationController.deliveryDetails.box'),
-          delivery_postal_code:               this.get('applicationController.deliveryDetails.postalCode'),
-          delivery_city:                      this.get('applicationController.deliveryDetails.city'),
-          delivery_comments:                  this.get('applicationController.deliveryDetails.comment'),
-
-          invoicing_name:                     this.get('applicationController.invoicingDetails.name'),
-          invoicing_company:                  this.get('applicationController.invoicingDetails.company'),
-          invoicing_address:                  this.get('applicationController.invoicingDetails.address'),
-          invoicing_postal_address1:          this.get('applicationController.invoicingDetails.postalCode'),
-          invoicing_postal_address2:          this.get('applicationController.invoicingDetails.city'),
-          invoicing_id:                       this.get('applicationController.invoicingDetails.customerId')
-        }),
+        url: ENV.APP.serviceUrl + '/orders',
+        //url: 'http://localhost:3001' + '/orders',
+        data: JSON.stringify(order),
         contentType: 'application/json',
-        dataType: 'json'
-      }).then(function(response) {
+        dataType: 'json',
+        headers: this.get('session.isAuthenticated')
+          ? {Authorization: 'Bearer ' + this.get('session.data.authenticated.token')}
+          : {}
+      }).then((response) => {
+        run(() => {
+          if(window.dataLayer) {
+            window.dataLayer.push({
+              'orderType': this.get('applicationController.selectedOrderType.name_sv'),
+              'pickupLocation': this.get('applicationController.selectedLocation.name_sv'),
+              'customerType': this.get('applicationController.selectedCustomerType.name_sv')
+            });
+          }
 
-        if(window.dataLayer) {
-          window.dataLayer.push({
-            'orderType': that.get('applicationController.selectedOrderType.title_sv'),
-            'location': that.get('applicationController.selectedLocation.title_sv'),
-            'customerType': that.get('applicationController.selectedCustomerType.title_sv')
-          });
-        }
-
-        $("body").removeClass("loading");
-        that.successHandler(response);
+          $("body").removeClass("loading");
+          this.successHandler(response);
+        });
       },
-      function(error) {
+      (error) => {
+        run(() => {
+          if(window.dataLayer) {
+            window.dataLayer.push({
+              'orderType': this.get('applicationController.selectedOrderType.name_sv'),
+              'pickupLocation': this.get('applicationController.selectedLocation.name_sv'),
+              'customerType': this.get('applicationController.selectedCustomerType.name_sv')
+            });
+          }
 
-        if(window.dataLayer) {
-          window.dataLayer.push({
-            'orderType': that.get('applicationController.selectedOrderType.title_sv'),
-            'location': that.get('applicationController.selectedLocation.title_sv'),
-            'customerType': that.get('applicationController.selectedCustomerType.title_sv')
-          });
-        }
-
-        $("body").removeClass("loading");
-        that.errorHandler(error);
+          $('body').removeClass('loading');
+          this.errorHandler(error);
+        });
       });
     }
   }

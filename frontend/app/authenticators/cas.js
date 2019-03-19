@@ -13,7 +13,7 @@ export default Base.extend({
     /*
     return new Promise((resolve, reject) => {
       this.get('ajax').request(
-          `${ENV.APP.authenticationBaseURL}/${data.token}`
+          `${ENV.APP.authenticationBaseUrl}/${data.token}`
           ).then(() => {
         run(() => {
           resolve(data);
@@ -33,7 +33,7 @@ export default Base.extend({
       return new Promise(function(resolve, reject) {
         $.ajax({
           type: 'POST',
-          url: ENV.APP.authenticationBaseURL,
+          url: ENV.APP.authenticationBaseUrl,
           data: JSON.stringify(credentials),
           contentType: 'application/json'
         }).then(function(response) {
@@ -55,7 +55,7 @@ export default Base.extend({
     }
   },
   invalidate(data) {
-    // TODO: perhaps invalidate, or not implement, or reason to leave as is?
+    //TODO: call server to remove token/session??
     return resolve();
   }
 });

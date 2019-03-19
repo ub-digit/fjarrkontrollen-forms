@@ -8,9 +8,9 @@
       {{#each applicationController.locations as |location|}}
         {{#item.option value=location}}
           {{#if isEnglish}}
-           <strong>{{location.title_en}}</strong>
+           <strong>{{location.name_en}}</strong>
           {{else}}  
-           <strong>{{location.title_sv}}</strong>
+           <strong>{{location.name_sv}}</strong>
           {{/if}}
         {{/item.option}}
       {{/each}}

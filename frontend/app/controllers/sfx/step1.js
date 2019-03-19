@@ -19,15 +19,15 @@ export default Controller.extend({
   optionLabelPath: computed('i18n.locale', function() {
     switch (this.get("i18n.locale")) {
       case 'sv':
-        return 'content.title_sv';
+        return 'content.name_sv';
       default:
-        return 'content.title_en';
+        return 'content.name_en';
     }
 
   }),
 
-  orderPreviewPartialName: computed('applicationController.selectedOrderType.identifier', function() {
-    return 'sfx/step1/' + this.get('applicationController.selectedOrderType.identifier');
+  orderPreviewPartialName: computed('applicationController.selectedOrderType.label', function() {
+    return 'sfx/step1/' + this.get('applicationController.selectedOrderType.label');
   }),
 
   isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),

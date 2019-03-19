@@ -23,7 +23,10 @@ module.exports = function(environment) {
     APP: {
       casBaseUrl: 'https://idp3.it.gu.se/idp/profile/cas',
       registrationUrl: 'https://bibliotekskort.ub.gu.se',
-      authenticationBaseURL: '/api/sessions'
+      authenticationBaseUrl: '/api/sessions',
+      serviceUrl: '/api',
+      fjarrkontrollenServiceUrl: 'http://localhost:3001'
+
       // Here you can pass flags/options to your application instance
       // when it is created
     }
@@ -36,7 +39,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy';
-    ENV.APP.serviceURL = 'https://fjarrkontrollen-server-lab.ub.gu.se/';
   }
 
   if (environment === 'test') {

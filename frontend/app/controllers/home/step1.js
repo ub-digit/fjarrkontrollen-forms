@@ -21,9 +21,15 @@ export default Controller.extend({
 
   actions: {
     nextStep: function() {
-      let step = this.get('applicationController.authRequired') && !this.get('session.isAuthenticated')
-        ? 'home.login'
-        : 'home.step2';
+      let step = 'home.step2';
+      if (this.get('applicationController.authRequired')) {
+        if (!this.get('session.isAuthenticated')) {
+          step = 'home.login';
+        }
+      }
+      else if (this.get('session.isAuthenticated')) {
+        this.get('applicationController').invalidateSession();
+      }
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     }

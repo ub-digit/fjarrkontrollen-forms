@@ -2,11 +2,15 @@ import Route from '@ember/routing/route';
 import { inject as service} from '@ember/service';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 import { storageFor } from 'ember-local-storage';
+import ENV from 'frontend/config/environment';
+import { hash } from 'rsvp';
 
 export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
   session: service(),
+  ajax: service(),
 
+  //TODO: Have I moved these to other route???
   routeAfterAuthentication: 'home.step2',
   routeIfAlreadyAuthenticated: 'home.step2',
 
@@ -14,89 +18,100 @@ export default Route.extend(ApplicationRouteMixin, {
     if (params.lang) {
       this.set('i18n.locale', params.lang);
     }
-    return params;
+    this.set('params', params);
+    //To fetch from backend: locations (rename?), orderTypes, deliveryMethods
+    let ajax = this.get('ajax');
+    let serviceUrl = ENV.APP.fjarrkontrollenServiceUrl;
+    let promises = {
+      locations: ajax.request(`${serviceUrl}/pickup_locations`).then((data) => {
+        return data['pickup_locations'];
+      }),
+      orderTypes: ajax.request(`${serviceUrl}/order_types`).then((data) => {
+        return data['order_types'];
+      }),
+      deliveryMethods: ajax.request(`${serviceUrl}/delivery_methods`).then((data) => {
+        return data['delivery_methods'];
+      }),
+    };
+    return hash(promises);
   },
 
   customerDetails: storageFor('customer-details'),
+  order: storageFor('order'),
 
   sessionAuthenticated() {
     //TODO: Also run this on restored??
     this._super(...arguments);
-    let user = this.get('session.data.authenticated.user');
-    this.set('customerDetails.name', user.get('first_name') + ' ' + user.get('last_name')); //computed prop on storage?
-    this.set('customerDetails.emailAddress', user.get('email'));
-    //this.set('customerDetails.organisation', user.get('')); //attribute in Koha for this?
-    //this.set('customerDetails.department', user.get('')); //attribute in Koha for this?
-    //this.set('customerDetails.unit', user.get('')); //attribute in Koha for this?
-    this.set('customerDetails.address', user.get('address'));
-    this.set('customerDetails.postalCode', user.get('zipcode'));
-    this.set('customerDetails.city', user.get('city'));
-    this.set('customerDetails.libraryCardNumber', user.get('cardnumber'));
-    this.set('customerDetails.xAccount', user.get('xaccount'));
+    this.controllerFor('application').setDataFromSession();
   },
 
   setupController: function(controller, model) {
-    if (model.is_sfx === 'yes') {
+    controller.setProperties(model);
+
+    let params = this.get('params');
+    if (params.is_sfx === 'yes') {
 
       controller.set("orderPath", "SFX");
 
       // set the correct order type based on param rft_genre
-      if (model.rft_genre === 'book' || model.rft_genre === 'dissertation') {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'book'));
+      if (params.rft_genre === 'loan' || params.rft_genre === 'dissertation') {
+        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'loan'));
       }
-      else if (model.rft_genre === 'bookitem') {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'chapter'));
+      else if (params.rft_genre === 'bookitem') {
+        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'chapter'));
       }
       else {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('identifier', 'article'));
+        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'article'));
       }
 
       // populate order details with data from params
-      if (model.isbn_issn) {
-        controller.set("orderDetailsArticle.issn", model.isbn_issn);
-        controller.set("orderDetailsBook.isbn", model.isbn_issn);
-        controller.set("orderDetailsChapter.isbn", model.isbn_issn);
+      if (params.isbn_issn) {
+        controller.set("orderDetailsArticle.issn", params.isbn_issn);
+        controller.set("orderDetailsBook.isbn", params.isbn_issn);
+        controller.set("orderDetailsChapter.isbn", params.isbn_issn);
       }
 
-      if (model.book_title) {
-        controller.set("orderDetailsBook.bookTitle", model.book_title);
-        controller.set("orderDetailsChapter.bookTitle", model.book_title);
+      if (params.book_title) {
+        controller.set("orderDetailsBook.bookTitle", params.book_title);
+        controller.set("orderDetailsChapter.bookTitle", params.book_title);
       }
 
-      if (model.journal_title) {
-        controller.set("orderDetailsArticle.journalTitle", model.journal_title);
+      if (params.journal_title) {
+        controller.set("orderDetailsArticle.journalTitle", params.journal_title);
       }
 
-      if (model.title_of_article) {
-        controller.set("orderDetailsArticle.articleTitle", model.title_of_article);
-        controller.set("orderDetailsChapter.chapterTitle", model.title_of_article);
+      if (params.title_of_article) {
+        controller.set("orderDetailsArticle.articleTitle", params.title_of_article);
+        controller.set("orderDetailsChapter.chapterTitle", params.title_of_article);
       }
 
-      if (model.author) {
-        controller.set("orderDetailsArticle.authors", model.author);
-        controller.set("orderDetailsBook.authors", model.author);
-        controller.set("orderDetailsChapter.authors", model.author);
+      if (params.author) {
+        controller.set("orderDetailsArticle.authors", params.author);
+        controller.set("orderDetailsBook.authors", params.author);
+        controller.set("orderDetailsChapter.authors", params.author);
       }
 
-      if (model.year) {
-        controller.set("orderDetailsArticle.publicationYear", model.year);
-        controller.set("orderDetailsBook.publicationYear", model.year);
-        controller.set("orderDetailsChapter.publicationYear", model.year);
+      if (params.year) {
+        controller.set("orderDetailsArticle.publicationYear", params.year);
+        controller.set("orderDetailsBook.publicationYear", params.year);
+        controller.set("orderDetailsChapter.publicationYear", params.year);
       }
 
-      if (model.volume) {
-        controller.set("orderDetailsArticle.volume", model.volume);
+      if (params.volume) {
+        controller.set("orderDetailsArticle.volume", params.volume);
       }
 
-      if (model.issue) {
-        controller.set("orderDetailsArticle.issue", model.issue);
+      if (params.issue) {
+        controller.set("orderDetailsArticle.issue", params.issue);
       }
 
-      if (model.pages) {
-        controller.set("orderDetailsArticle.pages", model.pages);
-        controller.set("orderDetailsChapter.pages", model.pages);
+      if (params.pages) {
+        controller.set("orderDetailsArticle.pages", params.pages);
+        controller.set("orderDetailsChapter.pages", params.pages);
       }
-
+      //TODO: Where is this used? If needed
+      //better use assign in model hook and will
+      //be set by setProperites on controller (above)
       [
         'rft_genre',
         'isbn_issn',
@@ -118,11 +133,7 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   actions: {
-    resetForm: function() {
-      this.controllerFor("application").resetAllData();
-    },
-
-    toggleLang: function() {
+    toggleLang() {
       if (this.get("i18n.locale") === 'en') {
         this.set('i18n.locale', 'sv');
         this.controllerFor("application").set("lang", 'sv');
@@ -133,7 +144,11 @@ export default Route.extend(ApplicationRouteMixin, {
       }
     },
 
-    orderAnother: function() {
+    orderNew() {
+      this.controllerFor("application").orderNew();
+    },
+
+    orderAnother() {
       this.controllerFor("application").orderAnother();
     }
   }

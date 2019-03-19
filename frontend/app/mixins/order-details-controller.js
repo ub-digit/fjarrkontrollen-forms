@@ -12,7 +12,6 @@ export default Controller.extend({
       var step;
       if (this.get('applicationController.authRequired')) {
         step = 'home.step3';
-        this.set('applicationController.order.selectedCustomerType', 'koha');
         // Values are populated in summary (or default computed)??
       }
       else {

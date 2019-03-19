@@ -1,26 +1,24 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
-import { inject as inject_service } from '@ember/service';
-import { inject as inject_controller } from '@ember/controller';
+import { inject as injectController } from '@ember/controller';
+import { inject as injectService } from '@ember/service';
 
 export default Controller.extend({
-  applicationController: inject_controller('application'),
-  i18n: inject_service(),
+  applicationController: injectController('application'),
+  i18n: injectService(),
   queryParams: ['id'],
 
+  //TODO: Controller base class/mixin for this:
   orderAnotherText: computed('applicationController.selectedOrderType', function() {
-    var orderType = this.get("applicationController.selectedOrderType");
-    switch(orderType.identifier) {
-      case 'article':
-        return this.get("i18n").t('home.step5.orderAnotherArticle');
-      case 'book':
-        return this.get("i18n").t('home.step5.orderAnotherBook');
-      case 'chapter':
-        return this.get("i18n").t('home.step5.orderAnotherChapter');
-      case 'score':
-        return this.get("i18n").t('home.step5.orderAnotherScore');
-      case 'microfilm':
-        return this.get("i18n").t('home.step5.orderAnotherMicrofilm');
-    }
+    let translationKeys = {
+      article: 'home.step5.orderAnotherArticle',
+      book: 'home.step5.orderAnotherBook',
+      chapter: 'home.step5.orderAnotherChapter',
+      score: 'home.step5.orderAnotherScore',
+      microfilm: 'home.step5.orderAnotherMicrofilm'
+    };
+    let orderType = this.get('applicationController.selectedOrderType.label');
+    return this.get('i18n').t(translationKeys[orderType]);
   })
+
 });

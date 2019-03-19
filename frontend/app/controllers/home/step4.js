@@ -16,7 +16,9 @@ export default Controller.extend(PreviewController, {
 
   actions: {
     back: function() {
-      this.transitionToRoute("home.step3");
+      let step = 'home.step3';
+      this.set('applicationController.order.currentStep', step);
+      this.transitionToRoute(step);
     }
   }
 });
