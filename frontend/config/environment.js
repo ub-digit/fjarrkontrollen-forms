@@ -25,7 +25,6 @@ module.exports = function(environment) {
       registrationUrl: 'https://bibliotekskort.ub.gu.se',
       authenticationBaseUrl: '/api/sessions',
       serviceUrl: '/api',
-      fjarrkontrollenServiceUrl: 'http://localhost:3001'
       // Here you can pass flags/options to your application instance
       // when it is created
     }
@@ -34,8 +33,7 @@ module.exports = function(environment) {
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_TRANSITIONS = true;
-    ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.fjarrkontrollenServiceUrl = 'http://localhost:3001';
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy';
   }
@@ -51,9 +49,15 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
   }
+  else if (environment === 'lab') {
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://fjarrkontrollen-lab.ub.gu.se';
+  }
+  else if (environment === 'staging') {
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://fjarrkontrollen-staging.ub.gu.se';
+  }
 
-  if (environment === 'production') {
-    // here you can enable a production-specific feature
+  else if (environment === 'production') {
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://fjarrkontrollen.ub.gu.se';
   }
 
   ENV.i18n = {
