@@ -13,64 +13,6 @@ export default Controller.extend({
 
   orderPath: "Web",
 
-  init() {
-    //To fetch from backend: locations (rename?), orderTypes, deliveryMethods
-    this._super(...arguments);
-
-    //TODO: add backend model for this!!
-    var customerTypes = A([]);
-    customerTypes.pushObject({
-      id: 1,
-      label: 'univ',
-      name_sv: 'Forskare/anställd/doktorand vid GU',
-      name_en: 'Researcher/staff/PhD student at GU'
-    });
-    customerTypes.pushObject({
-      id: 2,
-      label: 'stud',
-      name_sv: 'Student',
-      name_en: 'Student'
-    });
-    customerTypes.pushObject({
-      id: 3,
-      label: 'sahl',
-      name_sv: 'Anställd inom Västra Götalandsregionen',
-      name_en: 'Staff at Region Västra Götaland'
-    });
-    customerTypes.pushObject({
-      id: 4,
-      label: 'priv',
-      name_sv: 'Privatperson',
-      name_en: 'Private individual'
-    });
-    customerTypes.pushObject({
-      id: 5,
-      label: 'ftag',
-      name_sv: 'Företag',
-      name_en: 'Company'
-    });
-    customerTypes.pushObject({
-      id: 6,
-      label: 'dist',
-      name_sv: 'Distansstudent',
-      name_en: 'Distance student'
-    });
-    customerTypes.pushObject({
-      id: 7,
-      label: 'ovri',
-      name_sv: 'Övriga',
-      name_en: 'Other'
-    });
-    customerTypes.pushObject({
-      id: 8,
-      label: 'koha',
-      hidden: true,
-      name_sv: 'Kohaanvändaare',
-      name_en: 'Koha user'
-    });
-    this.set('customerTypes', customerTypes);
-  },
-
   /** Order **/
   order: storageFor('order'),
 
@@ -89,7 +31,9 @@ export default Controller.extend({
   }),
 
   selectableCustomerTypes: computed('customerTypes', function() {
-    return this.get('customerTypes').rejectBy('hidden');
+    return this.get('customerTypes').filter((customerType) => {
+      return customerType.label !== 'koha';
+    });
   }),
 
   /** Customer details (dependant on selectedCustomerType) **/
@@ -107,10 +51,6 @@ export default Controller.extend({
   orderDetailsChapter: storageFor('order-details-chapter'),
   orderDetailsMicrofilm: storageFor('order-details-microfilm'),
   orderDetailsScore: storageFor('order-details-score'),
-
-  authRequired: computed('selectedOrderType', function() {
-    return this.get('selectedOrderType.auth_required');
-  }),
 
   isBillable: computed('selectedOrderType', 'orderDetailsBook.outsideNordics', function() {
     return !(

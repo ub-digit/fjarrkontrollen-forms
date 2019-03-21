@@ -8,9 +8,9 @@ export default Route.extend(ResetScroll, {
   beforeModel: function() {
     let orderType = this.get('order.selectedOrderType');
     let routes = {
-      article: 'home.step2.article',
+      photocopy: 'home.step2.article',
       loan: 'home.step2.book',
-      chapter: 'home.step2.chapter',
+      photocopy_chapter: 'home.step2.chapter',
       score: 'home.step2.score',
       microfilm: 'home.step2.microfilm'
     };

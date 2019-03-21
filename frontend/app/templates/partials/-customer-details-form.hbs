@@ -1,7 +1,7 @@
 <h2>{{t 'home.step3.header'}}</h2>
 <div class="row">
   <div class="col-xs-12">
-    {{#unless applicationController.selectedCustomerType.hidden}}
+    {{#unless (eq applicationController.selectedCustomerType "koha")}}
       <h3>{{t 'home.step3.customerTypeHeader'}}</h3>
       <div class="row">
         <div class="col-xs-12">
@@ -177,9 +177,9 @@
               {{#each applicationController.deliveryMethods as |method|}}
                 {{#item.option value=method.label}}
                   {{#if isEnglish}}
-                   <strong>{{method.name_en}}</strong>
+                   <strong>{{method.public_name_en}}</strong>
                   {{else}}
-                   <strong>{{method.name_sv}}</strong>
+                   <strong>{{method.public_name_sv}}</strong>
                   {{/if}}
                 {{/item.option}}
               {{/each}}

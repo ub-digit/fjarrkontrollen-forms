@@ -7,6 +7,7 @@ export default Controller.extend({
   applicationController: inject_controller('application'),
   i18n: injectService(),
   session: injectService(),
+  auth: injectService(),
 
   isEnglish: computed('i18n.locale', function() {
     switch (this.get('i18n.locale')) {
@@ -22,7 +23,7 @@ export default Controller.extend({
   actions: {
     nextStep: function() {
       let step = 'home.step2';
-      if (this.get('applicationController.authRequired')) {
+      if (this.get('auth.required')) {
         if (!this.get('session.isAuthenticated')) {
           step = 'home.login';
         }

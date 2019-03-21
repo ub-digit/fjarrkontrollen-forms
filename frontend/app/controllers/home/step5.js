@@ -10,9 +10,9 @@ export default Controller.extend({
 
   orderAnotherText: computed('applicationController.selectedOrderType', function() {
     let translationKeys = {
-      article: 'home.step5.orderAnotherArticle',
+      photocopy: 'home.step5.orderAnotherArticle',
       book: 'home.step5.orderAnotherBook',
-      chapter: 'home.step5.orderAnotherChapter',
+      photocopy_chapter: 'home.step5.orderAnotherChapter',
       score: 'home.step5.orderAnotherScore',
       microfilm: 'home.step5.orderAnotherMicrofilm'
     };

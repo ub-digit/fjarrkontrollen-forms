@@ -9,12 +9,13 @@ export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
   session: service(),
   ajax: service(),
+  auth: service(),
 
   //TODO: Have I moved these to other route???
   routeAfterAuthentication: 'home.step2',
   routeIfAlreadyAuthenticated: 'home.step2',
 
-  model: function(params) {
+  model(params) {
     if (params.lang) {
       this.set('i18n.locale', params.lang);
     }
@@ -32,8 +33,15 @@ export default Route.extend(ApplicationRouteMixin, {
       deliveryMethods: ajax.request(`${serviceUrl}/delivery_methods`).then((data) => {
         return data['delivery_methods'];
       }),
+      customerTypes: ajax.request(`${serviceUrl}/customer_types`).then((data) => {
+        return data['customer_types'];
+      })
     };
     return hash(promises);
+  },
+
+  afterModel(model) {
+    this.get('auth').set('orderTypes', model.orderTypes);
   },
 
   customerDetails: storageFor('customer-details'),
@@ -58,10 +66,10 @@ export default Route.extend(ApplicationRouteMixin, {
         controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'loan'));
       }
       else if (params.rft_genre === 'bookitem') {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'chapter'));
+        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'photocopy_chapter'));
       }
       else {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'article'));
+        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'photocopy'));
       }
 
       // populate order details with data from params

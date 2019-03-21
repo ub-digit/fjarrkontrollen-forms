@@ -64,7 +64,7 @@ export default Mixin.create({
 
       let orderType = this.get('applicationController.selectedOrderType');
       switch(orderType.label) {
-        case 'article':
+        case 'photocopy':
           setOrderProperties([
             'articleTitle',
             'journalTitle',
@@ -89,7 +89,7 @@ export default Mixin.create({
           order['issn_isbn'] = this.get('applicationController.orderDetailsBook.isbn');
           order['comments'] = this.get('applicationController.orderDetailsBook.comment');
           break;
-        case 'chapter':
+        case 'photocopy_chapter':
           setOrderProperties([
             'authors',
             'publicationYear',
