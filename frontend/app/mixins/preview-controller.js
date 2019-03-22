@@ -155,17 +155,10 @@ export default Mixin.create({
       });
 
       $('body').removeClass('loading');
-      /*
-      this.successHandler({
-        order: {
-          order_number: 123
-        }
-      });
-      */
+
       $.ajax({
         type: 'POST',
         url: ENV.APP.serviceUrl + '/orders',
-        //url: 'http://localhost:3001' + '/orders',
         data: JSON.stringify(order),
         contentType: 'application/json',
         dataType: 'json',

@@ -7,7 +7,5 @@ class Api::OrdersController < ApplicationController
       headers[:x_authenticated_xaccount] = @current_username
     end
     response = RestClient.post "#{base_url}/orders", params.to_json, headers
-    puts "RESPONSE"
-    puts response.inspect
   end
 end

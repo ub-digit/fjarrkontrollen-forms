@@ -53,16 +53,14 @@ export default Controller.extend({
   orderDetailsScore: storageFor('order-details-score'),
 
   isBillable: computed('selectedOrderType', 'orderDetailsBook.outsideNordics', function() {
-    return !(
+    return (
       // Check if order type is micro film, which is always without charge
-      this.get('selectedOrderType.label') === 'microfilm' ||
-
+      this.get('selectedOrderType.label') !== 'microfilm' &&
       // Check if order type is book, which is always without charge...
       (
-       this.get('selectedOrderType.label') === 'loan' &&
-
-       // ... as long as outside nordics are not checked
-       !this.get('orderDetailsBook.outsideNordics')
+        this.get('selectedOrderType.label') !== 'loan' ||
+        // ... as long as outside nordics are not checked
+        this.get('orderDetailsBook.outsideNordics')
       )
     );
   }),

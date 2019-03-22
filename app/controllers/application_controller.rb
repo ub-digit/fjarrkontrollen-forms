@@ -60,6 +60,6 @@ private
     return nil if !request || !request.headers
     token_response = request.headers['Authorization']
     return nil if !token_response
-    token_response[/^Token (.*)/,1]
+    token_response[/^Bearer (.*)/,1]
   end
 end
