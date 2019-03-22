@@ -1,6 +1,5 @@
 import Route from '@ember/routing/route';
 import { inject } from '@ember/service';
-//import ENV from 'frontend/config/environment';
 import UnAuthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
 export default Route.extend(UnAuthenticatedRouteMixin, {
@@ -22,5 +21,4 @@ export default Route.extend(UnAuthenticatedRouteMixin, {
       });
     }
   }
-
 });

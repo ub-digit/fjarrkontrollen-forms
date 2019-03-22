@@ -7,13 +7,11 @@
   <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 step-indicator disabled">
     <ol>
       {{#link-to 'home.step1' disabled=true tagName='li'}}<span>{{t 'home.step1.header'}}</span>{{/link-to}}
-      {{#if applicationController.authRequired}}
+      {{#if auth.required}}
         {{#link-to 'home.login' disabled=true tagName='li'}}<span>{{t 'home.login.header'}}</span>{{/link-to}}
       {{/if}}
       {{#link-to 'home.step2' disabled=true tagName='li'}}<span>{{t 'home.step2.header'}}</span>{{/link-to}}
-      {{#unless applicationController.authRequired}}
-        {{#link-to 'home.step3' disabled=true tagName='li'}}<span>{{t 'home.step3.header'}}</span>{{/link-to}}
-      {{/unless}}
+      {{#link-to 'home.step3' disabled=true tagName='li'}}<span>{{t 'home.step3.header'}}</span>{{/link-to}}
       {{#link-to 'home.step4' disabled=true tagName='li'}}<span>{{t 'home.step4.header'}}</span>{{/link-to}}
       {{#link-to 'home.step5' disabled=true tagName='li'}}<span>{{t 'home.step5.header'}}</span>{{/link-to}}
     </ol>

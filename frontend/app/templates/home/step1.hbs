@@ -9,11 +9,11 @@
     as |item|}}
       {{#item.option}}{{t 'home.step1.typePrompt'}}{{/item.option}}
       {{#each applicationController.orderTypes as |type|}}
-        {{#item.option value=type.identifier}}
+        {{#item.option value=type.label}}
           {{#if isEnglish}}
-           <strong>{{type.title_en}}</strong>
+           <strong>{{type.name_en}}</strong>
           {{else}}
-           <strong>{{type.title_sv}}</strong>
+           <strong>{{type.name_sv}}</strong>
           {{/if}}
         {{/item.option}}
       {{/each}}
@@ -31,11 +31,11 @@
     as |item|}}
     {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
     {{#each applicationController.locations as |location|}}
-      {{#item.option value=location.identifier}}
+      {{#item.option value=location.label}}
         {{#if isEnglish}}
-         <strong>{{location.title_en}}</strong>
+         <strong>{{location.name_en}}</strong>
         {{else}}
-         <strong>{{location.title_sv}}</strong>
+         <strong>{{location.name_sv}}</strong>
         {{/if}}
       {{/item.option}}
     {{/each}}
@@ -45,7 +45,7 @@
 <div class="row">
   <div class="col-xs-12">
     <button {{action 'nextStep'}} id="step1NextButton" disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right">
-      {{t (if (and applicationController.authRequired (not session.isAuthenticated)) "home.step1.authBtn" "home.step1.nextBtn") }} <i class="fa fa-chevron-right"></i>
+      {{t (if (and auth.required (not session.isAuthenticated)) "home.step1.authBtn" "home.step1.nextBtn") }} <i class="fa fa-chevron-right"></i>
     </button>
   </div>
 </div>
