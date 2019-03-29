@@ -20,7 +20,7 @@ export default Route.extend(ApplicationRouteMixin, {
       this.set('i18n.locale', params.lang);
     }
     this.set('params', params);
-    //To fetch from backend: locations (rename?), orderTypes, deliveryMethods
+
     let ajax = this.get('ajax');
     let serviceUrl = ENV.APP.fjarrkontrollenServiceUrl;
     let promises = {

@@ -6,7 +6,12 @@ export default Service.extend({
   order: storageFor('order'),
   orderTypes: null,
   required: computed('orderTypes', 'order.selectedOrderType', function() {
-    let order_type = this.get('orderTypes').findBy('label', this.get('order.selectedOrderType'));
-    return order_type['auth_required'];
+    if (this.get('order.selectedOrderType')) {
+      let orderType = this.get('orderTypes').findBy('label', this.get('order.selectedOrderType'));
+      return orderType['auth_required'];
+    }
+    else {
+      return false;
+    }
   })
 });

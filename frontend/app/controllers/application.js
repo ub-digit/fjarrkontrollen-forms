@@ -11,7 +11,7 @@ export default Controller.extend({
   lang: null,
   session: injectService(),
 
-  orderPath: "Web",
+  orderPath: "Web", //TODO: Session storage!
 
   /** Order **/
   order: storageFor('order'),
@@ -34,6 +34,10 @@ export default Controller.extend({
     return this.get('customerTypes').filter((customerType) => {
       return customerType.label !== 'koha';
     });
+  }),
+
+  selectedLocationName: computed('selectedLocation,i18n.locale', function() {
+    return this.get('selectedLocation.name_' + this.get('i18n.locale'));
   }),
 
   /** Customer details (dependant on selectedCustomerType) **/
@@ -69,12 +73,12 @@ export default Controller.extend({
     this.resetOrderDetails();
   }),
 
-  isShippable: computed('selectedOrderType', function() {
+  isShippable: computed('order.selectedOrderType', function() {
     // Check if order type is of a kind that never will be shipped
     return !(
-      this.get('selectedOrderType.label') === 'loan' ||
-      this.get('selectedOrderType.label') === 'microfilm' ||
-      this.get('selectedOrderType.label') === 'score'
+      this.get('order.selectedOrderType') === 'loan' ||
+      this.get('order.selectedOrderType') === 'microfilm' ||
+      this.get('order.selectedOrderType') === 'score'
     );
   }),
 
