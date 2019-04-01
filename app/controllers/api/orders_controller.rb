@@ -4,9 +4,12 @@ class Api::OrdersController < ApplicationController
     base_url = APP_CONFIG['fjarrkontrollen']['base_url']
     access_token =  APP_CONFIG['fjarrkontrollen']['access_token']
     headers = {content_type: :json, accept: :json, authorization: "Bearer #{access_token}"}
-    # TODO: Fix this mess:
     params["authenticated_x_account"] = validate_token ? @current_username : nil;
-    params["order"]["authenticated_x_account"] = validate_token ? @current_username : nil;
-    response = RestClient.post "#{base_url}/orders", params.to_json, headers
+    begin
+      response = RestClient.post "#{base_url}/orders", params.to_json, headers
+      render body: response.body, status: response.code, content_type: 'application/json'
+    rescue RestClient::Exception => e
+      render json: {error: e.message}, status: e.http_code
+    end
   end
 end

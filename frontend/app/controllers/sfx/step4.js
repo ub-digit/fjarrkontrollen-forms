@@ -12,7 +12,7 @@ export default Controller.extend({
   orderAnotherText: computed('applicationController.selectedOrderType', function() {
     let translationKeys = {
       photocopy: 'home.step5.orderAnotherArticle',
-      book: 'home.step5.orderAnotherBook',
+      loan: 'home.step5.orderAnotherBook',
       photocopy_chapter: 'home.step5.orderAnotherChapter',
       score: 'home.step5.orderAnotherScore',
       microfilm: 'home.step5.orderAnotherMicrofilm'
