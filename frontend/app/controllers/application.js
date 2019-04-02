@@ -11,7 +11,7 @@ export default Controller.extend({
   lang: null,
   session: injectService(),
 
-  orderPath: "Web",
+  orderPath: "Web", //TODO: Session storage!
 
   /** Order **/
   order: storageFor('order'),
@@ -36,6 +36,10 @@ export default Controller.extend({
     });
   }),
 
+  selectedLocationName: computed('selectedLocation,i18n.locale', function() {
+    return this.get('selectedLocation.name_' + this.get('i18n.locale'));
+  }),
+
   /** Customer details (dependant on selectedCustomerType) **/
   customerDetails: storageFor('customer-details'), //dashized?
 
@@ -53,16 +57,14 @@ export default Controller.extend({
   orderDetailsScore: storageFor('order-details-score'),
 
   isBillable: computed('selectedOrderType', 'orderDetailsBook.outsideNordics', function() {
-    return !(
+    return (
       // Check if order type is micro film, which is always without charge
-      this.get('selectedOrderType.label') === 'microfilm' ||
-
+      this.get('selectedOrderType.label') !== 'microfilm' &&
       // Check if order type is book, which is always without charge...
       (
-       this.get('selectedOrderType.label') === 'loan' &&
-
-       // ... as long as outside nordics are not checked
-       !this.get('orderDetailsBook.outsideNordics')
+        this.get('selectedOrderType.label') !== 'loan' ||
+        // ... as long as outside nordics are not checked
+        this.get('orderDetailsBook.outsideNordics')
       )
     );
   }),
@@ -71,12 +73,12 @@ export default Controller.extend({
     this.resetOrderDetails();
   }),
 
-  isShippable: computed('selectedOrderType', function() {
+  isShippable: computed('order.selectedOrderType', function() {
     // Check if order type is of a kind that never will be shipped
     return !(
-      this.get('selectedOrderType.label') === 'loan' ||
-      this.get('selectedOrderType.label') === 'microfilm' ||
-      this.get('selectedOrderType.label') === 'score'
+      this.get('order.selectedOrderType') === 'loan' ||
+      this.get('order.selectedOrderType') === 'microfilm' ||
+      this.get('order.selectedOrderType') === 'score'
     );
   }),
 

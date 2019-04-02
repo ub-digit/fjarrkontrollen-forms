@@ -16,10 +16,6 @@ export default Mixin.create({
     return 'partials/' + this.get('applicationController.selectedOrderType.label') + '-preview';
   }),
 
-  selectedLibraryNameString: computed('i18n.locale', function() {
-    return this.get('applicationController.selectedLocation.title_' + this.get('i18n.locale'));
-  }),
-
   isDeliveryTypeShipping: computed.equal('applicationController.selectedDeliveryMethod.label', 'send'),
 
   hasInvoicing: computed('applicationController.invoicingDetails{name,company,address,postalCode,city,customerId}', function() {
@@ -123,10 +119,16 @@ export default Mixin.create({
           break;
       }
 
+      //TODO: Quickfix, fix properly when pickup location
+      // is not chosen on first page
+      let deliveryMethod = this.get('applicationController.deliveryMethods').findBy(
+        'label',
+        this.get('applicationController.order.selectedDeliveryMethod') || 'pickup'
+      );
+
       assign(order, {
         order_type_id:              orderType.id,
-        customer_type:              this.get('applicationController.selectedCustomerType.label'),
-        form_library:               this.get('applicationController.selectedLocation.label'), // Change? form??
+        customer_type_id:           this.get('applicationController.selectedCustomerType.id'),
         email_confirmation:         true, // Always set to true
         form_lang:                  this.get('i18n.locale'),
         delivery_place:             this.get('applicationController.selectedDeliveryMethod.title_internal') || 'Hämtas',
@@ -140,11 +142,14 @@ export default Mixin.create({
         library_card_number:        this.get('applicationController.customerDetails.libraryCardNumber'),
         x_account:                  this.get('applicationController.customerDetails.xAccount'),
 
+        delivery_method_id:         deliveryMethod.id,
         delivery_address:           this.get('applicationController.deliveryDetails.address'),
         delivery_box:               this.get('applicationController.deliveryDetails.box'),
         delivery_postal_code:       this.get('applicationController.deliveryDetails.postalCode'),
         delivery_city:              this.get('applicationController.deliveryDetails.city'),
         delivery_comments:          this.get('applicationController.deliveryDetails.comment'),
+
+        pickup_location_id:         this.get('applicationController.selectedLocation.id'),
 
         invoicing_name:             this.get('applicationController.invoicingDetails.name'),
         invoicing_company:          this.get('applicationController.invoicingDetails.company'),
@@ -155,17 +160,10 @@ export default Mixin.create({
       });
 
       $('body').removeClass('loading');
-      /*
-      this.successHandler({
-        order: {
-          order_number: 123
-        }
-      });
-      */
+
       $.ajax({
         type: 'POST',
         url: ENV.APP.serviceUrl + '/orders',
-        //url: 'http://localhost:3001' + '/orders',
         data: JSON.stringify(order),
         contentType: 'application/json',
         dataType: 'json',

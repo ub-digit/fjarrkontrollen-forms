@@ -8,7 +8,7 @@
           <label for="customerTypeSelector">{{t 'home.step3.customerTypeLabel'}}</label>
           {{#x-select
             class="form-control"
-            on-change=(action (mut applicationController.order.selectedCustomerType))
+            on-change=(action (mut order.selectedCustomerType))
             value=applicationController.order.selectedCustomerType
           as |item|}}
           {{#item.option}}{{t 'home.step3.customerTypePrompt'}}{{/item.option}}
@@ -170,7 +170,7 @@
             <label for="deliveryMethordSelector">{{t 'home.step3.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
             {{#x-select
               class="form-control"
-              on-change=(action (mut applicationController.order.selectedDeliveryMethod))
+              on-change=(action (mut order.selectedDeliveryMethod))
               value=applicationController.order.selectedDeliveryMethod
             as |item|}}
               {{#item.option}}{{t 'home.step3.deliveryMethodPrompt'}}{{/item.option}}
@@ -193,7 +193,7 @@
       {{#if showDeliveryInfoText}}
         <div class="row">
           <div class="col-xs-12">
-            <div class="alert alert-info" role="alert">{{t 'home.step3.pickupInfoText'}} {{selectedLibraryName}}</div>
+            <div class="alert alert-info" role="alert">{{t 'home.step3.pickupInfoText'}} {{applicationController.selectedLocationName}}</div>
           </div>
         </div>
       {{/if }}

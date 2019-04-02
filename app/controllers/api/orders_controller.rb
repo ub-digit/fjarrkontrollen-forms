@@ -2,12 +2,14 @@ require 'rest-client'
 class Api::OrdersController < ApplicationController
   def create
     base_url = APP_CONFIG['fjarrkontrollen']['base_url']
-    headers = {content_type: :json, accept: :json}
-    if validate_token
-      headers[:x_authenticated_xaccount] = @current_username
+    access_token =  APP_CONFIG['fjarrkontrollen']['access_token']
+    headers = {content_type: :json, accept: :json, authorization: "Bearer #{access_token}"}
+    params["authenticated_x_account"] = validate_token ? @current_username : nil;
+    begin
+      response = RestClient.post "#{base_url}/orders", params.to_json, headers
+      render body: response.body, status: response.code, content_type: 'application/json'
+    rescue RestClient::Exception => e
+      render json: {error: e.message}, status: e.http_code
     end
-    response = RestClient.post "#{base_url}/orders", params.to_json, headers
-    puts "RESPONSE"
-    puts response.inspect
   end
 end
