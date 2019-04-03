@@ -26,9 +26,6 @@ gem 'rest-client', '~> 2.0.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 group :development do
   gem "capistrano"
 end
