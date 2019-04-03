@@ -28,7 +28,7 @@ set :deploy_to, deploy_config['path']
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, %w{config/database.yml config/config_secret.yml}
+set :linked_files, %w{config/database.yml config/config_secret.yml}
 
 server deploy_config['host'], user: deploy_config['user'], roles: ['app', 'db', 'web'], port: deploy_config['port']
 
@@ -36,7 +36,7 @@ server deploy_config['host'], user: deploy_config['user'], roles: ['app', 'db', 
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 # Default value for default_env is {}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "/usr/local/rvm/rubies/ruby-2.5.3/bin:$PATH" }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
