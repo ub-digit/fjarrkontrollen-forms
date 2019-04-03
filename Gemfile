@@ -27,7 +27,11 @@ gem 'rest-client', '~> 2.0.1'
 # gem 'mini_magick', '~> 4.8'
 
 group :development do
-  gem "capistrano"
+  gem 'capistrano', '~> 3.11.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rvm'
 end
 
 # Reduces boot times through caching; required in config/boot.rb
