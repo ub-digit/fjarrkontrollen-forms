@@ -38,6 +38,10 @@ server deploy_config['host'], user: deploy_config['user'], roles: ['app', 'db', 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
+set :default_env, {
+    "PATH" => deploy_config['nvm_path'] + ":$PATH"
+}
+
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
 
