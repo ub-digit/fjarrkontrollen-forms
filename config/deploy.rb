@@ -28,7 +28,7 @@ set :deploy_to, deploy_config['path']
 # set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/config_secret.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml frontend/config/environment.js config/config_secret.yml config/secrets.yml}
 
 server deploy_config['host'], user: deploy_config['user'], roles: ['app', 'db', 'web'], port: deploy_config['port']
 

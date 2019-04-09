@@ -1,10 +1,11 @@
-/* jshint node: true */
+'use strict';
 
 module.exports = function(environment) {
-  var ENV = {
+  let ENV = {
     modulePrefix: 'frontend',
-    environment: environment,
-    baseURL: '/',
+    environment,
+    rootURL: '/',
+    locationType: 'auto',
     'ember-local-storage': {
       namespace: true
     },
@@ -12,29 +13,33 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
+      },
+      EXTEND_PROTOTYPES: {
+        // Prevent Ember Data from overriding Date.parse.
+        Date: false
       }
     },
 
     APP: {
+      casBaseUrl: 'https://<CAS BASE URL>',
+      authenticationBaseUrl: '/api/sessions',
+      serviceUrl: '/api',
       // Here you can pass flags/options to your application instance
       // when it is created
-       defaultLocale: 'sv',
-       rootElement: '#ember-app-fjarrkontrollen-forms'
     }
   };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://<FJÄRRKONTROLLEN LOCAL API>';
+    ENV.APP.registrationUrl = 'https://<BIBLIOTEKSKORT LOCAL API>';
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.APP.serviceURL = 'http://<Local API>';
+    ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy';
   }
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -42,17 +47,25 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.APP.autoboot = false;
+  }
+  else if (environment === 'lab') {
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://<FJÄRRKONTROLLEN LAB API>';
+    ENV.APP.registrationUrl = 'https://<BIBLIOTEKSKORT LAB API>';
+  }
+  else if (environment === 'staging') {
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://<FJÄRRKONTROLLEN STAGING API>';
+    ENV.APP.registrationUrl = 'https://<BIBLIOTEKSKORT STAGING API>';
   }
 
-  if (environment === 'production') {
-    ENV.APP.serviceURL = 'https://<Production API>';
+  else if (environment === 'production') {
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://<FJÄRRKONTROLLEN PRODUCTION API>';
+    ENV.APP.registrationUrl = 'https://<BIBLIOTEKSKORT PRODUCTION API>';
   }
-  if (environment === 'production-demo') {
-    ENV.APP.serviceURL = 'https://<Production Demo API>';
-  }
-  if (environment === 'production-test') {
-   ENV.APP.serviceURL = 'https://<Production Test API>';
-  }
+
+  ENV.i18n = {
+    defaultLocale: 'sv'
+  };
 
   return ENV;
 };
