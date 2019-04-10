@@ -26,9 +26,36 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/config_secret.yml
+/config/secrets.yml
+/config/database.yml
+/config/deploy.yml
+/frontend/config/environment.js
 
 # Ignore todo files
 todo
+
+
+/frontend/dist/
+/frontend/tmp/
+
+# dependencies
+/frontend/bower_components/
+/frontend/node_modules/
+
+# misc
+/frontend/.sass-cache
+/frontend/connect.lock
+/frontend/coverage/
+/frontend/libpeerconnection.log
+/frontend/npm-debug.log*
+/frontend/testem.log
+/frontend/yarn-error.log
+
+# ember-try
+/frontend/.node_modules.ember-try/
+/frontend/bower.json.ember-try
+/frontend/package.json.ember-try
+
 
 # Ignore temporary vim files
 *~
