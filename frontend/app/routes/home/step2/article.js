@@ -1,3 +1,4 @@
+import ENV from 'frontend/config/environment';
 import MaybeAuthenticatedRoute from 'frontend/mixins/maybe-authenticated-route';
 import request from 'ic-ajax';
 import $ from 'jquery';
@@ -26,8 +27,7 @@ export default MaybeAuthenticatedRoute.extend({
       that.controllerFor('application').set('orderDetailsArticle.issue', null);
       that.controllerFor('application').set('orderDetailsArticle.authors', null);
       $("body").addClass("loading");
-      request('//eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=' + id +'&retmode=json').then(function(data) {
-
+      request(ENV.APP.serviceUrl + '/pubmed/' + id).then(function(data) {
         // Kolla om pubmed ID är ogiltigt
         if (data.error) {
           $("body").removeClass("loading");
