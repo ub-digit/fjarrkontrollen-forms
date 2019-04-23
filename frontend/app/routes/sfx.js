@@ -3,7 +3,9 @@ import { storageFor } from 'ember-local-storage';
 
 export default Route.extend({
   order: storageFor('order'),
-  beforeModel() {
-    this.set('order.orderPath', 'SFX');
+
+  beforeModel: function() {
+    let currentStep = this.get('order.currentStep') || 'sfx.step1';
+    this.replaceWith(currentStep);
   }
 });

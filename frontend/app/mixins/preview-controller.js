@@ -13,7 +13,7 @@ export default Mixin.create({
   session: injectService(),
 
   orderPreviewPartialName: computed('applicationController.selectedOrderType.label', function() {
-    return 'partials/' + this.get('applicationController.selectedOrderType.label') + '-preview';
+    return 'partials/' + this.get('applicationController.selectedOrderType.label').dasherize() + '-preview';
   }),
 
   isDeliveryTypeShipping: computed.equal('applicationController.selectedDeliveryMethod.label', 'send'),
@@ -132,7 +132,7 @@ export default Mixin.create({
         email_confirmation:         true, // Always set to true
         form_lang:                  this.get('i18n.locale'),
         delivery_place:             this.get('applicationController.selectedDeliveryMethod.title_internal') || 'Hämtas',
-        order_path:                 this.get('applicationController.orderPath'), //TODO: Store/get from local storage!!
+        order_path:                 this.get('applicationController.order.orderPath'),
 
         name:                       this.get('applicationController.customerDetails.name'),
         email_address:              this.get('applicationController.customerDetails.emailAddress'),

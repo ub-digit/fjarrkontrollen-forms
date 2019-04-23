@@ -3,13 +3,17 @@
 <h2>{{t 'home.step1.locationHeader'}}</h2>
 <div class="row vertical-space-bottom-20">
   <div class="col-xs-12">
-    {{#x-select class="form-control" id="locationSelector" on-change=(action 'handleSelectLocation') value=applicationController.locations as |item|}}
-      {{#item.option}}{{t 'home.step1.locationHeader'}}{{/item.option}}
+    {{#x-select
+      class="form-control"
+      on-change=(action (mut applicationController.order.selectedLocation))
+      value=applicationController.order.selectedLocation
+    as |item|}}
+      {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
       {{#each applicationController.locations as |location|}}
-        {{#item.option value=location}}
+        {{#item.option value=location.label}}
           {{#if isEnglish}}
            <strong>{{location.name_en}}</strong>
-          {{else}}  
+          {{else}}
            <strong>{{location.name_sv}}</strong>
           {{/if}}
         {{/item.option}}

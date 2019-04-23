@@ -57,69 +57,67 @@ export default Route.extend(ApplicationRouteMixin, {
     controller.setProperties(model);
 
     let params = this.get('params');
-    if (params.is_sfx === 'yes') {
 
-      controller.set("orderPath", "SFX");
+    if (params.is_sfx === 'yes') {
+      controller.resetAllData();
 
       // set the correct order type based on param rft_genre
-      if (params.rft_genre === 'loan' || params.rft_genre === 'dissertation') {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'loan'));
+      if (params.rft_genre === 'book' || params.rft_genre === 'dissertation') {
+        controller.set('order.selectedOrderType', 'loan');
       }
       else if (params.rft_genre === 'bookitem') {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'photocopy_chapter'));
+        controller.set('order.selectedOrderType', 'photocopy_chapter');
       }
       else {
-        controller.set("selectedOrderType", controller.get("orderTypes").findBy('label', 'photocopy'));
+        controller.set('order.selectedOrderType', 'photocopy');
       }
 
       // populate order details with data from params
       if (params.isbn_issn) {
-        controller.set("orderDetailsArticle.issn", params.isbn_issn);
-        controller.set("orderDetailsBook.isbn", params.isbn_issn);
-        controller.set("orderDetailsChapter.isbn", params.isbn_issn);
+        controller.set('orderDetailsArticle.issn', params.isbn_issn);
+        controller.set('orderDetailsBook.isbn', params.isbn_issn);
+        controller.set('orderDetailsChapter.isbn', params.isbn_issn);
       }
 
       if (params.book_title) {
-        controller.set("orderDetailsBook.bookTitle", params.book_title);
-        controller.set("orderDetailsChapter.bookTitle", params.book_title);
+        controller.set('orderDetailsBook.bookTitle', params.book_title);
+        controller.set('orderDetailsChapter.bookTitle', params.book_title);
       }
 
       if (params.journal_title) {
-        controller.set("orderDetailsArticle.journalTitle", params.journal_title);
+        controller.set('orderDetailsArticle.journalTitle', params.journal_title);
       }
 
       if (params.title_of_article) {
-        controller.set("orderDetailsArticle.articleTitle", params.title_of_article);
-        controller.set("orderDetailsChapter.chapterTitle", params.title_of_article);
+        controller.set('orderDetailsArticle.articleTitle', params.title_of_article);
+        controller.set('orderDetailsChapter.chapterTitle', params.title_of_article);
       }
 
       if (params.author) {
-        controller.set("orderDetailsArticle.authors", params.author);
-        controller.set("orderDetailsBook.authors", params.author);
-        controller.set("orderDetailsChapter.authors", params.author);
+        controller.set('orderDetailsArticle.authors', params.author);
+        controller.set('orderDetailsBook.authors', params.author);
+        controller.set('orderDetailsChapter.authors', params.author);
       }
 
       if (params.year) {
-        controller.set("orderDetailsArticle.publicationYear", params.year);
-        controller.set("orderDetailsBook.publicationYear", params.year);
-        controller.set("orderDetailsChapter.publicationYear", params.year);
+        controller.set('orderDetailsArticle.publicationYear', params.year);
+        controller.set('orderDetailsBook.publicationYear', params.year);
+        controller.set('orderDetailsChapter.publicationYear', params.year);
       }
 
       if (params.volume) {
-        controller.set("orderDetailsArticle.volume", params.volume);
+        controller.set('orderDetailsArticle.volume', params.volume);
       }
 
       if (params.issue) {
-        controller.set("orderDetailsArticle.issue", params.issue);
+        controller.set('orderDetailsArticle.issue', params.issue);
       }
 
       if (params.pages) {
-        controller.set("orderDetailsArticle.pages", params.pages);
-        controller.set("orderDetailsChapter.pages", params.pages);
+        controller.set('orderDetailsArticle.pages', params.pages);
+        controller.set('orderDetailsChapter.pages', params.pages);
       }
-      //TODO: Where is this used? If needed
-      //better use assign in model hook and will
-      //be set by setProperites on controller (above)
+
       [
         'rft_genre',
         'isbn_issn',
@@ -136,7 +134,8 @@ export default Route.extend(ApplicationRouteMixin, {
       ].forEach(function(item) {
         controller.set(item, null);
       });
-      this.transitionTo("sfx.step1");
+
+      this.transitionTo('sfx.step1');
     }
   },
 

@@ -521,12 +521,14 @@ export default Mixin.create({
 
   actions: {
     nextStep: function() {
-      let step = 'home.step4';
+      let step = this.get('applicationController.order.orderPath') === 'Web' ?
+        'home.step4' : 'sfx.step3';
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     },
     back: function() {
-      let step = 'home.step2';
+      let step = this.get('applicationController.order.orderPath') === 'Web' ?
+        'home.step2' : 'sfx.step1';
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     }
