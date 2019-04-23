@@ -1,0 +1,38 @@
+<h2>{{t 'home.step2.chapter.header'}}</h2>
+<div class="row">
+  <div class="col-xs-12">
+    <dl class="dl-horizontal">
+      <dt>{{t 'home.orderDetailsChapter.chapterTitle'}}:</dt>
+      <dd>{{applicationController.orderDetailsChapter.chapterTitle}}</dd>
+      <dt>{{t 'home.orderDetailsChapter.bookTitle'}}:</dt>
+      <dd>{{applicationController.orderDetailsChapter.bookTitle}}</dd>
+      <dt>{{t 'home.orderDetailsChapter.authors'}}:</dt>
+      <dd>{{applicationController.orderDetailsChapter.authors}}</dd>
+      <dt>{{t 'home.orderDetailsChapter.isbn'}}:</dt>
+      <dd>{{applicationController.orderDetailsChapter.isbn}}</dd>
+      <dt>{{t 'home.orderDetailsChapter.publicationYear'}}:</dt>
+      <dd>{{applicationController.orderDetailsChapter.publicationYear}}</dd>
+      <dt>{{t 'home.orderDetailsChapter.pages'}}:</dt>
+      <dd>{{applicationController.orderDetailsChapter.pages}}</dd>
+    </dl>
+  </div>
+</div>
+
+<h4>{{t 'home.step2.otherDetailsText'}}</h4>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label class="control-label">{{t 'home.orderDetailsChapter.notValidAfter'}}</label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsChapter.notValidAfter}}
+    </div>
+  </div>
+</div> <!-- end row -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <label class="control-label">{{t 'home.orderDetailsChapter.comment'}}</label>
+      {{textarea class="form-control" value=applicationController.orderDetailsChapter.comment}}
+    </div>
+  </div>
+</div> <!-- end row -->

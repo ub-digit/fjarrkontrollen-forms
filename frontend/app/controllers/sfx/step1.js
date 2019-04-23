@@ -29,7 +29,7 @@ export default Controller.extend({
   }),
 
   orderPreviewPartialName: computed('applicationController.order.selectedOrderType', function() {
-    return 'sfx/step1/' + this.get('applicationController.order.selectedOrderType');
+    return 'sfx/step1/' + this.get('applicationController.order.selectedOrderType').dasherize();
   }),
 
   isFormComplete: computed.and('applicationController.{selectedOrderType,selectedLocation}'),

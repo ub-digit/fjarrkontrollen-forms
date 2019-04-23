@@ -13,7 +13,7 @@ export default Mixin.create({
   session: injectService(),
 
   orderPreviewPartialName: computed('applicationController.selectedOrderType.label', function() {
-    return 'partials/' + this.get('applicationController.selectedOrderType.label') + '-preview';
+    return 'partials/' + this.get('applicationController.selectedOrderType.label').dasherize() + '-preview';
   }),
 
   isDeliveryTypeShipping: computed.equal('applicationController.selectedDeliveryMethod.label', 'send'),

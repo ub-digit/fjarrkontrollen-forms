@@ -1,19 +1,30 @@
-<h2>{{t 'home.step2.chapter.header'}}</h2>
+<h2>{{t 'home.step2.article.header'}}</h2>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="alert alert-info" role="alert">
+      {{{t 'home.step2.article.price'}}}
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-xs-12">
     <dl class="dl-horizontal">
-      <dt>{{t 'home.orderDetailsChapter.chapterTitle'}}:</dt>
-      <dd>{{applicationController.orderDetailsChapter.chapterTitle}}</dd>
-      <dt>{{t 'home.orderDetailsChapter.bookTitle'}}:</dt>
-      <dd>{{applicationController.orderDetailsChapter.bookTitle}}</dd>
-      <dt>{{t 'home.orderDetailsChapter.authors'}}:</dt>
-      <dd>{{applicationController.orderDetailsChapter.authors}}</dd>
-      <dt>{{t 'home.orderDetailsChapter.isbn'}}:</dt>
-      <dd>{{applicationController.orderDetailsChapter.isbn}}</dd>
-      <dt>{{t 'home.orderDetailsChapter.publicationYear'}}:</dt>
-      <dd>{{applicationController.orderDetailsChapter.publicationYear}}</dd>
-      <dt>{{t 'home.orderDetailsChapter.pages'}}:</dt>
-      <dd>{{applicationController.orderDetailsChapter.pages}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.articleTitle'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.articleTitle}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.authors'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.authors}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.journalTitle'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.journalTitle}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.issn'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.issn}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.publicationYear'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.publicationYear}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.issue'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.issue}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.volume'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.volume}}</dd>
+        <dt>{{t 'home.orderDetailsArticle.pages'}}:</dt>
+        <dd>{{applicationController.orderDetailsArticle.pages}}</dd>
     </dl>
   </div>
 </div>
@@ -22,8 +33,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group">
-      <label class="control-label">{{t 'home.orderDetailsChapter.notValidAfter'}}</label>
-      {{input type='text' class="form-control" value=applicationController.orderDetailsChapter.notValidAfter}}
+      <label class="control-label">{{t 'home.orderDetailsArticle.notValidAfter'}}</label>
+      {{input type='text' class="form-control" value=applicationController.orderDetailsArticle.notValidAfter}}
     </div>
   </div>
 </div> <!-- end row -->
@@ -31,8 +42,8 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group">
-      <label class="control-label">{{t 'home.orderDetailsChapter.comment'}}</label>
-      {{textarea class="form-control" value=applicationController.orderDetailsChapter.comment}}
+      <label class="control-label">{{t 'home.orderDetailsArticle.comment'}}</label>
+      {{textarea class="form-control" value=applicationController.orderDetailsArticle.comment}}
     </div>
   </div>
 </div> <!-- end row -->

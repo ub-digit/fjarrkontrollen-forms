@@ -62,7 +62,7 @@ export default Route.extend(ApplicationRouteMixin, {
       controller.resetAllData();
 
       // set the correct order type based on param rft_genre
-      if (params.rft_genre === 'loan' || params.rft_genre === 'dissertation') {
+      if (params.rft_genre === 'book' || params.rft_genre === 'dissertation') {
         controller.set('order.selectedOrderType', 'loan');
       }
       else if (params.rft_genre === 'bookitem') {
