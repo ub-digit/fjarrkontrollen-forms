@@ -7,11 +7,24 @@ import { A } from '@ember/array';
 
 export default Controller.extend({
   i18n: injectService(),
-  queryParams: ['lang', 'rft_genre', 'isbn_issn', 'book_title', 'journal_title', 'title_of_article', 'year', 'volume', 'issue', 'pages', 'edition', 'author', 'is_sfx'],
+  queryParams: [
+    'lang',
+    'rft_genre',
+    'isbn_issn',
+    'book_title',
+    'journal_title',
+    'title_of_article',
+    'year',
+    'volume',
+    'issue',
+    'pages',
+    'edition',
+    'author',
+    'is_sfx'
+  ],
+
   lang: null,
   session: injectService(),
-
-  orderPath: "Web", //TODO: Session storage!
 
   /** Order **/
   order: storageFor('order'),
@@ -104,7 +117,6 @@ export default Controller.extend({
 
   resetAllData: function() {
     this.get('order').reset();
-    this.set('orderPath', 'Web');
     this.resetOrderDetails();
     this.resetCustomerDetails();
     this.resetDeliveryDetails();

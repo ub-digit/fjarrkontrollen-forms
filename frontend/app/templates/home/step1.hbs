@@ -29,17 +29,17 @@
       on-change=(action (mut applicationController.order.selectedLocation))
       value=applicationController.order.selectedLocation
     as |item|}}
-    {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
-    {{#each applicationController.locations as |location|}}
-      {{#item.option value=location.label}}
-        {{#if isEnglish}}
-         <strong>{{location.name_en}}</strong>
-        {{else}}
-         <strong>{{location.name_sv}}</strong>
-        {{/if}}
-      {{/item.option}}
-    {{/each}}
-  {{/x-select}}
+      {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
+      {{#each applicationController.locations as |location|}}
+        {{#item.option value=location.label}}
+          {{#if isEnglish}}
+           <strong>{{location.name_en}}</strong>
+          {{else}}
+           <strong>{{location.name_sv}}</strong>
+          {{/if}}
+        {{/item.option}}
+      {{/each}}
+    {{/x-select}}
   </div>
 </div>
 <div class="row">
