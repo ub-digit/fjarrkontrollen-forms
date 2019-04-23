@@ -32,7 +32,7 @@ export default Controller.extend({
 
   selectableCustomerTypes: computed('customerTypes', function() {
     return this.get('customerTypes').filter((customerType) => {
-      return customerType.label !== 'koha';
+      return customerType.label !== 'koha' && customerType.label !== 'unknown';
     });
   }),
 
