@@ -9,6 +9,7 @@ export default Controller.extend({
   applicationController: injectController('application'),
   i18n: injectService(),
   router: injectService(),
+  session: injectService(),
 
   queryParams: ['ticket'],
 
