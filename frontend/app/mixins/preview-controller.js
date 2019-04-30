@@ -140,6 +140,7 @@ export default Mixin.create({
         company2:                   this.get('applicationController.customerDetails.department'),
         company3:                   this.get('applicationController.customerDetails.unit'),
         library_card_number:        this.get('applicationController.customerDetails.libraryCardNumber'),
+        koha_borrowernumber:        this.get('applicationController.customerDetails.kohaBorrowernumber'),
         x_account:                  this.get('applicationController.customerDetails.xAccount'),
 
         delivery_method_id:         deliveryMethod.id,

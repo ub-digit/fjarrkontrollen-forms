@@ -139,6 +139,7 @@ export default Controller.extend({
       this.set('customerDetails.city', user['city']);
       this.set('customerDetails.libraryCardNumber', user['cardnumber']);
       this.set('customerDetails.xAccount', user['xaccount']);
+      this.set('customerDetails.kohaBorrowernumber', user['id']);      
     }
   },
 
