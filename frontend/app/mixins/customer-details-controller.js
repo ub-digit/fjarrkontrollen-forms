@@ -1,20 +1,23 @@
 import Mixin from '@ember/object/mixin';
-import { inject as inject_controller } from '@ember/controller';
-import { inject as inject_service} from '@ember/service';
+import { inject as injectController } from '@ember/controller';
+import { inject as injectService} from '@ember/service';
 import { computed } from '@ember/object';
 import { observer } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import { storageFor } from 'ember-local-storage';
 
 export default Mixin.create({
-  applicationController: inject_controller('application'),
-  i18n: inject_service(),
-  session: inject_service(),
-
+  applicationController: injectController('application'),
+  i18n: injectService(),
+  session: injectService(),
   order: storageFor('order'),
 
   isEnglish: computed('i18n.locale', function() {
     return this.get('i18n.locale') === 'en';
+  }),
+
+  orderPreviewPartialName: computed('applicationController.order.selectedOrderType', function() {
+    return 'sfx/partials/' + this.get('applicationController.order.selectedOrderType').dasherize() + '-preview';
   }),
 
   // Bool to check if customer type is set
@@ -31,15 +34,13 @@ export default Mixin.create({
     this.set('applicationController.deliveryDetails.city', null);
   }),
 
-
   // Bool to check if delivery method is set, but only of there are multiple options available
-  isDeliveryMethodSet: computed('order.selectedDeliveryMethod', 'isShippingAvailable', function() {
+  isDeliveryMethodSet: computed('order.selectedDeliveryMethod', 'applicationController.isShippingAvialable', function() {
     return !(
-      this.get('isShippingAvailable') &&
+      this.get('applicationController.isShippingAvialable') &&
       isEmpty(this.get('order.selectedDeliveryMethod'))
     );
   }),
-
 
   // Bool to check if order might be invoiced and invoicing details are needed, based on
   //  - Customer type has been set, and
@@ -55,27 +56,12 @@ export default Mixin.create({
     return this.get('applicationController.isBillable') && isInvoicable;
   }),
 
-
-  // Bool to check if shipping is available as an option, based on
-  //  - Customer type has been set, and
-  //  - Customer type is not student or private, and
-  //  - Order type is shippable
-  isShippingAvailable: computed('order.selectedCustomerType', 'applicationController.isShippable', function() {
-    return (
-      this.get('applicationController.isShippable') &&
-      !(
-        this.get('order.selectedCustomerType') === 'stud' ||
-        this.get('order.selectedCustomerType') === 'priv'
-      )
-    );
-  }),
-
   // Bool to check if delivery information form should be displayed, based on
   //  - If shipping is available as an option, and
   //  - If shipping is the selected delivery option
-  showDeliveryInfoForm: computed('isShippingAvailable', 'order.selectedDeliveryMethod', function() {
+  showDeliveryInfoForm: computed('applicationController.isShippingAvialable', 'order.selectedDeliveryMethod', function() {
     return (
-      this.get('isShippingAvailable') &&
+      this.get('applicationController.isShippingAvialable') &&
       this.get('order.selectedDeliveryMethod') === 'send'
     );
   }),
@@ -83,10 +69,10 @@ export default Mixin.create({
   // Bool to check if delivery info text should be displayed, based on
   //  - Pickup is the selected delivery option, or shipping is unavailable as an option, and
   //  - Customer type has been set, and
-  showDeliveryInfoText: computed('isShippingAvailable', 'order.selectedDeliveryMethod', function() {
+  showDeliveryInfoText: computed('applicationController.isShippingAvialable', 'order.selectedDeliveryMethod', function() {
     return (
       this.get('order.selectedDeliveryMethod') === 'pickup' ||
-      !this.get('isShippingAvailable')
+      !this.get('applicationController.isShippingAvialable')
     );
   }),
 
@@ -258,15 +244,19 @@ export default Mixin.create({
   }),
 
   // Bool to check if all delivery address fields are mandatory
-  areDeliveryAddressFieldsValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.{deliveryDetails.address,deliveryDetails.postalCode,deliveryDetails.city}', function() {
-    return !(
-      this.get('areDeliveryAddressFieldsMandatory') && (
-       isEmpty(this.get('applicationController.deliveryDetails.address')) ||
-       isEmpty(this.get('applicationController.deliveryDetails.postalCode')) ||
-       isEmpty(this.get('applicationController.deliveryDetails.city'))
-      )
-    );
-  }),
+  areDeliveryAddressFieldsValid: computed(
+    'areDeliveryAddressFieldsMandatory',
+    'applicationController.{deliveryDetails.address,deliveryDetails.postalCode,deliveryDetails.city}',
+    function() {
+      return !(
+        this.get('areDeliveryAddressFieldsMandatory') && (
+         isEmpty(this.get('applicationController.deliveryDetails.address')) ||
+         isEmpty(this.get('applicationController.deliveryDetails.postalCode')) ||
+         isEmpty(this.get('applicationController.deliveryDetails.city'))
+        )
+      );
+    }
+  ),
 
 
   // Bools to check if individual delivery fields are validating
@@ -291,7 +281,6 @@ export default Mixin.create({
     );
   }),
 
-
   // Delivery box
   // Bool to check whether to show delivery box fields
   showDeliveryBoxField: computed.equal('order.selectedCustomerType', 'univ'),
@@ -308,13 +297,31 @@ export default Mixin.create({
   }),
 
   // Bool to check if delivery fields are valid
-  areDeliveryFieldsValid: computed('order.selectedDeliveryMethod', 'areDeliveryAddressFieldsValid', 'isDeliveryBoxFieldValid', function() {
-    return !(
-      this.get('order.selectedDeliveryMethod') === 'send' && (
-        isEmpty(this.get('areDeliveryAddressFieldsValid')) ||
-        isEmpty(this.get('isDeliveryBoxFieldValid'))
-      )
-    );
+  areDeliveryFieldsValid: computed(
+    'order.{selectedDeliveryMethod,selectedLocation}',
+    'areDeliveryAddressFieldsValid',
+    'isDeliveryBoxFieldValid',
+    function() {
+      return !(
+        this.get('order.selectedDeliveryMethod') === 'send' && (
+          !this.get('areDeliveryAddressFieldsValid') ||
+          !this.get('isDeliveryBoxFieldValid')
+        ) || (
+          !this.get('applicationController.isShippingAvialable') ||
+          this.get('order.selectedDeliveryMethod') === 'pickup'
+        ) && isEmpty(this.get('order.selectedLocation'))
+      );
+    }
+  ),
+
+  resetDeliveryMethodFields: observer('order.selectedDeliveryMethod', function() {
+    let method = this.get('order.selectedDeliveryMethod');
+    if (method === 'send' || isEmpty(method)) {
+      this.set('order.selectedLocation', null);
+    }
+    else if (method === 'pickup' || isEmpty(method)) {
+      this.get('applicationController.deliveryDetails').reset();
+    }
   }),
 
   // Invoicing fields
@@ -521,15 +528,13 @@ export default Mixin.create({
 
   actions: {
     nextStep: function() {
-      let step = this.get('applicationController.order.orderPath') === 'Web' ?
-        'home.step4' : 'sfx.step3';
-      this.set('applicationController.order.currentStep', step);
+      let step = 'home.step4';
+      this.set('order.currentStep', step);
       this.transitionToRoute(step);
     },
     back: function() {
-      let step = this.get('applicationController.order.orderPath') === 'Web' ?
-        'home.step2' : 'sfx.step1';
-      this.set('applicationController.order.currentStep', step);
+      let step = 'home.step2';
+      this.set('order.currentStep', step);
       this.transitionToRoute(step);
     }
   }

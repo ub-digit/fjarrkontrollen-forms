@@ -20,28 +20,6 @@
     {{/x-select}}
   </div>
 </div>
-
-<div class="row vertical-space-bottom-20">
-  <div class="col-xs-12">
-    <label for="locationSelector">{{t 'home.step1.locationHeader'}}</label>
-    {{#x-select
-      class="form-control"
-      on-change=(action (mut applicationController.order.selectedLocation))
-      value=applicationController.order.selectedLocation
-    as |item|}}
-      {{#item.option}}{{t 'home.step1.locationPrompt'}}{{/item.option}}
-      {{#each applicationController.locations as |location|}}
-        {{#item.option value=location.label}}
-          {{#if isEnglish}}
-           <strong>{{location.name_en}}</strong>
-          {{else}}
-           <strong>{{location.name_sv}}</strong>
-          {{/if}}
-        {{/item.option}}
-      {{/each}}
-    {{/x-select}}
-  </div>
-</div>
 <div class="row">
   <div class="col-xs-12">
     <button {{action 'nextStep'}} id="step1NextButton" disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right">

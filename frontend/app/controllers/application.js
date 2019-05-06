@@ -29,6 +29,26 @@ export default Controller.extend({
   /** Order **/
   order: storageFor('order'),
 
+  /** Customer details (dependant on selectedCustomerType) **/
+  customerDetails: storageFor('customer-details'), //dashized?
+
+  /** Invoicing details (dependant on ????) **/
+  invoicingDetails: storageFor('invoicing-details'),
+
+  /** Delivery details (dependant on selectedDeliveryMethod and ...??) **/
+  deliveryDetails: storageFor('delivery-details'),
+
+  /** Per order type details **/
+  orderDetailsArticle: storageFor('order-details-article'),
+  orderDetailsBook: storageFor('order-details-book'),
+  orderDetailsChapter: storageFor('order-details-chapter'),
+  orderDetailsMicrofilm: storageFor('order-details-microfilm'),
+  orderDetailsScore: storageFor('order-details-score'),
+
+  isSFX: computed('order.orderPath', function() {
+    return this.get('order.orderPath') === 'SFX';
+  }),
+
   //FIXME: @each?
   selectedLocation: computed('order.selectedLocation', 'locations', function() {
     return this.get('locations').findBy('label', this.get('order.selectedLocation'));
@@ -49,25 +69,10 @@ export default Controller.extend({
     });
   }),
 
-  selectedLocationName: computed('selectedLocation,i18n.locale', function() {
+  //TODO: Can probably remove this later
+  selectedLocationName: computed('selectedLocation', 'i18n.locale', function() {
     return this.get('selectedLocation.name_' + this.get('i18n.locale'));
   }),
-
-  /** Customer details (dependant on selectedCustomerType) **/
-  customerDetails: storageFor('customer-details'), //dashized?
-
-  /** Invoicing details (dependant on ????) **/
-  invoicingDetails: storageFor('invoicing-details'),
-
-  /** Delivery details (dependant on selectedDeliveryMethod and ...??) **/
-  deliveryDetails: storageFor('delivery-details'),
-
-  /** Per order type details **/
-  orderDetailsArticle: storageFor('order-details-article'),
-  orderDetailsBook: storageFor('order-details-book'),
-  orderDetailsChapter: storageFor('order-details-chapter'),
-  orderDetailsMicrofilm: storageFor('order-details-microfilm'),
-  orderDetailsScore: storageFor('order-details-score'),
 
   isBillable: computed('selectedOrderType', 'orderDetailsBook.outsideNordics', function() {
     return (
@@ -92,6 +97,21 @@ export default Controller.extend({
       this.get('order.selectedOrderType') === 'loan' ||
       this.get('order.selectedOrderType') === 'microfilm' ||
       this.get('order.selectedOrderType') === 'score'
+    );
+  }),
+
+  // Bool to check if shipping method options are available based on
+  //  - Customer type has been set, and
+  //  - Customer type is not student or private, and
+  //  - Order type is shippable
+  //TODO: better name?
+  isShippingAvailable: computed('order.selectedCustomerType', 'isShippable', function() {
+    return (
+      this.get('isShippable') &&
+      !(
+        this.get('order.selectedCustomerType') === 'stud' ||
+        this.get('order.selectedCustomerType') === 'priv'
+      )
     );
   }),
 

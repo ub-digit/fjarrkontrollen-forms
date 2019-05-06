@@ -1,10 +1,10 @@
 import Controller from '@ember/controller';
-import { inject as inject_controller } from '@ember/controller';
+import { inject as injectController } from '@ember/controller';
 import { inject as injectService} from '@ember/service';
 import { computed } from '@ember/object';
 
 export default Controller.extend({
-  applicationController: inject_controller('application'),
+  applicationController: injectController('application'),
   i18n: injectService(),
   session: injectService(),
   auth: injectService(),
@@ -18,7 +18,7 @@ export default Controller.extend({
     }
   }),
 
-  isFormComplete: computed.and('applicationController.order.{selectedOrderType,selectedLocation}'),
+  isFormComplete: computed.notEmpty('applicationController.order.selectedOrderType'),
 
   actions: {
     nextStep: function() {

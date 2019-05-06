@@ -86,12 +86,10 @@ export default {
         customerId: 'Beställar-ID'
       },
       step1: {
-        header: 'Typ och bibliotek',
-        subHeader1: "Välj vad du vill beställa och var du vill hämta",
+        header: 'Ordertyp',
+        subHeader1: "Välj vad du vill beställa",
         typeHeader: 'Typ av material',
         typePrompt: 'Välj typ',
-        locationHeader: 'Bibliotek att hämta på',
-        locationPrompt: 'Välj bibliotek',
         nextBtn: 'Nästa',
         authBtn: 'Logga in'
       },
@@ -149,7 +147,8 @@ export default {
         xAccountHelptext: 'Om du saknar x-konto men har forskningsanknytning till Göteborgs universitet, skriv ”xx” i fältet.',
         deliveryOptionsSubheader: 'Leveransalternativ',
         deliveryMethodPrompt: 'Välj leveranssätt',
-        pickupInfoText: 'Beställningen hämtas på',
+        locationHeader: 'Bibliotek att hämta på',
+        locationPrompt: 'Välj bibliotek',
         deliveryDetailsSubheader: 'Leveransuppgifter',
         invoicingDetailsSubheader: 'Faktureringsuppgifter',
         customerIdHelptext: 'Beställar-ID är ett 5- eller 7-siffrigt nummer som används av Västra Götalandsregionen vid fakturering. Om du inte har tillgång till ett beställar-ID får du istället beställa och betala som Privatperson.',

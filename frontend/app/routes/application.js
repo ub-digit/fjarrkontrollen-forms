@@ -4,16 +4,19 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 import { storageFor } from 'ember-local-storage';
 import ENV from 'frontend/config/environment';
 import { hash } from 'rsvp';
+import { computed } from '@ember/object';
 
 export default Route.extend(ApplicationRouteMixin, {
   i18n: service(),
   session: service(),
   ajax: service(),
   auth: service(),
+  order: storageFor('order'),
 
-  //TODO: Have I moved these to other route???
-  routeAfterAuthentication: 'home.step2',
-  routeIfAlreadyAuthenticated: 'home.step2',
+  routeAfterAuthentication: computed('order.orderPath', function() {
+    // TODO: Duplicate code, also in routes/login.js
+    return this.get('order.orderPath') === 'SFX' ? 'home.step3' : 'home.step2';
+  }),
 
   model(params) {
     if (params.lang) {
@@ -60,6 +63,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
     if (params.is_sfx === 'yes') {
       controller.resetAllData();
+      controller.set('order.orderPath', 'SFX');
 
       // set the correct order type based on param rft_genre
       if (params.rft_genre === 'book' || params.rft_genre === 'dissertation') {
@@ -135,7 +139,9 @@ export default Route.extend(ApplicationRouteMixin, {
         controller.set(item, null);
       });
 
-      this.transitionTo('sfx.step1');
+      let step = this.get('auth.required') ? 'home.login' : 'home.step3';
+      this.set('order.currentStep', step);
+      this.transitionTo(step);
     }
   },
 
@@ -143,20 +149,20 @@ export default Route.extend(ApplicationRouteMixin, {
     toggleLang() {
       if (this.get("i18n.locale") === 'en') {
         this.set('i18n.locale', 'sv');
-        this.controllerFor("application").set("lang", 'sv');
+        this.controllerFor('application').set('lang', 'sv');
       }
       else {
         this.set('i18n.locale', 'en');
-        this.controllerFor("application").set("lang", 'en');
+        this.controllerFor('application').set('lang', 'en');
       }
     },
 
     orderNew() {
-      this.controllerFor("application").orderNew();
+      this.controllerFor('application').orderNew();
     },
 
     orderAnother() {
-      this.controllerFor("application").orderAnother();
+      this.controllerFor('application').orderAnother();
     }
   }
 });
