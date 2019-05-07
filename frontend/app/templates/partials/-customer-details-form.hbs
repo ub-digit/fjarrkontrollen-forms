@@ -240,7 +240,8 @@
           </div> <!-- end row -->
         {{/if}}
         <!-- div deliveryInfoForm             : end                                   -->
-      {{else}}
+      {{/if}}
+      {{#if showPickupLocationOptions}}
         <div class="row">
           <div class="col-xs-12">
             <label for="locationSelector">{{t 'home.step3.locationHeader'}}</label>

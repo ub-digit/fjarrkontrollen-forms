@@ -34,10 +34,35 @@ export default Mixin.create({
     this.set('applicationController.deliveryDetails.city', null);
   }),
 
-  // Bool to check if delivery method is set, but only of there are multiple options available
-  isDeliveryMethodSet: computed('order.selectedDeliveryMethod', 'applicationController.isShippingAvialable', function() {
+  isShippable: computed('order.selectedOrderType', function() {
+    // Check if order type is of a kind that never will be shipped
     return !(
-      this.get('applicationController.isShippingAvialable') &&
+      this.get('order.selectedOrderType') === 'loan' ||
+      this.get('order.selectedOrderType') === 'microfilm' ||
+      this.get('order.selectedOrderType') === 'score'
+    );
+  }),
+
+  // Bool to check if shipping method options are available based on
+  //  - Customer type has been set, and
+  //  - Customer type is not student or private, and
+  //  - Order type is shippable
+  //TODO: better name?
+  isShippingAvailable: computed('order.selectedCustomerType', 'isShippable', function() {
+    return (
+      this.get('isShippable') &&
+      !(
+        this.get('order.selectedCustomerType') === 'stud' ||
+        this.get('order.selectedCustomerType') === 'priv'
+      )
+    );
+  }),
+
+
+  // Bool to check if delivery method is set, but only of there are multiple options available
+  isDeliveryMethodSet: computed('order.selectedDeliveryMethod', 'isShippingAvailable', function() {
+    return !(
+      this.get('isShippingAvailable') &&
       isEmpty(this.get('order.selectedDeliveryMethod'))
     );
   }),
@@ -59,20 +84,24 @@ export default Mixin.create({
   // Bool to check if delivery information form should be displayed, based on
   //  - If shipping is available as an option, and
   //  - If shipping is the selected delivery option
-  showDeliveryInfoForm: computed('applicationController.isShippingAvialable', 'order.selectedDeliveryMethod', function() {
+  showDeliveryInfoForm: computed('isShippingAvailable', 'order.selectedDeliveryMethod', function() {
     return (
-      this.get('applicationController.isShippingAvialable') &&
+      this.get('isShippingAvailable') &&
       this.get('order.selectedDeliveryMethod') === 'send'
     );
+  }),
+
+  showPickupLocationOptions: computed('order.selectedDeliveryMethod', function() {
+    return !this.get('isShippingAvailable') || this.get('order.selectedDeliveryMethod') === 'pickup';
   }),
 
   // Bool to check if delivery info text should be displayed, based on
   //  - Pickup is the selected delivery option, or shipping is unavailable as an option, and
   //  - Customer type has been set, and
-  showDeliveryInfoText: computed('applicationController.isShippingAvialable', 'order.selectedDeliveryMethod', function() {
+  showDeliveryInfoText: computed('isShippingAvailable', 'order.selectedDeliveryMethod', function() {
     return (
       this.get('order.selectedDeliveryMethod') === 'pickup' ||
-      !this.get('applicationController.isShippingAvialable')
+      !this.get('isShippingAvailable')
     );
   }),
 
@@ -307,7 +336,7 @@ export default Mixin.create({
           !this.get('areDeliveryAddressFieldsValid') ||
           !this.get('isDeliveryBoxFieldValid')
         ) || (
-          !this.get('applicationController.isShippingAvialable') ||
+          !this.get('isShippingAvailable') ||
           this.get('order.selectedDeliveryMethod') === 'pickup'
         ) && isEmpty(this.get('order.selectedLocation'))
       );

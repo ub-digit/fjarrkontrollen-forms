@@ -5,7 +5,7 @@ const Storage = StorageObject.extend();
 Storage.reopenClass({
   initialState() {
     return {
-      orderPath: null,
+      orderPath: 'Web',
       currentStep: null,
       selectedLocation: null,
       selectedOrderType: null,

@@ -91,30 +91,6 @@ export default Controller.extend({
     this.resetOrderDetails();
   }),
 
-  isShippable: computed('order.selectedOrderType', function() {
-    // Check if order type is of a kind that never will be shipped
-    return !(
-      this.get('order.selectedOrderType') === 'loan' ||
-      this.get('order.selectedOrderType') === 'microfilm' ||
-      this.get('order.selectedOrderType') === 'score'
-    );
-  }),
-
-  // Bool to check if shipping method options are available based on
-  //  - Customer type has been set, and
-  //  - Customer type is not student or private, and
-  //  - Order type is shippable
-  //TODO: better name?
-  isShippingAvailable: computed('order.selectedCustomerType', 'isShippable', function() {
-    return (
-      this.get('isShippable') &&
-      !(
-        this.get('order.selectedCustomerType') === 'stud' ||
-        this.get('order.selectedCustomerType') === 'priv'
-      )
-    );
-  }),
-
   resetOrderDetails: function() {
     this.get('orderDetailsArticle').reset();
     this.get('orderDetailsBook').reset();
@@ -159,7 +135,7 @@ export default Controller.extend({
       this.set('customerDetails.city', user['city']);
       this.set('customerDetails.libraryCardNumber', user['cardnumber']);
       this.set('customerDetails.xAccount', user['xaccount']);
-      this.set('customerDetails.kohaBorrowernumber', user['id']);      
+      this.set('customerDetails.kohaBorrowernumber', user['id']);
     }
   },
 
@@ -172,6 +148,7 @@ export default Controller.extend({
   orderAnother() {
     this.resetOrderDetails();
     //TODO: Controller base class with method for this?
+    this.set('order.orderPath', 'Web');
     let step = 'home.step2';
     this.set('order.currentStep', step);
     this.transitionToRoute(step);
