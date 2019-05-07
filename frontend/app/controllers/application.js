@@ -29,6 +29,26 @@ export default Controller.extend({
   /** Order **/
   order: storageFor('order'),
 
+  /** Customer details (dependant on selectedCustomerType) **/
+  customerDetails: storageFor('customer-details'), //dashized?
+
+  /** Invoicing details (dependant on ????) **/
+  invoicingDetails: storageFor('invoicing-details'),
+
+  /** Delivery details (dependant on selectedDeliveryMethod and ...??) **/
+  deliveryDetails: storageFor('delivery-details'),
+
+  /** Per order type details **/
+  orderDetailsArticle: storageFor('order-details-article'),
+  orderDetailsBook: storageFor('order-details-book'),
+  orderDetailsChapter: storageFor('order-details-chapter'),
+  orderDetailsMicrofilm: storageFor('order-details-microfilm'),
+  orderDetailsScore: storageFor('order-details-score'),
+
+  isSFX: computed('order.orderPath', function() {
+    return this.get('order.orderPath') === 'SFX';
+  }),
+
   //FIXME: @each?
   selectedLocation: computed('order.selectedLocation', 'locations', function() {
     return this.get('locations').findBy('label', this.get('order.selectedLocation'));
@@ -49,25 +69,10 @@ export default Controller.extend({
     });
   }),
 
-  selectedLocationName: computed('selectedLocation,i18n.locale', function() {
+  //TODO: Can probably remove this later
+  selectedLocationName: computed('selectedLocation', 'i18n.locale', function() {
     return this.get('selectedLocation.name_' + this.get('i18n.locale'));
   }),
-
-  /** Customer details (dependant on selectedCustomerType) **/
-  customerDetails: storageFor('customer-details'), //dashized?
-
-  /** Invoicing details (dependant on ????) **/
-  invoicingDetails: storageFor('invoicing-details'),
-
-  /** Delivery details (dependant on selectedDeliveryMethod and ...??) **/
-  deliveryDetails: storageFor('delivery-details'),
-
-  /** Per order type details **/
-  orderDetailsArticle: storageFor('order-details-article'),
-  orderDetailsBook: storageFor('order-details-book'),
-  orderDetailsChapter: storageFor('order-details-chapter'),
-  orderDetailsMicrofilm: storageFor('order-details-microfilm'),
-  orderDetailsScore: storageFor('order-details-score'),
 
   isBillable: computed('selectedOrderType', 'orderDetailsBook.outsideNordics', function() {
     return (
@@ -84,15 +89,6 @@ export default Controller.extend({
 
   resetOrderDetailsWhenOrderTypeChanges: observer('selectedOrderType', function() {
     this.resetOrderDetails();
-  }),
-
-  isShippable: computed('order.selectedOrderType', function() {
-    // Check if order type is of a kind that never will be shipped
-    return !(
-      this.get('order.selectedOrderType') === 'loan' ||
-      this.get('order.selectedOrderType') === 'microfilm' ||
-      this.get('order.selectedOrderType') === 'score'
-    );
   }),
 
   resetOrderDetails: function() {
@@ -139,7 +135,7 @@ export default Controller.extend({
       this.set('customerDetails.city', user['city']);
       this.set('customerDetails.libraryCardNumber', user['cardnumber']);
       this.set('customerDetails.xAccount', user['xaccount']);
-      this.set('customerDetails.kohaBorrowernumber', user['id']);      
+      this.set('customerDetails.kohaBorrowernumber', user['id']);
     }
   },
 
@@ -152,6 +148,7 @@ export default Controller.extend({
   orderAnother() {
     this.resetOrderDetails();
     //TODO: Controller base class with method for this?
+    this.set('order.orderPath', 'Web');
     let step = 'home.step2';
     this.set('order.currentStep', step);
     this.transitionToRoute(step);

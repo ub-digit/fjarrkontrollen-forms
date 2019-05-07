@@ -186,18 +186,8 @@
             {{/x-select}}
           </div>
         </div>
-      {{/if }}
+      {{/if}}
       <!-- deliveryChoiceDropDown end -->
-
-      <!-- div  deliveryInfoText            : start                                 -->
-      {{#if showDeliveryInfoText}}
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="alert alert-info" role="alert">{{t 'home.step3.pickupInfoText'}} {{applicationController.selectedLocationName}}</div>
-          </div>
-        </div>
-      {{/if }}
-      <!-- /div deliveryInfoText            : end                                   -->
 
       <!-- div deliveryInfoForm             : start                                 -->
       {{#if showDeliveryInfoForm}}
@@ -250,8 +240,30 @@
           </div> <!-- end row -->
         {{/if}}
         <!-- div deliveryInfoForm             : end                                   -->
-
-      {{/if }}
+      {{/if}}
+      {{#if showPickupLocationOptions}}
+        <div class="row">
+          <div class="col-xs-12">
+            <label for="locationSelector">{{t 'home.step3.locationHeader'}}</label>
+            {{#x-select
+              class="form-control"
+              on-change=(action (mut order.selectedLocation))
+              value=order.selectedLocation
+            as |item|}}
+              {{#item.option}}{{t 'home.step3.locationPrompt'}}{{/item.option}}
+              {{#each applicationController.locations as |location|}}
+                {{#item.option value=location.label}}
+                  {{#if isEnglish}}
+                   <strong>{{location.name_en}}</strong>
+                  {{else}}
+                   <strong>{{location.name_sv}}</strong>
+                  {{/if}}
+                {{/item.option}}
+              {{/each}}
+            {{/x-select}}
+          </div>
+        </div>
+      {{/if}}
 
       <!-- billingInfoForm start -->
       {{#if isInvoicingAvaliable}}
@@ -331,7 +343,9 @@
 </div>
 <div class="row">
   <div class="col-xs-12 next-prev">
-    <button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step3.prevBtn'}}</button>
+    {{#unless applicationController.isSFX}}
+      <button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step3.prevBtn'}}</button>
+    {{/unless}}
     <button {{action 'nextStep'  }} disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right {{if isFormComplete '' 'disabled'}}">{{t 'home.step3.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
   </div>
 </div>
