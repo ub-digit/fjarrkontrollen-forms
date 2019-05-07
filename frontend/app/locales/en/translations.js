@@ -67,7 +67,7 @@ export default {
         postalCode: 'Postal code',
         city: 'City',
         libraryCardNumber: 'Library card number',
-        xAccount: 'x-account'
+        xAccount: 'GU-account'
       },
       deliveryDetails: {
         address: 'Address/box',
@@ -143,7 +143,6 @@ export default {
         customerTypeLabel: 'Customer category',
         customerTypePrompt: 'Select a category',
         customerDetailsSubheader: 'Fill in your details',
-        xAccountHelptext: 'If you lack an x-account but are a researcher or staff at the University of Gothenburg, please write “xx” in this field.',
         deliveryOptionsSubheader: 'Delivery options',
         deliveryMethodPrompt: 'Select a delivery option:',
         locationHeader: 'Pick up library ',

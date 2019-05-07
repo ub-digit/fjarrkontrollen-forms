@@ -2,6 +2,7 @@ import Mixin from '@ember/object/mixin';
 import { inject as injectController } from '@ember/controller';
 import { inject as injectService} from '@ember/service';
 import { computed } from '@ember/object';
+import { alias, and, equal, notEmpty } from '@ember/object/computed';
 import { observer } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import { storageFor } from 'ember-local-storage';
@@ -21,7 +22,7 @@ export default Mixin.create({
   }),
 
   // Bool to check if customer type is set
-  isCustomerTypeSet: computed.notEmpty('order.selectedCustomerType'),
+  isCustomerTypeSet: notEmpty('order.selectedCustomerType'),
 
 
   // Observes selected customer type and resets selected delivery method to null
@@ -138,7 +139,7 @@ export default Mixin.create({
   isNameMandatory: computed('order.selectedCustomerType', function() {
     return this.get('order.selectedCustomerType') !== 'koha';
   }),
-  isNameDisabled: computed.equal('order.selectedCustomerType', 'koha'),
+  isNameDisabled: equal('order.selectedCustomerType', 'koha'),
   isNameValid: computed('isNameMandatory', 'applicationController.customerDetails.name', function() {
     return !(
       this.get('isNameMandatory') &&
@@ -146,7 +147,7 @@ export default Mixin.create({
     );
   }),
 
-  areAllFieldsDisabled: computed.equal('order.selectedCustomerType', 'koha'),
+  areAllFieldsDisabled: equal('order.selectedCustomerType', 'koha'),
 
   // Email
   // Bool to check whether email is mandatory or not
@@ -156,9 +157,9 @@ export default Mixin.create({
       this.get('order.selectedCustomerType') === 'koha'
     );
   }),
-  isEmailDisabled: computed.equal('order.selectedCustomerType', 'koha'),
+  isEmailDisabled: equal('order.selectedCustomerType', 'koha'),
   // Bool to check if email is filled in
-  //isEmailValid: computed.notEmpty('customerDetails.emailAddress'),
+  //isEmailValid: notEmpty('customerDetails.emailAddress'),
   isEmailValid: computed('isEmailMandatory', 'applicationController.customerDetails.emailAddress', function() {
     if (this.get('isEmailMandatory')) {
       var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -171,9 +172,9 @@ export default Mixin.create({
 
   // Department
   // Bool to check whether to show department (institution) field or not
-  showDepartment: computed.equal('order.selectedCustomerType', 'univ'),
+  showDepartment: equal('order.selectedCustomerType', 'univ'),
   // Bool to check whether department field is mandatory or not
-  isDepartmentMandatory: computed.equal('order.selectedCustomerType', 'univ'),
+  isDepartmentMandatory: equal('order.selectedCustomerType', 'univ'),
   // Bool to check if department is filled in
   isDepartmentValid: computed('isDepartmentMandatory', 'applicationController.customerDetails.department', function() {
     return !(
@@ -184,9 +185,9 @@ export default Mixin.create({
 
   // Unit
   // Bool to check whether to show unit (avdelning) field or not
-  showUnit: computed.equal('order.selectedCustomerType', 'sahl'),
+  showUnit: equal('order.selectedCustomerType', 'sahl'),
   // Bool to check whether unit field is mandatory or not
-  isUnitMandatory: computed.equal('order.selectedCustomerType', 'sahl'),
+  isUnitMandatory: equal('order.selectedCustomerType', 'sahl'),
   // Bool to check if unit is filled in
   isUnitValid: computed('isUnitMandatory', 'applicationController.customerDetails.unit', function() {
     return !(
@@ -197,34 +198,26 @@ export default Mixin.create({
 
   // Address
   // Bool to check whether to show address field or not
-  showAddress: computed.equal('order.selectedCustomerType', 'priv'),
+  showAddress: equal('order.selectedCustomerType', 'priv'),
 
   // Bool to check whether to show postal code field or not
-  showPostalCode: computed.equal('order.selectedCustomerType', 'priv'),
+  showPostalCode: equal('order.selectedCustomerType', 'priv'),
 
   // Bool to check whether to show city field or not
-  showCity: computed.equal('order.selectedCustomerType', 'priv'),
+  showCity: equal('order.selectedCustomerType', 'priv'),
 
   // Library card number
   // Bool to check whether to show library card number field or not
   showLibraryCardNumber: computed('order.selectedCustomerType', function() {
     return (
-      this.get('order.selectedCustomerType') === 'univ' ||
-      this.get('order.selectedCustomerType') === 'stud' ||
       this.get('order.selectedCustomerType') === 'priv' ||
       this.get('order.selectedCustomerType') === 'koha' ||
       this.get('order.selectedCustomerType') === 'dist'
     );
   }),
   // Bool to check whether library card number field is mandatory or not
-  isLibraryCardNumberMandatory: computed('order.selectedCustomerType', function() {
-    return (
-      this.get('order.selectedCustomerType') === 'univ' ||
-      this.get('order.selectedCustomerType') === 'stud' ||
-      this.get('order.selectedCustomerType') === 'priv' ||
-      this.get('order.selectedCustomerType') === 'dist'
-    );
-  }),
+  isLibraryCardNumberMandatory: alias('showLibraryCardNumber'),
+
   // Bool to check if library card number is filled in
   isLibraryCardNumberValid: computed('isLibraryCardNumberMandatory', 'applicationController.customerDetails.libraryCardNumber', function() {
     return !(
@@ -232,18 +225,20 @@ export default Mixin.create({
       isEmpty(this.get('applicationController.customerDetails.libraryCardNumber'))
     );
   }),
-  isLibraryCardNumberDisabled: computed.equal('order.selectedCustomerType', 'koha'),
+  isLibraryCardNumberDisabled: equal('order.selectedCustomerType', 'koha'),
 
   // xAccount
   // Bool to check whether to show xAccount field or not
-  showXAccount: computed.equal('order.selectedCustomerType', 'univ'),
+  showXAccount: computed('order.selectedCustomerType', function() {
+    return this.get('order.selectedCustomerType') === 'univ' || this.get('order.selectedCustomerType') === 'stud';
+  }),
   // Bool to check whether xAccount field is mandatory or not
-  isXAccountMandatory: computed.equal('order.selectedCustomerType', 'univ'),
+  isXAccountMandatory: alias('showXAccount'),
   // Bool to check if xAccount is filled in
   isXAccountValid: computed('isXAccountMandatory', 'applicationController.customerDetails.xAccount', function() {
     return !(
       this.get('isXAccountMandatory') &&
-      isEmpty(this.get('applicationController.customerDetails.xAccount.length'))
+      isEmpty(this.get('applicationController.customerDetails.xAccount'))
     );
   }),
 
@@ -255,6 +250,7 @@ export default Mixin.create({
   // Bool to check whether to show delivery address fields
   showDeliveryAddressFields: computed('order.selectedCustomerType', function() {
     return (
+      this.get('order.selectedCustomerType') === 'univ' ||
       this.get('order.selectedCustomerType') === 'sahl' ||
       this.get('order.selectedCustomerType') === 'ftag' ||
       this.get('order.selectedCustomerType') === 'ovri' ||
@@ -312,10 +308,10 @@ export default Mixin.create({
 
   // Delivery box
   // Bool to check whether to show delivery box fields
-  showDeliveryBoxField: computed.equal('order.selectedCustomerType', 'univ'),
+  showDeliveryBoxField: equal('order.selectedCustomerType', 'univ'),
 
   //Bool to check if delivery box field is mandatory
-  isDeliveryBoxFieldMandatory: computed.equal('order.selectedCustomerType', 'univ'),
+  isDeliveryBoxFieldMandatory: equal('order.selectedCustomerType', 'univ'),
 
   // Bool to check if delivery box field is valid
   isDeliveryBoxFieldValid: computed('isDeliveryBoxFieldMandatory', 'applicationController.deliveryDetails.box', function() {
@@ -457,7 +453,7 @@ export default Mixin.create({
     );
   }),
 
-  isAnyFieldMandatory: computed.and(
+  isAnyFieldMandatory: and(
     'isNameMandatory',
     'isEmailMandatory',
     'isDepartmentMandatory',
@@ -467,7 +463,7 @@ export default Mixin.create({
   ),
 
   // Bool to check if form is complete, based on all isValid-properties
-  isFormComplete: computed.and(
+  isFormComplete: and(
     'isNameValid',
     'isEmailValid',
     'isDepartmentValid',

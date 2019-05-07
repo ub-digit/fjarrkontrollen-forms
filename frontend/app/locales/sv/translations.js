@@ -68,7 +68,7 @@ export default {
         postalCode: 'Postnummer',
         city: 'Ort',
         libraryCardNumber: 'Lånekortsnummer',
-        xAccount: 'xkonto'
+        xAccount: 'GU-konto'
       },
       deliveryDetails: {
         address: 'Gatuadress/box',
@@ -144,7 +144,6 @@ export default {
         customerTypeLabel: 'Kundkategori',
         customerTypePrompt: 'Välj kategori',
         customerDetailsSubheader: 'Fyll i dina uppgifter',
-        xAccountHelptext: 'Om du saknar x-konto men har forskningsanknytning till Göteborgs universitet, skriv ”xx” i fältet.',
         deliveryOptionsSubheader: 'Leveransalternativ',
         deliveryMethodPrompt: 'Välj leveranssätt',
         locationHeader: 'Bibliotek att hämta på',
