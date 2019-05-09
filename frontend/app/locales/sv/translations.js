@@ -86,7 +86,7 @@ export default {
         customerId: 'Beställar-ID'
       },
       step1: {
-        header: 'Ordertyp',
+        header: 'Beställningstyp',
         subHeader1: "Välj vad du vill beställa",
         typeHeader: 'Typ av material',
         typePrompt: 'Välj typ',
