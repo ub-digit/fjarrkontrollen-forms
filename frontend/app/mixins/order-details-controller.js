@@ -8,7 +8,7 @@ export default Controller.extend({
 
   actions: {
     back: function() {
-      let step = 'home.step1';
+      let step = 'home.order-type';
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     },

@@ -31,12 +31,12 @@ export default MaybeAuthenticatedRoute.extend({
         // Kolla om pubmed ID är ogiltigt
         if (data.error) {
           $("body").removeClass("loading");
-          that.controllerFor('home.step2.article').set('error', true);
+          that.controllerFor('home.order-details.article').set('error', true);
 
           // Om pubmed ID inte är ogiltigt
         } else {
 
-          that.controllerFor('home.step2.article').set('error', false);
+          that.controllerFor('home.order-details.article').set('error', false);
 
           // Plocka ut första pubmed ID som returneras, då det inte alltid är samma som man frågade efter
           var resultId = data.result.uids[0];
@@ -45,7 +45,7 @@ export default MaybeAuthenticatedRoute.extend({
           if (data.result[resultId].error) {
 
             $("body").removeClass("loading");
-            that.controllerFor('home.step2.article').set('error', true);
+            that.controllerFor('home.order-details.article').set('error', true);
 
             // Om pbumed ID hittas
           } else {
@@ -71,7 +71,7 @@ export default MaybeAuthenticatedRoute.extend({
           }
         }
       }, function() {
-        that.controllerFor('home.step2.article').set('error', true);
+        that.controllerFor('home.order-details.article').set('error', true);
       });
     }
   }

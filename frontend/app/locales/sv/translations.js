@@ -85,8 +85,8 @@ export default {
         city: 'Ort',
         customerId: 'Beställar-ID'
       },
-      step1: {
-        header: 'Ordertyp',
+      orderType: {
+        header: 'Beställningstyp',
         subHeader1: "Välj vad du vill beställa",
         typeHeader: 'Typ av material',
         typePrompt: 'Välj typ',
@@ -108,7 +108,7 @@ export default {
         loginError: "Fel användarnamn eller lösenord. Vänligen försök igen.",
         or: "Eller"
       },
-      step2: {
+      orderDetails: {
         article: {
           header: 'Artikelkopia',
           price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda vid Göteborgs universitet.</li><li>Företag betalar 180 kronor för en artikelkopia.</li><li><a target="_blank" href="http://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a></li></ul>',
@@ -186,7 +186,7 @@ export default {
       }
     },
     sfx: {
-      step1: {
+      orderType: {
         header: 'Välj bibliotek'
       }
     }

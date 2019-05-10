@@ -15,7 +15,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   routeAfterAuthentication: computed('order.orderPath', function() {
     // TODO: Duplicate code, also in routes/login.js
-    return this.get('order.orderPath') === 'SFX' ? 'home.step3' : 'home.step2';
+    return this.get('order.orderPath') === 'SFX' ? 'home.step3' : 'home.order-details';
   }),
 
   model(params) {

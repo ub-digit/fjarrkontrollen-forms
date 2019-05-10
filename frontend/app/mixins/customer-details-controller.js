@@ -283,7 +283,6 @@ export default Mixin.create({
     }
   ),
 
-
   // Bools to check if individual delivery fields are validating
   isDeliveryAddressValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.address', function() {
     return !(
@@ -558,7 +557,7 @@ export default Mixin.create({
       this.transitionToRoute(step);
     },
     back: function() {
-      let step = 'home.step2';
+      let step = 'home.order-details';
       this.set('order.currentStep', step);
       this.transitionToRoute(step);
     }

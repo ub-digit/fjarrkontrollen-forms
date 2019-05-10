@@ -8,11 +8,11 @@ export default Route.extend(ResetScroll, {
   beforeModel: function() {
     let orderType = this.get('order.selectedOrderType');
     let routes = {
-      photocopy: 'home.step2.article',
-      loan: 'home.step2.book',
-      photocopy_chapter: 'home.step2.chapter',
-      score: 'home.step2.score',
-      microfilm: 'home.step2.microfilm'
+      photocopy: 'home.order-details.article',
+      loan: 'home.order-details.book',
+      photocopy_chapter: 'home.order-details.chapter',
+      score: 'home.order-details.score',
+      microfilm: 'home.order-details.microfilm'
     };
     this.transitionTo(routes[orderType]);
   }

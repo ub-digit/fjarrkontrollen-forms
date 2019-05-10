@@ -142,14 +142,14 @@ export default Controller.extend({
   orderNew() {
     this.resetAllData();
     //order.step is reset, so no need to set this
-    this.transitionToRoute('home.step1');
+    this.transitionToRoute('home.order-type');
   },
 
   orderAnother() {
     this.resetOrderDetails();
     //TODO: Controller base class with method for this?
     this.set('order.orderPath', 'Web');
-    let step = 'home.step2';
+    let step = 'home.order-details';
     this.set('order.currentStep', step);
     this.transitionToRoute(step);
   },

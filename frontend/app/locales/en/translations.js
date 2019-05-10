@@ -84,7 +84,7 @@ export default {
         city: 'City',
         customerId: 'Purchase ID'
       },
-      step1: {
+      orderType: {
         header: 'Order type',
         subHeader1: "Select what to order",
         typeHeader: 'Type of material',
@@ -107,7 +107,7 @@ export default {
         loginError: "Wrong username or password. Please try again.",
         or: "Or"
       },
-      step2: {
+      orderDetails: {
         article: {
           header: 'Copy of article',
           price: '<strong>Prices:</strong><ul><li>A copy of an article costs SEK 80.</li><li>Copies of articles are free for employees at the University of Gothenburg.</li><li>Companies pay SEK 180 for copies of articles</li><li><a target="_blank" href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a></li></ul>',
@@ -185,7 +185,7 @@ export default {
       }
     },
     sfx: {
-      step1: {
+      orderType: {
         header: 'Select library'
       }
     }

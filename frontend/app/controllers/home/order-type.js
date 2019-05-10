@@ -22,7 +22,7 @@ export default Controller.extend({
 
   actions: {
     nextStep: function() {
-      let step = 'home.step2';
+      let step = 'home.order-details';
       if (this.get('auth.required')) {
         if (!this.get('session.isAuthenticated')) {
           step = 'home.login';

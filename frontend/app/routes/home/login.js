@@ -10,7 +10,7 @@ export default Route.extend(UnAuthenticatedRouteMixin, {
   order: storageFor('order'),
 
   routeIfAlreadyAuthenticated: computed('order.orderPath', function() {
-    return this.get('order.orderPath') === 'SFX' ? 'home.step3' : 'home.step2';
+    return this.get('order.orderPath') === 'SFX' ? 'home.step3' : 'home.order-details';
   }),
 
   beforeModel(transition) {

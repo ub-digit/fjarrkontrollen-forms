@@ -1,19 +1,19 @@
-<h2>{{t 'home.step2.article.header'}}</h2>
+<h2>{{t 'home.orderDetails.article.header'}}</h2>
 <div class="row">
   <div class="col-xs-12">
     <div class="alert alert-info" role="alert">
-      {{{t 'home.step2.article.price'}}}
+      {{{t 'home.orderDetails.article.price'}}}
     </div>
   </div>
 </div>
-<h3>{{t 'home.step2.article.subHeader1'}}</h3>
+<h3>{{t 'home.orderDetails.article.subHeader1'}}</h3>
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group {{if errors.links has-error}}">
       <label for="pubmedIdInput">PubMed ID</label>
       <div class="input-group">
         {{input type='text' class="form-control" value=applicationController.orderDetailsArticle.pubMedId id="pubmedIdInput"}}
-        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' applicationController.orderDetailsArticle.pubMedId}} class="btn btn-default {{if isPubMedButtonEnabled 'enabled' 'disabled'}}">{{t 'home.step2.article.getPubMedBtn'}}</button></span>
+        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' applicationController.orderDetailsArticle.pubMedId}} class="btn btn-default {{if isPubMedButtonEnabled 'enabled' 'disabled'}}">{{t 'home.orderDetails.article.getPubMedBtn'}}</button></span>
       </div>
     </div>
   </div>
@@ -21,12 +21,12 @@
 {{#if error}}
 <div class="row">
   <div class="col-xs-12">
-    <div class="alert alert-danger" role="alert">{{t 'home.step2.article.pubMedError'}}</div>
+    <div class="alert alert-danger" role="alert">{{t 'home.orderDetails.article.pubMedError'}}</div>
   </div>
 </div> <!-- end row -->
 {{/if}}
 
-<h3>{{t 'home.step2.article.subHeader2'}}</h3>
+<h3>{{t 'home.orderDetails.article.subHeader2'}}</h3>
 
 <div class="row">
   <div class="col-xs-12">
@@ -102,7 +102,7 @@
     </div>
   </div>
 </div> <!-- end row -->
-<h3>{{t 'home.step2.otherDetailsText'}}</h3>
+<h3>{{t 'home.orderDetails.otherDetailsText'}}</h3>
 <div class="row">
   <div class="col-xs-12">
     <div class={{"form-group"}}>
@@ -124,7 +124,7 @@
 <div class="row">
   <div class="col-xs-12 mandatory-text">
     <div class="pull-right">
-      <p  class="{{if isFormComplete 'ok' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.step2.mandatoryText'}}</p>
+      <p  class="{{if isFormComplete 'ok' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.orderDetails.mandatoryText'}}</p>
     </div>
   </div>
 </div>
@@ -133,7 +133,7 @@
 
 <div class="row">
   <div class="col-xs-12 next-prev">
-    <button {{action 'back'}} class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step2.prevBtn'}}</button>
-    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}} class="btn btn-primary pull-right {{if isFormComplete 'enabled' 'disabled'}}">{{t 'home.step2.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+    <button {{action 'back'}} class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.orderDetails.prevBtn'}}</button>
+    <button {{action 'nextStep'}} disabled={{unless isFormComplete 'disabled'}} class="btn btn-primary pull-right {{if isFormComplete 'enabled' 'disabled'}}">{{t 'home.orderDetails.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
   </div>
 </div>
