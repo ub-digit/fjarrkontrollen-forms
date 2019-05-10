@@ -8,7 +8,7 @@ export default Controller.extend(PreviewController, {
   successHandler: function(response) {
     var result = {};
     result.id = response.order.order_number;
-    let step = 'home.step5';
+    let step = 'home.confirmation';
     this.set('order.currentStep', step);
     this.transitionToRoute(step, {queryParams: result});
   },

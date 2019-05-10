@@ -168,7 +168,7 @@ export default {
         nextBtn: 'Skicka beställning',
         prevBtn: 'Bakåt'
       },
-      step5: {
+      confirmation: {
         header: 'Bekräftelse',
         confirmationHeader: 'Tack för din beställning!',
         confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',

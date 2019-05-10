@@ -10,11 +10,11 @@ export default Controller.extend({
 
   orderAnotherText: computed('applicationController.selectedOrderType', function() {
     let translationKeys = {
-      photocopy: 'home.step5.orderAnotherArticle',
-      loan: 'home.step5.orderAnotherBook',
-      photocopy_chapter: 'home.step5.orderAnotherChapter',
-      score: 'home.step5.orderAnotherScore',
-      microfilm: 'home.step5.orderAnotherMicrofilm'
+      photocopy: 'home.confirmation.orderAnotherArticle',
+      loan: 'home.confirmation.orderAnotherBook',
+      photocopy_chapter: 'home.confirmation.orderAnotherChapter',
+      score: 'home.confirmation.orderAnotherScore',
+      microfilm: 'home.confirmation.orderAnotherMicrofilm'
     };
     let orderType = this.get('applicationController.selectedOrderType.label');
     return this.get('i18n').t(translationKeys[orderType]);

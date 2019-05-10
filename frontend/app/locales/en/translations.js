@@ -167,7 +167,7 @@ export default {
         nextBtn: 'Submit order',
         prevBtn: 'Back'
       },
-      step5: {
+      confirmation: {
         header: 'Confirmation',
         confirmationHeader: 'Thank you for your order!',
         confirmationMessage: 'Your order has been recieved and has been assigned the following order number:',

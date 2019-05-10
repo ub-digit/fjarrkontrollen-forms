@@ -18,7 +18,7 @@ Router.map(function() {
     });
     this.route('customer-details');
     this.route('summary');
-    this.route('step5');
+    this.route('confirmation');
     this.route('error');
     this.route('login');
   });
