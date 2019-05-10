@@ -57,18 +57,6 @@ export default {
         notValidAfter: 'Request not needed after',
         comment: 'Comment'
       },
-      customerDetails: {
-        name: 'Name',
-        emailAddress: 'E-mail',
-        organisation: 'Organisation/company',
-        department: 'Department',
-        unit: 'Unit',
-        address: 'Address',
-        postalCode: 'Postal code',
-        city: 'City',
-        libraryCardNumber: 'Library card number',
-        xAccount: 'GU-account'
-      },
       deliveryDetails: {
         address: 'Address/box',
         postalCode: 'Postal code',
@@ -152,7 +140,18 @@ export default {
         customerIdHelptext: 'A purchase ID is a 5 or 7 digit number used by Region Västra Götaland for invoicing. If you are not eligible for a Purchase ID, please order and pay as a Private person.',
         nextBtn: 'Next',
         prevBtn: 'Back',
-        mandatoryText: 'Mandatory fields must be filled in before you can proceed'
+        mandatoryText: 'Mandatory fields must be filled in before you can proceed',
+
+        name: 'Name',
+        emailAddress: 'E-mail',
+        organisation: 'Organisation/company',
+        department: 'Department',
+        unit: 'Unit',
+        address: 'Address',
+        postalCode: 'Postal code',
+        city: 'City',
+        libraryCardNumber: 'Library card number',
+        xAccount: 'GU-account'
       },
       summary: {
         header: 'Summary',

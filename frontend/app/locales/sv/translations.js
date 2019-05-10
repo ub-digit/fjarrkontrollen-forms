@@ -57,19 +57,6 @@ export default {
         notValidAfter: 'Ej aktuell efter',
         comment: 'Kommentar'
       },
-      customerDetails: {
-        name: 'Namn',
-        emailAddress: 'Epost',
-        phoneNumber: 'Telefonnummer',
-        organisation: 'Organisation/företag',
-        department: 'Institution',
-        unit: 'Avdelning',
-        address: 'Adress',
-        postalCode: 'Postnummer',
-        city: 'Ort',
-        libraryCardNumber: 'Lånekortsnummer',
-        xAccount: 'GU-konto'
-      },
       deliveryDetails: {
         address: 'Gatuadress/box',
         postalCode: 'Postnummer',
@@ -153,7 +140,19 @@ export default {
         customerIdHelptext: 'Beställar-ID är ett 5- eller 7-siffrigt nummer som används av Västra Götalandsregionen vid fakturering. Om du inte har tillgång till ett beställar-ID får du istället beställa och betala som Privatperson.',
         nextBtn: 'Nästa',
         prevBtn: 'Bakåt',
-        mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare'
+        mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare',
+
+        name: 'Namn',
+        emailAddress: 'Epost',
+        phoneNumber: 'Telefonnummer',
+        organisation: 'Organisation/företag',
+        department: 'Institution',
+        unit: 'Avdelning',
+        address: 'Adress',
+        postalCode: 'Postnummer',
+        city: 'Ort',
+        libraryCardNumber: 'Lånekortsnummer',
+        xAccount: 'GU-konto'
       },
       summary: {
         header: 'Summering',
