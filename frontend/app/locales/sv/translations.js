@@ -155,7 +155,7 @@ export default {
         prevBtn: 'Bakåt',
         mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare'
       },
-      step4: {
+      summary: {
         header: 'Summering',
         orderDetailsSubheader: 'Beställningsuppgifter',
         yes: 'Ja',

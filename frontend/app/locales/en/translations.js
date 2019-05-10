@@ -154,7 +154,7 @@ export default {
         prevBtn: 'Back',
         mandatoryText: 'Mandatory fields must be filled in before you can proceed'
       },
-      step4: {
+      summary: {
         header: 'Summary',
         orderDetailsSubheader: 'Order details',
         yes: 'Yes',

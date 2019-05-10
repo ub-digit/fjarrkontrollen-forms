@@ -552,7 +552,7 @@ export default Mixin.create({
 
   actions: {
     nextStep: function() {
-      let step = 'home.step4';
+      let step = 'home.summary';
       this.set('order.currentStep', step);
       this.transitionToRoute(step);
     },

@@ -17,7 +17,7 @@ Router.map(function() {
       this.route('microfilm');
     });
     this.route('customer-details');
-    this.route('step4');
+    this.route('summary');
     this.route('step5');
     this.route('error');
     this.route('login');
@@ -26,7 +26,7 @@ Router.map(function() {
     this.route('order-type');
     this.route('order-details');
     this.route('customer-details');
-    this.route('step4');
+    this.route('summary');
     this.route('error');
   });
 });
