@@ -13,7 +13,7 @@ export default Controller.extend({
       this.transitionToRoute(step);
     },
     nextStep: function() {
-      let step = 'home.step3';
+      let step = 'home.customer-details';
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     }

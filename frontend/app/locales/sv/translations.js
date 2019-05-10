@@ -138,7 +138,7 @@ export default {
         nextBtn: 'Nästa',
         prevBtn: 'Bakåt'
       },
-      step3: {
+      customerDetails: {
         header: 'Dina uppgifter',
         customerTypeHeader: 'Jag är...',
         customerTypeLabel: 'Kundkategori',

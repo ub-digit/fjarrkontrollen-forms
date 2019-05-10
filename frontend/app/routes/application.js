@@ -15,7 +15,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   routeAfterAuthentication: computed('order.orderPath', function() {
     // TODO: Duplicate code, also in routes/login.js
-    return this.get('order.orderPath') === 'SFX' ? 'home.step3' : 'home.order-details';
+    return this.get('order.orderPath') === 'SFX' ? 'home.customer-details' : 'home.order-details';
   }),
 
   model(params) {
@@ -139,7 +139,7 @@ export default Route.extend(ApplicationRouteMixin, {
         controller.set(item, null);
       });
 
-      let step = this.get('auth.required') ? 'home.login' : 'home.step3';
+      let step = this.get('auth.required') ? 'home.login' : 'home.customer-details';
       this.set('order.currentStep', step);
       this.transitionTo(step);
     }

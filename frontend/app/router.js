@@ -16,7 +16,7 @@ Router.map(function() {
       this.route('score');
       this.route('microfilm');
     });
-    this.route('step3');
+    this.route('customer-details');
     this.route('step4');
     this.route('step5');
     this.route('error');
@@ -25,7 +25,7 @@ Router.map(function() {
   this.route('sfx', function() {
     this.route('order-type');
     this.route('order-details');
-    this.route('step3');
+    this.route('customer-details');
     this.route('step4');
     this.route('error');
   });

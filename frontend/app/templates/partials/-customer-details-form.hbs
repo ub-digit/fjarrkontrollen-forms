@@ -1,17 +1,17 @@
-<h2>{{t 'home.step3.header'}}</h2>
+<h2>{{t 'home.customerDetails.header'}}</h2>
 <div class="row">
   <div class="col-xs-12">
     {{#unless (eq applicationController.selectedCustomerType.label "koha")}}
-      <h3>{{t 'home.step3.customerTypeHeader'}}</h3>
+      <h3>{{t 'home.customerDetails.customerTypeHeader'}}</h3>
       <div class="row">
         <div class="col-xs-12">
-          <label for="customerTypeSelector">{{t 'home.step3.customerTypeLabel'}}</label>
+          <label for="customerTypeSelector">{{t 'home.customerDetails.customerTypeLabel'}}</label>
           {{#x-select
             class="form-control"
             on-change=(action (mut order.selectedCustomerType))
             value=applicationController.order.selectedCustomerType
           as |item|}}
-          {{#item.option}}{{t 'home.step3.customerTypePrompt'}}{{/item.option}}
+          {{#item.option}}{{t 'home.customerDetails.customerTypePrompt'}}{{/item.option}}
           {{#each applicationController.selectableCustomerTypes as |type|}}
             {{#item.option value=type.label}}
               {{#if isEnglish}}
@@ -29,7 +29,7 @@
     <!-- customerInfoForm start -->
     {{#if isCustomerTypeSet}}
       {{!#unless session.isAuthenticated}}
-        {{#unless areAllFieldsDisabled}}<h3>{{t 'home.step3.customerDetailsSubheader'}}</h3>{{/unless}}
+        {{#unless areAllFieldsDisabled}}<h3>{{t 'home.customerDetails.customerDetailsSubheader'}}</h3>{{/unless}}
 
         {{#if showOrganisation}}
           <div class="row">
@@ -159,18 +159,18 @@
 
       <!-- deliveryChoiceDropDown start -->
 
-      <h3>{{t 'home.step3.deliveryOptionsSubheader'}}</h3>
+      <h3>{{t 'home.customerDetails.deliveryOptionsSubheader'}}</h3>
 
       {{#if isShippingAvailable}}
         <div class="row">
           <div class="col-xs-12">
-            <label for="deliveryMethordSelector">{{t 'home.step3.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
+            <label for="deliveryMethordSelector">{{t 'home.customerDetails.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
             {{#x-select
               class="form-control"
               on-change=(action (mut order.selectedDeliveryMethod))
               value=applicationController.order.selectedDeliveryMethod
             as |item|}}
-              {{#item.option}}{{t 'home.step3.deliveryMethodPrompt'}}{{/item.option}}
+              {{#item.option}}{{t 'home.customerDetails.deliveryMethodPrompt'}}{{/item.option}}
               {{#each applicationController.deliveryMethods as |method|}}
                 {{#item.option value=method.label}}
                   {{#if isEnglish}}
@@ -188,7 +188,7 @@
 
       <!-- div deliveryInfoForm             : start                                 -->
       {{#if showDeliveryInfoForm}}
-        <h3>{{t 'home.step3.deliveryDetailsSubheader'}}</h3>
+        <h3>{{t 'home.customerDetails.deliveryDetailsSubheader'}}</h3>
 
         {{#if showDeliveryAddressFields}}
           <div class="row">
@@ -241,13 +241,13 @@
       {{#if showPickupLocationOptions}}
         <div class="row">
           <div class="col-xs-12">
-            <label for="locationSelector">{{t 'home.step3.locationHeader'}}</label>
+            <label for="locationSelector">{{t 'home.customerDetails.locationHeader'}}</label>
             {{#x-select
               class="form-control"
               on-change=(action (mut order.selectedLocation))
               value=order.selectedLocation
             as |item|}}
-              {{#item.option}}{{t 'home.step3.locationPrompt'}}{{/item.option}}
+              {{#item.option}}{{t 'home.customerDetails.locationPrompt'}}{{/item.option}}
               {{#each applicationController.locations as |location|}}
                 {{#item.option value=location.label}}
                   {{#if isEnglish}}
@@ -264,7 +264,7 @@
 
       <!-- billingInfoForm start -->
       {{#if isInvoicingAvaliable}}
-        <h3>{{t 'home.step3.invoicingDetailsSubheader'}}</h3>
+        <h3>{{t 'home.customerDetails.invoicingDetailsSubheader'}}</h3>
 
         {{#if showCustomerId}}
           <div class="row">
@@ -274,7 +274,7 @@
                 {{input type='text' id="customerIdInput" class="form-control" value=applicationController.invoicingDetails.customerId}}
               </div>
               <div>
-                <span id="helpBlock" class="help-block">{{t 'home.step3.customerIdHelptext'}}</span>
+                <span id="helpBlock" class="help-block">{{t 'home.customerDetails.customerIdHelptext'}}</span>
               </div>
             </div>
           </div>
@@ -330,7 +330,7 @@
         <div class="row">
           <div class="col-xs-12 mandatory-text">
             <div class="pull-right">
-              <p class="{{if isFormComplete '' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.step3.mandatoryText'}}</p>
+              <p class="{{if isFormComplete '' 'text-danger'}}"><i class="fa fa-asterisk mandatory"></i> {{t 'home.customerDetails.mandatoryText'}}</p>
             </div>
           </div>
         </div> <!-- end row -->
@@ -341,8 +341,8 @@
 <div class="row">
   <div class="col-xs-12 next-prev">
     {{#unless applicationController.isSFX}}
-      <button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.step3.prevBtn'}}</button>
+      <button {{action 'back'}}  class={{"btn btn-link"}}><i class="fa fa-chevron-left"></i> {{t 'home.customerDetails.prevBtn'}}</button>
     {{/unless}}
-    <button {{action 'nextStep'  }} disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right {{if isFormComplete '' 'disabled'}}">{{t 'home.step3.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
+    <button {{action 'nextStep'  }} disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right {{if isFormComplete '' 'disabled'}}">{{t 'home.customerDetails.nextBtn'}} <i class="fa fa-chevron-right"></i></button>
   </div>
 </div>

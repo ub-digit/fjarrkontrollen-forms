@@ -137,7 +137,7 @@ export default {
         nextBtn: 'Next',
         prevBtn: 'Back'
       },
-      step3: {
+      customerDetails: {
         header: 'Your personal details',
         customerTypeHeader: 'I am a...',
         customerTypeLabel: 'Customer category',
