@@ -1,8 +1,8 @@
-<h3>{{t 'home.step4.deliveryOptionsSubheader'}}</h3>
+<h3>{{t 'home.summary.deliveryOptionsSubheader'}}</h3>
 <!-- Om leveranssätt är skickas -->
 {{#if isDeliveryTypeShipping}}
 
-<p>{{t 'home.step4.shippingInfoText'}}</p>
+<p>{{t 'home.summary.shippingInfoText'}}</p>
 
 <table class="table table-striped">
   <tbody>
@@ -34,6 +34,6 @@
 
 {{else}}
 
-<p>{{t 'home.step4.pickupInfoText'}} {{applicationController.selectedLocationName}}</p>
+<p>{{t 'home.summary.pickupInfoText'}} {{applicationController.selectedLocationName}}</p>
 
 {{/if}}

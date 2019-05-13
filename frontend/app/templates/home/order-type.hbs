@@ -1,13 +1,13 @@
-<h2>{{t 'home.step1.subHeader1'}}</h2>
+<h2>{{t 'home.orderType.subHeader1'}}</h2>
 <div class="row">
   <div class="col-xs-12">
-    <label for="typeSelector">{{t 'home.step1.typeHeader'}}</label>
+    <label for="typeSelector">{{t 'home.orderType.typeHeader'}}</label>
     {{#x-select
       class="form-control"
       on-change=(action (mut applicationController.order.selectedOrderType))
       value=applicationController.order.selectedOrderType
     as |item|}}
-      {{#item.option}}{{t 'home.step1.typePrompt'}}{{/item.option}}
+      {{#item.option}}{{t 'home.orderType.typePrompt'}}{{/item.option}}
       {{#each applicationController.orderTypes as |type|}}
         {{#item.option value=type.label}}
           {{#if isEnglish}}
@@ -22,8 +22,8 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <button {{action 'nextStep'}} id="step1NextButton" disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right">
-      {{t (if (and auth.required (not session.isAuthenticated)) "home.step1.authBtn" "home.step1.nextBtn") }} <i class="fa fa-chevron-right"></i>
+    <button {{action 'nextStep'}} id="orderTypeNextButton" disabled={{unless isFormComplete 'disabled'}}  class="btn btn-primary pull-right">
+      {{t (if (and auth.required (not session.isAuthenticated)) "home.orderType.authBtn" "home.orderType.nextBtn") }} <i class="fa fa-chevron-right"></i>
     </button>
   </div>
 </div>

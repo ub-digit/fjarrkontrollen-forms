@@ -57,19 +57,6 @@ export default {
         notValidAfter: 'Ej aktuell efter',
         comment: 'Kommentar'
       },
-      customerDetails: {
-        name: 'Namn',
-        emailAddress: 'Epost',
-        phoneNumber: 'Telefonnummer',
-        organisation: 'Organisation/företag',
-        department: 'Institution',
-        unit: 'Avdelning',
-        address: 'Adress',
-        postalCode: 'Postnummer',
-        city: 'Ort',
-        libraryCardNumber: 'Lånekortsnummer',
-        xAccount: 'GU-konto'
-      },
       deliveryDetails: {
         address: 'Gatuadress/box',
         postalCode: 'Postnummer',
@@ -85,8 +72,8 @@ export default {
         city: 'Ort',
         customerId: 'Beställar-ID'
       },
-      step1: {
-        header: 'Ordertyp',
+      orderType: {
+        header: 'Beställningstyp',
         subHeader1: "Välj vad du vill beställa",
         typeHeader: 'Typ av material',
         typePrompt: 'Välj typ',
@@ -108,7 +95,7 @@ export default {
         loginError: "Fel användarnamn eller lösenord. Vänligen försök igen.",
         or: "Eller"
       },
-      step2: {
+      orderDetails: {
         article: {
           header: 'Artikelkopia',
           price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda vid Göteborgs universitet.</li><li>Företag betalar 180 kronor för en artikelkopia.</li><li><a target="_blank" href="http://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a></li></ul>',
@@ -138,7 +125,7 @@ export default {
         nextBtn: 'Nästa',
         prevBtn: 'Bakåt'
       },
-      step3: {
+      customerDetails: {
         header: 'Dina uppgifter',
         customerTypeHeader: 'Jag är...',
         customerTypeLabel: 'Kundkategori',
@@ -153,9 +140,21 @@ export default {
         customerIdHelptext: 'Beställar-ID är ett 5- eller 7-siffrigt nummer som används av Västra Götalandsregionen vid fakturering. Om du inte har tillgång till ett beställar-ID får du istället beställa och betala som Privatperson.',
         nextBtn: 'Nästa',
         prevBtn: 'Bakåt',
-        mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare'
+        mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare',
+
+        name: 'Namn',
+        emailAddress: 'Epost',
+        phoneNumber: 'Telefonnummer',
+        organisation: 'Organisation/företag',
+        department: 'Institution',
+        unit: 'Avdelning',
+        address: 'Adress',
+        postalCode: 'Postnummer',
+        city: 'Ort',
+        libraryCardNumber: 'Lånekortsnummer',
+        xAccount: 'GU-konto'
       },
-      step4: {
+      summary: {
         header: 'Summering',
         orderDetailsSubheader: 'Beställningsuppgifter',
         yes: 'Ja',
@@ -168,7 +167,7 @@ export default {
         nextBtn: 'Skicka beställning',
         prevBtn: 'Bakåt'
       },
-      step5: {
+      confirmation: {
         header: 'Bekräftelse',
         confirmationHeader: 'Tack för din beställning!',
         confirmationMessage: 'Din beställning är mottagen och har följande referensnummer:',
@@ -186,7 +185,7 @@ export default {
       }
     },
     sfx: {
-      step1: {
+      orderType: {
         header: 'Välj bibliotek'
       }
     }

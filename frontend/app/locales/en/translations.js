@@ -57,18 +57,6 @@ export default {
         notValidAfter: 'Request not needed after',
         comment: 'Comment'
       },
-      customerDetails: {
-        name: 'Name',
-        emailAddress: 'E-mail',
-        organisation: 'Organisation/company',
-        department: 'Department',
-        unit: 'Unit',
-        address: 'Address',
-        postalCode: 'Postal code',
-        city: 'City',
-        libraryCardNumber: 'Library card number',
-        xAccount: 'GU-account'
-      },
       deliveryDetails: {
         address: 'Address/box',
         postalCode: 'Postal code',
@@ -84,7 +72,7 @@ export default {
         city: 'City',
         customerId: 'Purchase ID'
       },
-      step1: {
+      orderType: {
         header: 'Order type',
         subHeader1: "Select what to order",
         typeHeader: 'Type of material',
@@ -107,7 +95,7 @@ export default {
         loginError: "Wrong username or password. Please try again.",
         or: "Or"
       },
-      step2: {
+      orderDetails: {
         article: {
           header: 'Copy of article',
           price: '<strong>Prices:</strong><ul><li>A copy of an article costs SEK 80.</li><li>Copies of articles are free for employees at the University of Gothenburg.</li><li>Companies pay SEK 180 for copies of articles</li><li><a target="_blank" href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a></li></ul>',
@@ -137,7 +125,7 @@ export default {
         nextBtn: 'Next',
         prevBtn: 'Back'
       },
-      step3: {
+      customerDetails: {
         header: 'Your personal details',
         customerTypeHeader: 'I am a...',
         customerTypeLabel: 'Customer category',
@@ -152,9 +140,20 @@ export default {
         customerIdHelptext: 'A purchase ID is a 5 or 7 digit number used by Region Västra Götaland for invoicing. If you are not eligible for a Purchase ID, please order and pay as a Private person.',
         nextBtn: 'Next',
         prevBtn: 'Back',
-        mandatoryText: 'Mandatory fields must be filled in before you can proceed'
+        mandatoryText: 'Mandatory fields must be filled in before you can proceed',
+
+        name: 'Name',
+        emailAddress: 'E-mail',
+        organisation: 'Organisation/company',
+        department: 'Department',
+        unit: 'Unit',
+        address: 'Address',
+        postalCode: 'Postal code',
+        city: 'City',
+        libraryCardNumber: 'Library card number',
+        xAccount: 'GU-account'
       },
-      step4: {
+      summary: {
         header: 'Summary',
         orderDetailsSubheader: 'Order details',
         yes: 'Yes',
@@ -167,7 +166,7 @@ export default {
         nextBtn: 'Submit order',
         prevBtn: 'Back'
       },
-      step5: {
+      confirmation: {
         header: 'Confirmation',
         confirmationHeader: 'Thank you for your order!',
         confirmationMessage: 'Your order has been recieved and has been assigned the following order number:',
@@ -185,7 +184,7 @@ export default {
       }
     },
     sfx: {
-      step1: {
+      orderType: {
         header: 'Select library'
       }
     }

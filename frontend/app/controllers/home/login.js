@@ -43,7 +43,7 @@ export default Controller.extend({
       });
     },
     back() {
-      let step = 'home.step1';
+      let step = 'home.order-type';
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     }
