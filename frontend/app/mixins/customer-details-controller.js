@@ -211,8 +211,7 @@ export default Mixin.create({
   showLibraryCardNumber: computed('order.selectedCustomerType', function() {
     return (
       this.get('order.selectedCustomerType') === 'priv' ||
-      this.get('order.selectedCustomerType') === 'koha' ||
-      this.get('order.selectedCustomerType') === 'dist'
+      this.get('order.selectedCustomerType') === 'koha'
     );
   }),
   // Bool to check whether library card number field is mandatory or not
@@ -230,7 +229,11 @@ export default Mixin.create({
   // xAccount
   // Bool to check whether to show xAccount field or not
   showXAccount: computed('order.selectedCustomerType', function() {
-    return this.get('order.selectedCustomerType') === 'univ' || this.get('order.selectedCustomerType') === 'stud';
+    return (
+      this.get('order.selectedCustomerType') === 'univ' || 
+      this.get('order.selectedCustomerType') === 'stud' ||
+      this.get('order.selectedCustomerType') === 'dist'
+    );
   }),
   // Bool to check whether xAccount field is mandatory or not
   isXAccountMandatory: alias('showXAccount'),
@@ -245,10 +248,28 @@ export default Mixin.create({
 
   // Delivery Fields
 
-
-  // Delivery address
-  // Bool to check whether to show delivery address fields
-  showDeliveryAddressFields: computed('order.selectedCustomerType', function() {
+  // Bool to check whether to show delivery address field
+  showDeliveryAddressField: computed('order.selectedCustomerType', function() {
+    return (
+      this.get('order.selectedCustomerType') === 'univ' ||
+      this.get('order.selectedCustomerType') === 'sahl' ||
+      this.get('order.selectedCustomerType') === 'ftag' ||
+      this.get('order.selectedCustomerType') === 'ovri' ||
+      this.get('order.selectedCustomerType') === 'dist'
+    );
+  }),
+  // Bool to check whether to show delivery postal code field
+  showDeliveryPostalCodeField: computed('order.selectedCustomerType', function() {
+    return (
+      this.get('order.selectedCustomerType') === 'univ' ||
+      this.get('order.selectedCustomerType') === 'sahl' ||
+      this.get('order.selectedCustomerType') === 'ftag' ||
+      this.get('order.selectedCustomerType') === 'ovri' ||
+      this.get('order.selectedCustomerType') === 'dist'
+    );
+  }),
+  // Bool to check whether to show delivery city field
+  showDeliveryCityField: computed('order.selectedCustomerType', function() {
     return (
       this.get('order.selectedCustomerType') === 'univ' ||
       this.get('order.selectedCustomerType') === 'sahl' ||
@@ -258,8 +279,18 @@ export default Mixin.create({
     );
   }),
 
-  // Bool to check if delivery address fields are mandatory
-  areDeliveryAddressFieldsMandatory: computed('order.selectedCustomerType', function() {
+  // Bool to check if delivery address field are mandatory
+  isDeliveryAddressFieldMandatory: computed('order.selectedCustomerType', function() {
+    return (
+      this.get('order.selectedCustomerType') === 'univ' ||
+      this.get('order.selectedCustomerType') === 'sahl' ||
+      this.get('order.selectedCustomerType') === 'ftag' ||
+      this.get('order.selectedCustomerType') === 'ovri' ||
+      this.get('order.selectedCustomerType') === 'dist'
+    );
+  }),
+  // Bool to check if delivery postal code field are mandatory
+  isDeliveryPostalCodeMandatory: computed('order.selectedCustomerType', function() {
     return (
       this.get('order.selectedCustomerType') === 'sahl' ||
       this.get('order.selectedCustomerType') === 'ftag' ||
@@ -267,6 +298,15 @@ export default Mixin.create({
       this.get('order.selectedCustomerType') === 'dist'
     );
   }),
+  // Bool to check if delivery cisty field are mandatory
+  isDeliveryCityMandatory: computed('order.selectedCustomerType', function() {
+    return (
+      this.get('order.selectedCustomerType') === 'sahl' ||
+      this.get('order.selectedCustomerType') === 'ftag' ||
+      this.get('order.selectedCustomerType') === 'ovri' ||
+      this.get('order.selectedCustomerType') === 'dist'
+    );
+  }),  
 
   // Bool to check if all delivery address fields are mandatory
   areDeliveryAddressFieldsValid: computed(
@@ -284,52 +324,40 @@ export default Mixin.create({
   ),
 
   // Bools to check if individual delivery fields are validating
-  isDeliveryAddressValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.address', function() {
+  isDeliveryAddressValid: computed('isDeliveryAddressFieldMandatory', 'applicationController.deliveryDetails.address', function() {
     return !(
-      this.get('areDeliveryAddressFieldsMandatory') &&
+      this.get('isDeliveryAddressFieldMandatory') &&
       isEmpty(this.get('applicationController.deliveryDetails.address'))
     );
   }),
 
-  isDeliveryPostalCodeValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.postalCode', function() {
+  isDeliveryPostalCodeValid: computed('isDeliveryPostalCodeMandatory', 'applicationController.deliveryDetails.postalCode', function() {
     return !(
-      this.get('areDeliveryAddressFieldsMandatory') &&
+      this.get('isDeliveryPostalCodeMandatory') &&
       isEmpty(this.get('applicationController.deliveryDetails.postalCode'))
     );
   }),
 
-  isDeliveryCityValid: computed('areDeliveryAddressFieldsMandatory', 'applicationController.deliveryDetails.city', function() {
+  isDeliveryCityValid: computed('isDeliveryCityMandatory', 'applicationController.deliveryDetails.city', function() {
     return !(
-      this.get('areDeliveryAddressFieldsMandatory') &&
+      this.get('isDeliveryCityMandatory') &&
       isEmpty(this.get('applicationController.deliveryDetails.city'))
     );
   }),
 
-  // Delivery box
-  // Bool to check whether to show delivery box fields
-  showDeliveryBoxField: equal('order.selectedCustomerType', 'univ'),
-
-  //Bool to check if delivery box field is mandatory
-  isDeliveryBoxFieldMandatory: equal('order.selectedCustomerType', 'univ'),
-
-  // Bool to check if delivery box field is valid
-  isDeliveryBoxFieldValid: computed('isDeliveryBoxFieldMandatory', 'applicationController.deliveryDetails.box', function() {
-    return !(
-      this.get('isDeliveryBoxFieldMandatory') &&
-      isEmpty(this.get('applicationController.deliveryDetails.box'))
-    );
-  }),
 
   // Bool to check if delivery fields are valid
   areDeliveryFieldsValid: computed(
     'order.{selectedDeliveryMethod,selectedLocation}',
-    'areDeliveryAddressFieldsValid',
-    'isDeliveryBoxFieldValid',
+    'isDeliveryAddressValid',
+    'isDeliveryPostalCodeValid',
+    'isDeliveryCityValid',
     function() {
       return !(
         this.get('order.selectedDeliveryMethod') === 'send' && (
-          !this.get('areDeliveryAddressFieldsValid') ||
-          !this.get('isDeliveryBoxFieldValid')
+          !this.get('isDeliveryAddressValid') ||
+          !this.get('isDeliveryPostalCodeValid') ||
+          !this.get('isDeliveryCityValid')
         ) || (
           !this.get('isShippingAvailable') ||
           this.get('order.selectedDeliveryMethod') === 'pickup'

@@ -190,51 +190,35 @@
       {{#if showDeliveryInfoForm}}
         <h3>{{t 'home.customerDetails.deliveryDetailsSubheader'}}</h3>
 
-        {{#if showDeliveryAddressFields}}
+        {{#if showDeliveryAddressField}}
           <div class="row">
             <div class="col-xs-12">
               <div class="form-group {{if isDeliveryAddressValid '' 'has-error'}}">
-                <label for="deliveryAddressInput">{{t 'home.deliveryDetails.address'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
+                <label for="deliveryAddressInput">{{t 'home.deliveryDetails.address'}}{{#if isDeliveryAddressFieldMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
                 {{input type='text' id="deliveryAddressInput" class="form-control" value=applicationController.deliveryDetails.address}}
               </div>
             </div>
           </div>
-
+        {{/if}}
+        {{#if showDeliveryPostalCodeField}}
           <div class="row">
             <div class="col-xs-12">
               <div class="form-group {{if isDeliveryPostalCodeValid '' 'has-error'}}">
-                <label for="deliveryPostalCodeInput">{{t 'home.deliveryDetails.postalCode'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
+                <label for="deliveryPostalCodeInput">{{t 'home.deliveryDetails.postalCode'}}{{#if isDeliveryPostalCodeMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
                 {{input type='text' id="deliveryPostalCodeInput" class="form-control" value=applicationController.deliveryDetails.postalCode}}
               </div>
             </div>
           </div>
-
+        {{/if}}
+        {{#if showDeliveryCityField}}
           <div class="row">
             <div class="col-xs-12">
               <div class="form-group {{if isDeliveryCityValid '' 'has-error'}}">
-                <label for="deliveryCityInput">{{t 'home.deliveryDetails.city'}}{{#if areDeliveryAddressFieldsMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
+                <label for="deliveryCityInput">{{t 'home.deliveryDetails.city'}}{{#if isDeliveryCityMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
                 {{input type='text' id="deliveryCityInput" class="form-control" value=applicationController.deliveryDetails.city}}
               </div>
             </div>
           </div>
-        {{/if}}
-        {{#if showDeliveryBoxField}}
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="form-group {{if isDeliveryBoxFieldValid '' 'has-error'}}">
-                <label for="deliveryBoxInput">{{t 'home.deliveryDetails.box'}}{{#if isDeliveryBoxFieldMandatory}} <i class="fa fa-asterisk mandatory"></i>{{/if}}</label>
-                {{input type='text' id="deliveryBoxInput" class="form-control" value=applicationController.deliveryDetails.box}}
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class={{"form-group"}}>
-                <label for="deliveryCommentsInput" class="control-label">{{t 'home.deliveryDetails.comment'}}</label>
-                {{textarea id="deliveryCommentsInput" class="form-control" value=applicationController.deliveryDetails.comment}}
-              </div>
-            </div>
-          </div> <!-- end row -->
         {{/if}}
         <!-- div deliveryInfoForm             : end                                   -->
       {{/if}}
