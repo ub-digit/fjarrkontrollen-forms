@@ -164,7 +164,7 @@
       {{#if isShippingAvailable}}
         <div class="row">
           <div class="col-xs-12">
-            <label for="deliveryMethordSelector">{{t 'home.customerDetails.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
+            <label for="deliveryMethodSelector">{{t 'home.customerDetails.deliveryOptionsSubheader'}} <i class="fa fa-asterisk mandatory"></i></label>
             {{#x-select
               class="form-control"
               on-change=(action (mut order.selectedDeliveryMethod))
