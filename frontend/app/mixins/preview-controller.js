@@ -131,7 +131,6 @@ export default Mixin.create({
         customer_type_id:           this.get('applicationController.selectedCustomerType.id'),
         email_confirmation:         true, // Always set to true
         form_lang:                  this.get('i18n.locale'),
-        delivery_place:             this.get('applicationController.selectedDeliveryMethod.title_internal') || 'Hämtas',
         order_path:                 this.get('applicationController.order.orderPath'),
 
         name:                       this.get('applicationController.customerDetails.name'),
