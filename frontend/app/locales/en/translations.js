@@ -6,7 +6,7 @@ export default {
         level2: 'Interlibrary loans',
         mainHeader: 'Order articles and interlibrary loans',
         langLink: 'På svenska',
-        langTitle: 'To the English version of this page',
+        langTitle: 'Till den svenska versionen av sidan',
         langLinkUrl: '/'
       },
       footer: {
