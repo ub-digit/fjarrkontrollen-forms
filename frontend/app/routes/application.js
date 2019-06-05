@@ -27,7 +27,7 @@ export default Route.extend(ApplicationRouteMixin, {
     let ajax = this.get('ajax');
     let serviceUrl = ENV.APP.fjarrkontrollenServiceUrl;
     let promises = {
-      locations: ajax.request(`${serviceUrl}/pickup_locations`).then((data) => {
+      locations: ajax.request(`${serviceUrl}/pickup_locations?show_only_available=true`).then((data) => {
         return data['pickup_locations'];
       }),
       orderTypes: ajax.request(`${serviceUrl}/order_types`).then((data) => {
