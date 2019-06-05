@@ -6,7 +6,7 @@ export default {
         level2: 'Fjärrlån',
         mainHeader: 'Beställ artiklar och fjärrlån',
         langLink: 'In English',
-        langTitle: 'Till den svenska versionen av sidan',
+        langTitle: 'To the English version of this page',
         langLinkUrl: '/index_en.html'
       },
       footer: {
