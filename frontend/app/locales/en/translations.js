@@ -110,7 +110,7 @@ export default {
         },
         chapter: {
           header: 'Copy of book chapter',
-          price: 'Charge: 80 SEK (no charge for GU staff)',
+          price: '<strong>Prices:</strong><ul><li>A copy of book chapter costs SEK 80.</li><li>Copies of book chapters are free for employees at the University of Gothenburg.</li><li>Companies pay SEK 180 for copies of book chapters</li><li><a target="_blank" href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a></li></ul>',
         },
         score: {
           header: 'Musical score',
