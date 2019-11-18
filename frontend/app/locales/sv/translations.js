@@ -110,7 +110,7 @@ export default {
         },
         chapter: {
           header: 'Kopia av bokkapitel',
-          price: 'Kostnad: 80:- (gratis för anställda vid GU)',
+          price: '<strong>Priser:</strong><ul><li>En kapitelkopia kostar 80 kronor.</li><li>Kapitelkopior är gratis för anställda vid Göteborgs universitet.</li><li>Företag betalar 180 kronor för en kapitelkopia.</li><li><a target="_blank" href="http://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a></li></ul>',
         },
         score: {
           header: 'Musiktryck',
