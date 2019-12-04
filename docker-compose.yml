@@ -17,6 +17,6 @@ services:
       # server
       - 4200:4200
       # livereload
-      - 7020:7020
+      - 35730:35730
       # Tests in browser
       - 7357:7357
