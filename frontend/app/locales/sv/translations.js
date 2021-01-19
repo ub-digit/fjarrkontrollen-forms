@@ -4,7 +4,7 @@ export default {
         logoPrintUrl: '/gu_logo_sv_high.png',
         level1: 'Göteborgs universitetsbibliotek',
         level2: 'Fjärrlån',
-        mainHeader: 'Beställ artiklar och fjärrlån',
+        mainHeader: 'Beställ artiklar och lån från andra bibliotek',
         langLink: 'In English',
         langTitle: 'To the English version of this page',
         langLinkUrl: '/index_en.html'

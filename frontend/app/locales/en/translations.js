@@ -4,7 +4,7 @@ export default {
         logoPrintUrl: '/gu_logo_en_high.png',
         level1: 'Gothenburg University Library',
         level2: 'Interlibrary loans',
-        mainHeader: 'Order articles and interlibrary loans',
+        mainHeader: 'Order articles and loans from other libraries',
         langLink: 'På svenska',
         langTitle: 'Till den svenska versionen av sidan',
         langLinkUrl: '/'
