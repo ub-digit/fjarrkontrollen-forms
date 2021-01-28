@@ -23,14 +23,14 @@ module.exports = function(environment) {
     APP: {
       casBaseUrl: 'https://idp3.it.gu.se/idp/profile/cas',
       authenticationBaseUrl: '/api/sessions',
-      serviceUrl: '/api',
       // Here you can pass flags/options to your application instance
       // when it is created
     }
   };
 
   if (environment === 'development') {
-    ENV.APP.fjarrkontrollenServiceUrl = 'http://localhost:' + process.env.BACKEND_SERVICE_PORT;
+    ENV.APP.fjarrkontrollenServiceUrl = 'http://localhost:' + process.env.FJARRKONTROLLEN_BACKEND_SERVICE_PORT;
+    ENV.APP.serviceUrl = 'http://localhost:' + process.env.BACKEND_SERVICE_PORT + '/api';
     ENV.APP.registrationUrl = process.env.BIBLIOTEKSKORT_SERVICE_URL; //???
     ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy';
   }
@@ -46,7 +46,8 @@ module.exports = function(environment) {
     ENV.APP.autoboot = false;
   }
   else {
-    ENV.APP.fjarrkontrollenServiceUrl = 'https://' + process.env.BACKEND_SERVICE_HOSTNAME;
+    ENV.APP.fjarrkontrollenServiceUrl = 'https://' + process.env.FJARRKONTROLLEN_BACKEND_SERVICE_HOSTNAME;
+    ENV.APP.serviceUrl = 'https://' + process.env.FJARRKONTROLLEN_BACKEND_SERVICE_HOSTNAME + '/api';
     ENV.APP.registrationUrl = process.env.BIBLIOTEKSKORT_SERVICE_URL; //???
   }
 
