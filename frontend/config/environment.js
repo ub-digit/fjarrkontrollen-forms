@@ -30,7 +30,6 @@ module.exports = function(environment) {
   ENV.APP.casBaseUrl = process.env.FORMS_CAS_URL ? process.env.FORMS_CAS_URL : 'https://idp3.it.gu.se/idp/profile/cas';
 
   if (environment === 'development') {
-    ENV.APP.casBaseUrl = 'http://localhost:8383/cas';
     ENV.APP.fjarrkontrollenServiceUrl = 'http://localhost:' + process.env.FJARRKONTROLLEN_BACKEND_SERVICE_PORT;
     ENV.APP.serviceUrl = 'http://localhost:' + process.env.BACKEND_SERVICE_PORT + '/api';
     ENV.APP.authenticationBaseUrl = 'http://localhost:' + process.env.BACKEND_SERVICE_PORT + '/api/sessions';
