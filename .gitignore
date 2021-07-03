@@ -29,7 +29,6 @@
 /config/secrets.yml
 /config/database.yml
 /config/deploy.yml
-/frontend/config/environment.js
 
 # Ignore todo files
 todo
