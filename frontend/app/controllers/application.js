@@ -136,6 +136,7 @@ export default Controller.extend({
       this.set('customerDetails.libraryCardNumber', user['cardnumber']);
       this.set('customerDetails.xAccount', user['xaccount']);
       this.set('customerDetails.kohaBorrowernumber', user['id']);
+      this.set('customerDetails.kohaUserCategory', user['user_category']);
     }
   },
 
