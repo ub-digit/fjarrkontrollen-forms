@@ -10,7 +10,7 @@ export default {
         langLinkUrl: '/index_en.html'
       },
       footer: {
-        content: '© <a title="Göteborgs universitet" href="http://www.gu.se/">Göteborgs universitet</a><br>Box 100, 405 30 Göteborg<br>Tel. 031-786 0000, <a title="Kontakta oss" href="http://www.gu.se/omuniversitetet/kontakt/">Kontakta oss</a>'
+        content: '© <a title="Göteborgs universitet" href="https://www.gu.se/">Göteborgs universitet</a><br>Box 100, 405 30 Göteborg<br>Tel. 031-786 0000, <a title="Kontakta oss" href="https://www.gu.se/omuniversitetet/kontakt/">Kontakta oss</a>'
       },
       orderDetailsArticle: {
         articleTitle: 'Artikelns titel',
@@ -98,7 +98,7 @@ export default {
       orderDetails: {
         article: {
           header: 'Artikelkopia',
-          price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda vid Göteborgs universitet.</li><li>Företag betalar 180 kronor för en artikelkopia.</li><li><a target="_blank" href="http://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a></li></ul>',
+          price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en artikelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a>',
           subHeader1: 'Ange PubMed ID...',
           subHeader2: '...eller fyll i uppgifterna:',
           getPubMedBtn: 'Hämta',
@@ -106,11 +106,12 @@ export default {
         },
         book: {
           header: 'Bok',
+          price: 'Här beställer du böcker som <strong>inte</strong> finns i Göteborgs universitetsbiblioteks samlingar.<br/>Använd <a target="_blank" href="https://gu-se-primo.hosted.exlibrisgroup.com/primo-explore/search?query=&vid=46GUB_VU1&search_scope=default_scope&sortby=rank&lang=sv_SE">Supersök</a> eller <a target="_blank" href="https://www.ub.gu.se/sv/hitta-material/bocker/aldre-bocker-i-kortkataloger">våra inskannade kortkataloger</a> om du vill beställa böcker från universitetsbibliotekets samlingar.',
           outsideNordicsHelpText: 'Kostnad 200:- (företag 400:-, gratis för anställda vid Göteborgs universitet)',
         },
         chapter: {
           header: 'Kopia av bokkapitel',
-          price: '<strong>Priser:</strong><ul><li>En kapitelkopia kostar 80 kronor.</li><li>Kapitelkopior är gratis för anställda vid Göteborgs universitet.</li><li>Företag betalar 180 kronor för en kapitelkopia.</li><li><a target="_blank" href="http://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a></li></ul>',
+          price: '<strong>Priser:</strong><ul><li>En kapitelkopia kostar 80 kronor.</li><li>Kapitelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en kapitelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a>',
         },
         score: {
           header: 'Musiktryck',
@@ -130,6 +131,9 @@ export default {
         customerTypeHeader: 'Jag är...',
         customerTypeLabel: 'Kundkategori',
         customerTypePrompt: 'Välj kategori',
+        priceLevel1: '<strong>Pris:</strong> En kopia kostar 80 kronor.',
+        priceLevel2: '<strong>Pris:</strong>  En kopia kostar minst 180 kronor. <a target="_blank" href="https://www.ub.gu.se/sv/lana-och-logga-in/fjarrlan-av-bocker-och-artiklar#priser">Se prislista för mer information</a>.',
+        priceInfoApproved: 'Jag har läst och förstår att det innebär en kostnad att beställa en kopia.',
         customerDetailsSubheader: 'Fyll i dina uppgifter',
         deliveryOptionsSubheader: 'Leveransalternativ',
         deliveryMethodPrompt: 'Välj leveranssätt',

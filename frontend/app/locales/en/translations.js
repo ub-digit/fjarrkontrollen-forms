@@ -10,7 +10,7 @@ export default {
         langLinkUrl: '/'
       },
       footer: {
-        content: '© <a title="Göteborgs universitet" href="http://www.gu.se/">University of Gothenburg, Sweden</a><br>Box 100, S-405 30 Gothenburg<br>Phone +46 31-786 0000, <a title="Contact" href="http://www.gu.se/omuniversitetet/kontakt/">Contact</a>'
+        content: '© <a title="Göteborgs universitet" href="https://www.gu.se/">University of Gothenburg, Sweden</a><br>Box 100, S-405 30 Gothenburg<br>Phone +46 31-786 0000, <a title="Contact" href="https://www.gu.se/omuniversitetet/kontakt/">Contact</a>'
       },
       orderDetailsArticle: {
         articleTitle: 'Article title',
@@ -98,7 +98,7 @@ export default {
       orderDetails: {
         article: {
           header: 'Copy of article',
-          price: '<strong>Prices:</strong><ul><li>A copy of an article costs SEK 80.</li><li>Copies of articles are free for employees at the University of Gothenburg.</li><li>Companies pay SEK 180 for copies of articles</li><li><a target="_blank" href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a></li></ul>',
+          price: '<strong>Prices:</strong><ul><li>A copy of an article costs SEK 80.</li><li>Copies of articles are free for employees and affiliated of the University of Gothenburg.</li><li>Companies pay a minimum of SEK 180 for copies of articles.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a>',
           subHeader1: 'Enter a PubMed ID...',
           subHeader2: '...or enter the details:',
           getPubMedBtn: 'Fetch',
@@ -106,11 +106,12 @@ export default {
         },
         book: {
           header: 'Book',
+          price: 'Use this form to order books that are <strong>not</strong> held by Gothenburg University Library.<br/>Use <a target="_blank" href="https://gu-se-primo.hosted.exlibrisgroup.com/primo-explore/search?search_scope=default_scope&sortby=rank&vid=46GUB_VU1&lang=en_US">Supersearch</a> or our <a target="_blank" href="https://www.ub.gu.se/en/find-resources/books/older-books-in-card-catalogues">scanned card catalogues</a> if you want to to request books from the university library’s collections.',
           outsideNordicsHelpText: 'Charge: 200 SEK (charge for companies 400 SEK, no charge for employees at the University of Gothenburg)',
         },
         chapter: {
           header: 'Copy of book chapter',
-          price: '<strong>Prices:</strong><ul><li>A copy of book chapter costs SEK 80.</li><li>Copies of book chapters are free for employees at the University of Gothenburg.</li><li>Companies pay SEK 180 for copies of book chapters</li><li><a target="_blank" href="http://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a></li></ul>',
+          price: '<strong>Prices:</strong><ul><li>A copy of book chapter costs SEK 80.</li><li>Copies of book chapters are free for employees and affiliated of the University of Gothenburg.</li><li>Companies pay a minimum of SEK 180 for copies of book chapters.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/%3C-sv,en%3E/priser/koplanpriser/">See price list for more information.</a>',
         },
         score: {
           header: 'Musical score',
@@ -130,6 +131,9 @@ export default {
         customerTypeHeader: 'I am a...',
         customerTypeLabel: 'Customer category',
         customerTypePrompt: 'Select a category',
+        priceLevel1: '<strong>Price:</strong> A copy costs SEK 80.',
+        priceLevel2: '<strong>Price:</strong> A copy costs a minimum of SEK 180. <a target="_blank" href="https://www.ub.gu.se/en/borrow-and-log-in/interlibrary-loans-of-books-and-article-copies#prices">See price list for more information</a>.',
+        priceInfoApproved: 'I have read and understood that i will be charged when i order a copy.',
         customerDetailsSubheader: 'Fill in your details',
         deliveryOptionsSubheader: 'Delivery options',
         deliveryMethodPrompt: 'Select a delivery option:',

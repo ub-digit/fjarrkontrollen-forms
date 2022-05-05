@@ -24,6 +24,36 @@ export default Mixin.create({
   // Bool to check if customer type is set
   isCustomerTypeSet: notEmpty('order.selectedCustomerType'),
 
+  // Book to check if price info is approved
+  isPriceInfoApproved: equal('priceInfoApproved', true),
+
+  // Bool to check whether to show customer details or not
+  showDetailsInForm: computed('isCustomerTypeSet', 'isPriceInfoApproved', 'showPriceLevel1Info', 'showPriceLevel2Info', function() {
+    return (
+      (this.get('isCustomerTypeSet') && !(this.get('showPriceLevel1Info') || this.get('showPriceLevel2Info'))) ||
+      (this.get('isPriceInfoApproved') && (this.get('showPriceLevel1Info') || this.get('showPriceLevel2Info')))
+    );
+  }),
+
+  // Bool to check whether to show price level 1 info
+  showPriceLevel1Info: computed('order.selectedOrderType', 'order.selectedCustomerType', function() {
+    return (
+      (this.get('order.selectedOrderType') === 'photocopy' ||
+       this.get('order.selectedOrderType') === 'photocopy_chapter') &&
+      (this.get('order.selectedCustomerType') === 'stud' ||
+       this.get('order.selectedCustomerType') === 'dist' ||
+       this.get('order.selectedCustomerType') === 'priv')
+    );
+  }),
+
+  // Bool to check whether to show price level 2 info
+  showPriceLevel2Info: computed('order.selectedOrderType', 'order.selectedCustomerType', function() {
+    return (
+      (this.get('order.selectedOrderType') === 'photocopy' ||
+       this.get('order.selectedOrderType') === 'photocopy_chapter') &&
+       this.get('order.selectedCustomerType') === 'ftag'
+    );
+  }),
 
   // Observes selected customer type and resets selected delivery method to null
   resetDeliveryMethod: observer('order.selectedCustomerType', function() {

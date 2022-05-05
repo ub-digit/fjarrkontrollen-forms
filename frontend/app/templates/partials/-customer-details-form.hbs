@@ -26,8 +26,29 @@
       </div>
     {{/unless}}
 
+    {{#if showPriceLevel1Info}}
+      <div class="alert alert-info" role="alert">
+        {{{t 'home.customerDetails.priceLevel1'}}}
+      </div>
+      <div class="checkbox">
+        <label>
+          {{input type='checkbox' checked=priceInfoApproved}} {{t 'home.customerDetails.priceInfoApproved'}}
+        </label>
+      </div>
+    {{/if}}
+    {{#if showPriceLevel2Info}}
+      <div class="alert alert-info" role="alert">
+        {{{t 'home.customerDetails.priceLevel2'}}}
+      </div>
+      <div class="checkbox">
+        <label>
+          {{input type='checkbox' checked=priceInfoApproved}} {{t 'home.customerDetails.priceInfoApproved'}}
+        </label>
+      </div>
+    {{/if}}
+
     <!-- customerInfoForm start -->
-    {{#if isCustomerTypeSet}}
+    {{#if showDetailsInForm}}
       {{!#unless session.isAuthenticated}}
         {{#unless areAllFieldsDisabled}}<h3>{{t 'home.customerDetails.customerDetailsSubheader'}}</h3>{{/unless}}
 
