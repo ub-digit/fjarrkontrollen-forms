@@ -98,7 +98,7 @@ export default {
       orderDetails: {
         article: {
           header: 'Artikelkopia',
-          price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en artikelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a>',
+          price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en artikelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/sv/lana-och-logga-in/fjarrlan-av-bocker-och-artiklar#priser">Se prislista för mer information.</a>',
           subHeader1: 'Ange PubMed ID...',
           subHeader2: '...eller fyll i uppgifterna:',
           getPubMedBtn: 'Hämta',
@@ -111,7 +111,7 @@ export default {
         },
         chapter: {
           header: 'Kopia av bokkapitel',
-          price: '<strong>Priser:</strong><ul><li>En kapitelkopia kostar 80 kronor.</li><li>Kapitelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en kapitelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/priser/koplanpriser/">Se prislista för mer information.</a>',
+          price: '<strong>Priser:</strong><ul><li>En kapitelkopia kostar 80 kronor.</li><li>Kapitelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en kapitelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/sv/lana-och-logga-in/fjarrlan-av-bocker-och-artiklar#priser">Se prislista för mer information.</a>',
         },
         score: {
           header: 'Musiktryck',
