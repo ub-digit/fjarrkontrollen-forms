@@ -191,6 +191,10 @@ class User
     if xml.search('//response/attributes[code="PRINT"]/attribute').text.present?
       @attr_print = xml.search('//response/attributes[code="PRINT"]/attribute').text
     end
+
+    if xml.search('//response/attributes[code="ORG"]/attribute').text.present?
+      @organisation = xml.search('//response/attributes[code="ORG"]/attribute').text
+    end
   end
 
 end

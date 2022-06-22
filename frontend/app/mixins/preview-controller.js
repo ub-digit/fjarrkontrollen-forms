@@ -141,6 +141,7 @@ export default Mixin.create({
         library_card_number:        this.get('applicationController.customerDetails.libraryCardNumber'),
         koha_borrowernumber:        this.get('applicationController.customerDetails.kohaBorrowernumber'),
         koha_user_category:         this.get('applicationController.customerDetails.kohaUserCategory'),
+        koha_organisation:          this.get('applicationController.customerDetails.kohaOrganisation'),
         x_account:                  this.get('applicationController.customerDetails.xAccount'),
 
         delivery_method_id:         deliveryMethod.id,
