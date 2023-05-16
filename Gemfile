@@ -6,7 +6,7 @@ gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3'
 
 # Ember cli rails
 
