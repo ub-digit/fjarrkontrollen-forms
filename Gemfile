@@ -2,16 +2,16 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '7.1.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 6.4'
 
 # Ember cli rails
 
 #gem 'jquery-rails' #??
-gem 'rest-client', '~> 2.0.1'
+gem 'rest-client', '~> 2.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -24,15 +24,10 @@ gem 'rest-client', '~> 2.0.1'
 # gem 'mini_magick', '~> 4.8'
 
 group :development do
-  gem 'capistrano', '~> 3.11.0'
-  gem 'capistrano-rails'
-  gem 'capistrano-passenger'
-  gem 'capistrano-bundler'
-  gem 'capistrano-rvm'
 end
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
