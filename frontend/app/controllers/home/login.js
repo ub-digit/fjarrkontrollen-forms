@@ -10,38 +10,27 @@ export default Controller.extend({
   i18n: injectService(),
   router: injectService(),
   session: injectService(),
-
-  queryParams: ['ticket'],
-
   registrationUrl: ENV.APP.registrationUrl,
-
-  showCasLogin: true,
-
-  serviceUrl: computed(function() {
-    //Strip prepended slash for router path to be sure?
-    return window.location.origin.replace(/\/$/, '') + this.get('router').urlFor('home.login');
-  }),
-
-  casUrl: computed(function() {
-    return ENV.APP.casBaseUrl + '/login?' + $.param({ service: this.get('serviceUrl') });
-  }),
+  errorMessage: null,
 
   actions: {
     login(username, password) {
-      return this.get('session').authenticate('authenticator:cas', {
+      return this.get('session').authenticate('authenticator:librarycard', {
         username: username,
         password: password
       }).catch((error) => {
-        //TODO: set errors
-        if(typeof error === 'string') {
-          //changeset.pushErrors('password', error);
-        }
-        else {
-          //changeset.pushErrors('password', "Någonting gick fel, det går eventuellt för närvarande inte att logga in");
-          //console.dir(error);
-        }
+        this.set('errorMessage', true);
       });
     },
+
+    loginOauth2() {
+      return this.get('session').authenticate('authenticator:torii', 'gub')
+      .catch((reason) => {
+        //let message = typeof reason === 'string' ? reason : 'Unknown server error';
+        this.set('errorMessage', true);
+      });
+    },
+
     back() {
       let step = 'home.order-type';
       this.set('applicationController.order.currentStep', step);
