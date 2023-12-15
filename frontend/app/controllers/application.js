@@ -4,6 +4,7 @@ import { observer } from '@ember/object';
 import { inject as injectService} from '@ember/service';
 import { storageFor } from 'ember-local-storage';
 import { A } from '@ember/array';
+import ENV from 'frontend/config/environment';
 
 export default Controller.extend({
   i18n: injectService(),
@@ -25,6 +26,7 @@ export default Controller.extend({
 
   lang: null,
   session: injectService(),
+  config: ENV.torii.providers['gub-oauth2'],
 
   /** Order **/
   order: storageFor('order'),

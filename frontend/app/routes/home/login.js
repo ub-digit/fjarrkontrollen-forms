@@ -11,22 +11,5 @@ export default Route.extend(UnAuthenticatedRouteMixin, {
 
   routeIfAlreadyAuthenticated: computed('order.orderPath', function() {
     return this.get('order.orderPath') === 'SFX' ? 'home.customer-details' : 'home.order-details';
-  }),
-
-  beforeModel(transition) {
-    this._super(...arguments);
-    let ticket = transition.queryParams.ticket;
-    if (ticket) {
-      let loginController = this.controllerFor('home.login');
-      return this.get('session').authenticate('authenticator:cas', {
-        cas_ticket: ticket,
-        cas_service: loginController.get('serviceUrl')
-      }).then(() => {
-        this.set('order.currentStep', this.get('routeIfAlreadyAuthenticated'));
-      }, (error) => {
-        console.log('error');
-        console.dir(error);
-      });
-    }
-  }
+  })
 });

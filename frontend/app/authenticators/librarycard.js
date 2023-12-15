@@ -26,10 +26,7 @@ export default Base.extend({
   },
 
   authenticate(credentials) {
-    if (
-        credentials.cas_ticket && credentials.cas_service ||
-        credentials.username && credentials.password
-    ) {
+    if (credentials.username && credentials.password) {
       return new Promise(function(resolve, reject) {
         $.ajax({
           type: 'POST',
