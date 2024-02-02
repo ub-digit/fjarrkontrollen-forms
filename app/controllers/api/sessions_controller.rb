@@ -61,7 +61,7 @@ class Api::SessionsController < ApplicationController
         error_msg(ErrorCodes::UNAUTHORIZED, "Invalid credentials")
       end
     else
-        error_msg(ErrorCodes::UNAUTHORIZED, "Missing parameters")
+      error_msg(ErrorCodes::UNAUTHORIZED, "Missing parameters")
     end
     render_json
   end
