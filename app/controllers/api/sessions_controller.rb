@@ -44,7 +44,7 @@ class Api::SessionsController < ApplicationController
       ticket: ticket
     }.to_param
     casValidateUrl = "#{casBaseUrl}/serviceValidate?#{casParams}"
-    open(casValidateUrl) do |u|
+    URI.open(casValidateUrl) do |u|
       body = u.read
       doc = Nokogiri::XML(body)
       doc.remove_namespaces!
