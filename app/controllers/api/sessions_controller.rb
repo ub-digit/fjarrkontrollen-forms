@@ -7,7 +7,7 @@ class Api::SessionsController < ApplicationController
   # Create a session, with a newly generated access token
   def create
     if params[:code]
-      uri = 'https://github.com/login/oauth/access_token'
+      uri = URI(APP_CONFIG['oauth2']['token_endpoint'])
       body = {
         "client_id" => APP_CONFIG['oauth2']['client_id'],
         "client_secret" => APP_CONFIG['oauth2']['client_secret'],
@@ -16,7 +16,7 @@ class Api::SessionsController < ApplicationController
       # TODO: Don't think keyword args as headers work for this version of Net::HTTP
       # (seems to work anyway though)
       response = Net::HTTP.post(
-        URI(uri),
+        uri,
         body.to_json,
         'Content-type' => 'application/json',
         'Accept' => 'application/json'
@@ -26,7 +26,7 @@ class Api::SessionsController < ApplicationController
           json_response = JSON.parse(response.body)
           if json_response["access_token"]
             token = json_response["access_token"]
-            uri = URI('https://api.github.com/user')
+            uri = URI(APP_CONFIG['oauth2']['user_endpoint'])
             response = Net::HTTP.start(uri.hostname, uri.port, :use_ssl => true) {|http|
               request = Net::HTTP::Get.new(uri)
               request['Accept'] = 'application/vnd.github+json'
