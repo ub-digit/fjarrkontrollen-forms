@@ -24,7 +24,7 @@ export default Controller.extend({
     },
 
     loginOauth2() {
-      return this.get('session').authenticate('authenticator:torii', 'gub')
+      return this.get('session').authenticate('authenticator:torii', 'gub-oauth2')
       .catch((reason) => {
         //let message = typeof reason === 'string' ? reason : 'Unknown server error';
         this.set('errorMessage', true);
@@ -37,5 +37,4 @@ export default Controller.extend({
       this.transitionToRoute(step);
     }
   }
-
 });

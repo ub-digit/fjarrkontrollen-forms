@@ -7,7 +7,7 @@ export default Oauth2.extend({
   baseUrl: ENV.APP.gubOAuth2AuthorizeUri,
   responseParams: ['code', 'state'],
 
-  redirectUri: configurable('redirectUri', function(){
+  redirectUri: configurable('redirectUri', function() {
     // A hack that allows redirectUri to be configurable
     // but default to the superclass
     return this._super();
