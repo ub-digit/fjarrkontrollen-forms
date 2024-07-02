@@ -29,7 +29,7 @@ module.exports = function(environment) {
       providers: {
         'gub-oauth2': {
           apiKey: process.env.GUB_OAUTH2_CLIENT_ID,
-          scope: 'user'
+          scope: 'openid profile email'
         }
       }
     }
