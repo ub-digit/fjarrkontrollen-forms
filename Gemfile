@@ -12,6 +12,7 @@ gem 'puma', '~> 6.4'
 
 #gem 'jquery-rails' #??
 gem 'rest-client', '~> 2.1'
+gem 'jwt'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
