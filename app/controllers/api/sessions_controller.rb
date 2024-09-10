@@ -51,7 +51,12 @@ class Api::SessionsController < ApplicationController
 
     case response
     when Net::HTTPSuccess then
-      json_response = JSON.parse(response.body)
+      begin
+        json_response = JSON.parse(response.body)
+      rescue JSON::ParserError
+        error_msg(ErrorCodes::UNAUTHORIZED, "Invalid JSON response")
+        return
+      end
       if json_response["id_token"]
         token = json_response["id_token"]
         begin
@@ -82,7 +87,12 @@ class Api::SessionsController < ApplicationController
 
     case response
     when Net::HTTPSuccess then
-      json_response = JSON.parse(response.body)
+      begin
+        json_response = JSON.parse(response.body)
+      rescue JSON::ParserError
+        error_msg(ErrorCodes::UNAUTHORIZED, "Invalid JSON response")
+        return
+      end
       if json_response["access_token"]
         token = json_response["access_token"]
         uri = URI(APP_CONFIG['oauth2']['user_endpoint'])
@@ -96,7 +106,12 @@ class Api::SessionsController < ApplicationController
         }
         case response
           when Net::HTTPSuccess then
-            json_response = JSON.parse(response.body)
+            begin
+              json_response = JSON.parse(response.body)
+            rescue JSON::ParserError
+              error_msg(ErrorCodes::UNAUTHORIZED, "Invalid JSON response")
+              return
+            end
             if json_response["login"]
               authenticated_user_response(json_response["login"])
             else
