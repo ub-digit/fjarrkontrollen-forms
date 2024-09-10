@@ -38,7 +38,7 @@ class Api::SessionsController < ApplicationController
   def authenticate_by_gu(body, token_uri)
     additional_body = {
       "grant_type" => "authorization_code",
-      "redirect_uri" => APP_CONFIG['frontend_hostname'] + "/torii/redirect.html"
+      "redirect_uri" => "https://" + APP_CONFIG['frontend_hostname'] + "/torii/redirect.html"
     }
     body = body.merge(additional_body)
 
