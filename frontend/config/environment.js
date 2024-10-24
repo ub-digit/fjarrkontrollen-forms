@@ -19,21 +19,29 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
     APP: {
       authenticationBaseUrl: '/api/sessions',
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    torii: {
+      sessionServiceName: 'session',
+      providers: {
+        'gub-oauth2': {
+          apiKey: process.env.GUB_OAUTH2_CLIENT_ID,
+          scope: 'openid profile email'
+        }
+      }
     }
   };
 
-  ENV.APP.casBaseUrl = process.env.FORMS_CAS_URL ? process.env.FORMS_CAS_URL : 'https://idp3.it.gu.se/idp/profile/cas';
+  let serviceBaseUrl = null;
+  let frontendBaseUrl = null;
 
   if (environment === 'development') {
     ENV.APP.fjarrkontrollenServiceUrl = 'http://localhost:' + process.env.FJARRKONTROLLEN_BACKEND_SERVICE_PORT;
-    ENV.APP.serviceUrl = 'http://localhost:' + process.env.BACKEND_SERVICE_PORT + '/api';
-    ENV.APP.authenticationBaseUrl = 'http://localhost:' + process.env.BACKEND_SERVICE_PORT + '/api/sessions';
-    ENV.APP.registrationUrl = process.env.BIBLIOTEKSKORT_SERVICE_URL; //???
+    serviceBaseUrl = `http://localhost:${process.env.BACKEND_SERVICE_PORT}`;
+    frontendBaseUrl = `http://localhost:${process.env.FRONTEND_PORT}`;
     ENV.contentSecurityPolicyHeader = 'Disabled-Content-Security-Policy';
   }
   else if(environment === 'test') {
@@ -49,9 +57,17 @@ module.exports = function(environment) {
   }
   else {
     ENV.APP.fjarrkontrollenServiceUrl = 'https://' + process.env.FJARRKONTROLLEN_BACKEND_SERVICE_HOSTNAME;
-    ENV.APP.serviceUrl = 'https://' + process.env.BACKEND_SERVICE_HOSTNAME + '/api';
-    ENV.APP.authenticationBaseUrl = 'https://' + process.env.BACKEND_SERVICE_HOSTNAME + '/api/sessions';
+    serviceBaseUrl = `https://${process.env.BACKEND_SERVICE_HOSTNAME}`;
+    frontendBaseUrl = `https://${ process.env.FRONTEND_HOSTNAME}`;
+  }
+
+  if (environment !== 'test') {
     ENV.APP.registrationUrl = process.env.BIBLIOTEKSKORT_SERVICE_URL; //???
+    ENV.APP.serviceUrl = `${serviceBaseUrl}/api`;
+    ENV.APP.authenticationBaseUrl = `${serviceBaseUrl}/api/sessions`;
+    ENV.torii.providers['gub-oauth2'].tokenExchangeUri = ENV.APP.authenticationBaseUrl;
+    ENV.torii.providers['gub-oauth2'].redirectUri = `${frontendBaseUrl}/torii/redirect.html`;
+    ENV.APP.gubOAuth2AuthorizeUri = process.env.GUB_OAUTH2_AUTHORIZE_ENDPOINT;
   }
 
   ENV.i18n = {
