@@ -99,10 +99,11 @@ export default {
         article: {
           header: 'Artikelkopia',
           price: '<strong>Priser:</strong><ul><li>En artikelkopia kostar 80 kronor.</li><li>Artikelkopior är gratis för anställda och affilierade vid Göteborgs universitet.</li><li>Företag betalar minst 180 kronor för en artikelkopia.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/sv/lana-och-logga-in/fjarrlan-av-bocker-och-artiklar#priser">Se prislista för mer information.</a>',
-          subHeader1: 'Ange PubMed ID...',
+          subHeader1: 'Ange PubMed ID eller DOI...',
+          articleIdentifierTitle: 'Pubmed ID eller DOI',
           subHeader2: '...eller fyll i uppgifterna:',
-          getPubMedBtn: 'Hämta',
-          pubMedError: 'Hittade ingen artikel med angivet id i PubMed.',
+          getArticleDetailsBtn: 'Hämta',
+          getArticleDetailsError: 'Hittade ingen artikel med angivet id.',
         },
         book: {
           header: 'Bok',
