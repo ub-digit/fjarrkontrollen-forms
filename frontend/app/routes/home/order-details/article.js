@@ -25,15 +25,14 @@ export default MaybeAuthenticatedRoute.extend({
       applicationController.set('orderDetailsArticle.pages', null);
       applicationController.set('orderDetailsArticle.issue', null);
       applicationController.set('orderDetailsArticle.authors', null);
-      applicationController.set('orderDetailsArticle.resolvedArticleIdentifer', null);
-      applicationController.set('orderDetailsArticle.resolvedArticleIdentiferSource', null);
+      applicationController.set('orderDetailsArticle.resolvedArticleIdentifier', null);
+      applicationController.set('orderDetailsArticle.resolvedArticleIdentifierSource', null);
 
       $("body").addClass("loading");
 
       let isDoi = id.includes('/');
       if (isDoi) {
         request(ENV.APP.serviceUrl + '/scopus/' + id).then((data) => {
-          $("body").removeClass("loading");
           if (data.error) {
             this.controllerFor('home.order-details.article').set('error', true);
           }
@@ -46,11 +45,13 @@ export default MaybeAuthenticatedRoute.extend({
             applicationController.set('orderDetailsArticle.pages', data.pages);
             applicationController.set('orderDetailsArticle.issue', data.issue);
             applicationController.set('orderDetailsArticle.authors', data.authors);
-            applicationController.set('orderDetailsArticle.resolvedArticleIdentifer', id);
-            applicationController.set('orderDetailsArticle.resolvedArticleIdentiferSource', 'scopus');
+            applicationController.set('orderDetailsArticle.resolvedArticleIdentifier', id);
+            applicationController.set('orderDetailsArticle.resolvedArticleIdentifierSource', 'scopus');
           }
         }, () => {
           this.controllerFor('home.order-details.article').set('error', true);
+        }).finally(() => {
+          $("body").removeClass("loading");
         });
       }
       else {
@@ -84,13 +85,15 @@ export default MaybeAuthenticatedRoute.extend({
               });
 
               applicationController.set('orderDetailsArticle.authors', authors.join(', '));
-              applicationController.set('orderDetailsArticle.resolvedArticleIdentifer', id);
-              applicationController.set('orderDetailsArticle.resolvedArticleIdentiferSource', 'pubmed');
+              applicationController.set('orderDetailsArticle.resolvedArticleIdentifier', id);
+              applicationController.set('orderDetailsArticle.resolvedArticleIdentifierSource', 'pubmed');
 
             }
           }
         }, () => {
           this.controllerFor('home.order-details.article').set('error', true);
+        }).finally(() => {
+          $("body").removeClass("loading");
         });
       }
     }

@@ -7,7 +7,7 @@ Storage.reopenClass({
     return {
       articleIdentifier: null,
       resolvedArticleIdentifier: null,
-      resolvedArticleIdentiierType: null,
+      resolvedArticleIdentifierSource: null,
       articleTitle: null,
       journalTitle: null,
       authors: null,
