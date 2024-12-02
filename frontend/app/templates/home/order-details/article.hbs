@@ -10,10 +10,10 @@
 <div class="row">
   <div class="col-xs-12">
     <div class="form-group {{if errors.links has-error}}">
-      <label for="pubmedIdInput">PubMed ID</label>
+      <label for="articleIdentifierInput">{{t 'home.orderDetails.article.articleIdentifierTitle'}}<</label>
       <div class="input-group">
-        {{input type='text' class="form-control" value=applicationController.orderDetailsArticle.pubMedId id="pubmedIdInput"}}
-        <span class="input-group-btn"><button type="submit" {{action 'getPubMedId' applicationController.orderDetailsArticle.pubMedId}} class="btn btn-default {{if isPubMedButtonEnabled 'enabled' 'disabled'}}">{{t 'home.orderDetails.article.getPubMedBtn'}}</button></span>
+        {{input type='text' class="form-control" value=applicationController.orderDetailsArticle.articleIdentifier id="articleIdentifierInput"}}
+          <span class="input-group-btn"><button type="submit" {{action 'getArticleDetails' applicationController.orderDetailsArticle.articleIdentifier}} class="btn btn-default {{if isGetArticleDetailsButtonEnabled 'enabled' 'disabled'}}">{{t 'home.orderDetails.article.getArticleDetailsBtn'}}</button></span>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
 {{#if error}}
 <div class="row">
   <div class="col-xs-12">
-    <div class="alert alert-danger" role="alert">{{t 'home.orderDetails.article.pubMedError'}}</div>
+    <div class="alert alert-danger" role="alert">{{t 'home.orderDetails.article.getArticleDetailsError'}}</div>
   </div>
 </div> <!-- end row -->
 {{/if}}

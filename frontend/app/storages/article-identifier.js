@@ -5,7 +5,7 @@ const Storage = StorageObject.extend();
 Storage.reopenClass({
   initialState() {
     return {
-      pubMedId: null
+      articleIdentiferId: null
     };
   }
 });

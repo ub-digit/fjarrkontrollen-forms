@@ -73,6 +73,8 @@ export default Mixin.create({
           order['title'] = this.get('applicationController.orderDetailsArticle.articleTitle');
           order['issn_isbn'] = this.get('applicationController.orderDetailsArticle.issn');
           order['comments'] = this.get('applicationController.orderDetailsArticle.comment');
+          order['article_identifier'] = this.get('applicationController.orderDetailsArticle.resolvedArticleIdentifier');
+          order['article_identifier_source'] = this.get('applicationController.orderDetailsArticle.resolvedArticleIdentifierSource');
           break;
         case 'loan':
           setOrderProperties([

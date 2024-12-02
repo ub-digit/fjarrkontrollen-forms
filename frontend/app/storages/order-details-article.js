@@ -5,7 +5,9 @@ const Storage = StorageObject.extend();
 Storage.reopenClass({
   initialState() {
     return {
-      pubMedId: null,
+      articleIdentifier: null,
+      resolvedArticleIdentifier: null,
+      resolvedArticleIdentifierSource: null,
       articleTitle: null,
       journalTitle: null,
       authors: null,
