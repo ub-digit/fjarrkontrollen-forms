@@ -49,7 +49,13 @@
           {{/if}}
         </div>
         <div class="form-group">
-          <label>{{t "home.login.personalNumberLabel"}}</label>
+          <label>
+            {{#if passwordActive}}
+              {{t "home.login.passwordLabel"}}
+            {{else}}
+              {{t "home.login.personalNumberLabel"}}
+            {{/if}}
+          </label>
           {{#if inputAutocomplete}}
             {{input type='password' value=password class="form-control"}}
           {{else}}
@@ -60,6 +66,11 @@
         <div class="library-card-link">
           <a href="{{registrationUrl}}" class="small">{{t "home.login.libraryCardLinkText"}}</a>
         </div>
+        {{#if passwordActive}}
+          <div class="password-forgot-link">
+            <a href="{{passwordForgotLink}}" class="small">{{t "home.login.passwordForgotLinkText"}}</a>
+          </div>
+        {{/if}}
       </div>
     </div>
   </div>
