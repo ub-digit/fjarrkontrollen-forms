@@ -67,7 +67,7 @@ class User
     user =  APP_CONFIG['koha']['user']
     password =  APP_CONFIG['koha']['password']
 
-    url = "#{base_url}/members/get?borrower=#{username}&userid=#{user}&password=#{password}"
+    url = "#{base_url}/members/get?borrower=#{username}&login_userid=#{user}&login_password=#{password}"
     response = RestClient.get url
     item = self.new username, response.body
     return item
@@ -82,7 +82,7 @@ class User
     user =  APP_CONFIG['koha']['user']
     password =  APP_CONFIG['koha']['password']
 
-    url = "#{base_url}/members/auth?cardnumber=#{cardnumber}&personalnumber=#{personalnumber}&userid=#{user}&password=#{password}"
+    url = "#{base_url}/members/auth?cardnumber=#{cardnumber}&personalnumber=#{personalnumber}&login_userid=#{user}&login_password=#{password}"
     response = RestClient.get url
     xml = Nokogiri::XML(response.body).remove_namespaces!
     if xml.search('//response/match').text.present?
