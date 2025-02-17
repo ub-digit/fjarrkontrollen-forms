@@ -40,8 +40,8 @@ export default Controller.extend({
   passwordActive: Ember.computed(function() {
     return (ENV.passwordActive === 'true');
   }),
-  passwordForgotLink: Ember.computed(function() {
-    var lang = this.get('getLocale');
-    return (lang === 'sv') ? ENV.passwordForgotLinkSv : ENV.passwordForgotLinkEn;
+  passwordForgotLink: Ember.computed('i18n.locale', function() {
+    var lang = this.get('i18n.locale');
+    return (lang === 'en') ? ENV.passwordForgotLinkEn : ENV.passwordForgotLinkSv;
   })
 });
