@@ -47,6 +47,7 @@ export default MaybeAuthenticatedRoute.extend({
             applicationController.set('orderDetailsArticle.authors', data.authors);
             applicationController.set('orderDetailsArticle.resolvedArticleIdentifier', id);
             applicationController.set('orderDetailsArticle.resolvedArticleIdentifierSource', 'scopus');
+            this.controllerFor('home.order-details.article').set('error', false);
           }
         }, () => {
           this.controllerFor('home.order-details.article').set('error', true);
