@@ -83,6 +83,10 @@ class User
     user =  APP_CONFIG['koha']['user']
     password =  APP_CONFIG['koha']['password']
 
+    # Escape cardnumber and personalnumber
+    cardnumber = URI.encode_www_form_component(cardnumber)
+    personalnumber = URI.encode_www_form_component(personalnumber)
+
     url = "#{auth_url}?cardnumber=#{cardnumber}&personalnumber=#{personalnumber}&userid=#{user}&password=#{password}"
     response = RestClient.get url
     xml = Nokogiri::XML(response.body).remove_namespaces!
