@@ -99,10 +99,11 @@ export default {
         article: {
           header: 'Copy of article',
           price: '<strong>Prices:</strong><ul><li>A copy of an article costs SEK 80.</li><li>Copies of articles are free for employees and affiliated of the University of Gothenburg.</li><li>Companies pay a minimum of SEK 180 for copies of articles.</li></ul><br/><a target="_blank" href="https://www.ub.gu.se/en/borrow-and-log-in/interlibrary-loans-of-books-and-article-copies#prices">See price list for more information.</a>',
-          subHeader1: 'Enter a PubMed ID...',
+          subHeader1: 'Enter a PubMed ID or DOI...',
+          articleIdentifierTitle: 'Pubmed ID or DOI',
           subHeader2: '...or enter the details:',
-          getPubMedBtn: 'Fetch',
-          pubMedError: 'Could not find an article with the entered PubMed ID.',
+          getArticleDetailsBtn: 'Fetch',
+          getArticleDetailsError: 'Could not find an article with the entered ID.',
         },
         book: {
           header: 'Book',
