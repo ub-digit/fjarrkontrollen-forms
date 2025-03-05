@@ -79,10 +79,15 @@ class User
 
   def self.authenticate cardnumber, personalnumber
     base_url = APP_CONFIG['koha']['base_url']
+    auth_url = APP_CONFIG['koha']['auth_url']
     user =  APP_CONFIG['koha']['user']
     password =  APP_CONFIG['koha']['password']
 
-    url = "#{base_url}/members/auth?cardnumber=#{cardnumber}&personalnumber=#{personalnumber}&userid=#{user}&password=#{password}"
+    # Escape cardnumber and personalnumber
+    cardnumber = URI.encode_www_form_component(cardnumber)
+    personalnumber = URI.encode_www_form_component(personalnumber)
+
+    url = "#{auth_url}?cardnumber=#{cardnumber}&personalnumber=#{personalnumber}&userid=#{user}&password=#{password}"
     response = RestClient.get url
     xml = Nokogiri::XML(response.body).remove_namespaces!
     if xml.search('//response/match').text.present?

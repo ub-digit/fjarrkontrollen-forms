@@ -89,6 +89,8 @@ export default {
         accountHeading: "Log in with library account",
         accountBody: "For users without a GU account.",
         cardNumberLabel: "Library card number",
+        passwordLabel: "Password",
+        passwordForgotLinkText: "Forgot your password?",
         personalNumberLabel: "Personal identity number",
         loginButton: "Log in",
         libraryCardLinkText: "Sign up for an account",

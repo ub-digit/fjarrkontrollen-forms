@@ -36,5 +36,12 @@ export default Controller.extend({
       this.set('applicationController.order.currentStep', step);
       this.transitionToRoute(step);
     }
-  }
+  },
+  passwordActive: Ember.computed(function() {
+    return (ENV.passwordActive === 'true');
+  }),
+  passwordForgotLink: Ember.computed('i18n.locale', function() {
+    var lang = this.get('i18n.locale');
+    return (lang === 'en') ? ENV.passwordForgotLinkEn : ENV.passwordForgotLinkSv;
+  })
 });
