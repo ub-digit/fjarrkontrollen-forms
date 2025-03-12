@@ -105,7 +105,7 @@ export default {
           articleIdentifierTitle: 'Pubmed ID or DOI',
           subHeader2: '...or enter the details:',
           getArticleDetailsBtn: 'Fetch',
-          getArticleDetailsError: 'Could not find an article with the entered ID.',
+          getArticleDetailsError: 'Could not find an article with the entered ID. Fill in information about the article in the form below.',
         },
         book: {
           header: 'Book',

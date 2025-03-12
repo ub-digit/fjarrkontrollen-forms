@@ -105,7 +105,7 @@ export default {
           articleIdentifierTitle: 'Pubmed ID eller DOI',
           subHeader2: '...eller fyll i uppgifterna:',
           getArticleDetailsBtn: 'Hämta',
-          getArticleDetailsError: 'Hittade ingen artikel med angivet id.',
+          getArticleDetailsError: 'Hittade ingen artikel med angivet id. Fyll i information om artikeln i formuläret nedan.',
         },
         book: {
           header: 'Bok',
