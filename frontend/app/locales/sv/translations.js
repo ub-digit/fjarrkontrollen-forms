@@ -90,7 +90,7 @@ export default {
         accountBody: "För användare som inte har något GU-konto.",
         cardNumberLabel: "Nummer på bibliotekskort",
         passwordLabel: "Lösenord",
-        passwordForgotLinkText: "Glömt ditt lösenord?",
+        passwordForgotLinkText: "Återställ lösenord",
         personalNumberLabel: "Personnummer",
         loginButton: "Logga in",
         libraryCardLinkText: "Skaffa bibliotekskonto",
