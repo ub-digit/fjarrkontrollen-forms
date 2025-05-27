@@ -9,6 +9,8 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "rails/test_unit/railtie"
 
+require_relative '../lib/ecs_json_formatter'
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -22,6 +24,13 @@ module FjarrkontrollenForms
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
+
+    config.semantic_logger.application = "fjarrkontrollen-forms"
+    config.semantic_logger.environment = ENV["STACK_NAME"] || Rails.env
+    config.log_level = ENV["LOG_LEVEL"] || :info
+
+    config.rails_semantic_logger.add_file_appender = false
+    config.semantic_logger.add_appender(io: $stdout, formatter: ECSJsonFormatter.new)
 
     # Configuration for the application, engines, and railties goes here.
     #
