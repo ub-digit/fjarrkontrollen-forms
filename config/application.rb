@@ -32,7 +32,7 @@ module FjarrkontrollenForms
     default_log_level = :debug
 
     if Rails.env != 'development' && Rails.env != 'test'
-      formatter = ECSJsonFormatter.new
+      formatter = EcsJsonFormatter.new
       default_log_level = :info
     end
 
