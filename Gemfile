@@ -14,6 +14,8 @@ gem 'puma', '~> 6.4'
 gem 'rest-client', '~> 2.1'
 gem 'jwt'
 
+gem 'rails_semantic_logger'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
