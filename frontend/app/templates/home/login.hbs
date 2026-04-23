@@ -27,6 +27,9 @@
                   </g>
                 </svg>
               </div>
+              {{#if oauth2ErrorMessage}}
+                <div class="alert alert-danger col-xs-12">{{t 'home.login.oauth2Error'}}</div>
+              {{/if}}
             </div>
           </div>
         </a>
@@ -35,13 +38,16 @@
         <div class="lines">
           <span class="word">{{t 'home.login.or'}}</span>
         </div>
+        <div class="panel panel-default">
+        <div class="panel-body">
         <div class="gu-login-account-heading">{{t 'home.login.accountHeading'}}</div>
         <span class="gu-login-account-body">{{t 'home.login.accountBody'}}</span>
-        {{#if errorMessage}}
-          <div class="alert alert-danger col-xs-12">{{t 'home.login.loginError'}}</div>
+        {{#if loginErrorMessage}}
+          <div class="alert alert-danger col-xs-12">{{t 'home.login.libraryCardNumberPasswordError'}}</div>
         {{/if}}
         <div class="form-group">
           <label>{{t "home.login.cardNumberLabel"}}</label>
+          <span class="help-block">{{t "home.login.cardNumberLabelPlaceholder"}}</span>
           {{#if inputAutocomplete}}
            {{input value=username class="form-control"}}
           {{else}}
@@ -64,6 +70,8 @@
         </div>
         <div class="password-forgot-link">
           <a href="{{passwordForgotLink}}" target="_blank" class="small">{{t "home.login.passwordForgotLinkText"}}</a>
+        </div>
+        </div>
         </div>
       </div>
     </div>

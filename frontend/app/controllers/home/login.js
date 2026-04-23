@@ -11,23 +11,25 @@ export default Controller.extend({
   router: injectService(),
   session: injectService(),
   registrationUrl: ENV.APP.registrationUrl,
-  errorMessage: null,
 
   actions: {
     login(username, password) {
+      this.set('oauth2ErrorMessage', false);
+      this.set('loginErrorMessage', false);
       return this.get('session').authenticate('authenticator:librarycard', {
         username: username,
         password: password
       }).catch((error) => {
-        this.set('errorMessage', true);
+        this.set('loginErrorMessage', true);
       });
     },
 
     loginOauth2() {
+      this.set('oauth2ErrorMessage', false);
+      this.set('loginErrorMessage', false);
       return this.get('session').authenticate('authenticator:torii', 'gub-oauth2')
       .catch((reason) => {
-        //let message = typeof reason === 'string' ? reason : 'Unknown server error';
-        this.set('errorMessage', true);
+        this.set('oauth2ErrorMessage', true);
       });
     },
 

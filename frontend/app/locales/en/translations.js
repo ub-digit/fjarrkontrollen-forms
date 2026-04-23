@@ -88,13 +88,16 @@ export default {
         body: "For students and employees at GU with a gus-account or an x-account.",
         accountHeading: "Log in with library account",
         accountBody: "For users without a GU account.",
-        cardNumberLabel: "Library card number",
+        cardNumberLabel: "Personal identity number or library card number",
+        cardNumberLabelPlaceholder: "YYYYMMDDXXXX or ten digits on your library card",
         passwordLabel: "Password",
         passwordForgotLinkText: "Reset password",
         personalNumberLabel: "Personal identity number",
         loginButton: "Log in",
         libraryCardLinkText: "Sign up for an account",
         loginError: "Wrong username or password. Please try again.",
+        libraryCardNumberPasswordError: "Wrong personal identity number / library card number or password. Please try again.",
+        oauth2Error: "The login process was interrupted. Please try again.",
         or: "Or"
       },
       orderDetails: {
