@@ -91,7 +91,7 @@ export default {
         cardNumberLabel: "Personal identity number or library card number",
         cardNumberLabelPlaceholder: "YYYYMMDDXXXX or ten digits on your library card",
         passwordLabel: "Password",
-        passwordForgotLinkText: "Reset password",
+        passwordForgotLinkText: "Create or change library account password",
         personalNumberLabel: "Personal identity number",
         loginButton: "Log in",
         libraryCardLinkText: "Sign up for an account",

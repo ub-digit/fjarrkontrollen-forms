@@ -91,7 +91,7 @@ export default {
         cardNumberLabel: "Personnummer eller nummer på bibliotekskort",
         cardNumberLabelPlaceholder: "ÅÅÅÅMMDDXXXX eller tio siffror på bibliotekskort",
         passwordLabel: "Lösenord",
-        passwordForgotLinkText: "Återställ lösenord",
+        passwordForgotLinkText: "Skapa eller byt lösenord för bibliotekskonto",
         personalNumberLabel: "Personnummer",
         loginButton: "Logga in",
         libraryCardLinkText: "Skaffa bibliotekskonto",
