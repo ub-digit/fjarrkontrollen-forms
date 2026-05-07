@@ -88,13 +88,15 @@ export default {
         subHeader1: "Var god logga in för att fortsätta",
         accountHeading: "Logga in med bibliotekskonto",
         accountBody: "För användare som inte har något GU-konto.",
-        cardNumberLabel: "Nummer på bibliotekskort",
+        cardNumberLabel: "Personnummer eller nummer på bibliotekskort",
+        cardNumberLabelPlaceholder: "ÅÅÅÅMMDDXXXX eller tio siffror på bibliotekskort",
         passwordLabel: "Lösenord",
-        passwordForgotLinkText: "Återställ lösenord",
+        passwordForgotLinkText: "Skapa eller byt lösenord för bibliotekskonto",
         personalNumberLabel: "Personnummer",
         loginButton: "Logga in",
         libraryCardLinkText: "Skaffa bibliotekskonto",
-        loginError: "Fel användarnamn eller lösenord. Vänligen försök igen.",
+        libraryCardNumberPasswordError: "Fel personnummer / bibliotekskortsnummer eller lösenord. Vänligen försök igen.",
+        oauth2Error: "Inloggningen avbröts. Vänligen försök igen.",
         or: "Eller"
       },
       orderDetails: {
