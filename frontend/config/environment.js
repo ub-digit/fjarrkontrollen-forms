@@ -33,7 +33,6 @@ module.exports = function(environment) {
         }
       }
     },
-    passwordActive: process.env.PASSWORD_ACTIVE,
     passwordForgotLinkSv: process.env.PASSWORD_FORGOT_LINK_SV,
     passwordForgotLinkEn: process.env.PASSWORD_FORGOT_LINK_EN
   };
