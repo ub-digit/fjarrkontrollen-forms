@@ -145,6 +145,7 @@ export default {
         deliveryDetailsSubheader: 'Leveransuppgifter',
         invoicingDetailsSubheader: 'Faktureringsuppgifter',
         customerIdHelptext: 'Beställar-ID är ett 5- eller 7-siffrigt nummer som används av Västra Götalandsregionen vid fakturering. Om du inte har tillgång till ett beställar-ID får du istället beställa och betala som Privatperson.',
+        beställarIdFtagHelptext: 'Fyll i beställar-ID ifall uppgiften behövs vid fakturering',
         nextBtn: 'Nästa',
         prevBtn: 'Bakåt',
         mandatoryText: 'Obligatoriska fält måste fyllas i innan du kan gå vidare',

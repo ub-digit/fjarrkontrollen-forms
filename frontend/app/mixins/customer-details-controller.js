@@ -480,7 +480,8 @@ export default Mixin.create({
   showCustomerId: computed('order.selectedCustomerType', function() {
     return (
       this.get('order.selectedCustomerType') === 'univ' ||
-      this.get('order.selectedCustomerType') === 'sahl'
+      this.get('order.selectedCustomerType') === 'sahl' ||
+      this.get('order.selectedCustomerType') === 'ftag'
     );
   }),
 
@@ -490,6 +491,11 @@ export default Mixin.create({
       this.get('order.selectedCustomerType') === 'univ' ||
       this.get('order.selectedCustomerType') === 'sahl'
     );
+  }),
+
+  // Bool to check whether customerId is for ftag (optional)
+  isCustomerIdFtag: computed('order.selectedCustomerType', function() {
+    return this.get('order.selectedCustomerType') === 'ftag';
   }),
 
   // Bool to check whether customerId is valid or not
