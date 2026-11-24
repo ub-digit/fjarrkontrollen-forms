@@ -2,22 +2,28 @@ version: '3.7'
 services:
   frontend:
     image: docker.ub.gu.se/fjarrkontrollen-forms-frontend:${GIT_REVISION}
+    platform: linux/amd64
     build:
       context: ./frontend
+      no_cache: true
       args:
         - GIT_REPO_URL=${GIT_REPO_URL}
         - GIT_REVISION=${GIT_REVISION}
   backend:
     image: docker.ub.gu.se/fjarrkontrollen-forms-backend:${GIT_REVISION}
+    platform: linux/amd64
     build:
       context: ./backend
+      no_cache: true
       args:
         - GIT_REPO_URL=${GIT_REPO_URL}
         - GIT_REVISION=${GIT_REVISION}
   postgres:
     image: docker.ub.gu.se/fjarrkontrollen-forms-postgres:${GIT_REVISION}
+    platform: linux/amd64
     build:
       context: ./postgres
+      no_cache: true
       args:
         - GIT_REPO_URL=${GIT_REPO_URL}
         - GIT_REVISION=${GIT_REVISION}
