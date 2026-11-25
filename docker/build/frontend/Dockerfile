@@ -1,44 +1,19 @@
-ARG EMBER_VERSION=3.28.6
-FROM node:14-alpine AS builder
-
-ARG EMBER_VERSION=3.28.6
-
-ENV PATH=/home/node/app/bin:$PATH
-
-WORKDIR /home/node
-
-RUN set -ex \
-  && npm install -g ember-cli@$EMBER_VERSION \
-  && apk add --no-cache git \
-  && mkdir /home/node/app \
-  && chown node:node /home/node/app
-
-WORKDIR /home/node/app
+FROM alpine:latest AS release
+RUN apk add --no-cache git
 
 ARG GIT_REVISION
 ARG GIT_REPO_URL
 
+WORKDIR /root/
+
 RUN set -ex \
-  && git clone $GIT_REPO_URL . -b $GIT_REVISION --depth 1 \
-  && cd frontend \
+  && git clone $GIT_REPO_URL release -b $GIT_REVISION --depth 1
+
+FROM docker.ub.gu.se/ember-deploy:3.14.0
+
+COPY --from=release --chown=node:node /root/release/frontend /home/node/app
+
+RUN set -ex \
   && npm install \
-  && npm install -g bower \
-  && bower install --allow-root \
-  && npm run build -- --environment=production
-
-# Production stage
-FROM nginx:alpine
-
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-  && ln -sf /dev/stderr /var/log/nginx/error.log
-
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-COPY nginx.conf /etc/nginx/nginx.conf
-
-COPY --from=builder /home/node/app/frontend/dist /home/node/app/dist
-
-EXPOSE 8080
-
-ENTRYPOINT ["docker-entrypoint.sh"]
+  && bower install \
+  && npm update caniuse-lite browserslist
