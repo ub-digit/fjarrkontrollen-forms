@@ -279,7 +279,13 @@
                 {{input type='text' id="customerIdInput" class="form-control" value=applicationController.invoicingDetails.customerId}}
               </div>
               <div>
-                <span id="helpBlock" class="help-block">{{t 'home.customerDetails.customerIdHelptext'}}</span>
+                <span id="helpBlock" class="help-block">
+                  {{#if isCustomerIdFtag}}
+                    {{t 'home.customerDetails.beställarIdFtagHelptext'}}
+                  {{else}}
+                    {{t 'home.customerDetails.customerIdHelptext'}}
+                  {{/if}}
+                </span>
               </div>
             </div>
           </div>

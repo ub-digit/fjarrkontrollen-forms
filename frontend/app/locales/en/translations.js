@@ -148,6 +148,7 @@ export default {
         deliveryDetailsSubheader: 'Delivery details',
         invoicingDetailsSubheader: 'Invoicing details',
         customerIdHelptext: 'A purchase ID is a 5 or 7 digit number used by Region Västra Götaland for invoicing. If you are not eligible for a Purchase ID, please order and pay as a Private person.',
+        purchaseIdFtagHelptext: 'Enter a purchase ID if required for invoicing',
         nextBtn: 'Next',
         prevBtn: 'Back',
         mandatoryText: 'Mandatory fields must be filled in before you can proceed',

@@ -30,8 +30,8 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <div class={{"form-group"}}>
-      <label for="articleTitleInput" class="control-label">{{t 'home.orderDetailsArticle.articleTitle'}}</label>
+    <div class="form-group {{if isArticleTitleValid 'ok' 'has-error'}}">
+      <label for="articleTitleInput" class="control-label">{{t 'home.orderDetailsArticle.articleTitle'}} <i class="fa fa-asterisk mandatory"></i></label>
       {{input type='text' id="articleTitleInput" class="form-control" value=applicationController.orderDetailsArticle.articleTitle}}
     </div>
   </div>
